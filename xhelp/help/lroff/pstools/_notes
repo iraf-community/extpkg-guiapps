@@ -1,0 +1,28 @@
+
+
+.help
+.endhelp
+
+Request Initial Default  Break		Meaning
+------- ------- -------  -----          -------
+
+.fi	  yes		  yes	Begin filling output lines.
+.nf	  no		  yes	Stop filling output lines.
+.ju	  yes		  no	Right justify output lines.	
+.nj	  no		  no	Don't right justify.
+.rj text		  yes	Rt justify text on next line.
+.sh n		  n=2	  yes	Skip n lines, start section.
+.ih m n	m=2,n=5	  	  yes	Like SH, but indent n spaces.
+.br			  yes	Stop filling current line.
+.ce			  yes	Center following line.
+.sp n		  n=1	  yes	Space "n" lines.
+.in n	n=0	  n=0	  yes	Set left margin to "current+n".
+.ls n	label	  n=8	  yes	Begin labeled text block.
+.le			  yes	End labeled text block.
+
+additional directives provided by MANPAGE:
+
+.bp			  yes	Start a new page of output.
+.tp n   n=4		  yes	Break page if < n lines left.
+.ks			  yes	Begin saving output.
+.ke			  yes	Output saved text all on one page.

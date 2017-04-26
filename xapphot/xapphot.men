@@ -1,0 +1,18 @@
+	xguiphot - Gui based aperture photometry task
+	  xgphot - Xgterm based aperture photometry task
+
+          impars - Edit the image data dependent parameters
+         dispars - Edit the image display parameters
+	findpars - Edit the object detection parameters
+       omarkpars - Edit the object list marking parameters
+         cenpars - Edit the object centering parameters
+         skypars - Edit the object sky fitting parameters
+	photpars - Edit the object aperture photometry parameters
+       cplotpars - Edit the object contour plotting parameters
+       splotpars - Edit the object surface area plotting parameters
+
+	   xgex1 - Tutorial 1 on displaying and examining images  
+	   xgex2 - Tutorial 2 on using objects lists
+	   xgex3 - Tutorial 3 on doing quick-look photometry 
+	   xgex4 - Tutorial 4 on measuring standard stars
+	   xgex5 - Tutorial 5 on measuring a crowded field

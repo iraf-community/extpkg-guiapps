@@ -1,0 +1,16 @@
+.help revisions May03 guiapps.xapphot
+.nf
+
+===================
+V1.2: May 2003
+===================
+
+xptools/xpseqno.x
+    The after the call to stclose needed set the symbol table point to
+    NULL in the structure.
+    (6/30/03, Valdes)
+
+===================
+V1.1: February 2003
+===================
+.endhelp

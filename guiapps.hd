@@ -1,0 +1,28 @@
+# Help directory for the GUIAPPS packages.
+
+$spt		= "guiapps$spt/"
+$xapphot	= "guiapps$xapphot/"
+$xhelp		= "guiapps$xhelp/"
+$xrv		= "guiapps$xrv/"
+
+# Define help files for the tasks and packages.
+
+xhelp		hlp=xhelp$xhelp.hlp,		src=xhelp$t_xhelp.x
+
+spt		men = spt$spt.men,
+		hlp = ..,
+		sys = spt$spt.hlp,
+		pkg = spt$spt.hd,
+		src = spt$spt.cl
+
+xapphot		men = xapphot$xapphot.men,
+		hlp = ..,
+		sys = xapphot$xapphot.hlp,
+		pkg = xapphot$xapphot.hd,
+		src = xapphot$xapphot.cl
+
+xrv		men = xrv$xrv.men,
+		hlp = ..,
+		sys = xrv$xrv.hlp,
+		pkg = xrv$xrv.hd,
+		src = xrv$xrv.cl

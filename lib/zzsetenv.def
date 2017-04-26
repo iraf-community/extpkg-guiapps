@@ -1,0 +1,18 @@
+# Global environment definitions for the GUIAPPS packages.
+
+set pkglibs	= "guiapps$bin(arch)/,guiapps$lib/,noao$bin(arch)/,noao$lib/"
+set guibin	= "guiapps$bin(arch)/"
+set guilib	= "guiapps$lib/"
+
+set demo	= "guiapps$demo/"
+set spt		= "guiapps$spt/"
+set xhelp	= "guiapps$xhelp/"
+set xrv		= "guiapps$xrv/"
+set xapphot	= "guiapps$xapphot/"
+
+set guidata	= "guiapps$data/"
+set sptdata	= "guidata$spt/"
+set xapdata	= "guidata$xap/"
+set xrvdata	= "guidata$xrv/"
+
+keep

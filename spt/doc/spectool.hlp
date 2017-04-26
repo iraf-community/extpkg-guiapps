@@ -1,0 +1,208 @@
+.help spectool Aug99 spt
+.ih
+NAME
+spectool -- Spectrum display and analysis tool
+.ih
+SYNOPSIS
+SPECTOOL provides display and analysis for one dimensional spectra using
+a sophisticated graphical user interface.
+.ih
+USAGE
+spectool [spectrum] 
+.ih
+PARAMETERS
+.ls spectrum = ""
+Initial spectrum to be examined.  With no spectrum specified the task
+starts with a blank spectrum display window and with the spectrum reading
+browser panel shown.  If a spectrum is specified the tasks starts with only
+the spectrum display window showing the specified spectrum or the first
+spectrum if there are multiple spectra in the file.  If there is a
+directory path included then the initial working directory will be that
+directory.
+.le
+.ls template = "*.??h,*.fits"
+Template for the spectrum reading panel.  This is not updated by changes
+to the template in the spectrum reading panel.
+.le
+.ls logfile = ""
+Initial logfile for recording the results of various measurements.  Log
+information will be appended to this file.  If no file is specified the log
+information will appear only in the log panel and will disappear when
+SPECTOOL is exited.  A logfile may be opened or changed during the
+execution of the task.  This parameter is not updated by changes in
+the task.
+.le
+.ls observatory = "observatory"
+Observatory for heliocentric velocity calculations.  The observatory
+syntax and available choices are described under the "observatory"
+help topic.
+.le
+.ls unknown = "angstroms"
+Dispersion units when the input data has no units defined.
+.le
+.ls help = "spt$doc/spectool.html"
+Help file.
+.le
+.ls topic = ""
+Initial help topic.  If a valid link in the help file is set then
+the task will start with the help window visible and position to
+this topic.
+.le
+.ls maxreg = 52
+Maximum number of registers to be used.
+.le
+.ls qkey = no
+Quit with a 'q' cursor key?  If set to no then the task will only exit
+with the "Quit" menu item in the "File" menu or with the colon command
+":quit".  If set to yes then a 'q' cursor key will also quit the task.
+.le
+.ls gui = "spt$spectool.gui"
+User interface file.  This file is what defines the look and behavior
+of all the graphical user interface elements.  Experts may create
+variants of this file.
+.le
+.ls graphics = "stdgraph"
+Graphics output device.
+.le
+.ls cursor = ""
+Interactive cursor input.  When no cursor input is specified (the null
+string) all input to the task is through the graphics cursor and the
+various graphical interface elements.  SPECTOOL is not intended to
+be use non-interactively so this parameter should never be changed.
+.le
+
+When SPECTOOL is started the following parameters allow setting the
+initial state of some common features.  These parameters, except for the
+initial plot limits, will be updated by changes made while running the
+task.
+.ls pan = no
+Show pan window?
+.le
+.ls wcs = yes
+Show WCS coordinate box?
+.le
+.ls plotspec = yes
+Plot primary spectrum?
+.le
+.ls plotcont = yes
+Plot continuum?
+.le
+.ls plotraw = no
+Plot raw spectrum?
+.le
+.ls plotsky = no
+Plot sky spectrum?
+.le
+.ls plotsig = no
+Plot sigma spectrum?
+.le
+.ls xmin = INDEF, xmax = INDEF, ymin = INDEF, ymax = INDEF
+Initial spectrum plot limits.
+.le
+
+SPECTOOL uses a number of parameter sets to set the initial values of
+various panels and to save the state of those panels when done.
+.ls spterrors = ""
+Error computation parameters.
+.le
+.ls sptgraph = ""
+Graph format parameters.
+.le
+.ls spticfit = ""
+Curve fitting parameters.
+.le
+.ls sptlabels = ""
+Label parameters.
+.le
+.ls sptlines = ""
+Line parameters.
+.le
+.ls sptmodel = ""
+Profile fitting parameters.
+.le
+.ls sptsigclip = ""
+Sigma clipping parameters.
+.le
+.ls sptstack = ""
+Stack/overplot parameters.
+.le
+.ls sptstat = ""
+Statistics parameters.
+.le
+
+In addition to these parameter sets the SPT package parameters
+described below are also used.
+.ls dispaxis = 1
+Default dispersion axis for 2D images, such as a long slit spectrum, that
+do not contain a DISPAXIS keyword.  The dispersion axis is 1 for dispersion
+running parallel to the lines (horizontally) and 2 for dispersion running
+parallel to the columns (vertically).
+.le
+.ls nsum = 1
+Number of lines or columns to sum from a 2D image, such as a long slit
+spectrum, to create a 1D spectrum for SPECTOOL display and analysis.
+The number of lines or columns is centered around the selected line
+or column specified as the aperture number.  A value of 1 uses
+each line or column from the image as a spectrum.
+.le
+.ih
+DESCRIPTION
+
+SPECTOOL is an interactive one-dimensional spectrum display and
+analysis tool.  It responds to user input through cursor keys, colon
+commands, mouse buttons, menus, push buttons, and other window-style
+graphical user interface controls.  Its major functions are to display
+spectra in a graphical format, to modify them, and to perform various
+analysis operations.  The display capabilities provide complete control
+over the graph format, convenient zoom and panning, graph and spectral
+line labeling, and overplotting and stacking of multiple spectra.  The
+editing functions include pixel editing, arithmetic operations, smoothing
+and fitting, and dispersion solutions.  Analysis functions include  spectral
+line measures, profile fitting, radial velocity measurements, and
+statistics.
+
+One feature of this task is complete run-time help.  The help contains
+descriptions of all functions of the task as well as links between sections.
+The help is obtain by clicking the '?' button in any panel or the
+'?' cursor key.  This will bring up the help window and display the
+section of the help appropriate for the context in which the help is
+requested.  
+
+The run-time help is an HTML file.  To view this file without running
+SPECTOOL for separate reading or printing use an HTML browswer with the URL
+http://iraf.noao.edu/iraf/projects/spectool or the local file
+spt$doc/spectool.html.  To find this file in your system type the IRAF
+command "path spt$doc/spectoo.html" when the SPT package has been loaded.
+
+This is the first release of a very complex program. It is not
+complete or mature.  Thus, you may find things which do not work, are not
+consistent, or not fully documented.  Report problems or send comments
+to iraf@noao.edu.
+
+.ih
+EXAMPLES
+
+1. To run a tutorial on this task enter the command "tutorial".  This
+will start SPECTOOL with some tutorial data and with a tutorial window.
+Follow the step in the tutorial window.
+
+2. To start as a browser application enter the command "spectool".  This
+will bring up SPECTOOL with the spectrum reading browser window displayed.
+Navigate through the browser and select the spectrum to be examined.
+
+3. To start with a specific spectrum enter the command "spectool <spectrum>"
+where spectrum is the name of an IRAF spectrum file.  This will bring up
+SPECTOOL with the spectrum (or the first spectrum in a multispectrum
+file) displayed.
+
+.ih
+REVISIONS
+.ls SPECTOOL - V1.0 / IRAF V2.11.2 external package
+First release.
+.le
+.ih
+SEE ALSO
+splot, specplot, gtools, icfit, observatory, sptgraph, spticfit, sptlabels,
+sptlines, sptmodel, sptsigclip, sptstack, sptstat, spterrors,
+http://iraf.noao.edu/iraf/projects/spectool
+.endhelp

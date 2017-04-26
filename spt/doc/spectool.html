@@ -1,0 +1,2779 @@
+<HTML>
+<HEAD>
+<TITLE>
+Spectool Help
+</TITLE>
+</HEAD>
+<BODY>
+<H2> <A NAME="helpButton"> Welcome to Spectool V1.0 </A></H2>
+
+<P> <B>Spectool</B> is an interactive one-dimensional spectrum display and
+analysis tool.  It responds to user input through cursor keys, colon
+commands, mouse buttons, menus, push buttons, and other window-style
+graphical user interface controls.  Its major functions are to display
+spectra in a graphical format, to modify them, and to perform various
+analysis operations.  The display capabilities provide complete control
+over the graph format, convenient zoom and panning, graph and spectral
+line labeling, and overplotting and stacking of multiple spectra.  The
+editing functions include pixel editing, arithmetic operations, smoothing
+and fitting, and dispersion solutions.  Analysis functions include  spectral
+line measures, profile fitting, radial velocity measurements, and
+statistics.
+
+<P> <I>This is the first release of a very complex program. It is not
+complete or mature.  Thus, you may find things which do not work, are not
+consistent, or not fully documented.  Report problems or send comments
+to iraf@noao.edu.</I>
+
+<H3>Table of Contents</H3>
+
+<UL>
+<LI><A HREF="#tutorial">Tutorial</A>
+
+<P>
+<LI> <A HREF="#main">Spectool Spectrum Display Window</A>
+<UL>
+<LI> <A HREF="#keys">Graphics Cursor Keys</A>
+<LI> <A HREF="#colon">Graphics Colon Commands</A>
+<LI> <A HREF="#mouse">Graphics Cursor Mouse Buttons</A>
+</UL>
+
+<P>
+<LI><A HREF="#taskpars">Task Parameters</A>
+<LI><A HREF="#common">Common Features</A>
+<LI><A HREF="#helpHelp">Help Window</A>
+<LI><A HREF="#icHelp">Interactive Curve Fitting</A>
+<LI><A HREF="#flistHelp">File Browsing Panel</A>
+<LI><A HREF="#textedit">Editing Text Fields and Windows</A>
+<LI><A HREF="#faq">Tips, Tricks, Caveats, and FAQ</A>
+
+<P>
+<LI><A HREF="#fileMenu">File Menu</A>
+<UL>
+<LI><A HREF="#readHelp">Reading Spectra</A>
+<LI><A HREF="#saveHelp">Writing Spectra</A>
+<LI><A HREF="#printHelp">Printing</A>
+<LI><A HREF="#logHelp">Logging</A>
+<LI><A HREF="#quit">Quitting</A>
+</UL>
+<LI><A HREF="#viewMenu">View Menu</A>
+<UL>
+<LI><A HREF="#cntrlHelp">View Control Panel</A>
+<UL>
+<LI><A HREF="#viewHelp">Pan - Pan Window</A>
+<LI><A HREF="#wcsToggle">WCS - Coordinate Display Box</A>
+<LI><A HREF="#labelToggle">Labels - Show Spectrum Labels</A>
+<LI><A HREF="#lineToggle">Lines - Show Line Labels</A>
+<LI><A HREF="#modToggle">Profiles - Show Profile Fits</A>
+<LI><A HREF="#allToggle">All - Apply To All Lines</A>
+<LI><A HREF="#oplotToggle">Overplot - Overplot Spectrum Registers</A>
+<LI><A HREF="#stackToggle">Stack</A>	
+<LI><A HREF="#xyflipToggle">X Flip and Y Flip</A>	
+<LI><A HREF="#zeroToggle">Zero Shown</A>	
+<LI><A HREF="#specToggle">Spectrum Components to Display</A>
+<LI><A HREF="#nextButton">Next and Previous</A>
+</UL>
+<LI><A HREF="#regHelp">Registers</A>
+<LI><A HREF="#gtHelp">Graph Spectra</A>
+<LI><A HREF="#gtLabelsHelp">Graph Labels</A>
+<LI><A HREF="#gtAxesHelp">Graph Axes</A>
+<LI><A HREF="#gtTicksHelp">Graph Ticks</A>
+<LI><A HREF="#labelHelp">Spectrum Labels</A>
+<LI><A HREF="#llabHelp">Line Labels</A>
+<LI><A HREF="#stackHelp">Overplot and Stack Spectra</A>
+<LI><A HREF="#unitsMenu">Dispersion Units</A>
+<LI><A HREF="#funitsMenu">Flux Units</A>
+</UL>
+<LI><A HREF="#editMenu">Edit Menu</A>
+<UL>
+<LI><A HREF="#interpolate">Interpolate Spectrum</A>
+<LI><A HREF="#draw">Draw Spectrum and Continuum</A>
+<LI><A HREF="#zap">Zapping Bad Pixels</A>
+<LI><A HREF="#sclipHelp">Sigma Clipping</A>
+<LI><A HREF="#arithHelp">Spectrum Arithmetic</A>
+<LI><A HREF="#filterMenu">Filter/Smooth Spectrum</A>
+<LI><A HREF="#contMenu">Edit/Apply Continuum</A>
+<LI><A HREF="#deredHelp">Deredden Spectrum</A>
+<LI><A HREF="#dispMenu">Edit Dispersion</A>
+<LI><A HREF="#save_restore_undo">Save, Restore, Undo</A>
+</UL>
+<LI><A HREF="#analyzeMenu">Analyze Menu</A>
+<UL>
+<LI><A HREF="#lidsHelp">Line List</A>
+<LI><A HREF="#llHelp">Reference Lines</A>
+<LI><A HREF="#ctrHelp">Line Centering</A>
+<LI><A HREF="#eqwHelp">Equivalent Widths</A>
+<LI><A HREF="#modHelp">Profile Fitting</A>
+<LI><A HREF="#rvHelp">Radial Velocities</A>
+<LI><A HREF="#helio">Heliocentric Velocity Calculation</A>
+<LI><A HREF="#statHelp">Spectrum Statistics</A>
+<LI><A HREF="#errHelp">Error Computations</A>
+</UL>
+
+<P>
+<LI><A HREF="#def">Definitions</A>
+</UL>
+
+<P><HR>
+
+<H3> <A NAME="main">Spectool Spectrum Display Window</A></H3>
+
+The main Spectool window is used to display the spectra and issue
+commands using the <A HREF="#def:cursor">graphics cursor</A> and
+<A HREF="#def:menus">menus</A> along the top of the window.  There are
+three types of commands which use the graphics cursor;
+single keystroke <A HREF="keys">cursor keys</A>,
+single line <A HREF="colon">colon commands</A>,
+and zoom and pan <A HREF="mouse">mouse buttons</A>.
+The menus are organized into
+<A HREF="#fileMenu">File</A>, 
+<A HREF="#viewMenu">View</A>, 
+<A HREF="#editMenu">Edit</A>, and
+<A HREF="#analyzeMenu">Analyze</A>.
+
+<H4> <A NAME="keys">Graphics Cursor Keys</A></H4>
+
+<P> The graphics cursor is used to enter single keystroke commands
+called <A HREF="def:keys">cursor keys</A>.
+
+<PRE>
+CURSOR KEYSTROKE COMMANDS
+
+?  Show help              j  Previous spectrum      u  Undo
+a  All toggle             k  Next spectrum          v  Velocity units
+b  Bandpass limits        l  Line mark toggle       x  Interpolate
+c  Continuum draw         m  Mark line              y  Cursor draw
+d  Delete line            p  Profile toggle         z  Zap cosmic rays
+e  Equivalent width       q  Quit (if enabled)      .  Print to screen
+f  Fit line profile       r  Redraw graph           :  Colon command
+i  Info                   s  Statistics             =  Print
+
+?  Show help
+a  Toggle whether certain commands affect all lines
+b  Mark bandpass limit for line nearest cursor or all lines
+c  Draw continuum using cursor
+d  Delete marked line nearest to cursor or all lines
+e  Measure equivalent width of line nearest cursor or all lines
+f  Fit profile to line(s) nearest cursor or all lines
+i  Show cursor position and nearest data value information
+j  Go to previous spectrum in multispectrum file
+k  Go to next spectrum in multispectrum file
+l  Toggle line label for line nearest cursor or all lines
+m  Mark line using the cursor
+p  Toggle profile subtraction for line nearest cursor or all lines
+q  Quit (if enabled by the "qkey" task parameter)
+r  Redraw graph
+s  Statistics in region specified by cursor
+u  Undo last operation modifying spectrum (except profile subtraction)
+v  Convert to velocity units (km/s) with zero velocity at cursor
+x  Interpolate spectrum using x cursor positions
+y  Replace spectrum with linear segments using cursor
+z  Zap cosmic rays near cursor position
+.  Print graph to a screen window
+=  Print graph (same as :.snap stdplot)
+:  Enter colon command
+</PRE>
+
+<H4> <A NAME="colon">Graphics Colon Commands</A></H4>
+
+<P> The special cursor key ':' (colon) is used to enter one line commands,
+called <A HREF="def:colon">colon commands</A>, on the graphics window
+status line.  There are no specific colon commands since all functions
+are provided in menus and control panels.  However, in some cases there
+are useful alternatives to the menus and panels using colon commands.
+These are mentioned in the sections describing the various functions.
+
+<H4> <A NAME="mouse">Graphics Cursor Mouse Buttons</A></H4>
+
+The graphics cursor in conjunction with the mouse buttons is used for zooming
+and panning the spectrum display.  The mouse button functions in the
+spectrum display window are summarized below.
+
+<PRE>
+CURSOR MOUSE BUTTONS
+
+Button 1    <A HREF="#def:drag">Drag</A> out region to zoom
+Button 1    <A HREF="#def:click">Click</A> to restore full range
+Button 2    <A HREF="#def:click">Click</A> to shift zoom region left or right with autoscale
+</PRE>
+
+If Button 1 is clicked without dragging out a region then the graph will
+be autoscaled.  The graph is also autoscaled along both axes if the current
+range of dispersion coordinates is outside the range of the data.  This
+might occur when reading and displaying a new spectrum which does not
+overlap the current display range from the previous spectrum.  The graph
+is autoscaled vertically if there is data within the current dispersion
+range but the data falls entirely outside the current display range.
+Again this might occur when reading a new spectrum which has significantly
+different pixel values.  The advantage of this second automatic scaling
+is that one can look at the same spectral region in a set of spectra.
+
+Button 2 is used to shift the display to the left or right to center the
+spectrum at the cursor position.  The vertical axis is automatically scaled
+to the data in the region.  If the <A HREF="#zeroToggle">zero toggle</A>
+is set then the zero level will always be included in the vertical axis.
+
+<P><HR>
+
+<H3><A NAME="taskpars">Task Parameters</A></H3>
+
+<P> Spectool has task parameters like most IRAF tasks.  These are primarily
+used to initialize and then store changes (only when the task exits
+normally) to the parameters that
+appear in various panels.  Exiting Spectool and starting again will
+restore most of the parameters as they were when you quit.  By changing
+parameters before you start you can also adjust how the task appears
+when you first start it.
+
+<P> To restore default values use the IRAF "unlearn spt" command.
+
+<P> The task parameters are described in detail in the IRAF task help.
+It can be read with the "help" or "phelp" IRAF command language command
+or with the XHELP graphical help system.
+
+<H3><A NAME="common">Common Features</A></H3>
+
+<P> Spectool has a main graphics window and many control panels which may
+be brought up.  The behavior of the various elements of the panels are
+described in the various sections of the help documentation.  There are
+many aspects of these elements which are common.  These common elements
+have a consistent appearance and behavior (though there may be some
+inconsistencies in early releases).
+
+<P> One common feature is that all panels have command bars at the top of
+the panel.  In this command bar there are two buttons which always appear
+at the right.  The button labeled with a "?" brings up the help panel
+position at an appropriate point describing the particular panel.  The
+button labeled "Dismiss" causes the panel to disappear.  Dismiss has no
+other action; i.e. it does not automatically apply any parameters that were
+changed.  The main window does not have a dismiss.  Quiting the task, with
+the "Quit" field in the file menu, the ":q" or ":quit" commands, or with
+the 'q' cursor key (if enabled with the "qkey" task parameter) will dismiss
+the main window.
+
+<H3><A NAME="helpHelp">Help Window</A></H3>
+
+<P> All usage help for the Spectool is contained in material shown
+by the help window.  The help window appears when the '?' button is clicked
+in any panel and with the '?' cursor key.  Each button causes the help to
+be displayed at an context appropriate position.  Currently all the help is
+in one file which can be read sequentially or traversed with links.
+Links are selected with mouse button 1 at underlined words.
+
+<P> In addition to using the scroll bar the following keys are available
+to scroll the help window.
+
+<DL COMPACT>
+<DT> f
+<DD> scroll forward a full page
+<DT> b
+<DD> scroll backwards a full page
+<DT> d
+<DD> scroll down a half page
+<DT> u
+<DD> scroll up a half page
+<DT> j
+<DD> scroll forward one line
+<DT> k
+<DD> scroll backwards one line
+</DL>
+
+<H3><A NAME="icHelp">Interactive Curve Fitting - ICFIT</A></H3>
+
+<P> The interactive curve fitting (or ICFIT) panel is used in Spectool in
+to fit the data spectrum, the continuum spectrum, and to fit a dispersion
+function from a set of spectral lines.  This panel does not allow any
+other panel to accept input except for the help panel.
+
+<P> The ICFIT panel is based on the graphical fitting routines used in many
+IRAF tasks.  If you are familiar with these routines all the same cursor
+key and colon commands apply.  A summary of the cursor key and colon
+commands can be viewed using the '?' cursor key.  You can get additional
+help from the IRAF help page "icfit".
+
+<P> In addition, the panel command bar provides menu buttons, command
+buttons, and a parameter editor panel brought up with the "Edit Fit Pars"
+button.  These provide alternatives to the cursor keys and colon commands.
+
+<P> When the final fit is complete exiting with the "Quit" button or
+the 'q' cursor key will return the fit to Spectool.
+
+<H3><A NAME="flistHelp">File Browsing Panel</A></H3>
+
+<P> The file browsing panel is used to select files for various
+operations.  The title of the panel will reflect the operation and the left
+button in the menu bar, refered to here as the execute button,
+will be labeled for the operation.  For example, when selecting the
+"Open..." entry of the File menu in the log panel, the file browsing panel
+will be labeled "Open Log File" and the button label will be "Open".
+
+<P> The top entry field of the browsing panel is for directly entering
+a file name.  This is used for specifying new files or just to type
+the file name explicitly.  A return in this field is equivalent to
+pressing the execute button.
+
+<P> The "Directory" and "Template" fields are used to enter a directory and
+file matching template for the file list at the bottom of the panel.  The
+file matching template has the same syntax as IRAF file name templates.  To
+apply a value in these fields enter a return in the field; the list of
+files will then be updated.  Note that currently changing the directory in
+this panel will also change the directory in the spectrum reading panel and
+vice-versa.
+
+<P> A file may be selected from the list of files by clicking the first
+mouse button over the desired file in the list.  The file name will then
+be entered in the File field above after which the execute button may
+be used to apply the selected file.
+
+<P> When the file browsing panel appears all other panels will be inactive.
+Clicking the the execute button will send (and possible apply) the selected
+file name to the panel which brought up the browsing panel.  The browsing
+panel will then disappear.  The "Cancel" button also dismisses the
+panel without affecting the panel which brought it up.
+
+<H3><A NAME="textedit">Editing Text Fields and Windows</A></H3>
+
+<P> In text fields and windows that allow user input the insertion cursor
+may be positioned with the first mouse button and text entered by typing
+on the keyboard.  The delete key will delete backwards from the cursor.
+In addition the following are some useful shortcuts.
+
+<DL COMPACT>
+<DT> Ctrl-A
+<DD> go to beginning of line
+<DT> Ctrl-B
+<DD> position cursor back one character
+<DT> Ctrl-D 
+<DD> delete next character after cursor
+<DT> Ctrl-F
+<DD> position cursor forward one character
+<DT> Ctrl-H
+<DD> delete previous character before cursor
+<DT> Ctrl-K
+<DD> kill from cursor to end of line
+<DT> Ctrl-L
+<DD> redraw
+<DT> Ctrl-R
+<DD> seach backward
+<DT> Ctrl-S
+<DD> seach forward
+<DT> Ctrl-T
+<DD> transpose characters on either side of cursor
+<DT> Ctrl-V
+<DD> next page
+<DT> Ctrl-W 
+<DD> kill selected text
+<DT> Ctrl-Y
+<DD> insert selected text
+</DL>
+
+<H3><A NAME="faq">Tips, Tricks, Caveats, and FAQ</A></H3>
+
+<P> This section is a catch-all for general usage questions and suggestions
+that don't fall into the other sections.  Contributions from users
+for this section to help other users are welcome.  Send mail to
+iraf@noao.edu.
+
+<UL>
+<LI><A HREF="#faq1">How do I restore the initial settings?</A>
+<LI><A HREF="#faq2">Why can't I mark a line?</A>
+<LI><A HREF="#faq3">How do I restore the full scale?</A>
+<LI><A HREF="#faq4">Is the uncertainty spectrum updated?</A>
+<LI><A HREF="#faq5">Why can't I highlight a text line and delete or
+overwrite it?</A>
+<LI><A HREF="#faq6">Why can't I quit with 'q' as in other IRAF tasks?</A>
+<LI><A HREF="#faq7">There are so many panels I can't find one?</A>
+</UL>
+
+<H5><A NAME="faq1">How do I restore the initial settings?</H5>
+<PP> Within Spectool there is currently no way to reset parameter settings.
+This is done through the IRAF CL.  From the CL with the SPT package loaded
+type <TT>unlearn spt</TT> to reset all parameters.
+
+<H5><A NAME="faq2">Why can't I mark a line?</H5>
+<PP> If you are trying to mark or define a line and the line isn't being
+found it may be that the centering is failing.  Select "Line centering..."
+from the "Analyze" menu.  If you set the centering type to "None"
+this will allow you to mark a line exactly where you want.  If the
+profile type is explicitly set to "Emission" or "Absorption" it may be
+that you are trying to mark the opposite type of line.  You can set
+the type to "Either".  See <A HREF="#ctrHelp">Line Centering</A>)
+for more information.
+
+<H5><A NAME="faq3">How do I restore the full scale?</H5>
+<PP> Simply click mouse button 1 without dragging out a zoom region.  If
+you have zoomed on a region of the graph and have not yet learned how to
+control the display window read the sections on <A HREF="#mouse">Graphics
+Cursor Mouse Buttons</A> and <A HREF="#viewHelp">Pan Window</A>.
+
+<H5><A NAME="faq5">Is the uncertainty spectrum updated?</H5>
+<PP> Operations such as fitting or smoothing the primary spectrum
+do not currently update the uncertainty spectrum.
+
+<H5><A NAME="faq5">Why can't I highlight a text line and delete or overwrite it?</H5>
+<PP> This style of manipulating text in graphical programs is common in
+many environments.  However, this task is currently restricted to a certain
+behavior in it's widgets (the pieces that make up the program) such as text
+input widgets.  There are some useful features you can learn to as
+described in the section <A HREF="#textedit">Editing Text Fields and
+Windows</A>.  The sequence similar to highlight and delete is highlight
+followed by control-W.  To clear the whole line select the beginning of the
+line (or use control-A) and type control-K.
+
+<H5><A NAME="faq6">Why can't I quit with 'q' as in other IRAF tasks?</H5>
+<PP> By default you are protected from accidentally exiting with the
+'q' cursor key.  However, you can enable this mode with the "qkey"
+task parameter when you start Spectool.
+
+<H5><A NAME="faq7">There are so many panels I can't find one?</H5>
+<P> If you open many of the panels it may be difficult to find a
+particular one hidden behind the others.  If you select the panel from
+the appropriate menu it the same way the panel was opened it will be
+brought to the front.  This is potentially window manager dependent.
+
+<P><HR>
+
+<H3><A NAME="fileMenu">File Menu</A></H3>
+
+<DL>
+<DT> <A HREF="#readHelp">Read...</A>
+<DD> panel to select spectra to read into Spectool. 
+<DT> <A HREF="#saveHelp">Write...</A>
+<DD> Panel to write spectra to files. 
+<DT> <A HREF="#printHelp">Print..</A>
+<DD> Panel to print spectrum graph. 
+<DT> <A HREF="#logHelp">Log..</A>
+<DD> Panel to display log results and set log file to be written. 
+<P>
+<DT> <A HREF="#quit">Quit</A>
+<DD> Quit Spectool. 
+</DL>
+
+<P> 
+
+<H3><A NAME="readHelp">Reading Spectra</A></H3>
+
+<P> Spectra are read from files and loaded into "registers".  The
+<B>Read Spectra</B> panel, brought up with the "Read..." entry in The
+"File" menu, is used to read the spectra.   The spectra are selected either
+with the entry fields at the top of the panel or with the lists below.  All
+fields in the panel are submitted by entering a carriage return and entries
+in the lists are selected with the first mouse button.
+
+<P> The file to be read may be specified by entering the name in the field
+labeled "File".  The minimum information needed is the filename.  If the
+file contains more than one spectrum the first one is read.  The "Ap" field
+selects the aperture.  If the aperture is not found then an error will be
+shown on the status line of the main graph panel.  The "Axis" and "Nsum"
+parameters are used when reading from a two dimensional image such as long
+slit data.  In such data the aperture number selects the central line or
+column to be read, the axis selects whether to read a line (axis = 1) or
+column (axis = 22), and the summing parameter selects how many lines or
+columns to read and sum.
+
+<P> The list selection method starts by selecting a "Directory".  Note that
+this field becomes the default directory for all filenames in Spectool.
+The "Filename" field selects the files from the directory to be shown in
+the upper file list.  If Spectool is started with a filename or list of
+filenames then this field is initially set to those filenames.  The file
+list shows all files which can be read along with descriptive information.
+Selecting one of these files with the mouse will open the file and the
+spectra in the file will be shown in the lower spectrum list.  If there is
+only one spectrum in the file the spectrum is automatically selected and
+loaded into a register.  If the file contains multiple spectra then the
+spectrum to be loaded is selected with the mouse from the spectrum list.
+
+<P> The spectrum list also determines which spectrum will be loaded and
+displayed with the previous and next commands; the "Previous" and "Next"
+buttons in the <B>View Control Panel</B> and the 'k' and 'j' cursor keys.
+
+<P> A colon command can also be used to read and loading a spectrum.
+The colon command has the form
+
+<PRE>
+    :read [file]
+</PRE>
+
+where [file] is a filename.
+
+<H3><A NAME="saveHelp">Writing Spectra</A></H3>
+
+<P> Spectra may be written to selected files.  In the <B>Write Spectra</B>
+panel enter the desired output file name.  Selecting "Set filename..." from
+the File menu brings up a <A HREF="#flistHelp">file browsing panel</A> to
+aid in selecting a file.  To actually write the file select (click with the
+first mouse button) a spectrum from the list of spectrum registers.  All
+associated spectra will be written except for the case of long slit (two
+dimensional image) input data written out in the same format.  In that case
+only the primary spectrum is written.  In the other output types, newly
+created associated spectrum types will be added even if it they are not
+present in the input file, such as may be the case for the continuum
+spectrum.
+
+<P> The File menu has options to select the output file format type and
+whether to overwrite an existing file.  The currently supported output
+format types are the "Same format" as the input spectrum or "ONEDSPEC"
+format.  When the same format is chosen then if the input is from a
+"multispec" or "long slit" format the output will be a copy of the input
+file with the selected spectrum updated.  If "ONEDSPEC" is selected then
+only one spectrum will be written to a file.
+
+<P> If the output file exists then either a warning message is given or the
+file is modified depending on whether the overwrite option is set.  When
+working with formats which have multiple spectra the overwrite toggle
+should be set to update each modified input spectrum to the same output
+file.
+
+<P> The colon command
+
+<PRE>
+    :[reg] write [file] [same|onedspec] [yes|no]
+</PRE>
+
+may be used where [reg] is the register letter, [file] is the file name,
+the next argument is the output type given as "same" or "onedspec", and the
+final argument is the overwrite option given as "yes" or "no".  The current
+register is written if the register argument is not given.
+
+<H3><A NAME="printHelp">Printing</A></H3>
+
+<P> The currently displayed graph may be printed to a hardcopy device,
+postscript or encapsulated postscript file, or to a window on the screen.
+Two short cut cursor keys are '=' to print to your default graphics output
+device and '.' to make a copy of the graph to another window on your screen.
+
+<P> More control over printing is provided by selecting "Print..." in the
+main File menu to bring up a print panel.  In this panel the "Print" button
+prints to a printer device, the "PS" button creates a postscript file
+/tmp/irafdmpXXXX.ps where XXXX is some system assigned number, the "EPS"
+button creates an encapsulated postscript file sgiXXXX.eps in the directory
+where Spectool was started, and "Screen" makes a copy of the graph window
+to a new window.
+
+<P> Printing to a hardcopy device or postscript file uses the standard IRAF
+hardcopy facility by executing ":.snap [device]".  The "Print", "PS", and
+"EPS" buttons execute this command with the device name given by
+appropriate device name field.  The default values are those for the
+default graphics printer, postscript file, and encapsulated postscript file.
+The available device names depend on the particular IRAF installation.  This
+document does not discuss this subject further.
+
+<P> Printing to the screen consists of making a window with a copy of the
+current graph.  This window is inactive and only the <B>Dismiss</B> button
+may be clicked.  [Warning:  killing this window with the window manager may
+cause Spectool to abort.]  There are up to 10 screen windows which may be
+created and they are used in rotation.  The size of the window is set by
+the screen width and height fields in the print panel.
+
+<H3><A NAME="logHelp">Logging</A></H3>
+
+<P> Various commands generate log information.  These include equivalent
+width, profile, and radial velocity measurements.  The log information is
+written to the log panel and appended to a log file if one is specified.
+The log panel is brought up by selecting "Log..." from the main File menu.
+
+<P> An output log file is selected by entering a file name in the
+log panel, terminated with a return, or using the <A HREF="#flistHelp">
+file browsing panel</A>.  If log information was created prior to opening
+a log file and an existing file is selected the contents of the log panel
+are appended to the file and the file is displayed.  Subsequent log
+information will be automatically appended to the file.
+
+<P> If the log file is changed then the previous log file is closed and the
+new one is read and displayed.  If a blank file name is given then there
+will be no logging to a file but log results will still be shown.
+
+<P> The log panel is <A HREF="#textedit">editable</A> so you can add
+comments and change the contents.  However, any changes made are not
+recorded to the log file until the "Save" option of the File menu is
+selected, the log file is changing, or by exiting Spectool.  On the other
+hand, measurements recorded to the log file by Spectool are appended to the
+file as they are written.  This is done to protect against loss this
+information in the event of a program abort.  Therefore, the "Save" button
+need be used only when manually modifying the contents of the log window.
+
+<P> The "Clear" button clears the log panel window and the contents of
+any log file currently open.
+
+<H3><A NAME="quit">Quitting</A></H3>
+
+<P> The "Quit" entry of the main File menu exits Spectool.  This updates
+the parameter files with the current state of many of the parameters and
+options set during the execution of the task.  An alternative way
+to quit is to use the ":q" or ":quit" colon commands.  If the "qkey"
+task parameter is set to yes then the 'q' cursor key may also be used
+as is common in many IRAF tasks.  The purpose of the "qkey" enable/disable
+feature is that Spectool may be run as a standalone application
+that should not exit accidentally with a 'q' in the window.
+
+<P> Spectool should not be exited using the window manager.  Doing this
+can result in various problems.  In addition, this will defeat the
+updating of the program's state in its parameter files.
+
+<P><HR>
+
+<H3><A NAME="viewMenu">View Menu</A></H3>
+
+<DL>
+<DT> <A HREF="#cntrlHelp">Control Panel...</A>
+<DD> Panel to control many of the display related features. 
+<DT> <A HREF="#regHelp">Registers...</A>
+<DD> Panel to select Spectool registers. 
+<DT> <A HREF="#gtHelp">Graph spectra...</A>
+<DD> Panel to set parameters for graphing spectra. 
+<DT> <A HREF="#gtLabelsHelp">Graph labels...</A>
+<DD> Panel to set graph labeling parameters. 
+<DT> <A HREF="#gtAxesHelp">Graph axes...</A>
+<DD> Panel to set graph axes parameters. 
+<DT> <A HREF="#gtTicksHelp">Graph ticks...</A>
+<DD> Panel to set graph tick parameters. 
+<DT> <A HREF="#labelHelp">Spectrum labels...</A>
+<DD> Panel to control and define spectrum graph labels. 
+<DT> <A HREF="#llabHelp">Line labels...</A>
+<DD> Panel to control spectral line labeling. 
+<DT> <A HREF="#stackHelp">Overplot/Stack...</A>
+<DD> Panel to control overplotting and stacking of spectrum registers. 
+<DT> <A HREF="#unitsMenu">Dispersion units...</A>
+<DD> Menu of dispersion units for spectrum graphs. 
+<DT> <A HREF="#funitsMenu">Flux units...</A>
+<DD> Menu of flux units for spectrum graphs.
+</DL>
+
+<P> 
+
+<H3><A NAME="cntrlHelp">View Control Panel</A></H3>
+
+<P> The view control panel consists of toggles for the main display related
+features of Spectool.
+
+<PRE>
+<A HREF="#viewHelp">Pan</A>       Toggle the pan window
+<A HREF="#wcsToggle">WCS</A>       Toggle the coordinate box
+<A HREF="#labelToggle">Labels</A>    Toggle the spectrum labels
+<A HREF="#lineToggle">Lines</A>     Toggle the line labels
+<A HREF="#modToggle">Profiles</A>  Toggle the profile fit plots
+
+<A HREF="#allToggle">All</A>       Apply various commands to all the lines
+<A HREF="#oplotToggle">Overplot</A>  Overplot multiple spectra
+<A HREF="#stackToggle">Stack</A>     Stack multiple spectra
+<A HREF="#xyflipToggle">X Flip</A>    Flip dispersion axis in plot
+<A HREF="#xyflipToggle">Y Flip</A>    Flip pixel value axis in plot
+<A HREF="#zeroToggle">Zero Shown</A>    Force zero level to be shown
+
+<A HREF="#specToggle">Spectrum</A>  Display primary spectrum
+<A HREF="#specToggle">Continuum</A> Display continuum
+<A HREF="#specToggle">Raw</A>       Display raw spectrum (if present)
+<A HREF="#specToggle">Sky</A>       Display sky spectrum (if present)
+<A HREF="#specToggle">Sigma</A>     Display sigma spectrum (if present)
+
+<A HREF="#nextButton">Next</A>            Load and plot next spectrum
+<A HREF="#nextButton">Previous</A>    Load and plot next spectrum
+</PRE>
+
+<H4><A NAME="viewHelp">Pan - Pan Window</A></H4>
+
+<P> The "Pan" button toggles the appearance of a pan window.  The pan
+window always shows the entire spectrum even when the main spectrum window
+has been zoomed.  Within this panel you can manipulate the region of the
+spectrum displayed in the main spectrum window.  This can be done with the
+cursor and mouse buttons in the panned spectrum or explicitly with the text
+fields.
+
+<P> The "Full" button in the menu bar resets the graph to the full
+automatic limits.  This is equivalent to a single click of the mouse button
+in the main spectrum or pan spectrum windows.  The automatic limits are set
+by computing the range of the data, possible clipping some fraction of
+the high and low values, and adding some percentage of this range as a
+buffer.  For the dispersion axis there is no clipping and a 3% buffer is
+added (1.5% of the full range on each end).  For the flux axis the fraction
+of high and low pixel values clipped is set by the "High Clip" and "Low
+Clip" parameters and the buffer is set by the "Y Buffer" value given as a
+fraction.  The values are submitted by typing return in the entry field.
+The purpose of the clipping is to exclude some small fraction of extreme
+values, such as from cosmic rays or detector defects, from the automatic
+scaling.
+
+<P> The "Left", "Right", "Top", and "Bottom" text fields allow setting the
+graph limits in the main spectrum window to specific values.   To submit
+the values type return in any text field.
+
+<P> To set a display region with
+the cursor drag out a region in either the main spectrum window or
+the pan window while holding the first mouse button down and then release
+the button to set the limits.  In the pan window you will then see the
+zoom region marker.  This marker can be resized moved or a new marker
+can be dragged out.
+
+<P> To move the marker move inside the box, hold the first mouse button and
+slide the marker to the desired region.  Alternatively clicking the second
+mouse button will move the region to the position of the cursor.  This is
+different than using the second mouse button in the main spectrum window in
+that there is no autoscaling within the dispersion region.  These features
+allow maintaining the same display range.
+
+<P> Note that in the pan window all the cursor keys have the same
+effect as in the main spectrum window.
+
+<P> The pan window can be toggled (brought up and dismissed) with the
+colon command ":pan".
+
+<H4><A NAME="wcsToggle">WCS - Coordinate Display Box</A></H4>
+
+<P> The "WCS" button toggles the appearance of a small box in the main
+spectrum and pan windows that continuously gives the dispersion coordinate
+and intensity value at the cursor position.  The coordinate box can be
+moved to any point on the graph by moving the cursor inside the box
+region.  A double arrow cursor will appear.  Holding the first mouse button
+down allows you to move it to the desired location.
+
+<H4><A NAME="labelToggle">Labels - Show Spectrum Labels</A></H4>
+
+<P> The "Labels" toggle allows turning on and off all spectrum
+labels.  This can also be done from the "Spectrum Labels" panel using
+the "Show Labels" toggle button.  See the <A HREF="#labelHelp">
+Spectrum Labels</A> section for more information.
+
+<H4><A NAME="lineToggle">Lines - Show Line Labels</A></H4>
+
+<P> The "Lines" toggle allows turning on and off all spectral line
+labels.  This can also be done from the "Line Labels" panel using
+the "Show Labels" toggle button.  See the <A HREF="#llabShell">
+Line Labels</A> section for more information.
+
+<H4><A NAME="modToggle">Profiles - Show Profile Fits</A></H4>
+
+<P> The "Profiles" toggle allows turning on and off overplotting of
+profile fits.  This can also be done from the "Profile Fitting" panel using
+the "Show Plots" toggle button.  See the <A HREF="#modShell">
+Profile Fitting</A> section for more information.
+
+<H4><A NAME="allToggle">All - Apply To All Lines</A></H4>
+
+<P> The "All" toggle sets whether various commands which relate to the
+spectral line list apply to all lines.  For example to measure or delete
+all lines.  This toggle is also found in the panels relating to
+the operations on spectral lines.  The 'a' cursor key provides the
+same function.
+
+<H4><A NAME="oplotToggle">Overplot - Overplot Spectrum Registers</A></H4>
+
+<P> The "Overplot" toggle selects whether to overplot multiple spectra
+in the spectrum registers.  This toggle is also found in the
+"<A HREF="#stackShell">Overplot and Stack Spectra</A>" panel.  The
+section on that panel discusses overplotting spectra.  The
+colon command ":overplot" can be used to toggle the overplotting.
+
+<H4><A NAME="stackToggle">Stack</A></H4>	
+
+<P> The "Stack" toggle selects whether to stack multiple spectra
+in the spectrum registers.  This toggle is also found in the
+"<A HREF="#stackShell">Overplot and Stack Spectra</A>" panel.  The
+section on that panel discusses stacking spectra.  The
+colon command ":stack" can be used to toggle the stacking.
+
+<H4><A NAME="xyflipToggle">X Flip and Y Flip</A></H4>	
+
+<P> The "X Flip" and "Y Flip" toggles flip the dispersion and flux
+axes of the spectrum graphs.  Without flips spectra are graphed with
+dispersion values increasing to the right and up.  Note that this is
+independent of the order in which the pixels are stored in the disk file.
+The flips can also be toggled with the colon commands ":xflip" and
+":yflip".
+
+<H4><A NAME="zeroToggle">Zero Shown</A></H4>	
+
+<P> The "Zero" toggle controls whether the zero level of the pixel
+scale is always shown.  When it is not on the display windowing will
+autoscale or zoom independently of where zero falls on the y axis.  When
+it is on the display will always include zero on the pixel scale.
+This can be toggled with the colon command ":zero" or explicitly
+set with ":zero [yes|no]".
+
+<H4><A NAME="specToggle">Spectrum Components to Display</A></H4>
+
+<P> A spectrum consists of a number of components.  These components are
+selected for display with buttons in the "View Control Panel".  Note
+that some components may not exist.  The components can also be
+toggled with the colon commands
+
+<PRE>
+    :spectrum
+    :continuum
+    :raw
+    :sky
+    :sigma
+</PRE>
+
+<H4><A NAME="nextButton">Next and Previous</A></H4>
+
+<P> When the disk file currently open has multiple spectra, see
+<A HREF="#readHelp">Reading Spectra</A>, the "Next" and "Previous" buttons
+allow moving to the next and previous spectra.  The 'k' and 'j' cursor keys
+provide the same function.
+
+<H3><A NAME="regHelp">Registers</A></H3>
+
+<P> Spectra are read into named registers.  When a new spectrum is read
+it is loaded into the first available register.  Various functions, such
+as spectrum arithmetic, select spectra to be used by the register name.
+The "Registers" panel displays the registers and allows you to select
+a register to plot as the current register and to delete a register.
+It also allows attributes of the register to be edited.
+
+<P> The "Clear" button deletes all registers.  The 'd' or delete keys
+may be used to delete individual registers by placing the cursor over
+the desired register in the register list before typing the key.
+
+<P> The first mouse button clicked over a register in the register list
+will plot that register as the current register (in overplot or stack
+modes this can be used to reorder the spectra).
+
+<P> The attributes of a spectrum register which may be edited are the
+line or mark type and the color.  This is done using the two menu
+boxes marked "Type" and "Color".  The change applies to the register
+shown in the "Reg" field.
+
+<H3><A NAME="gtHelp">Graph Spectra</A></H3>
+
+<P> This panel sets the graph attributes of the spectra.  It applies to all
+currently loaded registers and to any new spectra read.  To change the type
+and color attributes of a single register see <A
+HREF="#regHelp">Registers</A>.
+
+<P> The attributes that may be set are the plotting type for the primary
+spectrum, the plotting type for the uncertainty spectrum, the color of the
+primary spectrum, and the size of marks in x and y.  The plotting types are
+various lines patterns, which either connect the pixel centers or are drawn
+in histogram style, and various mark symbols drawn at the pixel positions.
+These are selected by the "Type" menu field.  The uncertainties can use any
+of these types but the "vline" or "vebar" are particularly appropriate.  If
+one of the other types, such as a line, is selected then the boundaries of
+the uncertainties are plotted; i.e. one at the primary spectrum plus the
+uncertainty value and one at the primary spectrum minus the uncertainty
+value.
+
+<P> The color of the lines or symbols are set by the "Color" menu field.
+The "Mark size" line has two text entry fields.  The first is for the size
+along the horizontal axis and the second is for the size along the vertical
+axis.  Positive integer values provide predefined sizes with reasonable
+appearance.  Positive fractional values are in normalized display
+coordinates (NDC) which correspond to fractions of the full graph window;
+i.e. a value of 0.1 would give marks 10% of the window size.  Negative
+values produce sizes in the data coordinate units.  For example a value of
+-2 for the horizontal size when the graph has dispersion units of Angstroms
+would make the marks 2 Angstroms in size.
+
+<P> Once the desired attributes are set the "Apply" button will apply
+them to the spectra, causing the graph to be redrawn, and become the
+default for new spectra.
+
+<H3><A NAME="gtLabelsHelp">Graph Labels</A></H3>
+
+<P> This panel controls the standard labeling fields of the graphs.
+These are the labels above the graph -- the system banner, the
+title, and a subtitle -- and the axis labels.  The axis labels typically
+appear at the bottom and left except when the axis is only drawn at
+the top or left.  The axis labels have two fields the "Axis label"
+and the "Axis units".  The units label is placed inside parenthesis
+following the axis label.
+
+<P> The first four parameters are for the title block.  The "System
+banner?" entry is a toggle to switch between YES and NO.  The "Title" entry
+can be any string.  The special value "default" produces the standard title
+consisting of the filename, spectrum title, aperture, and beam.  The
+"Subtitle" is any string.  The "Title color" is a menu selection.
+
+<P> The last three parameters are for the axes labels.  These have two
+fields.  The first or left field is for the horizontal (dispersion) axis
+and the second is for the vertical (flux) axis.  The "Axis label" fields
+are strings with the special value "default" to use the label defined in
+the data.  The "Axis units" fields are also strings with the special value
+"default" to use the units defined in the data.  The "Axis label color"
+fields are menu selections.
+
+<P> After setting all the parameters as desired the "Apply" button will
+apply them to the graph.
+
+<H3><A NAME="gtAxesHelp">Graph Axes</A></H3>
+
+<P> This panel controls the location and appearance of the axes
+and the frame area outside the axes.  All parameters except the
+"Frame color" have two entry fields; the left field is for the
+horizontal axis and the right is for the vertical axis.  Set or
+change all the fields you want and then click "Apply" to
+redraw the graph with the new values.
+
+<P> The viewport is the region of the graph window occupied by the
+graph.  The graph axes surround this viewport.  The units of the
+viewport are in normalized display coordinates (NDC) which range from
+0 to 1; i.e. they are the fraction of the full window.  By setting
+the viewport minimum and maximum the size of the graph in the window
+can be altered.  Note that some space should be reserved for the title
+block and axes labels.  (Values of 0 and 1 for the limits will not
+fill the window because they are interpreted as requesting automatic
+limits that allow for the labels.)
+
+<P> The "Draw axis?" fields are menus which allow selecting which
+axes to draw.  Along each graph direction there can be no axes, one axis,
+or two axes.  The "Axis width" sets the pen stroke width of the axes.
+The larger the width the heavier the axes (including ticks) will appear.
+The "Axis type" fields are menus to choose from linear and logarithmic
+axes.  There are some quirks in the logarithmic axis type such that
+the range between -1 and 1 is drawn linearly though labeled logarithmically
+and a full octave is always drawn.  The "Axis color" fields are
+color menus and set the axes colors.
+
+<P> The grid parameters select whether to draw grid lines across the
+graph at the major tick locations and also the color of the grid.
+The "Frame color" selects the color to use for the area outside
+of the axes.  Some choices of color will make the axes labels invisible
+or difficult to see.
+
+<H3><A NAME="gtTicksHelp">Graph Ticks</A></H3>
+
+<P> This panel controls the drawing of the ticks.  There are two
+entry fields for each parameter; the left field applies to the horizontal
+axis and the right field to the vertical axis.  Whether ticks are
+drawn at all is controled by the "Draw ticks?" parameters.  You must
+click "Apply" to make the changes take effect and redraw the graph.
+
+<P> The "Major ticks" and "Minor ticks" parameters define approximately
+how many ticks to draw.  The actual number is determined by how many are
+needed to give nice values for the ticks.  A value of 0 for the
+major ticks has the effect fo turning off drawing the axes.  A value of
+0 turns off drawing the minor ticks.
+
+<P> The "Label ticks?" toggle fields set whether to label the ticks with
+the axes values.  If the ticks are labeled then the color may be set
+by the "Label color" menu fields.  The "Label format" allows specifying
+and IRAF-style format such as %.2f.  No format string selects a default
+format.
+
+<H3><A NAME="labelHelp">Spectrum Labels</A></H3>
+
+<P> Spectrum labels may be added to the graphs drawn in the main graph
+window.  The labels may be attached to a point relative to the graph window
+such that as the spectrum is zoomed and panned or the axes limits are
+changed the label will stay in the same place in the graph window.  This
+type of label is called a graph label (though this is distinct from the
+title and axes labels).  Alternatively labels may be attached relative to
+the spectrum so the label will move around or disappear depending on the
+graph limits.  This type of label is called a spectrum label.  Note that
+while a spectrum label can be used to label spectral line features there
+are the line labels (see <A HREF="#llabHelp">Line Labels</A>) which are
+more appropriate for this purpose.
+
+<P> Labels are associated with a particular spectrum register.  Therefore,
+loading a new spectrum or displaying a different register will not show the
+labels except when overplotting or stack spectra.  If you come back to that
+register the labels will appear again.
+
+<P> The labels may be created either with colon commands or with the
+"Spectrum Labels" panel.  The colon commands are:
+
+<PRE>
+     :glabel [label]
+     :slabel [label]
+</PRE>
+
+where [label] is the label string.  The glabel command is for graph
+labels and the slabel command is for graph labels.  The labels will
+be centered (in the default format) on the cursor position.
+
+<P> To use the panel for a new label (as opposed to editing a feature)
+first unselect any label currently selected.  A selected label will appear
+highlighted in the label list.  To unselect click the first mouse button
+outside of any label.  A "label not found" message will be given which can
+be ignored.  Then enter the X, Y, and Label in the appropriate fields.  A
+return in any of the fields will submit the label.  The X and Y values are
+in normalized display coordinates (NDC) for graph labels (the "Graph"
+button must also be selected).  These values run from 0 to 1 and are
+fractions of the full graph window.  To create a spectrum label select the
+"Spectrum" button and enter the X and Y values in the units of the graph;
+i.e. wavelength and flux.
+
+<P> The labels may be edited by selecting a label with the first
+mouse button from the list of labels and then changing any of the fields
+in the panel as desired.  A return is used in the text fields while
+change a toggle or menu field will automatically make the change.
+
+<P> Changing the "Attach to:" buttons converts a graph label to
+a spectrum label and vice-versa.  You will see the X and Y fields
+change from NDC to graph coordinates.
+
+<P> Horizontal and vertical labels can be easily set with buttons.  More
+sophisticated control of the labels -- orientation, centering, fonts, etc.
+-- is obtain by using a format string.  This is described in the IRAF help
+for "cursors" in the section on annotating plots.  The text quality must be
+set to high to see some of the effects (including rotated characters for
+the vertical format) though they will appear in hard copies regardless of
+the text quality setting.
+
+<P> Some editing fields, such as the "Attach to", "Format", or "Color"
+fields can be applied to all labels simultaneously by first setting
+the "All" toggle in the panel command bar.
+
+<P> Labels may be deleted by typing 'd' or the delete key over the label in
+the label list window.  Labels may also be turned off even if defined with
+the 'l' key in the label list window or with the "Label" command bar
+button.  Note that this applies to individual labels.  With the "All"
+toggle set this would also allow turning on or off all labels.  However, in
+this case it is easier to use the "Show Labels" button or the "Labels"
+button in the "View Control" panel.
+
+<H3><A NAME="llabHelp">Line Labels</A></H3>
+
+<P> When a spectral line is defined (see <A HREF="#lidsHelp"> Line List
+</A>) the feature can be marked and labeled on the graph of the spectrum.
+This labeling consists of a number of elements, each of which can be turned
+on or off for a particular line or all lines using this panel.  The
+elements are
+
+<PRE>
+Line      - draw a vertical line tick
+Arrowhead - draw an arrow head tick
+Bandpass  - draw a bandpass marker
+Measured  - label with measured position
+Reference - label with reference coordinate
+Id        - label with an identification string
+</PRE>
+
+<P> The marks and labels are drawn either below or above the feature.  This
+may initially be determined by how the line is defined and then changed
+with this panel.  The length of the tick line and the distance from the
+spectrum for the bandpass mark and label is controled by the "Distance"
+field.  It is in NDC units (a fraction of the graph window size).
+
+<P> The label format is controled by the "Format" line.  Horizontal and
+vertical labels are easily set by the selection button.  More complex
+formats may also be entered.  The format string is described in the IRAF
+help for "cursors" in the section on annotating plots.  The text quality
+must be set to high to see some of the effects (including rotated
+characters for the vertical format) though they will appear on the hard
+copies regardless of the text quality.
+
+<P> The color of the labels (all elements) is set by the "Color" menu
+field.
+
+<P> The changes made in the fields of the panel take effect immediately
+or when a return in entered in a text entry field.  It applies to
+the currently selected line as well as lines defined subsequently.
+The "All" button in the command bar can be used to apply changes to
+all the defined lines.
+
+<P> To select a line to edit use the select options of the <A HREF="#lidsHelp">
+Line List </A> panel.  The "Spectral line" field of the panel will
+show the line information and the current labeling parameters for the
+line will be set.  Change the parameters will then update that line
+(or all lines if the "All" toggle is set).
+
+<P> The "Show Labels" and "Label" buttons on the command bar allow turning
+the line labels on and off.  The "Label" toggle selects whether or not a
+particular label is drawn.  The 'l' key in the list of lines in the "Line
+List" panel also toggles this button.  The "Show Labels" toggle selects
+whether any labels are to be shown (this button has the same effect as the
+"Labels" toggle in the "View Control" panel.  While the combination of
+"All" and "Label" can control drawing of all lines the purpose of the "Show
+Labels" function is to turn on and off the labels without disturbing which
+lines have been individually set to be drawn.
+
+<H3><A NAME="stackHelp">Overplot and Stack Spectra</A></H3>
+
+<P> Spectool can overplot or stack all the loaded registers.  The
+difference between overplotting and stacking is that overplotting does not
+scale the spectra while stacking can scale and offset the spectra.
+Overplotting or stacking is selected by the buttons on the command bar.
+The two buttons are mutually exclusive.  Overplotting or stacking may also
+be toggled from the "View Control" panel or with the colon commands
+":overplot" and ":stack".
+
+<P> Both modes make use of the "Automatic line types?" and "Automatic
+colors?" parameters.  The current line type and color for the primary or
+active spectrum is always used but the overplotted and stacked spectra will
+be changed if the automatic mode is selected.  Automatic line types cycle
+through the various line types otherwise the current line types of each
+spectrum is used.  Automatic colors cycle through the various colors
+otherwise the current color of each spectrum is used.  In automatic mode
+the line types and colors of any associated spectra, such as the continuum,
+will also be changed.
+
+<H4> Scaling and Stacking </H3>
+
+<P> Let i be the index of spectra to be stacked with 1 being the primary
+spectrum which is not to be scaled.  Denote the flux values for spectrum i
+by f_i(x) where x is the dispersion coordinate.  Let F_i represent the
+mean value of the spectrum.  Assign each spectrum a scale and offset value,
+shown as scale_i and offset_i.  These values are determined by the
+"Scaling" parameter according to the table below.
+
+<PRE>
+                        | scale_i   offset_i
+    --------------------+-----------------------
+    none                |   1          0
+    scale to unit mean  |  F_i         0
+    offset to zero mean |   1        -F_i
+</PRE>
+
+<P> Transform the flux values for each spectrum as follows and compute
+the minimum and maximum of the transformed values.
+
+<PRE>
+    g_i(x) = (scale_i * f_i(x) + offset_i - offset_1) / scale_1
+    gmin_i = minimum of g_i(x)
+    gmax_i = maximum of g_i(x)
+</PRE>
+
+<P> Note that this leaves the values flux values of the first spectrum
+unchanged.  This spectrum is plotted first and appears at the bottom of the
+graph.  The graph scale is correct for that spectrum.
+
+<P> Now to stack the other spectra requires adding a step to the
+transformed flux values for each spectrum where the total offset in the
+graph is the sum of the preceding steps.  The steps depend on the "Stacking
+type" parameter and the "Stacking step" value, indicated by step_value.
+
+<P> For "uniform absolute steps" the step_value is used directly (and so
+must be in the appropriate flux units).  For "uniform first range steps"
+the data range of the primary spectrum is used with the step_value
+providing a scaling.  For "individual range steps" the minimum and maximum
+of the scaled spectra are used as indicated below.  The step_value is again
+used as a scaling.  The scaling allows control over how much the spectra
+can overlap or have buffer space.  The step from the previous spectrum is
+shown in the table below.
+
+
+<PRE>
+    Stacking type              |  Step from previous spectrum
+    ---------------------------+----------------------------------
+    Uniform absolute steps     |  step_value
+    Uniform first range steps  |  (gmax_1 - gmin_1) * step_value
+    Individual range steps     |  (gmax_i-1 - gmin_i) * step_value
+</PRE>
+
+<H3><A NAME="unitsMenu">Dispersion Units</A></H3>
+
+<P> The dispersion units menu selects the dispersion units to be plotted.
+Changing dispersion units also applies to many of the analysis results and
+line lists that include a dispersion coordinate.  The list of units
+is self-explanatory except for "default".  The default entry uses the
+units either defined in the spectrum disk file or the default
+units given in the parameter file.
+
+<P> The dispersion units can also be changed using the colon command
+":units [units]".  The units and syntax are describe in the IRAF
+help topic "onedspec.package".
+
+<H3><A NAME="funitsMenu">Flux Units</A></H3>
+
+<P> The flux units menu selects the flux units to be plotted.  This requires
+that the spectrum has been flux calibrated to a known flux unit.
+The "default" units are those supplied in the spectrum header.
+Changing the flux units also applies to many of the analysis results.
+The list of units is self-explanatory.
+
+<P> The flux units can also be changed using the colon command
+":funits [units]".  The list of units, which are case insensitive
+and can be abbreviated if unique, are "Jansky", "FU", "erg/cm2/s/hz",
+and "erg/cm2/s/a".  These units may be preceded by the modifiers
+"log" and "mag"; for example, "log jansky".
+
+<P><HR>
+
+<H3><A NAME="editMenu">Edit Menu</A></H3>
+
+<DL>
+<DT> <A HREF="#interpolate">Interpolate spectrum (x key)</A>
+<DD> Show help on editing spectrum by interpolation. 
+<DT> <A HREF="#draw">Draw spectrum (y key)</A>
+<DD> Show help on editing spectrum by drawing with the cursor. 
+<DT> <A HREF="#draw">Draw continuum (c key)</A>
+<DD> Show help on editing continuum by drawing with the cursor. 
+<DT> <A HREF="#zap">Zap bad pixels (z key)</A>
+<DD> Show help on zapping bad pixels. 
+<DT> <A HREF="#sclipHelp>Sigma clipping...</A>
+<DD> Sigma clip spectrum around the continuum.
+<DT> <A HREF="#arithHelp">Spectrum arithmetic...</A>
+<DD> Panel for performing spectrum arithmetic. 
+<DT> <A HREF="#filterMenu">Filter/smooth spectrum</A>
+<DD> Menu of options for filtering and smoothing the spectrum. 
+<DT> <A HREF="#contMenu">Edit/apply continuum</A>
+<DD> Menu of continuum options. 
+<DT> <A HREF="#deredHelp">Deredden spectrum...</A>
+<DD> Panel to deredden spectrum. 
+<P>
+<DT> <A HREF="#dispMenu">Edit dispersion...</A>
+<DD> Menu of dispersion editing options. 
+<P>
+<DT> <A HREF="#save_restore_undo">Save spectrum</A>
+<DD> Save the state of the current spectrum for this register. 
+<DT> <A HREF="#save_restore_undo">Restore saved spectrum</A>
+<DD> Restore spectrum from the last saved state or the initial state.
+<DT> <A HREF="#save_restore_undo">Undo last change</A>
+<DD> Undo last change that modified the spectrum. 
+<P>
+
+</DL>
+
+<P>
+
+<H3><A NAME="interpolate">Interpolate Spectrum</A></H3>
+
+<P> The graphics cursor can be used to linearly interpolate between pixels in
+the spectrum.  This is done with the 'x' cursor key.  The key is typed two
+or more times to define the interpolation endpoints.  All pixels between
+the previous and current cursor position are replaced by a line segment
+connecting the spectrum pixel selected.  After each key stroke the old data
+is erased and the new data is drawn.  The drawing is continued until any
+other key is typed.  The 'u' cursor key or undo edit menu option will undo
+the last sequences of draw commands.
+
+<H3><A NAME="draw">Draw Spectrum and Continuum</A></H3>
+
+<P> The graphics cursor can be used to draw the spectrum or continuum as a
+series of line segments.  This is done using the 'y' cursor key for the
+spectrum and the 'c' cursor key for the continuum.  The key is typed two or
+more times to sketch out the region to be modified.  All pixels between the
+previous and current cursor position are replaced by a line segment
+connecting the two cursor positions on the graph.  After each key stroke
+the old data is erased and the new data is drawn.  The drawing is continued
+until any other key is typed.  The 'u' cursor key or undo edit menu option
+will undo the last sequences of draw commands.
+
+<H3><A NAME="zap">Zapping Bad Pixels</A></H3>
+
+<P> Bad pixels, such as cosmic rays or bad CCD pixels, can be "zapped" by
+interpolating across the most deviant pixel near the cursor.  Place the
+cursor near where the bad pixel should be and type 'z'.  The most deviant
+pixel (distance between the pixel value and the y cursor position) within a
+one pixel radius is found and replace by interpolation from the neighboring
+pixels.  For narrow bad pixel regions which are wider than a single pixel,
+repeated use of 'z', possibly with small shifts of the position will
+"erode" the bad pixels.  After each 'z' the spectrum is redrawn.  The
+zapping is continued until any other key is typed.  The 'u' cursor key or
+undo edit menu option will undo the last sequence of zaps.
+
+<H3><A NAME="sclipHelp">Sigma Clipping</A></H3>
+
+<P> Spectrum pixels which deviate from the continuum by a certain amount may
+be replaced by the continuum.  In addition neighbors of those pixels within
+a specified radius (in pixels) may also be replaced.  The clipping
+thresholds, one above and one below the continuum, are formed by
+multiplying a sigma value by clipping factors.  The parameters are
+specified in the <B>Sigma Clipping</B> panel with the initial values
+set in the <B>sptsigclip</B> parameter set.
+
+<P> There are various options and special values for the parameters.  The
+clipping factors and radius may be specified as INDEF to turn off clipping
+and neighbor replacement.  Negative values are treated as INDEF.
+
+<P> If a sigma value is specified then it is used directly.  Because the
+clipping thresholds are the product of the clipping factors and the sigma
+one can set the sigma to one and then use the clipping factors as
+thresholds in pixel value units.
+
+<P> If a sigma value of INDEF is specified then one is computed from the data
+if there is no sigma spectrum or the sigma spectrum is used.  In the
+latter case the sigma value can vary for each pixel.
+
+<P> To perform the clipping set the parameters and either click the <B>Clip</B>
+button or enter carriage return for one of the values.  Clipping may also
+be done with the colon command
+
+<PRE>
+    :sigclip sigma low high radius
+</PRE>
+
+If any arguments are missing then the last value used will be used.  Note
+that changing the value in the <B>Sigma Clipping</B> panel without excuting
+the clipping will not change the last value used.
+
+<P> The 'u' cursor key or undo edit menu option will undo the last clipping.
+
+
+<H3><A NAME="arithHelp">Spectrum Arithmetic</A></H3>
+
+<P> Spectrum arithmetic is performed using general arithmetic expressions.
+The expressions include references to spectra, numerical constants,
+operators, and functions which apply to every pixel in the spectra.  The
+set of pixels and dispersion system are determined from a template
+spectrum.  If operand spectra have different dispersion sampling they are
+resampled to that of the template spectrum.  The operations apply to every
+associated spectrum selected in the control panel.  Note that there is no
+special treatment of the sigma spectrum so generally it will not be
+selected or it will be the only type selected.
+
+<P> Spectrum types which do not exist in the template register may be
+created by selecting the desired spectrum type and using an expression
+that does not reference non-existent data.
+
+
+<H4>Spectrum Arguments</H4>
+
+<P> Spectra are specified by their register names.  The register names are
+currently a-z.  In addition the special names "current" (or "cur") and
+"new" specify the current displayed spectrum and a new output register.  If
+only the register is specified it implies use of the matching associated
+spectra.  However, for expression arguments it is possible to select a
+specific associated spectrum to be applied to all the associated spectra
+being operated upon.  For example to apply the continuum spectrum to the
+primary, raw, and sky spectra.  Specifying a specific associated spectrum
+uses the syntax "reg[x]" where reg is the register name and "x" is one of:
+
+<PRE>
+    s    primary spectrum
+    c    continnum spectrum
+    r    raw spectrum
+    b    sky/background spectrum
+    u	 sigma/uncertainty spectrum
+</PRE>
+
+<H4>Expressions</H4>
+
+<P> Spectrum arithmetic uses a standard IRAF expression evaluator.  It is the
+same one used with IMEXPR.  Operands simple consist of register names and
+numerical constants.  Some of the operators and functions may be unlikely
+to be used with spectra.  The set of operators is:
+
+<PRE>
+	( expr )		grouping
+	+ - * /			arithmetic
+	**			exponentiation
+	expr ? expr1 : expr2	conditional expression
+
+	&&			logical and
+	||			logical or
+	! 			logical not
+	<			less than
+	<=			less than or equal
+	>			greater than
+	>=			greater than or equal
+	==			equals
+	!=			not equals
+	?=			substring equals
+</PRE>
+
+<P> The conditional expression has the value "expr1" if "expr" is true,
+and "expr2" otherwise.  Since the expression is evaluated at every pixel
+this permits pixel-dependent operations such as checking for special pixel
+values, or selection of elements from either of two spectra.  For example,
+the command
+
+<PRE>
+	(a < 0) ? 555 : b / a
+</PRE>
+
+has the constant value 555 if "a" is less than zero, and "b / a" otherwise.
+Conditional expressions are general expressions and may be nested or used
+anywhere an expression is permitted.
+
+<P> The following functions may be used with spectra and constants (treated as
+a spectrum of constant value) as arguments:
+
+<PRE>
+	abs (a)				absolute value
+	max (a, b, ...)			maximum value
+	min (a, b, ...)			mininum value
+	mod (a, b)			modulus
+
+       sqrt (a)				square root
+	exp (a)				exponential
+	log (a)				natural logarithm
+      log10 (a)				logarithm base 10
+
+     median (a, b, c [, d [, e]])	vector median of 3-5 spectra
+       sort (a)				sort a spectrum
+      shift (a, npix)			shift a spectrum
+
+       acos (a)				arc cosine
+       asin (a)				arc sine
+       atan (a [,b])			arc tangent
+      atan2 (a [,b])			arc tangent
+	cos (a)				cosine
+       cosh (a)				hyperbolic cosine
+	sin (a)				sine
+       sinh (a)				hyperbolic sine
+	tan (a) 			tangent
+       tanh (a) 			hyperbolic tangent
+	deg (a)				radians to degrees
+	rad (a)				degrees to radians
+
+       bool (a)				coerce to boolean
+      short (a)				coerce to short
+	int (a)				truncate to integer
+       nint (a)				nearest integer
+       long (a)				coerce to long (same as int)
+       real (a)				coerce to real
+     double (a)				coerce to double
+</PRE>
+
+<P> The "median" function shown here computes the vector median of several
+input spectra, unlike the projection median (below) which computes the
+median value of a spectrum sample.  \fIsort\fR sorts a spectrum, returning
+the sorted spectrum as output.  \fIshift\fR applies an integral pixel shift
+to a spectrum, wrapping around at the endpoints.  A positive shift shifts
+data features to the right (higher indices).
+
+<P> The trigonometric functions operate in units of radians and the "deg" and
+"rad" intrinsic functions can be used to convert to and from degrees if desired.
+
+<P> The following  projection functions take a spectrum as input and return a
+scalar spectrum as output.  The functions \fImean\fR and \fIstddev\fR, used to
+compute the mean and standard deviation of a spectrum, allow an optional
+second argument which if given causes a K-sigma rejection to be performed.
+
+<PRE>
+	len (a)				length of a spectrum
+	hiv (a)				high value of a spectrum
+	lov (a)				low value of a spectrum
+       mean (a [, ksigma])		mean of a spectrum
+     median (a)				median of a spectrum
+     stddev (a [, ksigma])		standard deviation
+	sum (a)				sum of a spectrum
+</PRE>
+
+<H4>Examples</H4>
+
+The following are some example expressions which are less obvious.
+
+<UL>
+<LI> Set a constant value.
+
+<PRE>
+10
+</PRE>
+
+Note that all the selected spectrum types will be affected even those
+that do not exist in the template register.
+
+<LI> Create an error spectrum for the current spectrum.  Set the
+template register to "current".  Set the output register to "current"
+Select only the "Sigma" spectrum type.  Use an expression that explicitly
+avoids undefined data, in this case just the actual spectrum data.
+
+<PRE>
+10 + sqrt (max (1, 3 * [s]))
+</PRE>
+
+</UL>
+
+<H4>Colon Command Shortcuts</H4>
+
+<P> The ":arith" and ":sarith" commands may be use in place of the spectrum
+arithmetic control panel.  The former command uses the template and output
+spectrum registers shown in the control panel and only the expression is
+specified.  The latter command has four arguments, the sarith command
+repeated, the template register, the output register, and the expression.
+Below are some simple examples.
+
+<PRE>
+:arith a+b			:arith -2.5*log10(current)
+:sarith sarith cur cur 2*cur	:sarith sarith a c b**2
+</PRE>
+
+<H4>List Shortcuts</H4>
+
+<P> The register list shown in the spectrum arithmetic panel may be used to
+perform simple operations on the current spectrum.  The keys +, -, *, and
+/ typed with the cursor over a particular register performs the following
+operations.
+
+<PRE>
+    +  current + selected
+    -  current - selected
+    *  current * selected
+    /  current / selected
+</PRE>
+
+<H3><A NAME="filterMenu">Filter/Smooth Spectrum</A></H3>
+
+<P> The options in the "Filter/smooth spectrum" menu modify the primary
+spectrum by common filtering and smoothing techniques.  All these
+options can be undone with the 'u' key or the undo entry of the "Edit"
+menu.
+
+<P> The moving average and median apply a box average or box median at
+every pixel along the spectrum.  When selected a status line prompt is
+given for the box size which is the number of pixels to average or median
+centered on each pixel in the spectrum.  For an even box size there is one
+more pixel to higher pixel numbers than to lower pixel numbers.  At the
+ends it uses as many pixels as is included by the box centered at that
+pixel; i.e. at the left edge a box of 5 pixels will use the first, second,
+and third pixels.
+
+<P> The gaussian convolution smoothing filter convolves the spectrum with a
+gaussian of specified width.  When selected a status line prompt is given
+for the width.  The width is the full width at half-maximum (FWHM) of the
+gaussian convolution function to be applied.  The convolution box size is
+the nearest number of pixels to 3 times the specified FWHM.  At the ends
+it uses as many pixels as are included in the convolution box.
+
+<P> The "Fit curve" option allows a smooth curve to be fit to the data.
+This is done with the <A HREF="#icHelp"> interactive curve fitting panel
+</A>.  When the fit is complete quit the fitting and the fitted curve will
+replace the original spectrum.
+
+<P> The filter/smooth options have the following colon command equivalents.
+
+<PRE>
+    Moving average...           :smooth average [size]
+    Moving median...            :smooth median [size]
+    Gaussian convolution...     :smooth gauss [fwhm]
+    Fit curve...                :icfit fit
+</PRE>
+
+where [size] is the box, and fwhm is the gaussian convolution width.  If
+the size is not given it will be queried.
+
+<H3><A NAME="contMenu">Edit/Apply Continuum</A></H3>
+
+<P> The options in the "Edit/apply continuum" menu create or modify the
+continuum spectrum or modify the primary spectrum by dividing or
+subtracting the continuum.  All these options can be undone with the 'u'
+key or the undo entry of the "Edit" menu.
+
+<P> The moving average and median apply a box average or box median at
+every pixel along the spectrum and put the result in the continuum
+spectrum.  When selected a status line prompt is given for the box size
+which is the number of pixels to average or median centered on each pixel
+in the spectrum.  For an even box size there is one more pixel to higher
+pixel numbers than to lower pixel numbers.  At the ends it uses as many
+pixels as is included by the box centered at that pixel; i.e. at the left
+edge a box of 5 pixels will use the first, second, and third pixels.
+
+<P> There are two curve fitting options for the continuum.  One is to fit a
+curve to the primary spectrum and place the result in the continuum
+spectrum.  The second is to fit a curve to the current continuum to make a
+new continuum.  The curve fitting is done with the <A HREF="#icHelp">
+interactive curve fitting panel </A>.  When the fit is complete quit the
+panel and the fit will become the continuum spectrum.
+
+<P> The following shows the colon command equivalents (note the
+capitalized word).
+
+<PRE>
+    Moving average of spectrum...
+       :%[spectrum] Continuum smooth average [size]
+    Moving median of spectrum...
+       :%[spectrum] Continuum smooth median [size]
+    Curve fitting of spectrum...
+       :%[spectrum] Continuum icfit fit
+    Fit curve to continuum...
+       :%[continuum] Continuum icfit fit
+</PRE>
+
+<P> The "Edit/apply continuum" menu also has to entries for applying
+the continuum to the spectrum.  These are to normalize the spectrum
+by the continuum and to subtract the continuum.  Both these also
+update the continuum and the other associated elements of the spectrum
+register.  The following shows the colon command equivalents (note
+the capitalized word).
+
+<PRE>
+    Normalize spectrum by continuum      :Continuum divide
+    Subtract continuum from spectrum     :Continuum subtract
+</PRE>
+
+<H3><A NAME="deredHelp">Deredden Spectrum</A></H3>
+
+<P> The spectrum is corrected for interstellar extinction, or
+reddening, using the empirical selective extinction function of
+Cardelli, Clayton, and Mathis, <B>ApJ 345:245</B>, 1989, (CCM).  This
+function requires two parameters, the absolute extinction at 5550A,
+A(V), and the ratio, R(V), of this extinction to the color excess
+between 4350A and 5550A, E(B-V).
+
+<P> R(V) is entered in the "Extinction ratio R(V)" field.  If it is not
+known one can use the default value of 3.1 typical of the average
+interstellar extinction.  Note that by specifying a negative extinction
+parameter this function may be used to add interstellar extinction.
+
+<P> The second parameter is entered or derived from "Reddening parameter"
+field.  The type of parameter is selected by choosing one of the "Reddening
+parameter type" buttons.  If A(V) is selected then the CCM function can be
+directly evaluated.  If E(B-V) is selected then A(V) is derived using the
+relation:
+
+<PRE>
+    A(V) = R(V) * E(B-V)
+</PRE>
+
+<P> For planetary nebula studies the logarithmic extinction at H beta,
+denoted as c, is often determined instead of E(B-V).  If this type
+of input is selected then A(V) is derived using the relation:
+
+<PRE>
+    A(V) = R(V) * c * (0.61 + 0.024 * c).
+</PRE>
+
+<P> This is based on the relation betwen E(B-V) and c computed
+by Kaler and Lutz, <B>PASP 97:700</B>, 1985 to include corrections between
+the monochromatic parameter c and the broadband parameter E(B-V).
+In particular the function is a least squares fit to the values of
+c and E(B-V) in Table III of the form:
+
+<PRE>
+    E(B-V) = c * (A + B * c)
+</PRE>
+
+<P> Spectra which have been previously dereddened will not be dereddened
+unless the "Override previous reddening" option is selected.  The
+"Uncorrect previous reddening" option determines whether the previous
+correction is removed so that the final correction is relative to the
+original data or if the new correction is differential on the previous
+correction.
+
+<P> To actually apply the dereddening the "Deredden" button on the
+command bar must be pressed.  The undo option may be used to remove
+the effect of the dereddening until another modification is made to
+the spectrum.
+
+<H3><A NAME="dispMenu">Edit Dispersion</A></H3>
+
+<P> The dispersion editing options change various parameters of the
+dispersion.  Most of the options are fairly simple.  These options
+are not intended for complete dispersion calibration of raw spectra
+though if there are sufficient reference spectra features it is possible.
+They are more suited either for quick look calibration or for tweaking
+the dispersion of already dispersion calibrated spectra.
+
+<P> The dispersion editing options and their colon command equivalents
+are shown in the table below.  The first six options when selected
+from the menu will query on the status line for a value.  The colon
+command can supply the value or leave it off and also be queried.
+The units of the coordinate values must be in the current dispersion
+units (which may be the default units if the spectrum is not dispersion
+calibrated).
+
+<PRE>
+    Coordinate of first pixel...    :coord first [value]
+    Coordinate of last pixel...     :coord last [value]
+    Coordinate step per pixel...    :coord step [value]
+    Coordinate shift...             :coord shift [value]
+    Coordinate redshift...          :coord redshift [value]
+    Coordinate deredshift...        :coord deredshift [value]
+
+    Shift from marked lines         :coord lineshift
+    Fit marked lines...             :coord fitlines
+</PRE>
+
+<P> The first six options are fairly obvious.  The shift is an additive
+value such that the new coordinates will increase for a positive shift.
+The redshift and deredshift values are specified as doppler shift with
+values greater than -1.  A redshift will shift the coordinates to the "red"
+(longer wavelengths and lower energy) for a positive value and the
+deredshift option will shift the coordinates to the "blue" for a positive
+value.
+
+<P> The last two options require one or more spectral lines to be defined
+with reference values (see the <A HREF="#lidsHelp"> Line List </A>
+section).  The "Shift from marked lines" option computes a coordinate
+shift from the average of the differences between the reference value
+and the measured value of the lines.  This requires at least one line
+with a reference value.
+
+<P> The "Fit marked lines" option requires at least two lines with a
+reference value.  It calls up the <A HREF="#icHelp"> interactive curve
+fitting panel </A> to fit a function to the pairs of reference and measured
+coordinate values.  This is essentially the same dispersion fitting method
+used by the dispersion calibration task IDENTIFY.  You should make sure
+that the dispersion function fitted is monotonic over the entire spectrum
+to avoid confusion and errors.
+
+<H3><A NAME="save_restore_undo">Save, Restore, Undo</A></H3>
+
+<P> Every spectrum register has two backup copies of the data.  One
+is a "save" copy and one is an "undo" copy.  When a spectrum is first
+read the spectrum is automatically copied to the "save" area.  The
+"Restore saved spectrum" option copies the saved copy back to the
+register (and saves the current register data in the undo copy).
+Thus, if you make many modifications and decide you want to return to
+the original spectrum you can use the restore option.
+
+<P> Of course, you could do the same thing by reading the disk file
+again.  The save area is more useful if you use the "Save spectrum"
+option.  This saves the current spectrum, after some modifications,
+in the save area.  This then becomes the spectrum that will be restored
+by the restore option.
+
+<P> The "Undo last change (u key)" option exchanges the undo area and the
+spectrum area.  Most commands that modify the spectrum register
+automatically save the current spectrum in the undo area before modifying
+the spectrum.  Note that the drawing and zapping features (the 'x', 'y',
+'c', and 'z' cursor keys) which take multiple sequences of the same key
+will undo the whole sequence.  Therefore, after making a change you can
+easily undo that change with the undo option.  Normally this would be done
+using the 'u' cursor key rather than with the menu or the colon command.
+Since the the undo command exchanges the current and undo spectrum copies
+it can be used to go back and forth between the last change; i.e. an undo
+of an undo returns to the modified spectrum.
+
+<P> The table below gives the colon command equivalents of the menu
+entries.
+
+<PRE>
+Save spectrum			:save
+Restore saved spectrum		:restore
+Undo last change (u key)	:undo
+</PRE>
+
+<P><HR>
+
+<H3><A NAME="analyzeMenu">Analyze Menu</A></H3>
+
+<DL>
+<DT> <A HREF="#lidsHelp">Line list...</A>
+<DD> Panel for defining and editing list of spectral lines
+<DT> <A HREF="#llHelp">Reference list...</A>
+<DD> Reference line list panel
+<DT> <A HREF="#ctrHelp">Line centering...</A>
+<DD> Panel to set parameters and perform centering on line profiles.
+<DT> <A HREF="#eqwHelp">Equivalent Widths...</A>
+<DD> Panel to set parameters, compute, and show results of equivalent width
+measurements. This also measures the line flux and average continuum.
+<DT> <A HREF="#modHelp">Profile fitting...</A>
+<DD> Panel to set parameters, compute, show results, and control display of
+line profile fitting. The line profile fitting includes both single lines
+and blended lines.
+<P>
+<DT> <A HREF="#rvHelp">Velocities...</A>
+<DD> Panel to set or compute radial velocities.
+<DT> <A HREF="#statHelp">Spectrum statistics...</A>
+<DD> Panel to set and measure spectrum statistics. 
+<DT> <A HREF="#errHelp">Error computations...</A>
+<DD> Panel to set error computation parameters.
+</DL>
+
+<P>
+
+<H3><A NAME="lidsHelp">Line List</A></H3>
+
+<P> Spectool maintains a list of spectral lines for each spectrum.
+Initially this list is empty.  The line list is used by the various
+spectral line <A HREF="#llabHelp"> display </A> and analysis functions.
+Therefore, to use those functions requires that you enter lines in the
+list.  Note that this list of lines is different than the reference list
+which is used identify lines in the spectrum and provide reference
+dispersion coordinate values.
+
+<P> There are several ways to define lines:
+
+<OL COMPACT>
+<LI> typing 'm' when the cursor is pointing at the line
+<LI> typing ':line [coordinate]'
+<LI> entering the information in the line list panel
+<LI> using the reference list
+</OL>
+
+<P> The simplest way to define a line is to mark it with the cursor using
+the 'm' cursor key.  The vertical crosshair defines a dispersion
+coordinate and the horizontal cursor defines whether to put the line mark
+and label above or below the line center.  Typically you would put the
+cursor below absorption features and above emission features so that labels
+do not overlap the spectrum.
+
+<P> The colon command <TT>:line [coordinate]</TT>, where a coordinate in the
+current units is specified, is equivalent to the 'm' cursor key except that
+you can specify a precise coordinate.
+
+<P> The line list is displayed and edited with the "Line list" panel from
+the "Analyze" menu.  Lines can be defined by entering a dispersion
+coordinate in the text field labeled "Center" and typing carriage return.
+This is also the same as the <TT>:line</TT> colon command.
+If desired, you can also set the other fields of the line defineition
+(described further below) before typing a carriage return in any of the
+fields.
+
+<P> Finally lines may be defined from a reference list of dispersion
+coordinates and (optional) identification labels.  The reference list
+is set and displayed in the "Reference list" panel of the "Analyze"
+menu (see <A HREF="#llHelp">Reference Lines</A>).
+When a reference list has been loaded lines may be defined
+by selecting from the list.  Mouse button 2 or the 'm' key will select
+a line from the list and mark it in the spectrum.  This is similar
+to <TT>:line [coordinate]</TT> with the coordinate taken from the reference
+list.  It differs in that the reference list coordinates are at rest
+so that if a redshift is defined for the spectrum the line will be
+marked at the redshifted (observed) coordinate.  The "Mark" button
+in this panel will mark all lines in the reference list that lie within
+the spectrum.
+
+<P> All these methods for defining lines -- using the cursor, entering the
+value with a colon command or entry field, or selecting from the reference
+list -- specify a dispersion coordinate.  A centering algorithm (see <A
+HREF="#ctrHelp">Line Centering</A>) may then be applied to this
+coordinate.  When the centering type is set to "None" the specified
+coordinate defines the line directly.  In this case a spectral line will be
+defined independent of whether there is a feature at that position in the
+spectrum.
+
+<P> If a centering algorithm is selected then the coordinate is the
+starting point to search for an emission or absorption feature in the
+data.  When a line center is found the spectral line is defined with the
+centered coordinate.  If the centering algorithm fails (for reasons
+described in the centering section) no line will be defined.  Except when
+identify lines with the reference list a message will appear on the status
+line saying "centering failed".  To force a line to be defined in this case
+requires setting the centering alogorithm to "None".
+
+<P> A spectral line definition consists of the following elements:
+
+<UL COMPACT>
+<LI> a spectral line coordinate
+<LI> a reference coordinate
+<LI> a bandpass
+<LI> a label
+<LI> a profile type
+</UL>
+
+<P> The reference coordinate is used for labeling and for computing radial
+velocities (see <A HREF="#rvHelp">Radial Velocities</A>).  It may be set in
+several ways.  If there is a reference line identification list defined
+then when a new spectral line is defined, in one of the ways noted above,
+the reference coordinate nearest the line coordinate within a maximum match
+distance is automatically assigned to the spectral line.  Even if this does
+not happen or when a new line list is read after lines are defined, the
+line identification panel may be used to select the reference line to
+associate with the current line (the highlighted line in the list of
+defined lines) using the mouse.
+
+<P> The reference coordinate can also be defined using the colon command
+<TT>:reference [coordinate]</TT> for the line nearest the cursor.  This
+might be the easiest way if marking lines with the cursor.  Alternatively,
+the reference coordinate can be entered in the various panels showing the
+spectral line lists using the text entry field labeled "Reference".  This
+might be done when defining a new line or by selecting a line to edit
+from the list using the mouse and then modifying just the reference field.
+The value is entered using a carriage return in the text field.
+
+<P> The bandpass defines a region of the spectrum to be used in various
+measurements such as equivalent widths.  The bandpass is specified
+relative to the spectral line position.  The spectral line position is
+usually the line center and the lower bandpass limit is usually negative
+while the upper bandpass limit is positive.  However, it is possible
+to define a bandpass that is offset from the line position.
+
+<P> When a new spectral line is defined the bandpass limits of the current
+feature (the one highlighted in the list of defined lines and whose values
+appear in the bandpass fields) is used.  If there are no lines defined then
+a default value from the parameter file is used.  Note that the last
+bandpass limits are saved in the parameter file each time Spectool is
+exited and then used the next time the task is run.  The bandpass limits
+may be modified using the text entry fields labeled "Lower" and "Upper" in
+the same way as the line position, reference coordinate, and label may be
+modified.  The limits may also be set with the colon commands <TT>:lower
+[value]</TT> and <TT>:upper [value]</TT>.
+
+<P> The bandpass limits can be set graphically using the 'b' cursor key.
+This assumes the lower limit is on the lower coordinate side of the line
+position and the upper limit is on the higher coordinate side.  The 'b' key
+affects the line nearest the cursor and then adjusts either the lower or
+upper limit to the cursor position.  You will find this cursor key is
+fairly intuitive in most cases.
+
+<P> The bandpass limits for all features may be reset at the same time
+to the same value by setting the option to select all spectral lines.
+This is done either with the 'a' key or the <B>All</B> button in the
+panels that deal with the list of defined spectral lines.
+
+<P> The line ID label is set using the label entry field, the
+<TT>:identification [label]</TT> colon command for the line nearest the
+cursor, and using the reference line list (either automatically when
+a line is defined or by selecting a reference line from the list).
+
+<P> Deleting a line definition is accomplished by using the cursor
+and the 'd' key or using 'd' in one of the spectral line list definition
+panels.
+
+<P> The spectral line list is used by all the analysis
+functions that operate on spectral lines.  These functions are
+
+<UL COMPACT>
+<LI> Labeling
+<LI> Centering
+<LI> Reference line identifications
+<LI> Equivalent widths
+<LI> Profile fitting
+</UL>
+
+<H3><A NAME="llHelp">Reference Lines</A></H3>
+
+<P> Spectral lines maybe identified using a line list. There are two types of
+line identifications, defining lines by searching the spectrum at the
+coordinates given in the line list and assigning information from the line
+list to existing lines.
+
+<P> The "Line list" parameter (terminated with a carriage return) or ":ll
+[file]" colon command is used to open or change a line list file. A blank
+value for the file may be used to cancel a line list.
+
+<P> A line list is a text file with lines consisting of the line reference
+coordinate followed by an optional identification string. Comments are
+ignored except for the special comment
+
+<PRE>
+    # units [units]
+</PRE>
+
+where [units] is one of the allowed <A HREF="#units">unit
+specifications</A>.
+
+<P> To define new lines click the <B>Identify</B> button or give the colon
+command ":identify".  A line <A HREF="#ctrHelp">center</A> is sought using
+the line list coordinate, with the current redshift applied, as the initial
+guess. If the centering succeeds the distance between the line list
+coordinate and the line center (in pixels) is checked against the "Maximum
+match distance" parameter. If the distance is less that the matching
+distance the line is a candidate for a new line. If another entry in the
+line list finds the same line center then the entry closest to the line
+center is accepted.  Finally if a line is found within the "Maximum
+separation" distance (in pixels) of an existing line definition then the
+line from the line list replaces the line otherwise a new line is defined.
+
+<P> The line list is also used when defining new lines with 'm' cursor key
+or in one of the line definition panels. When a line is defined the
+coordinate of the line (centered if using the 'm' cursor key), with the
+current redshift applied, is compared against the line list and if an entry
+within the matching distance is found the reference coordinate and
+identification label will be assigned.
+
+<P> To assign information from the line list to a defined line select the
+entry in the list of defined lines first and then select the entry in the
+reference line list.  This will set the reference coordinate and the line
+identifcation label. Another way to do this is to position the cursor near
+a defined line in the spectrum window and enter the command ":reference
+[value]". The value need be only close enough to match an entry in the line
+list within the matching distance. If a line is found then the reference
+and label are assigned. Note that if there is no line list or the entered
+value does not match an entry in the line list the entered reference
+coordinate value will be assigned to the line as entered.
+
+
+<H3><A NAME="ctrHelp">Line Centering</A></H3>
+
+<P> Line centering is invoked when lines are defined with the 'm' cursor key
+or the <B>Center</B> button, and identified
+with the 'i' key or the <B>Identify</B> button in the <B>Identify</B>
+panel. The <B>Centering panel</B> is used to set and change the centering
+algorithm parameters and to recenter lines based on any changes to the
+parameters. To recenter lines a line is selected from the line defintion
+list and the <B>Center</B> button is clicked or the 'c' key typed in the
+spectrum graph. All lines mais y be recentered by setting the All toggle
+before clicking the <B>Center</B> button or typing the 'c' key.
+
+<P> Centering consists of searching the continuum subtracted spectrum for a
+line center (as defined by the centering type) near a starting position.
+The starting position is either what was entered by the user, from the line
+identification list, or from the line position of a previously defined
+line. The search succeeds or fails depending on whether the distance
+between the starting position and the centered position is greater than the
+"Centering error radius" parameter specified in pixels.  If the centering
+fails the existing line position is unchanged or, when marking a new line
+with the 'm' key, a line is not defined.
+
+<P> The centering will also fail if the new position is withing two pixels
+of an existing line.  When centering a single line an error message will
+indicate this.  When centering many lines at once there will be no error
+reported.
+
+<P> A line center is defined based on a window of pixel values specified by the
+"Centering width" parameter specified in pixels. The larger the width the
+more data is used to define the center but this increases the possibility
+of confusion with neighboring lines and continuum data which doesn't
+contribute to the line position.  Thus, the centering width should be set
+to approximately the full width of the line near the continuum. The data
+set used consists of the continuum subtracted pixels within a distance of
+one-half the centering width plus the centering radius.
+
+<P> The first thing the centering algorithm has to determine is whether it is
+searching for the center of an emission or absorption line. This is
+specified with the "Profile type" selections. The profile type may be set
+explicitly to "Emission", "Absorption", or to "Either" to let the centering
+algorithm choose based on whether the pixel value near the starting
+position is below or above the continuum.
+
+<P> The continuum subtracted data set is turned into a positive profile by
+negating absorption line profiles and then setting all negative values to
+zero.  The profile is used to determine the profile center by the selected
+algorithm. The algorithms are described below.
+
+<H4>Center1D</H4>
+
+<P> First the nearest local maximum to the starting point is found. If the
+centering width is less than or equal to 1 pixel then this is the center.
+If the width is greater than 1 then a minimum width of 3 pixels is used.
+
+<P> The center is found by solving the equation 
+
+<PRE>
+    integral {I(X) f(X-XC) dX} = 0
+</PRE>
+
+where I is the continuum subtracted pixel value at position X, X is the
+pixel coordinate, and XC is the desired feature position. To solve the
+integrals a cubic spline interpolation function is fit to the data and this
+function is integrated.  The convolution function f(X-XC) is a sawtooth
+
+<PRE>
+                                 f(X-XC)
+                +-------------------+-------------------+
+                |                   |     *             |
+                |                   |   *   *           |
+                |                   | *       *         |
+             0  +-*-*-*-*-----------*-----------*-*-*-*-+
+                |         *       * |                   |
+                |           *   *   |                   |
+                |             *     |                   |
+                +-------+-----------+-----------+-------+
+                    -width/2       0         width/2
+
+                                   X-XC
+</PRE>
+
+<P> The convolution equation is solved iteratively starting with the initial
+position.  When successive positions agree within 0.1% of a pixel the
+center is found. If more than 100 iterations are required or the correction
+per iteration exceed the minimum correction reached after 3 further
+iterations then the solution has failed to converge and no center is found.
+Note that this latter condition may occur if the width is too small in a
+flat topped profile.
+
+<P> The interpretation of this centering method is that the center bisects the
+profile flux weighted by the absolute value of the convolution function.
+The weighting function gives maximum weight to the points one quarter of
+the centering width from the profile center.
+
+<H4>Gaussian</H4>
+
+<P> The center is obtain by fitting the data set to a Gaussian profile with the
+center, peak value, and, sigma as free parameters.
+
+<H4>Parabola</H4>
+
+<P> A parabola is fit to the three pixels values centered on the peak pixel
+value. The center is the inflection point of the parabola.
+
+<H4>Peak</H4>
+
+<P> The center is the position of the peak pixel value. This method will only
+produce center positions at the centers of pixels.
+
+<H4>None</H4>
+
+<P> The starting position is taken as the center. 
+
+<H3><A NAME="eqwHelp">Equivalent Widths</A></H3>
+
+<P> Equivalent widths are measured for selected (see <A HREF="#lidsHelp">
+Line List </A>).  There are three ways to measure an
+equivalent width:
+
+<OL COMPACT>
+<LI> typing 'e' when the cursor is near a defined line in the graph
+<LI> typing 'e' when the mouse is over a defined line in one of the
+line lists windows
+<LI> highlighting a line in the line list window with the first mouse
+button and then clicking the <B>Measure</B> button in the
+<B>Equivalent Widths</B> panel.
+</OL>
+
+<P> When the <B>All</B> toggle is set all lines are measured otherwise
+only the selected line is measured.
+
+<P> The equivalent width measurement is computed across the bandpass
+specified by the line definition.  The bandpass is the line center
+plus the lower bandpass limit and the center plus the upper bandpass
+limit.  Also used is the <A HREF="#continuum"> continuum spectrum</A>. 
+
+<PRE>
+          I' = (I - C) * dx
+          C' = C * dx
+      center = sum {abs(I') * x} / sum {abs(I')}
+        flux = sum {I'}
+   continuum = sum {C'} / abs (x2 - x1)
+       width = sum {-(I'/C')}           if C' > 0
+</PRE>
+
+where x1 and x2 are the bandpass edges in the current coordinates, x is the
+pixel center coordinate, dx is the pixel width in the current coordinates,
+I is the pixel value, and C is the continuum pixel value. I' and C' are the
+pixel "fluxes" for the continuum subtracted spectrum and the coninuum
+spectrum. Note that dx is is truncated at the bandpass edge so that, in
+effect, partial pixels fluxes are used in the sums. The computed center is
+the flux weighted centroid of the pixel centers in the band pass where the
+absolute value of the fluxes are used. The flux is the sum of the continuum
+subtracted fluxes. The continuum is the continuum flux in the bandpass
+divided by the bandpass width. The equivalent width is the sum of the
+continuum subtracted fluxes divided by the continuum flux over all pixels.
+The sign is defined so that absorption lines have a positive equivalent
+width and emission lines have a negative equivalent width.
+
+<P> If a sigma spectrum is present then the formal errors for the above
+definitions are also computed using standard error propagation rules.
+
+<P> The results are stored with each line definition, shown in the
+<B>Equivalent Widths</B> panel and recorded in the log. To recall the
+values for a particular line highlight it with the first mouse button in
+the <B>Equivalent Widths</B> panel and the values will be shown.
+
+<H3><A NAME="modHelp">Profile Fitting</A></H3>
+
+<P> Gaussian, Lorentzian, or Voigt (combination of Gaussian and Lorentzian)
+profiles may be fit to selected spectral lines.  If lines overlap they are
+fit simultaneously.  The fitting using a Levenberg-Marquardt nonlinear chi
+square minimization (the same software used in SPLOT and FITPROFS).
+
+<P> First spectral lines must be defined as
+described in the <A HREF="#lidsHelp"> Line List </A> section.  The lines
+are fit by selecting them in one of the ways below.
+
+<OL COMPACT>
+<LI> typing 'f' when the cursor is pointing at the line
+<LI> typing 'f' in the list of lines in the line list panel
+<LI> selecting a line in the line list panel and clicking the "Fit" button
+in the profile fitting panel
+</OL>
+
+<P> The region of the data fit is defined by the bandpasses of the lines.
+When a line is selected to be fit the full line list is examined for other
+lines whose bandpasses overlap.  If the selected line does not overlap any
+other line then a single profile fit is done.  If the selected line is in a
+group, each of whose members overlap at least one other line, then all
+lines in the group are fit simultaneously.  Lines which have been fit and
+subtracted from the data will not be fit again but they are included in the
+grouping.
+
+<P> Each line has a profile type as shown in the profile fitting panel.
+To change the profile type enter one of "gaussian", "lorentzian", or
+"voigt".  One may also use the colon command ":profile [name]" with
+the cursor selecting the line.  All profiles have a center coordinate
+and a peak value (relative to the continuum with negative values for
+absorption features).  Gaussian profiles have a gaussian full width at half
+maximum (FWHM) labeled by GFWHM, Lorentizian profiles have a FWHM labeled by
+LFWHM, and Voigt profiles have both.
+
+<P> The continuum or background for the profiles is treated as a linear
+function across the bandpass.  For a group of lines the background is
+a linear function across the maximum range of the bandpasses.  Each line
+has two parameter values describing the continuum; the continuum value
+at the line center and the slope.  For a group of lines the slope values
+will be the same and the continuum levels for each line will be on the
+same linear background.
+
+<P> The parameters to be fit are selected by the buttons in the
+"Fit" group of the profile fitting panel.  If parameters are not
+fit then the initial values are left unchanged.  The initial positions
+are those from the line list.  The initial intensities are from the
+nearest pixel to the initial center.  The initial widths are determined
+by taking the fitting region, dividing by the number of lines, and
+then dividing by 2.  The initial background function is determined
+by the continuum values at the bandpass endpoints.
+
+<P> After a line is fit the current values shown in the profile fitting
+panel are used as the initial values for subsequent fits.  It is then
+possible to change the values as desired.  This is useful if you then want
+to set position intervals, intensity ratios, or width ratios which can then
+be constrained to maintain their relative differences or ratios.
+
+<P> The "Constrain" group of parameters allow a number of constraints
+on the parameters when there are multiple lines being fit
+simultaneously.  The "relative positions" option keeps the
+separations of the lines fixed while allowing the centers to shift
+by the same amount.  The "relative intensities" option keeps the
+peak value ratios the same while allowing the flux scale to vary.
+The relative width options keep the ratios of the line widths fixed
+while allowing the spatial scale to vary.
+
+<P> If the spectrum has an associated sigma array then Monte-Carlo
+errors can be computed.  This is done by assuming the current spectrum
+is the true spectrum and randomly modifying the pixel values according
+to the sigma at that pixel.  This makes a new realization of the
+spectrum consistent with the sigma values.  The line or lines are
+then fit again.  This is done a number of times as set by the
+"Number of error samples" parameter.  This parameter should be
+at least 30 if not higher.  The error estimate for each parameter is
+then determined from the one sigma variation of the values over
+the different realizations.  This method is computationally intensive
+but has the fewest assumptions in the error estimation.
+
+<P> After a line or set of lines is fit the values are shown in
+the profile fitting panel for one of the lines, on the graphics
+window status line if there is only one line, in the log panel,
+and written to the log file if one is open.  To look at the last
+fitted values use the line list panel to select the line whose
+fit results are desired and the values will appear in the profile
+fitting panel.  In addition to the profile parameters described previously,
+the fitting produces a measurement of the line flux and the equivalent
+width.  These are values computed from the fitted profile; i.e.
+analytic integrals over the profile.
+
+<P> After a fit the profiles, continuum, and sum of profiles for a
+group of lines may be overplotted on the spectrum.  The plotting is
+controled at three levels.  The "Profiles" button in the View Control
+panel or the "Show Plots" button in the profile fitting panel toggle
+whether any profile plots are shown.  If profile plots are enabled
+to be show then each fitted profile has a toggle to select whether
+that particular profile should be plotted.  This is set with the
+"Plot" button in the profile fitting panel command bar.  Finally,
+if profile plotting is enabled for a particular profile the parameters
+in the "Plot" group are used to set which elements of the profile
+are to be shown. These are the individual profile, the continuum,
+and the sum when multiple lines are fit simultaneously.  The colors
+of each component can also be set as desired.
+
+<P> The "All" button in the command bar (which is the same as the
+'a' key and the "All button in the View Control panel) can be set
+to affect changes to all profiles for the plotting parameters
+and to select all lines to be fit when a fit is done using any of
+the methods above except from the line list.
+
+<P> The "Subtract" command bar button allows toggling subtraction of the
+fitted profile from the data.  When a profile is fit the list of lines will
+indicated this with a "+".  A fit and subtracted profile will have a "-".
+In addition to the "Subtract" button, the 'p' cursor key over a 
+particular line, and typing 's' over a line in the line list are
+equivalent to the this button.  The "All" option allows toggling the
+subtraction for all fitted profiles.
+
+<H3><A NAME="rvHelp">Radial Velocities</A></H3>
+
+<P> Spectra can have a radial velocity associated with them.  This velocity is
+used for display, with the reference line list, and possibly to
+deredshift to rest velocity.  When there is a velocity the spectrum graph
+will show the observed dispersion coordinates along the bottom axis and the
+rest velocity along the top axis.  When lines are marked and there is a
+reference line list the line position, measured in observed
+coordinates, is converted to rest and the rest coordinate used to locate
+the line in the reference list.
+
+<P> The velocity may either be entered explicitly or computed from defined
+lines with measured and reference coordinates.   To enter the velocity
+simply type it in one of the fields and submit it with return.  "Vobs (km/s)
+is observed velocity in km/s, "Zobs" is observed redshift, "Vhelio (km/s)"
+is heliocentric velocity in km/s, and "Zhelio" is heliocentric redshift.
+Note that to enter or measure heliocentric velocities requires that the
+image header contain sufficient information to derive the correction
+(see <A HREF="#helio">Heliocentric Velocity Calculation</A>).
+
+<P>  To compute a radial velocity for spectral lines define at least one
+line with a reference coordinate.  Then press the "Velocity" command bar
+button or type the colon command ":velocity".  The average redshift
+from the observed and reference coordinates is computed.  The results
+are shown in the "Radial Velocities" panel and in the log file.  The
+results show the lines used with the observed coordinate as measured in the
+data, the rest coordinate after applying the computed velocity, the
+reference coordinate, the coordinate residual between the rest and
+reference coordinates, the velocity from the observed and reference
+coordinate, and the velocity residual.  The statistics, provided there
+is more than one line, are the RMS of the coordinate residuals and
+the velocity residuals.  Finally the observed and heliocentric (if
+available) redshifts and velocities with the statistical errors is
+shown.  The redshifts and velocities are set in the fields at the
+top of the panel and the spectrum is plotted in observed and rest
+coordinates.
+
+<P> When there is a reference line list the automatic assignment of
+reference coordinates when lines are defined is done after applying any
+velocity currently associated with the spectrum.  The inverse of
+identifying lines in the data from the reference list is also done using
+the velocity information.  Thus, if an approximate velocity or redshift is
+known, it might be useful to first enter the velocity in the "Radial
+Velocities" panel and then identify lines.
+
+<P> The other buttons on the "Radial Velocities" panel command bar
+are "Deredshift" to apply the current velocity to the data and
+"Clear" to reset the velocity to unknown.  After applying the "Deredshift"
+spectrum dispersion coordinates the measured line coordinates become
+those of the deredshifted spectrum.  An undo can be used to remove
+the deredshifting.
+
+<H4><A NAME="helio">Heliocentric Velocity Calculation</A></H4>
+
+The helocentric velocity calculation requires the following information.
+The observatory identification string is required to determine the
+latitude, longitude, and altitude of the observatory with the spectrum
+was observed.  The observatory identification is sought in the data
+header under the keyword OBSERVAT.  It if is not found it is queried
+on the graphics window status line.
+
+The data header must also contain the keywords DATE-OBS, RA, DEC, and
+EPOCH.  If DATE-OBS does not include the time then UT is also required.
+The universal time of the observation and the right ascension must
+be in hours or hh:mm:ss string format.  The declination must be in degrees
+or dd:mm:ss string format.  The epoch must be in years.  If the required
+information is missing then a warning message is shown in the velocity
+panel, the log, and on the graphics status line.  The latter is only shown
+once.
+
+<H3><A NAME="statHelp">Spectrum Statistics</A></H3>
+
+<P> A variety of statistics in a region of the spectrum may be computed.  The
+statistics to be computed are selected from the <B>Statistics</B>
+panel.  The available statistics are described below.  The coordinate
+statistics are in the current coordinate units and the signal and
+noise statistics are in the current flux units.
+
+<P> The spectrum statistics are computed from the pixels whose pixel
+center coordinates lie between the specified region coodinate
+endpoints.  The region of the spectrum to use may be selected in one
+of three ways.  The cursor may be used by typing 's' at the two
+endpoints of the region.  The dipsersion coordinates may be entered in
+the <B>Statistics</B> panel and the measurement made by either
+pressing the <B>Measure</B> button or using a carriage return in one
+of the coordinate boxes.  A colon command of the form
+
+<PRE>
+    :stat measure [c1] [c2]
+</PRE>
+
+may be used where [c1] and [c2] are the region endpoint coordinate
+values.  The dispersion coordinate units must be the same as those
+currently displayed.  The results are shown in the <B>Statistics</B>
+panel, the graphics status line, and the <B>Log</B> panel.
+
+<DL COMPACT>
+<DT> x
+<DD> The mean value of the coordinates in the statistics region.
+<DT> n
+<DD> The number of pixels in the statistics region.
+<DT> S
+<DD> Mean value of pixels in statistics region.
+<DT> N1
+<DD> Noise estimated by the standard deviation about the mean.
+<DT> N2
+<DD> Noise estimated by the standard deviation about a linear fit.
+<DT> N3
+<DD> Noise estimated by the standard deviation about the current continuum.
+<DT> N4
+<DD> Noise estimated by the square root of the sum of the pixel values
+above zero.  This "Poisson" estimate assumes the pixel values are proportional
+to photon counts and the counts are large.
+<DT> N5
+<DD> Noise estimated by the mean of the sigma spectrum.  This requires a
+sigma spectrum to be defined.
+<DT> S/N1
+<DD> Signal-to-noise estimated as the ratio of S to N1 defined previously.
+<DT> S/N2
+<DD> Signal-to-noise estimated as the ratio of S to N2 defined previously.
+<DT> S/N3
+<DD> Signal-to-noise estimated as the ratio of S to N3 defined previously.
+<DT> S/N4
+<DD> Signal-to-noise estimated as the ratio of S to N4 defined previously.
+<DT> S/N5
+<DD> Signal-to-noise estimated as the ratio of S to N5 defined previously.
+<DT> S/N
+<DD> Signal-to-noise estimated as mean of the pixel value to sigma value
+of each pixel.  This requires a sigma spectrum to be defined.
+</DL>
+
+<H3><A NAME="errHelp">Error Computations</A></H3>
+
+<P> Some of the measurement operations can compute error estimates for
+the measured quantities.  <B>This requires that there is an associated
+uncertainty spectrum</B> and that the "Compute errors?" parameter of the
+"Error Computations" panel is set to YES.  See the examples
+section of <A HREF="#arithHelp">spectrum arithmetic</A> for a way to
+create an error spectrum if one does not exist.
+
+<P> The operations that can computed error estimates are <A
+HREF="#eqwHelp">equivalent widths</A> and <A HREF="modHelp">profile
+fitting</A>.  For equivalent widths there are no other parameters
+required.  For the profile fitting the errors are estimated using a Monte
+Carlo method with parameters defined in the "Error Computations" panel.
+
+<P> The Monte Carlo error estimation is performed by generating a number of
+alternate versions of the spectrum consistent with the known pixel errors
+and repeating the measurements.  The scatter in the measured values gives
+an estimate for the uncertainty in the quantity.  For each version at each
+pixel a Gaussian random value is added with the distribution sigma given by
+the error spectrum value for that pixel.  The "Number of Monte Carlo
+Samples" parameter defines how many versions of the spectrum are
+generated.  The "Random number seed" parameter initializes the random
+number generator for the Gaussian values.  If the value is INDEF then every
+time the error estimation is performed new random numbers are generated.
+If an integer value is given then for a particular measurement the random
+number generator will produce the same sequence of values.  Each seed value
+produces a different sequence of random values.
+
+<P> Once the versions of the spectrum have been generated the same
+measurement operation is performed on each version that was made for the
+original spectrum.  The absolute values of the differences between the
+measurements on each version and the original spectrum are ranked.  The
+"Percentage of samples for sigma" value specifies a percentile in the
+ranked set of deviations.  The deviation value corresponding to that
+percentile is then the error estimate for that measurement.  For a Gaussian
+distribution of deviations the 68 percentile corresponds to a one sigma
+error.
+
+The changes are applied when the "Apply" button is clicked or when a
+value is changed.  The text field changes occur when a carriage
+return is typed.
+
+<P><HR>
+
+<H3><A NAME="tutorial">Tutorial</A></H3>
+
+<OL>
+<P><LI> If you started this tutorial with the <B>tutorial</B> command you
+will see the main spectrum display window showing a spectrum from some
+tutorial data.  If you have started the command Spectool then you
+may see the spectrum reading window.  If this window is not visible
+open it by selecting from the "File" <A HREF="#def:menus">menu</A> the
+"Read..." entry at the top of the main Spectool window.
+
+<P><LI> The spectrum reading window provides a file browsing capability.
+The directory field will initially show the current directory.  Normally
+this will be the directory where you are when you start Spectool.
+If task is started with a spectrum argument on the command line then
+the directory will be the directory of the spectrum.  With
+the <B>tutorial</B> command you are put in a directory containing the
+tutorial data.  If you do not see the tutorial data "tutorial.ms" in the
+first list window (below the directory and filenames fields) then move the
+cursor into the directory <A HREF="#def:textfield">text field</A>.
+Delete the directory shown (with the backspace or delete key) and enter
+"sptdata$" followed by a carriage return.  The directory will be expanded to
+the full path on your system and you will see the tutorial data in the list
+window.
+
+<P><LI> For this tutorial select the file "tutorial.ms" in the top
+<A HREF="#def:lists">list</A>.  This file contains seven calibrated
+spectra of various spectral types from the spectral library of Jacoby, et
+al.  The spectra in the file are shown in the lower list.  If the file
+contains only one spectrum then it is displayed automatically in the graph
+window.  Since the tutorial data contains seven spectra you must select the
+spectrum to display.  Select the first one.  The selected file and current
+working spectrum will be highlighted in the list.
+
+<P><LI> All windows except the main spectrum graph window have a "Dismiss"
+button.  We will come back to the spectrum reading window later.  For now
+dismiss the window by <A HREF="#def:click">clicking</A> on the
+"Dismiss" button.
+
+<P><LI> All windows also have a help button labeled with the '?'.  This
+will display a scrollable window (this window) with HTML style text.  Links
+in the text can be clicked to jump to other parts of the help.  The help is
+a single document.  Try clicking the help button in the main graph window
+and then use the "Back" button to return to this point.
+
+<P> The main window help sends you to the top of the help.  In other
+windows clicking the help button will take you to the appropriate section
+of the help.
+
+<P><LI> A nice feature of the spectrum graph window is the zoom and pan
+capability.  To zoom <A HREF="#def:drag">drag</A> the cursor with button
+1 depressed to define the region to be zoomed.  As you drag a box will
+appear to show you the region.  When you release button 1 the graph will be
+redrawn to show only the region that was in the box.  To restore the full
+spectrum click button 1 -- that is depress and release button 1 without
+dragging.
+
+<P> Mouse button 2 is used for panning.  Clicking button 2 when the graph
+has been zoomed will center the spectrum at the dispersion position (the x
+cursor position) and "autoscale" the data in the graph keeping the same
+dispersion zoom width.  Autoscale means the graph is made just large enough
+to show all the data in the dispersion range.  Go ahead and zoom a region
+with mouse button 1.  Now click button 2 at the left of the graph to move
+to the left in the full spectrum and at the right to move to the right.
+
+<P> Mouse button 3 is not used.
+
+<P><LI> Let's bring up the view control panel next.  Pull down the "View"
+menu at the top of the main spectrum window and
+<A HREF="#def:menus">select</A> the "Control panel..." entry.
+
+<UL>
+<P><LI> A panner window is displayed by clicking the "Pan"
+<A HREF="#def:toggle">toggle button</A>.  This window
+allows you to see the full spectrum,
+select subregions, pan at constant box size, and enter explicit
+zoom coordinates.  This supplements the zoom and pan features described
+previously.  To remove this window either dismiss it or click the
+"Pan" toggle button again.
+<LI> The "WCS" (world coordinate system) toggle button places a "wcs box"
+on the graphs.  This shows a continuously updated readout of the cursor
+position on the graph.  The units are those of the graph.  So if the
+spectrum is shown in Angstroms the first coordinate value is the cursor
+position in Angstroms.  The wcs box can be moved to other places on the
+graph by dragging it with mouse button one.  Note that this cursor readout
+will not appear in hard copies and screen copies.
+<LI> The "X Flip" and "Y Flip" toggle buttons flip the graph horizontally
+and vertically.  Without the flip data are displayed with increasing values
+going to the left and up (regardless of the order of the pixels in the
+data file).
+<LI> You may have noticed that there are two things shown in the spectrum
+display.  One is the primary spectrum and the other is a continuum.
+Spectrum data can have several associated spectra.  Currently these
+are the primary spectrum, a continuum, a raw spectrum, a sky spectrum,
+and a sigma or uncertainty spectrum.  The view control panel has toggles
+for the various associated spectra to be plotted and overplotted.  The
+tutorial data has only the primary spectrum.  Spectool automatically
+computes a continuum if one is not present in the data file since many
+of its features need a continuum.  For this tutorial you can toggle the
+spectrum and continuum displays.
+</UL>
+
+<P><LI> The "Next" and "Prev" buttons in the view control panel are
+used to step through multiple spectra in a file.  Bring back the
+read spectra window by selecting "Read..." from the "File" menu.  Now
+click the "Next" button.  You will see the next spectrum displayed and
+the entry in the lower spectrum list of the read spectra window is highlighted.
+The same thing could have been accomplished by selecting the second
+spectrum in the list directly.  There is also another way to select
+the previous and next spectra using the 'j' (previous) and 'k' (next)
+<A HREF="#def:keys">cursor keys</A>.  This means to move the mouse into
+the spectrum display window, where a large crosshair cursor will appear,
+and typing the key (no carriage return is needed).  Try 'k' to display
+the third spectrum.
+
+<P> Dismiss the read spectra window.
+
+<P><LI> When spectra are read they are loaded in the next available
+<I>register</I>.  A register is simply storage for a single spectrum
+(including all associated spectra).  All spectra in the loaded registers
+are available for use in various ways.  This is a significant difference
+from the <B>splot</B> task where only one spectrum is kept in memory at
+a time.  To see the contents of the registers select "Registers..."
+from the view menu.
+
+<P> If you have loaded the spectra as described previously you will find
+a list with three lines.  Registers are identified by single letters;
+in this case a, b, and c.  The current register is highlighted.  For
+this tutorial we only use the register window to see what is currently
+available.
+
+<P> If the view control window is not shown recall it from the view menu.
+Now click the overplot toggle button.  This will overplot all the registers
+using different colors.  The overplot is done at the same scale.  Now click
+the stack toggle button.  Now the spectra are stacked starting with the
+current active spectrum.  The default stacking method is to scale each to
+the same mean value and offset them vertically with no overlap.  As with
+the overplotting the spectra are given different colors.
+
+<P> For fun you can use the "Next" button in the view control panel, the 'k'
+cursor key, or the list selection in the read window to add more spectra.
+
+<P><LI> Because this is a pretty display let's make a screen copy.  Type
+the '.' cursor key (that is move into the spectrum display window and type
+the period key).  This will produce a small window which is a copy of the
+current spectrum display.  You can dismiss it or move it on the screen.
+
+<P> The '.' cursor key is a short cut for the screen copy option
+of the print window (see "<A HREF="#printHelp">Print...</A>" in the file
+menu).  Similarly the '=' cursor key is a short cut for making a printed
+hard copy.
+
+<P><LI> Let's go back to a single spectrum plot.  Toggle the stack button
+and select the 'a' register in the registers window.  Spectool
+provides considerable control of the spectrum graph format.  The entries
+"Graph Labels...", "Graph Axes...", and "Graph Ticks..." in the view menu
+provide the control.  Bring up the graph axes window.  The "Draw axes?"
+boxes are menus.  Select "bottom" in the first box (for the x axis) and
+"left" in the second box (for the y axes).  The "Draw grid?" boxes are
+toggles so click them to both show YES.  Finally, the "Grid color" boxes
+are menus of colors.  Set them to cyan.  Now click the Apply button.  Make a
+screen copy.
+
+<P><LI> There are three types of labels (not counting the axes labels and
+title on the graph) which can be used to annotate a spectrum plot.  These
+labels remain with the spectrum.  One of these types of labels is for
+spectral line features which we will come to later.  The other two are
+general labels on the graph.  These two differ based on whether the label
+is tied to the graph or the spectrum.  In the former case the label will
+appear at the same place relative to the graph window regardless of any
+zoom or pan while in the latter case the label with remain near a
+particular point in relation to the spectrum and may not be visible as one
+zooms.
+
+<P> Move the cursor to a point in the spectrum graph and add a "graph label"
+by using the <A HREF="#def:colon">colon command</A>
+
+<PRE>
+:glabel Graph label
+</PRE>
+
+<P> Now move the cursor to a point near the spectrum and add a "spectrum
+label" with
+
+<PRE>
+:slabel Spectrum label
+</PRE>
+
+<P> Zoom and pan the graph to see how the two labels behave.
+
+<P> Attributes of these labels, for example the color, can be modified
+using the "Spectrum labels..." (since they associated with a particular
+spectrum) entry in the view menu.  The "Labels" toggle button in the view
+control panel allows making these labels visible or not.  Feel free
+to experiment with the spectrum labeling window.
+
+<P><LI> As you would expect Spectool has a lot of features dealing
+with spectral lines.  At this point let us only consider labeling.
+Zoom the spectrum around an absorption line.  Move the cursor to a point
+below and centered on a line.  Type 'm' and a mark showing the line
+position and a default bandbass will appear.  Bring up the line labeling
+window by selecting "Line labels..." from the view menu.  Try changing
+various things such as the label color, adding the measured position
+to the label, making the label horizontal, and switching the bandpass
+marking on and off.  Finally you can delete the line label either with
+'d' in the list of lines in the line labels window or by moving the cursor
+in the spectrum display near the line and using the 'd' cursor key.
+
+<P> As with the spectrum labels, there is a toggle button in the
+view control panel to turn off and on the labeling of lines.
+
+<P><LI> Spectool can work in a variety of dispersion and pixel value
+units provided the dispersion and flux have been calibrated.  To change
+units pull down the view menu and go to the "Dispersion Units" entry.
+This will show a submenu of units.  While continuing to hold the mouse
+button down move onto the submenu.  Now select another unit.
+Do the same for the flux units.
+
+<P> One important dispersion unit is velocity.  This is somewhat different
+than the other units in that the zero point of the velocity must be
+defined.  This is done using the cursor and the 'v' cursor key.  Usually
+velocities are defined relative to some line center.  Zoom the spectrum
+about some line.  Move the cursor so that vertical crosshair is at the
+center of the line.  Now type 'v'.
+
+<P><LI> Changing the flux units doesn't change the pixel values but only
+the way they are plotted.  There are many features in Spectool that
+do change the pixel values.  The most direct is to edit the values with
+the 'x', 'y', or 'z' cursor keys.  Rather than edit the spectrum values
+let us edit the continuum using the 'c'.  This works in the same way
+as the 'y' works on the spectrum.  This is important to know how to do
+since many of the analysis functions use the continuum spectrum and it
+may not be where you would like it to be.
+
+<P> Overplot the continuum if this is not done already by selecting
+continuum in the view control panel.  Zoom a region so that it is easy
+to see the continuum.  Now move the cursor to a starting point where
+you would like to move the continuum.  Type 'c' and then move the cursor
+to another point where you want to draw a straight line for the continuum
+from the first point and type 'c'.  You should see the continuum move.
+Continue moving the cursor and typing 'c'.  With a little practice you
+will be able to draw the continuum as you think it should be.
+
+<P> As long as 'c' is typed it will continue to connect the previous point
+to the new point.  Typing any other key will end the continuum drawing.
+
+<P><LI> One useful key to use is if you make a change you want to take
+back, such as in the previous 'c' editting.  Type 'u' to undo the previous
+changes to the pixel values.  The 'u' key undos the last change to the
+pixel values.  There are two types of undo.  The 'u' undoes just the last
+change.  Typing it again will undo the undo.
+
+<P> In the edit menu there are entries to restore the spectrum to a previously
+saved state.  When a spectrum is first read that is the saved state.
+But in the edit menu you can also save at another point and then restore
+to that point.  Try the "Restore saved spectrum" entry in the edit
+menu.  If you changed the flux units and have a zoom you will need to
+unzoom to see the spectrum.
+
+<P><LI> Now let us turn to another major function of Spectool
+to carry out some analysis.  For this tutorial let us consider line
+profile fitting.  Get the first spectrum in tutorial.ms, the O5V star
+HD 242908.  Zoom the region between 3720 and 3840.
+
+<P> The default continuum seems a little low.  Use the 'c' key to adjust
+the continuum.  The 'r' key will redraw the spectrum if there is some
+imperfect erasing of the previous continuum.
+
+<P> Now mark the line at 3753.  Place the vertical cursor at the line
+center and horizontal cursor below the minimum of the line.  Type 'm'
+to mark the line.  The line labeling should be turned on if it is not already.
+If the bandpass limits are wrong adjust them using the 'b' key; place
+the vertical cursor at each side of the line and type 'b'.
+
+<P> We now want to mark lines at 3761 and 3772.  Because 3761 is so
+close to the stronger line the centering is likely just find the same
+line again.  So go to the "Analyze" menu and select "Line centering...".
+In this panel select a centering type of "None".  This is option is
+useful to be able to mark lines exactly where you want.  Now mark
+a line at 3761 with the 'm' key.  Mark the line at 3772 will mark with or
+without centering.
+
+<P> To fit the lines type 'f' near one of the lines.  The way the fitting
+works is that it does a simultaneous fit to all defined lines whose
+bandpasses overlap.  If they don't overlap then you can type 'f' for
+each of the lines.  The individual line profiles and the sum
+of the profiles (if they overlap) will be overplotted.
+
+<P> The profile fitting parameters, results, and functions related to
+profile fitting are controled by the profile fitting window.  This
+window is brought up by selecting the "Profile fitting..." entry in the
+analyze menu.  At the top, below the button bar, are the parameters
+used for the fit and for overplotting of the profiles.  In the lower
+par are the results and a list of the lines fit.
+
+<P> Select a line using mouse button 1 in the list of lines.  You can
+then click the "Plot" toggle button to erase and redraw the profile
+fit plot.  Clicking the "Subtract" toggle button will subtract the
+profile fit from the data.  Subtracted line profiles are indicated
+by a '-' in the list of lines.  The line subtraction can also be
+done easily with a cursor key.  Move the cursor near a line and type
+'p'.  This is a toggle so doing it again will restore the data.
+
+<P><LI> The results of the various analysis functions, such as the previous
+profile fitting, are also recorded
+in a log file and a log window.  The log window is opened by selecting
+"Log..." in the file menu.  Writing and saving to a log file is optional.
+It only occurs when a log file is defined.  Note that the current directory
+is that shown in the spectrum reading window which is set to a directory
+with the tutorial data where you may not have write permission.  Therefore,
+if you specify a logfile you will need to give a path to one of your
+directories.
+
+<P> The log window has the interesting feature of being editable.  In other
+words you can annotate the logfile and save the annotations with the
+"Save" button or when the program exits.
+
+</OL>
+
+<P><HR>
+
+<H3><A NAME="def">Definitions</A></H3>
+
+<DL>
+<DT> <A NAME="def:cursor">Graphics Cursor</A>
+<DD> The crosshair cursor seen in a graphics window.
+<DT> <A NAME="def:click">Click</A>
+<DD> Depress and release the appropriate mouse button when the cursor is
+positioned over a button, toggle, or list entry.
+<DT> <A NAME="def:toggle">Toggles</A>
+<DD> A toggle button is one that when clicked changes between one of two
+states.  The button changes appearence between the two states.
+This provides an off and on behavior.
+<DT> <A NAME="def:menus">Menus</A>
+<DD> Buttons or fields which show a menu of choices when pulled down.  A
+special "pull down" cursor indicates a menu.  Pull down a menu by
+depressing and holding mouse button 1 when the cursor is position over the
+menu button or field.  Select an entry by moving the cursor over the entry,
+keeping the button depressed, and then releasing the button when the
+desired entry is highlighted.  To cancel a menu selection just move the
+cursor outside the menu or when no entry is highlighted.
+<DT> <A NAME="def:lists">Lists</A>
+<DD> Selecting an entry in a list window is done by clicking
+the first mouse button when positioned
+over the desired line in the list.  Some lists allow additional keys to
+be used for specific actions.
+<DT> <A NAME="def:textfield">Text Fields</A>
+<DD> Text fields for single parameter strings are modified by moving the
+cursor into the text field box.  Clicking mouse button 1 allows you to
+position the entry point.  Text is deleted with the delete key and text is
+added by typing.  Most text fields in Spectool can be submitted by ending
+with a carriage return.  See <A HREF="#textedit">Editing Text Fields and
+Windows</A> for special editing functions.
+<DT> <A NAME="def:drag">Drag</A>
+<DD> Depress and hold the mouse button while moving the cursor.  In
+Spectool this is used to to define a zoom region.
+<DT> <A NAME="def:keys">Cursor Keys</A>
+<DD> When the mouse is in a graph window and the crosshair cursors are
+shown a single key may be typed to initiate some action.  The cursor
+keys available depend on the application.
+<DT> <A NAME="def:colon">Colon Commands</A>
+<DD> The cursor key ':' (colon) allows a command to be typed in the
+spectrum status line at the botton of the graphics window.  Like the
+cursor keys, the colon commands available depend on the application.
+</DL>
+
+</BODY>
+</HTML>

@@ -1,0 +1,52 @@
+# PHOT code
+
+$checkout libpkg.a ".."
+$update libpkg.a
+$checkin libpkg.a ".."
+$exit
+
+libpkg.a:
+        t_xphot.x      <fset.h> <imhdr.h> <gset.h> ../lib/xphot.h            \
+	               ../lib/display.h ../lib/objects.h ../lib/center.h     \
+		       ../lib/fitsky.h ../lib/phot.h ../lib/impars.h
+	xpalgs.x	<mach.h> <imhdr.h> <math.h> ../lib/impars.h
+	xpamark.x	<gset.h> <gim.h> ../lib/impars.h ../lib/center.h     \
+	                ../lib/fitsky.h ../lib/phot.h ../lib/objects.h
+	xpaplot.x	<imhdr.h> <mach.h> <math.h> <gset.h> ../lib/impars.h \
+			../lib/center.h ../lib/fitsky.h ../lib/phot.h        \
+			../lib/objects.h <gio.h>
+	xpaplot1.x	<gset.h> ../lib/objects.h ../lib/center.h            \
+	                ../lib/phot.h <gio.h>
+	xpasplot.x	<imhdr.h> ../lib/surface.h
+	xpbphot.x	<imhdr.h> <imset.h> <mach.h> ../lib/xphot.h          \
+	                ../lib/impars.h ../lib/objects.h ../lib/find.h       \
+			../lib/center.h ../lib/fitsky.h
+	xpcpdisplay.x	<imhdr.h> ../lib/objects.h ../lib/impars.h           \
+	                ../lib/phot.h ../lib/contour.h
+	xpcpplot.x	<imhdr.h> <gio.h> ../lib/contour.h
+	xpgaperts.x	<lexnum.h> <ctype.h>
+	xplimits.x	../lib/impars.h ../lib/objects.h ../lib/fitsky.h     \
+	                ../lib/phot.h
+	xpmag.x		<mach.h> ../lib/xphotdef.h ../lib/imparsdef.h        \
+	                ../lib/phot.h ../lib/photdef.h
+	xpmagbuf.x	<imhdr.h> ../lib/xphotdef.h ../lib/phot.h            \
+	                ../lib/imparsdef.h ../lib/photdef.h
+	xpmagbufp.x	<imhdr.h> ../lib/xphotdef.h ../lib/phot.h            \
+	                ../lib/objects.h ../lib/imparsdef.h ../lib/photdef.h
+	xpmagp.x	<mach.h> ../lib/xphotdef.h ../lib/objects.h          \
+	                ../lib/imparsdef.h ../lib/photdef.h ../lib/phot.h
+	xpmplot.x	<imhdr.h>
+	xpobjplots.x    <gio.h> ../lib/phot.h
+	xppcolon.x	../lib/xphot.h ../lib/phot.h
+	xpphot1.x	../lib/fitsky.h ../lib/phot.h
+	xppmeasure.x    ../lib/xphot.h ../lib/objects.h ../lib/center.h      \
+	                ../lib/fitsky.h  ../lib/phot.h
+	xppwrite.x	../lib/xphot.h ../lib/impars.h ../lib/center.h       \
+	                ../lib/fitsky.h ../lib/phot.h
+	xpremag.x	<mach.h> ../lib/xphotdef.h ../lib/imparsdef.h        \
+	                ../lib/phot.h ../lib/photdef.h
+	xpxpcolon.x	../lib/display.h ../lib/impars.h ../lib/center.h     \
+	                ../lib/fitsky.h ../lib/phot.h ../lib/xphot.h         \
+			../lib/objects.h ../lib/contour.h ../lib/find.h      \
+			../lib/surface.h
+	;

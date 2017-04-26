@@ -1,0 +1,169 @@
+		    IRAF GUI Applications Package
+			     November 2000
+			 Revised: May 8, 2002
+
+------------------------------------------------------------------------------
+
+08Nov00		Initial Public Release
+08May02		Second Public Release for IRAF V2.12
+28May02		SPECTOOL bug fix
+17Feb03		SPECTOOL bug fix for voigt profile fitting
+25Feb03		Parameter "modnsub" (no. subpixels) added to sptmodel
+25Feb03		Minimum LFWHM is now 1% instead of 10% of a subpixel
+30May03		Fixed bug in XGUIPHOT
+
+
+Some time ago we started a project to develop prototype IRAF applications
+with integral GUIs (graphical user interfaces).  These  applications long
+since served  their purpose with regard to prototyping the GUI technology.
+The GUI applications are not just technology prototypes however; a lot of
+effort was put into the specific science applications functionality as
+well.  Although the GUI technology is still being developed, we felt it was
+worthwhile to release these prototype GUI applications in their current form
+for trial use.
+
+The prototype GUI applications are contained in the package GUIAPPS.  IRAF
+V2.11.3 or later and the X11IRAF V1.2 (see /iraf/x11iraf on the NOAO
+iraf.noao.edu ftp archive) version of xgterm is required to run the GUI
+applications correctly.  Pre-built binaries for ALL platforms, test data,
+tutorials, and documentation is provided for these applications to make them
+as easy to use as possible.  Binaries for SunOS/Solaris and Dec Alpha Tru64
+systems do not use the IRAF shared image and so should be runnable on both
+IRAF V2.11 and V2.12 machines.
+
+See the URL 
+		http://iraf.noao.edu/projects/guiapps 
+
+for  more detailed  information describing the applications provided and
+how to run them.
+
+Please contact iraf@noao.edu with any comments, questions, or bug reports.
+
+
+
+-------------------------
+INSTALLATION INSTRUCTIONS
+-------------------------
+
+To simply the installation as much as possible the distribution file comes
+with a complete set of binaries for all IRAF V2.12 platforms, meaning there
+is only a single file to download.  The package may be installed by the
+IRAF site manager for system-wide use, or individual users may obtain the
+package for personal use.
+
+The  GUIAPPS package  requires  that you are also running the X11IRAF V1.2
+or later release of the XGterm terminal program (because of needed bug fixes).
+Users on IRAF V2.11.3 systems may still use the package but at this time
+there are no prebuilt binaries available for SGI IRIX or IBM RS/6000 systems.
+Please contact site support for instructions on building the package of you
+would like to use this package on that system.
+
+If you need help with these installation instructions contact iraf@noao.edu
+or call the IRAF HOTLINE at 520-318-8160.
+
+
+    
+[1] Login in as the 'iraf' user and create a directory to contain the package
+    files.  This  directory  should  be outside the standard IRAF directory
+    tree, for example:
+    
+	% cd /iraf/extern		# go to external package dir  
+        % mkdir guiapps			# create a package directory
+        % cd guiapps			# go there
+
+    For a personal installation you may wish to create the directory as
+    a subdirectory of your normal IRAF login directory.
+
+
+[2] The  package is distributed as a single tar archive for the sources
+    and all platform binaries.  The tar file is most commonly obtained via
+    anonymous ftp.  Below is an example where  the  compressed files
+    have the ".Z" extension.  Files  with ".gz" can be handled in the 
+    same way.
+    
+        % ftp iraf.noao.edu (140.252.1.1)    # ftp to archive
+        login: anonymous
+        password: [your email address]
+        ftp> cd /iraf/extern		    # go to external packages
+        ftp> get guiapps.readme		    # get these instructions
+        ftp> binary			    # set binary mode
+        ftp> get guiapps.tar.Z		    # get the distribution
+        ftp> quit			    # quit ftp
+
+        % uncompress guiapps.tar.Z	    # uncompress the archive.  If
+					    # the file has a ".gz" extension
+					    # use the "gunzip" command instead
+					    # of "uncompress"
+    
+[3] Extract the source files from the tar archive.  At this point the
+    uncompressed tar archive should be in the directory where you wish
+    to unpack it.  At the unix prompt untar the file with the command:
+
+	% tar -xvpf guiapps.tar
+
+    Within the CL one can also use the "rtar" command to unpack the file:
+    
+        cl> softools
+        so> rtar -xrf guiapps.tar
+        so> bye
+    
+    On some systems, an error message will appear  ("Copy  'bin.generic'
+    to  './bin  fails")  which  can  be ignored.  Sites should leave the
+    symbolic link 'bin'  in  the  package  root  directory  pointing  to
+    'bin.generic'  but can delete any of the bin.<arch> directories that
+    won't be used. 
+    
+    The distribution tar file can be deleted once they  have  been  success-
+    fully installed.
+
+[4] The final step is to declare the package.  The details will vary depending
+    on whether this is a site installation of the package or for personal
+    use.  See below for details.
+
+    System-Wide Installation
+    ------------------------
+
+    If  you  are  installing  the package for site use login as 'iraf' and
+    edit the IRAF file defining the packages, hlib$extern.pkg.
+    
+        % cd $hlib
+        % vi extern.pkg
+    
+    Define the environment variable 'guiapps' to be the pathnames to the
+    GUIAPPS package root directory, pathnames must be terminated
+    with a '/'.  Edit extern.pkg to include the following.
+    
+        reset guiapps 	   = /iraf/extern/guiapps/
+        task  guiapps.pkg  = guiapps$guiapps.cl
+    
+    Near the end of the hlib$extern.pkg file, update the  definition  of
+    helpdb  so it includes the guiapps help database, copying the syntax
+    already  used  in  the  string.   Add  this  line  before  the  line 
+    containing a closing quote:
+    
+        ,guiapps$lib/helpdb.mip\
+
+
+    Personal Installation
+    ---------------------
+
+    If you are installing the package for personal use, in your login.cl or
+    loginuser.cl file make the following definitions somewhere before the
+    final "keep" statement:
+    
+        reset guiapps 	   = /home/fred/guiapps/
+        task  guiapps.pkg  = guiapps$guiapps.cl
+        printf ("reset helpdb=%s,guiapps$lib/helpdb.mip\nkeep\n",
+            envget("helpdb")) | cl
+        flpr
+
+    Note that the path to the guiapps directory you created MUST contain
+    a trailing '/' character and will vary from the example, except for
+    this first line this code may be used verbatim in your login.cl to
+    declare the package.
+
+
+This should complete the installation.  You can  now  load  the  package
+and begin testing and use.
+
+

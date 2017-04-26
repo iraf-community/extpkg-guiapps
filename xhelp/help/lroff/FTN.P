@@ -1,0 +1,90 @@
+extern int breake_(U_fp out, integer *justig);
+extern int centet_(I_fp in, U_fp out, shortint *linebf, integer *ip);
+extern int dols_(U_fp out, shortint *lbuf, integer *action, integer *lastcd);
+extern int initls_(void);
+extern integer getarg_(shortint *inpute, integer *ip, integer *defaue);
+extern int indenn_(I_fp in, U_fp out, integer *numbes);
+extern integer input_(I_fp in, shortint *userbf);
+extern int righty_(I_fp in, U_fp out, shortint *linebf, integer *ip);
+extern int rjline_(U_fp out, shortint *inpute, shortint *rjtext);
+extern int lroff_(I_fp in, integer *inarg, S_fp out, integer *outarg, integer *plm, integer *prm, integer *soflal, integer *foflal);
+extern int lroffl_(integer *in, integer *out, shortint *module, shortint *parstr, shortint *center, shortint *lsblok, shortint *sectin);
+extern int lhprog_(integer *fd, shortint *mod, shortint *date, shortint *title);
+extern int lhesce_(shortint *str, integer *font, logical *format, integer *speciy, integer *maxch);
+extern int lhsetl_(integer *n, shortint *level);
+extern integer lhfink_(integer *fd, logical *formad, shortint *param);
+extern integer lhfinn_(integer *fd, logical *formad, shortint *sectis);
+extern logical lhmath_(shortint *lbuf, integer *patoff, integer *npat);
+extern int lhmkne_(shortint *instr, shortint *outstr);
+extern int lroffs_(integer *in, integer *out, integer *psptr, shortint *lsblok, shortint *sectin);
+extern int lpesce_(shortint *str, integer *font, logical *format, integer *maxch);
+extern int lpstrb_(shortint *line, shortint *outlie, integer *maxch);
+extern integer nextcd_(shortint *linebf, integer *ip);
+extern integer nofill_(I_fp in, U_fp out, shortint *linebf);
+extern int setouf_(integer *outbue);
+extern int outc_(U_fp out, integer *ch);
+extern int outstr_(S_fp out, shortint *text);
+extern int getoul_(integer *nextcn);
+extern int outcc_(S_fp out, integer *ctrlcr);
+extern int outlie_(U_fp out, shortint *text);
+extern int rawcoy_(I_fp in, U_fp out, shortint *linebf);
+extern int newsen_(I_fp in, U_fp out, shortint *linebf, integer *ip);
+extern int newnun_(I_fp in, U_fp out, shortint *linebf, integer *ip);
+extern int initnh_(void);
+extern int newinn_(I_fp in, U_fp out, shortint *linebf, integer *ip);
+extern integer inbold_(I_fp in, shortint *userlf);
+extern int testpe_(S_fp out, integer *nlines);
+extern int skipls_(U_fp out, integer *nlines);
+extern integer textln_(shortint *textsg);
+extern int setwof_(integer *maxwos);
+extern int textot_(U_fp out, shortint *text);
+/* comlen mem_ 8 */
+/* comlen xercom_ 4 */
+/* comlen lrfcom_ 104 */
+/* comlen wrdcom_ 20 */
+/* comlen lroout_ 24 */
+/*:ref: xerror_ 10 2 3 2 */
+/*:ref: xerpsh_ 10 0 */
+/*:ref: xerpop_ 8 0 */
+/*:ref: erract_ 10 1 3 */
+/*:ref: xstrln_ 3 1 2 */
+/*:ref: ctoi_ 3 3 2 3 3 */
+/*:ref: smark_ 10 1 3 */
+/*:ref: salloc_ 10 3 3 3 3 */
+/*:ref: sfree_ 10 1 3 */
+/*:ref: stridx_ 3 2 2 2 */
+/*:ref: amovc_ 10 3 2 2 3 */
+/*:ref: aclrc_ 10 2 2 3 */
+/*:ref: amovki_ 10 3 3 3 3 */
+/*:ref: getlie_ 3 2 3 2 */
+/*:ref: ungete_ 10 2 3 2 */
+/*:ref: fprinf_ 10 2 3 2 */
+/*:ref: pargsr_ 10 1 2 */
+/*:ref: xstrcy_ 10 3 2 2 3 */
+/*:ref: strmah_ 3 2 2 2 */
+/*:ref: strids_ 3 2 2 2 */
+/*:ref: pargi_ 10 1 3 */
+/*:ref: sprinf_ 10 3 2 3 2 */
+/*:ref: xffluh_ 10 1 3 */
+/*:ref: gstrcy_ 3 3 2 2 3 */
+/*:ref: strlwr_ 10 1 2 */
+/*:ref: psopen_ 3 2 3 3 */
+/*:ref: pswrig_ 10 1 3 */
+/*:ref: eprinf_ 10 1 2 */
+/*:ref: pssett_ 10 2 3 3 */
+/*:ref: pssety_ 10 2 3 3 */
+/*:ref: psoutt_ 10 3 3 2 3 */
+/*:ref: psrigy_ 10 2 3 2 */
+/*:ref: pscenr_ 10 2 3 2 */
+/*:ref: psindt_ 10 2 3 3 */
+/*:ref: pstese_ 10 2 3 3 */
+/*:ref: psspft_ 10 2 3 3 */
+/*:ref: psdept_ 10 2 3 2 */
+/*:ref: pspagk_ 10 1 3 */
+/*:ref: pscloe_ 10 1 3 */
+/*:ref: strncp_ 3 3 2 2 3 */
+/*:ref: xmfree_ 10 2 3 3 */
+/*:ref: xmallc_ 10 3 3 3 3 */
+/*:ref: xstrct_ 10 3 2 2 3 */
+/*:ref: stropn_ 3 3 2 3 3 */
+/*:ref: xfcloe_ 10 1 3 */

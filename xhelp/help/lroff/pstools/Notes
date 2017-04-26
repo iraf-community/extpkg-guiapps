@@ -1,0 +1,279 @@
+
+                        Postscript Text Tools
+                        ---------------------
+1) Definitions
+--------------
+
+# Page size definitions.
+define  PAGE_LETTER     1               # page sizes
+define  PAGE_LEGAL      2
+define  PAGE_A4         3
+define  PAGE_B5         4
+
+define  LETTER_WIDTH    612             # resolutions at 72 points (300 dpi)
+define  LETTER_HEIGHT   792
+define  LEGAL_WIDTH     612
+define  LEGAL_HEIGHT    1008
+define  A4_WIDTH        595
+define  A4_HEIGHT       850
+define  B5_WIDTH        524
+define  B5_HEIGHT       765
+
+# Font definitions.
+define  F_ROMAN         1               # times-roman font
+define  F_ITALIC        3               # times-roman italic font
+define  F_BOLD          2               # times-roman bold font
+define  F_TELETYPE      4               # fixed-width font
+define  F_PREVIOUS      5               # previous font
+
+define  FIXED_WIDTH     60              # width of a courier 10-pt font
+define  SPACE_WIDTH     25              # width of a 10-point space character
+define  FONT_SIZE	10              # default font size (points)
+define  START_CH        32              # width table start character
+
+define  RESOLUTION      10              # pixel resolution scale factor
+define  PPI             72              # points-per-inch
+
+# Default margins.
+define  LMARGIN         1.0             # default (1 inch margins)
+define  RMARGIN         1.0
+define  TMARGIN         1.0
+define  BMARGIN         1.0
+
+# Flags.
+define	DEFAULT_FOOTER	1		# footer (default)
+define	FNUM_ONLY	2		# footer (page numbers only)
+
+
+
+2) Data Structures.
+-------------------
+
+define	SZ_PSSTRUCT	NNN
+
+define	PS_FD		Memi[$1+NN]	# output file descriptor
+
+define	PS_ORIENT	Memi[$1+NN]	# orientation 	    (portrait|landscape)
+define	PS_PAGE		Memi[$1+NN]	# page size 	    (letter|legal|a4|b5)
+define	PS_PWIDTH	Memi[$1+NN]	# page width	    (points)
+define	PS_PHEIGHT	Memi[$1+NN]	# page height	    (points)
+define	PS_FONTSZ	Memi[$1+NN]	# default font size (points)
+define	PS_PLMARGIN	Memi[$1+NN]	# perm. L margin    (points)
+define	PS_PRMARGIN	Memi[$1+NN]	# perm. R margin    (points)
+define	PS_CLMARGIN	Memi[$1+NN]	# current L margin  (points)
+define	PS_CRMARGIN	Memi[$1+NN]	# current R margin  (points)
+
+define	PS_LMARGIN	Memr[$1+NN]	# left margin	    (inches)
+define	PS_RMARGIN	Memr[$1+NN]	# right margin	    (inches)
+define	PS_TMARGIN	Memr[$1+NN]	# top margin	    (inches)
+define	PS_BMARGIN	Memr[$1+NN]	# bottom margin	    (inches)
+
+define	PS_HLE		Memi[$1+NN]	# header left edge tag str
+define	PS_HCE		Memi[$1+NN]	# header center tag str
+define	PS_HRE		Memi[$1+NN]	# header right edge tag str
+define	PS_FLE		Memi[$1+NN]	# footer left edge tag str
+define	PS_FCE		Memi[$1+NN]	# footer center tag str
+define	PS_FRE		Memi[$1+NN]	# footer right edge tag str
+
+# Runtime values.
+define	PS_XPOS		Memi[$1+NN]	# current page X position
+define	PS_YPOS		Memi[$1+NN]	# current page Y position
+define	PS_CFONT	Memi[$1+NN]	# current font type
+define	PS_SFONT	Memi[$1+NN]	# special font (forced)
+
+# Utility macros.
+define	HLEDGE		Memc[PS_HLE($1)]	# Header tags
+define	HCENTER		Memc[PS_HCE($1)]
+define	HREDGE		Memc[PS_HRE($1)]
+define	FLEDGE		Memc[PS_FLE($1)]	# Footer tags
+define	FCENTER		Memc[PS_FCE($1)]
+define	FREDGE		Memc[PS_FRE($1)]
+
+
+3) Interface
+------------
+   		     include  "ps.h"	# flags, macro defs, etc.
+
+		ps = ps_init  (fd, footer_flags)
+	          ps_setfont  (ps, font)
+	        ps_page_size  (ps, page)
+	        ps_font_size  (ps, font_size)
+		   ps_header  (ps, ledge, center, redge)
+		   ps_footer  (ps, ledge, center, redge)
+	       ps_setmargins  (ps, left, right, top, bottom)
+	     ps_write_prolog  (ps)
+		    ps_close  (ps)
+
+	             ps_xpos  (ps, xpos)
+	             ps_ypos  (ps, ypos)
+	          ps_deposit  (ps, line)
+	        ps_linebreak  (ps, fill_flag)
+	        ps_pagebreak  (ps, fill_flag)
+	          ps_output  (ps, line)
+	           ps_center  (ps, line)
+	     ps_rightjustify  (ps, text)
+
+	width = ps_textwidth  (ps, string)
+	  pos = ps_centerpos  (ps, text)
+	      pos = ps_rjpos  (ps, text)
+
+
+
+---------
+ps = ps_init  (fd, footer_flags)
+	Initialize the PS structure with defaults, set output fd, returns
+	PS struct pointer initialized with defaults.
+
+ps_setfont  	(ps, font)
+ps_page_size  	(ps, page)
+ps_font_size  	(ps, font_size)
+	Set/change page parameters from defaults set by ps_init
+
+ps_header  	(ps, ledge, center, redge)
+	Set header text tags
+
+ps_footer  	(ps, ledge, center, redge)
+	Set footer text tags
+
+ps_setmargins  	(ps, left, right, top, bottom)
+	Set/Change page margins from defaults set by ps_init
+
+ps_write_prolog (ps)
+	Write the PS prolog given the current postscript struct.  This
+	initializes a flag keeping other changes from taking effect once
+	this is called.
+
+ps_close  	(ps)
+	Close the struct and free memory
+
+
+ps_xpos  	(ps, xpos)
+ps_ypos  	(ps, ypos)
+	Set current X or Y position on page
+
+ps_deposit  	(ps, line)
+	Deposit a line of text to the output buffer.  When the output width
+	exceeds the permanent right margin the line us flushed to the output
+	file and the x-position reset to the current left margin, the y-pos
+	is moved to the next line dependent on the font size.   Remaining
+	words in the line buffer to added to the next line buffer. 
+	    Width of the line is computed from the width of each word plus
+	a space char, including font changes.  The line buffer outputs each
+	word plus spacing individually, font changes are handled in the
+	output routine.
+
+ps_linebreak  	(ps, fill_flag)
+	Break the current line regardless of whether it has been filled.  
+	The fill_flag says whether to fill the current line to be right 
+	justified.  May be called to simply output the current line buffer.
+
+ps_output  	(ps, line, fill_flag)
+	Output the given line and break, fill if requested
+	
+ps_center  	(ps, line)
+	Center the line on the page and break
+
+ps_rightjustify  (ps, text)
+	Right justfify text on the current line.
+
+
+width = ps_textwidth  	(ps, string)
+	Get the width of the given string.
+
+pos = ps_centerpos  	(ps, text)
+pos = ps_rjpos  	(ps, text)
+	Get the X position of the centered and right-justified strings.
+
+
+4) Postscript Prolog
+--------------------
+
+	Example prolog for the postscript output.  The actual prolog is
+created based on parameters specified such as the page size, header/footer
+text, etc.  Lines with '***' indicate those which are set dependent upon 
+PS structure values.
+
+
+%!PS-Adobe-1.0
+%%Creator: IRAF postscript translator
+%%CreationDate: Wed May 19 14:34:47 1999
+%%Pages: (atend)
+%%DocumentFonts: (atend)
+%%EndComments
+%%BeginProlog
+
+/inch	{ 72 mul } def				% 72 points per inch
+/PL 	{ 792  		} def			% set page height	     ***
+/FtrY	{ 20	  	} def			% footer Y position
+/HdrY	{ PL 40 sub  	} def			% header Y position
+/xOrg	72 	   def				% 1 inch left margin         ***
+/yOrg	720    	   def				% 1 inch top margin          ***
+/yDelta 12 	   def				% line spacing		     ***
+/Line	1 	   def				% line number
+/Page	0 	   def				% page number
+/pnum   4 string   def				% sizeof page number cvs buffer
+/res	10.00	   def				% pixel resolution factor    ***
+
+/TA { 	newpath 				% Draw a box around our text
+	xOrg yOrg moveto 			% area as a debugging procedure.
+	   0 -664 rlineto                                                    ***
+	 467    0 rlineto                                                    ***
+	   0  664 rlineto                                                    ***
+	closepath 
+	stroke
+} bind def
+
+/FS 	{ findfont exch scalefont } bind def 	% find and scale a font
+/Fonts [					% create an array of fonts
+	10 /Times-Roman FS 						     ***
+	10 /Times-Bold FS 						     ***
+	10 /Times-Italic FS 						     ***
+	10 /Courier FS 							     ***
+	12 /Times-Bold FS 						     ***
+] def
+/R  {	Fonts 0 get setfont } bind def 		% set roman font
+/B  {	Fonts 1 get setfont } bind def 		% set bold font
+/I  {	Fonts 2 get setfont } bind def 		% set italic font
+/T  {	Fonts 3 get setfont } bind def 		% set teletype font
+/H  {	Fonts 4 get setfont } bind def 		% set header font
+
+/NL {	Line 1 add SL 	} bind def 		% newline
+/H  {	res div 
+	currentpoint exch pop 
+	moveto 		} def			% horizontal position
+/S  {	exch H show 	} bind def 		% show
+/SL {	/Line exch def 				% set line position
+	xOrg yOrg Line yDelta mul sub moveto
+} bind def
+
+
+/BP {	 					% Begin page (header).
+	xOrg HdrY moveto R (TEE \(Nov97\)) show	% write the header           ***
+	 280 HdrY moveto R (system) show                                     ***
+	 485 HdrY moveto R (TEE \(Nov97\)) show                              ***
+	1 SL R
+} bind def
+
+/EP {	     					% End page (footer).
+	/Page Page 1 add def			% increment page number
+	xOrg FtrY moveto R (NOAO/IRAF) show	% write the footer           ***
+	250  FtrY moveto R (IRAF V2.11 May 1997) show                        ***
+	530  FtrY moveto R Page pnum cvs show                                ***
+	showpage				% show the page
+} bind def
+
+%%EndProlog
+%%Page: 1 1
+%-----------------------------------------------------------------------------
+
+initgraphics
+TA
+BP
+	...<postscript generated by translator>...
+EP
+	...<repeat above as needed>...
+
+% end of listing
+%%Trailer
+%%DocumentFonts: Times-Roman Times-Bold Times-Italic Courier
+%%Pages: <N>								     ***

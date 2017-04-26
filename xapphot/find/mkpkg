@@ -1,0 +1,34 @@
+# Image display code
+
+$checkout libpkg.a ".."
+$update libpkg.a
+$checkin libpkg.a ".."
+$exit
+
+libpkg.a:
+        t_xfind.x      <fset.h> <imhdr.h> ../lib/xphot.h ../lib/display.h      \
+		       ../lib/objects.h
+	xpasurface.x   <gio.h> <gset.h> ../lib/surface.h <mach.h>
+	xpbfind.x      <fset.h> <gset.h> <imhdr.h> <imset.h> <mach.h> <math.h> \
+		       ../lib/impars.h ../lib/find.h ../lib/objects.h          \
+		       ../lib/xphot.h
+	xpconvolve.x   <imset.h> <math.h> ../lib/find.h
+	xpdcolon.x     ../lib/xphot.h ../lib/display.h <error.h>
+	xpdisplay.x    <imhdr.h> <gset.h> <gim.h> <error.h> ../lib/display.h   \
+		       <gio.h> <mach.h> ../lib/displaydef.h
+	xpdmeasure.x   ../lib/xphot.h ../lib/objects.h
+	xpmodfit.x     <mach.h> <math.h> <imhdr.h> <math/nlfit.h> <gset.h>     \
+	               ../lib/impars.h <gio.h> <imset.h>
+	xpremap.x
+	xpscontour.x   <mach.h> <gset.h> ../lib/contour.h <gio.h>
+	xpsdisplay.x   <imhdr.h> <gset.h> <gim.h> <error.h> ../lib/display.h   \
+		       <gio.h> ../lib/displaydef.h
+	xpsfind.x      <imhdr.h> <imset.h> <mach.h> <math.h> ../lib/impars.h   \
+		       ../lib/find.h ../lib/objects.h
+	xpsmarginals.x <mach.h> <gset.h> <gio.h>
+	xpxdcolon.x    ../lib/xphot.h ../lib/impars.h ../lib/display.h         \
+	               ../lib/find.h ../lib/objects.h ../lib/contour.h         \
+		       ../lib/surface.h
+	xpzscale.x     <mach.h> <error.h> <imhdr.h> <ctype.h>                  \
+	               ../lib/displaydef.h
+	;

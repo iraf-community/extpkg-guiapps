@@ -1,0 +1,26 @@
+# XCENTER code
+
+$checkout libpkg.a ".."
+$update libpkg.a
+$checkin libpkg.a ".."
+$exit
+
+libpkg.a:
+        t_xcenter.x   <fset.h> <imhdr.h> ../lib/xphot.h ../lib/display.h       \
+                       ../lib/objects.h ../lib/center.h ../lib/impars.h
+	xpbcenter.x  <imhdr.h> <imset.h> <mach.h> ../lib/xphot.h ../lib/find.h \
+		     ../lib/objects.h ../lib/center.h ../lib/impars.h <math.h>
+	xpcalg.x     <mach.h> <math.h> <math/nlfit.h> ../lib/center.h
+	xpcbuf.x     <imhdr.h> <mach.h> ../lib/xphotdef.h ../lib/imparsdef.h   \
+	             ../lib/impars.h ../lib/centerdef.h ../lib/center.h
+	xpccolon.x   ../lib/xphot.h ../lib/center.h
+	xpcmark.x    <gset.h> <gim.h> ../lib/objects.h ../lib/impars.h         \
+	             ../lib/center.h
+        xpcmeasure.x  ../lib/xphot.h ../lib/objects.h ../lib/center.h
+	xpcwrite.x   ../lib/xphot.h ../lib/center.h
+	xpfitcen.x   <mach.h> ../lib/xphotdef.h ../lib/imparsdef.h             \
+	             ../lib/center.h ../lib/centerdef.h
+	xpxccolon.x  ../lib/xphot.h ../lib/display.h ../lib/impars.h           \
+	             ../lib/center.h ../lib/contour.h ../lib/objects.h         \
+		     ../lib/find.h ../lib/surface.h
+	;

@@ -1,0 +1,21 @@
+# XAPPHOT utilities routines
+
+$checkout libpkg.a ".."
+$update libpkg.a
+$checkin libpkg.a ".."
+$exit
+
+libpkg.a:
+	xprmwhite.x	<ctype.h>
+	xpstrwrd.x
+	xptopt.x	<mach.h> <math.h>
+	xpnlfuncs.x
+	xpmoments.x
+	xpmeds.x
+	xpvectors.x     <math.h>
+	xppolygons.x    <gset.h> <math.h>
+	xpellipse.x     <math.h>
+	xpbsmooth.x
+	xpdraw.x	<gset.h>
+	xpdate.x	<time.h>
+	;

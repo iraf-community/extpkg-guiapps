@@ -1,0 +1,10 @@
+# Parameter file for the SPLOTPARS pset
+
+anx,i,h,31,3,,Number of columns to be plotted
+any,i,h,31,3,,Number of lines to be plotted
+az1,r,h,INDEF,,,Minimum greylevel to be plotted
+az2,r,h,INDEF,,,Maximum greylevel to be plotted
+alabel,b,h,no,,,Draw the axes ?
+angv,r,h,25.0,,,Vertical viewing angle in degrees
+angh,r,h,-33.0,,,Horizontal viewing angle in degrees
+mode,s,h,'ql'

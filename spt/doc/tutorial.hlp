@@ -1,0 +1,30 @@
+.help tutorial May99 spt
+.ih
+NAME
+tutorial -- Start Spectool in a tutorial mode
+.ih
+SYNOPSIS
+Tutorial is a simple script startup for Spectool.  It defines some
+tutorial data and starts Spectool with the help window showing a tutorial.
+.ih
+USAGE
+tutorial
+.ih
+PARAMETERS
+.ls spectrum = "sptdata$tutorial.ms"
+Tutorial data.
+.ih
+DESCRIPTION
+Tutorial is a simple script startup for Spectool.  It defines some
+tutorial data and starts Spectool with the help window showing a tutorial.
+.ih
+EXAMPLES
+
+.nf
+cl> tutorial
+.fi
+
+.ih
+SEE ALSO
+spectool
+.endhelp

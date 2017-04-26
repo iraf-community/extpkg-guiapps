@@ -1,0 +1,14 @@
+# Help directory for the XRV package
+
+$doc		= "xrv$src/doc/"
+
+xrv		hlp=xrv$xrv.men
+
+filtpars	hlp=doc$filtpars.hlp,		src=xrvsrc$filtpars.par
+continpars  	hlp=doc$continpars.hlp,		src=xrvsrc$continpars.par
+keywpars   	hlp=doc$keywpars.hlp,		src=xrvsrc$keywpars.par
+fxcor		hlp=doc$fxcor.hlp,		src=xrvsrc$t_fxcor.x
+rvidlines       hlp=doc$rvidlines.hlp,          src=rvid$t_identify.x
+rvreidlines     hlp=doc$rvreidlines.hlp,        src=rvid$t_reidentify.x
+
+revisions       sys=xrv$src/Revisions

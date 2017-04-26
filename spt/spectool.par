@@ -1,0 +1,36 @@
+spectrum,s,a,,,,Initial spectrum
+template,s,h,"*.??h,*.fits",,,Browsing template
+logfile,f,h,"",,,Logfile
+observatory,s,h,"observatory",,,Observatory
+unknown,s,h,"angstroms",,,Dispersion units when unknown
+help,s,h,"spt$doc/spectool.html",,,Help file
+topic,s,h,"",,,Initial help topic
+maxreg,i,h,52,1,,Maximum number of registers
+qkey,b,h,no,,,Quit with q cursor key?
+gui,s,h,"spt$spectool.gui",,,User interface file
+graphics,s,h,"stdgraph",,,Graphics output device
+cursor,*gcur,h,"",,,"Cursor input
+
+# INITIAL STATE"
+pan,b,h,no,,,"Show pan window?"
+wcs,b,h,yes,,,"Show WCS coordinate box?"
+plotspec,b,h,yes,,,"Plot primary spectrum?"
+plotcont,b,h,yes,,,"Plot continuum?"
+plotraw,b,h,no,,,"Plot raw spectrum?"
+plotsky,b,h,no,,,"Plot sky spectrum?"
+plotsig,b,h,no,,,"Plot sigma spectrum?"
+xmin,r,h,INDEF,,,"X axis left limit"
+xmax,r,h,INDEF,,,"X axis right limit"
+ymin,r,h,INDEF,,,"Y axis bottom limit"
+ymax,r,h,INDEF,,,"Y axis top limit
+
+# PARAMETER SETS"
+spterrors,pset,h,,,,"Error computation parameters"
+sptgraph,pset,h,,,,"Graph format parameters"
+spticfit,pset,h,,,,"Curve fitting parameters"
+sptlabels,pset,h,,,,"Label parameters"
+sptlines,pset,h,,,,"Line parameters"
+sptmodel,pset,h,,,,"Model fitting parameters"
+sptsigclip,pset,h,,,,"Sigma clipping parameters"
+sptstack,pset,h,,,,"Stack/overplot parameters"
+sptstat,pset,h,,,,"Statistics parameters"

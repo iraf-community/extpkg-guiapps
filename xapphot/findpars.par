@@ -1,0 +1,11 @@
+# FINDPARS
+
+fthreshold,r,h,320.0,0.0,,Detection threshold in adu
+fradius,r,h,2.5,1.0,,Fitting radius in hwhm
+fsepmin,r,h,1.0,1.0,,Minimum separation in hwhm
+fnpixmin,i,h,5,5,,Minimum number of good pixels above background
+froundlo,r,h,0.0,0.0,,Lower ellipticity limit
+froundhi,r,h,0.2,0.0,1.0,Upper ellipticity limit
+fsharplo,r,h,0.5,,,Lower sharpness limit
+fsharphi,r,h,2.0,,,Upper sharpness limit
+mode,s,h,'ql'

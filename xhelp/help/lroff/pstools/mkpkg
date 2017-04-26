@@ -1,0 +1,24 @@
+# Make the PSTOOLS utility routines.
+
+$checkout libpkg.a ../
+$update   libpkg.a
+$checkin  libpkg.a ../
+$exit
+
+
+libpkg.a:
+	$set XFLAGS	= "$(XFLAGS) -x"
+
+	psbreak.x	pstools.h
+	pscenter.x	pstools.h
+	psclose.x	pstools.h
+	psdeposit.x	pstools.h <ctype.h>
+	psfont.x	pstools.h
+	psjustify.x	pstools.h
+	psopen.x	pstools.h
+	psoutput.x	pstools.h <ctype.h>
+	pspos.x		pstools.h
+	psprolog.x	pstools.h
+	pssetup.x	pstools.h
+	pswidth.x	pstools.h font.com <ctype.h>
+	;

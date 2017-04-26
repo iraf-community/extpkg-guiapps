@@ -1,0 +1,18 @@
+# Make the DEMO task.
+
+$call   relink
+$exit
+
+update:
+        $call   relink
+        $call   install
+        ;
+
+relink:
+        $omake  demo.x
+        $link   demo.o -o xx_demo.e
+        ;
+
+install:
+        $move   xx_demo.e guibin$x_demo.e
+        ;

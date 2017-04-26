@@ -1,0 +1,158 @@
+.help findpars Jan99 xapphot
+.ih
+NAME
+findpars -- Edit the object detection parameters
+.ih
+USAGE
+findpars
+.ih
+PARAMETERS
+.ls fthreshold = 100 (ADU)
+The detection threshold above local background in ADU.
+.le
+.ls fradius = 2.5 (ihwhpsf)
+The fitting radius in units of \fIimpars.ihwhmpsf\fR. Fradius defines the size
+of the Gaussian kernel used to compute the density enhancement image, and
+the size of the image region used to compute the roundness and sharpness
+statistics.
+.le
+.ls fsepmin = 1.0 (ihwhmpsf)
+The minimum separation for detected objects in units of \fIimpars.ihwhmpsf\fR.
+.le
+.ls fnpixmin = 5
+The minimum area of the detected objects in pixels.
+.le
+.ls froundlo = 0.0,  froundhi = 0.2
+The minimum and maximum ellipticity values of the detected objects, where
+ellipticity is defined as 1 - b / a, and a and b are the semi-major and
+semi-minor axis lengths respectively.
+.le
+.ls fsharplo = 0.5, fsharphi = 2.0
+The minimum and maximum sharpness values of the detected objects, where
+sharpness is defined to be the ratio of the estimated object size to the
+\fIimpars.hwhmpsf\fR parameter value.
+.le
+
+.ih
+DESCRIPTION
+
+The \fIfindpars\fR parameters along with the \fIimpars\fR parameters
+\fIihwhmpsf\fR, \fIimindata\fR, and \fIimaxdata\fR control the xguiphot
+object detection algorithms. The current algorithm is optimized for
+detecting stellar objects whose hwhmpsf is equal to \fIimpars.ihwhmpsf\fR.
+
+Xguiphot searches the input images for local density maxima
+with half-widths at half-maxima of ~ \fIimpars.ihwhmpsf\fR / \fIimpars.iscale\fR
+pixels and peak amplitudes greater than ~ \fIfthreshold\fR ADU above
+the local background.
+
+Xguiphot assumes that the point spread function can be approximated by a radial
+Gaussian function whose sigma is 0.84932 * \fIimpars.ihwhmpsf\fR /
+\fIimpars.iscale\fR pixels. Xguiphot uses this model to construct a
+convolution kernel which is truncated at max (2.0, \fIfradius\fR *
+\fIimpars.ihwhmpsf\fR / \fIimpars.iscale\fR) pixels and normalized to
+zero power.
+
+For each point in the image density enhancement values are computed by
+convolving the input image with the radial Gaussian function. This operation
+is mathematically equivalent to fitting the image data at each point, in the
+least-squares sense, with a truncated, lowered, radial Gaussian function.
+After the convolution each density enhancement value is an estimate of
+the amplitude of the best fitting radial Gaussian function at that point.
+If \fIimpars.imindata\fR and \fIimpars.imaxdata\fR are defined then bad
+data is ignored, i.e. rejected from the fit, during the computation of
+the density enhancement values. Out of bounds image pixels are evaluated
+using zero valued constant boundary extension.  Out of bounds density
+enhancement values are set to zero.
+
+After the convolution, xguiphot steps through the density enhancement
+image searching for density enhancements greater then \fIthreshold\fR
+and brighter than any density enhancements within a radius of
+\fIfsepmin\fR * \fIimpars.ihwhmpsf\fR / \fIimpars.iscale\fR pixels. For
+each potential detection the local background is estimated and used,
+along with the values of \fIimpars.imindata\fR and \fIimpars.imaxdata\fR,
+to estimate the position (Xc and Yc), size (Area and Hwhm), shape
+(E and Sharp), and orientation (Pa) of each object using a second order
+moments analysis as shown below.
+
+.nf
+  Sky = maxdata - maxden
+   M0 = sum (I - Sky)
+   Mx = sum (X * (I - Sky))
+   My = sum (Y * (I - Sky))
+    N = sum (1.0)
+
+   Xc = Mx / M0
+   Xc = My / M0
+ Area = N
+
+  Mxx = sum ((X - Xc) * (X - Xc) * (I - Sky))
+  Mxy = sum ((X - Xc) * (Y - Yc) * (I - Sky))
+  Myy = sum ((Y - Yc) * (Y - Yc) * (I - Sky))
+
+ Hwhm = sqrt (log (2) * (Mxx + Myy))
+    E = sqrt ((Mxx - Myy) ** 2 + 4 * Mxy ** 2) / (Mxx + Myy))
+   Pa = 0.5 * atan (2 * Mxy / (Mxx - Myy))
+Sharp = Hwhm / Hwhmpsf 
+.fi
+
+The sums are computed using pixels which lie within \fIfradius\fR *
+\fIimpars.ihwhmpsf\fR / \fIimpars.iscale\fR of the maximum density enhancement,
+and whose values are within the good data limits defined by
+\fIimpars.imindata\fR and \fIimpars.imaxdata\fR, and which are above the
+local background estimate (Sky).
+
+Objects whose roundness, and sharpness characteristics are outside the
+values defined by \fIfroundlo\fR, \fIfroundhi\fR,
+\fIfsharplo\fR, and \fIfsharphi\fR and whose total areas is less than
+\fIfnpixmin\fR pixels are rejected from the list.
+
+.ih
+EXAMPLES
+
+1. List the object detection parameters.
+
+.nf
+xa> lpar findpars
+.fi
+
+2. Edit the object detection parameters.
+
+.nf
+xa> findpars
+.fi
+
+3. Edit the object detection parameters and run xguiphot.
+
+.nf
+xa> epar xguiphot
+
+    ... edit a few xguiphot parameters
+
+    ... move to the findpars parameter and type :e
+
+    ... edit the findpars parameter and type :q
+
+    ... finsih editing the other pset and task parameters
+
+    ... type :go to run xguiphot
+.fi
+
+4. Save the current object detection parameters set in the text file
+findnite1.par.
+
+.nf
+xa> findpars
+
+    ... edit the parameters
+
+    ... type ":w findnite1.par" from within epar
+.fi
+
+.ih
+BUGS
+
+.ih
+SEE ALSO
+epar,lpar,xguiphot,impars,cenpars,skypars,photpars
+.endhelp

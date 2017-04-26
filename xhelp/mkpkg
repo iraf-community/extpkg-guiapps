@@ -1,0 +1,43 @@
+# Make the XHelp task.
+
+$call   relink
+$exit
+
+update:
+        $call   relink
+        $call   install
+        ;
+
+relink:
+        $update libpkg.a
+        $omake  x_xhelp.x
+        $link   -z x_xhelp.o libpkg.a -o xx_xhelp.e
+        ;
+
+install:
+        $move   xx_xhelp.e guibin$x_xhelp.e
+        ;
+
+libpkg.a:
+	@help
+
+	# GUI Help browser code.
+	$set XFLAGS 	= "$(XFLAGS) -x"
+	t_xhelp.x	xhelp.h help/help.h help/helpdir.h \
+				<error.h> <fset.h> <ctype.h>
+	xhdir.x		xhelp.h <diropen.h>
+	xhfiles.x	xhelp.h <fset.h> <ctype.h>
+	xhhelp.x	xhelp.h help/help.h <error.h> <fset.h>
+	xhinit.x	xhelp.h
+	xhofile.x	xhelp.h <fset.h>
+	xhpkg.x		xhelp.h help/help.h help/helpdir.h <error.h> <fset.h>
+	xhprint.x	xhelp.h <error.h> <ttyset.h> <ctype.h>
+	xhqref.x	xhelp.h <syserr.h> <finfo.h>
+	xhroot.x	xhelp.h
+	xhsave.x	xhelp.h <ctype.h>
+	xhsearch.x	xhelp.h <fset.h> <ctype.h>
+	xhsort.x	xhelp.h <ctype.h>
+
+	t_l2h.x 	<ctype.h>
+	t_l2p.x 	<ctype.h>
+	;

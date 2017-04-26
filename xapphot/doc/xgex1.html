@@ -1,0 +1,472 @@
+<HTML>
+</BODY>
+
+<TITLE>Tutorial I</TITLE>
+
+
+<H2>TUTORIAL I. USING XGUIPHOT TO DISPLAY AND EXAMINE IMAGES</H2>
+<P>
+
+The purpose of tutorial I is to show users how to use the xguiphot task to
+quickly select, display, and examine the input image list with a view to 
+making photometric measurements.
+<P>
+
+To being the tutorial type the following at the cl prompt:
+<P>
+<PRE>
+    cl&gt; xgex1
+</PRE>
+<P>
+After the gui is activated the first image in the input list, gcluster.fits,
+is displayed in the image display window, and the gui is ready for user input.
+<P>
+
+The tutorial is intented to be executed in sequence.
+<P>
+<P>
+
+<H2>I.1. THE STATUS LINE MARKER</H2>
+<P>
+
+Examine the botton of the image display window. You should see the following
+message 
+<P>
+<PRE>
+    Warning: image xapphot$data/gcluster.fits keyword: FILTERS 
+    not found
+</PRE>
+<P>
+highlighted in turquoise in the bottom "<TT>line</TT>" of the image display window.
+This region of the image display window is called the status line. It is
+used to print error messages,  warning messages, status reports, and
+quick-look results. This particular message means that xguiphot searched for
+and failed to find the keyword FILTERS in the header of
+xapphot$data/gcluster.fits. Ignore the content of the warning message for
+now.
+<P>
+
+Move the mouse to the image display window and type CR. Examine
+the status line again. What happened ? The CR is an example of an accelerator
+keystroke whose function is to clear the status line. The same function 
+can be performed less efficiently by moving to the Results menu and
+selecting the "<TT>Clear status line</TT>" item.
+<P>
+<P>
+
+<H2>I.2. THE FILES MARKER</H2>
+<P>
+
+Examine the box in the upper left corner of the image display window. This
+box is called the files marker and it displays the current image name,
+the current input objects file, the results file logging status, and
+the current output results file. Note that results file logging is turned off.
+<P>
+
+To move the files marker to a different location:
+<P>
+<PRE>
+    1. move the mouse into the files marker
+    2. wait until the marker highlights and the cursor changes
+       shape to a small cross
+    3. press the left mouse button
+    4. drag the marker to a different position
+    5. release the left mouse button
+</PRE>
+<P>
+
+To resize the files marker:
+<P>
+<PRE>
+    1. move the mouse to the lower right corner of the files marker
+    2. wait until the marker highlights and the cursor changes
+       shape to a small box with arrows
+    3. press the left mouse button
+    4. drag the marker corner slightly upward and to the left
+    5. release the left mouse button
+<P>
+</PRE>
+<P>
+
+To delete the files marker:
+<P>
+<PRE>
+    1. move the mouse into the files marker
+    2. wait until the marker highlights and the cursor changes
+       shape to a small cross
+    3. hit the Delete key 
+       or
+    3. press the right mouse button
+    4. select the "Dismiss marker" item
+</PRE>
+<P>
+
+To redisplay the files marker:
+<P>
+<PRE>
+    1. move the mouse to the Images menu button 
+    2. move to the Options submenu
+    3. select the "Show files marker" item
+</PRE>
+<P>
+<P>
+
+<H2>I.3. THE COORDINATES MARKER</H2>
+<P>
+
+Examine the box in the lower right hand corner of the image display window.
+This is the coordinates marker. The coordinates marker displays the
+image pixel coordinates of the mouse when it is in the image display window.
+Move the mouse around the image display window. What happens to the
+displayed coordinates ?
+<P>
+
+The coordinates marker can be moved, resized, and deleted in the same
+manner as the files marker. To redisplay the coordinates marker:
+<P>
+<PRE>
+    1. move the mouse to the Images menu button 
+    2. select the Options submenu
+    3. select the "Show coords marker" item from the options submenu
+</PRE>
+<P>
+<P>
+
+<H2>I.4. THE CROSSHAIR CURSOR</A></H2>
+<P>
+
+The default image display window cursor is a small circle. In some cases
+the cross-hair cursor may be more useful. To change the default
+cursor from circle to cross-hair and vice versa:
+<P>
+<PRE>
+    1. move the mouse to the Images menu button
+    2. select the Options submenu
+    3. select the "Show crosshair" item
+       or
+    3. select the "Dismiss crosshair" item
+</PRE>
+<P>
+<P>
+
+<H2>I.5. ZOOMING, PANNING, AND WINDOWING WITH THE MOUSE</H2>
+<P>
+
+By default the xguiphot image display code fills the viewport in the
+largest image dimension while preserving the aspect ratio.
+<P>
+
+To zoom in:
+<P>
+<PRE>
+    1. move the mouse into the image display
+    2. click twice on the middle mouse button
+</PRE>
+<P>
+
+To zoom out:
+<P>
+<PRE>
+    1. move the mouse into the image display
+    2. click twice on the middle mouse button while holding down
+       the Shift key
+</PRE>
+<P>
+
+To return to the original display:
+<P>
+<PRE>
+    1. move the mouse into the image display
+    2. click once on the middle mouse button while holding down
+       the Control key
+</PRE>
+<P>
+
+To pan the image:
+<P>
+<PRE>
+    1. move the mouse into the image display
+    2. click once  on the middle mouse button
+</PRE>
+<P>
+
+To window the image display:
+<P>
+<PRE>
+    1. move the mouse into the image display
+    2. press down on the right mouse button while moving the mouse
+      in the image display window
+</PRE>
+<P>
+<P>
+
+<H2>I.6. USING CURSOR MODE WITH THE IMAGE DISPLAY WINDOW</H2>
+<P>
+
+The xguiphot image display window is a gterm widget, i.e. the same widget
+used by the IRAF xgterm and ximtool programs. Therefore the xguiphot image
+display window and all the other xguiphot graphics windows, support with
+a few caveats, full IRAF cursor mode. This means that it is possible to zoom,
+pan, expand the display, make snaps (but see below), etc using the default
+IRAF cursor keystroke commands, just as one can for any standard IRAF task.
+<P>
+
+The most useful cursor keys are the following:
+<P>
+<PRE>
+C     # Print coordinates at position of cursor
+E,E   # Expand the plot
+M     # Pan
+P     # Zoom out
+Z     # Zoom in
+0     # Reset and redraw
+</PRE>
+<P>
+
+Users should be aware that the simple = and :.snap commands do not currently
+work properly for the image display window. A workaround 
+is being prepared for this. The = and :.snap do work correctly
+from all the xguiphot vector graphics windows.
+<P>
+<P>
+
+<H2>I.7. MAKING HARDCOPIES OF THE IMAGE DISPLAY WINDOW</H2>
+<P>
+
+This facility is not yet supported.
+<P>
+<P>
+
+<H2>I.8. BROWSING THE IMAGE LIST</A></H2>
+<P>
+
+To browse the image list sequentially either:
+<P>
+<PRE>
+    1. move the mouse to the Images menu button
+    2. select the "Next image" or "Previous image" items
+</PRE>
+<P>
+or simply
+<P>
+<PRE>
+    1. move to the image display window
+    2. type n or p keystroke commands to move forwards or backwards
+       through the image list
+</PRE>
+<P>
+Note that as each image is displayed the file marker and status line
+are automatically updated. When is the coordinates marker updated ?
+<P>
+
+To determine the sequence number of the current image:
+<P>
+<PRE>
+    1. move to the image display window
+    2. type ":imnumber" follwed by CR
+</PRE>
+<P>
+The current image number will be printed in the status line marker. Try it.
+<P>
+
+To redisplay the first image in the input image list:
+<P>
+<PRE>
+    1. move to the image display window
+    2. type ":imnumber 1" follwed by CR
+</PRE>
+<P>
+
+To view the entire image list at once or to browse the image list
+randomly either:
+<P>
+<PRE>
+    1. move the mouse to the Files menu button
+    2. Select the "Files panel ..." item
+</PRE>
+<P>
+or
+<P>
+<PRE>
+    1. move the mouse to the image display window
+    2. type the $ keystroke command
+</PRE>
+<P>
+The files panel displays the input image, input objects file, and output
+results file default directories and templates, the input image and input
+objects file lists, and the output results file. The current image
+and input objects file are highlighted in their respective lists.
+<P>
+
+To select and display a new current image:
+<P>
+<PRE>
+    1. move to the image list in the files panel
+    2. click once on the desired image name
+</PRE>
+<P>
+The new image will be displayed in the image display window and the files
+marker and status line will update.
+<P>
+Note that the default input objects file and output results file also change
+automatically when a new input image is selected.
+<P>
+<P>
+
+<H2>I.9. REDISPLAYING IMAGES</H2>
+<P>
+
+To redisplay the current image from scratch using the default display
+parameters:
+<P>
+<PRE>
+    1. move the mouse to the Images menu button
+    2. select the "Current image" item
+</PRE>
+<P>
+or
+<P>
+<PRE>
+    1. move the mouse to the image display window
+    2. type the i keystroke command 
+</PRE>
+<P>
+
+For most astronomical images the default image display parameters
+are optimal. However in rare cases users may need to alter the default
+spatial and intensity mapping parameters.
+<P>
+
+To alter the the intensity mapping parameters for the test image
+xapphot$data/n5194.fits, bring up the Files panel and select image
+xapphot$data/n5194.fits as described in the previous section, and:
+<P>
+<PRE>
+    1. move the mouse to the Images menu button
+    2. pelect the "Dispars pset" item
+</PRE>
+<P>
+The dispars parameter editing panel will appear.
+<P>
+Change the dztransform parameter from "<TT>linear</TT>" to "<TT>log</TT>", the dzlimits
+parameter from "<TT>median</TT>" to "<TT>image</TT>", and dz1 and dz2 from INDEF and INDEF,
+to 90 and 7000.0 respectively, as follows
+<P>
+<PRE>
+     1. move to the dztransform entry box
+     2. select the "log" item
+     3. move to the dzlimits entry box
+     4. select the "image" item
+     5. move to the dz1 entry box
+     6. type backspace repeatedly to delete the existing entry
+     7. type in the new value and press CR
+     8. repeat steps 5-7 for dz2
+</PRE>
+<P>
+<P>
+
+Note that instead of typing backspace to delete characters backwards, it
+is possible to position the text cursor at the beginning
+of the original text, press the left mouse button, and type Control k to
+delete the entire entry at once.
+<P>
+
+At this point the altered parameter values and the Apply button label should
+be displayed in white. This means the new parameter values have not yet
+been written to memory. To cancel the last set of changes
+press the Cancel button, otherwise press the Apply button followed by
+the Display button to redisplay the image with the new parameters. Window
+the image display to taste using the right mouse button.
+<P>
+
+The log transform and image limits algorithm permit the user to look more
+deeply into the center of the galaxy. However this transform is not
+very useful for the other images in the list, so press Unlearn
+to set all the dispars parameters back to their default values, press 
+Display to redisplay the image, and press Dismiss to dismiss
+the dispars parameter editing panel.
+<P>
+<P>
+
+<H2>I.10. BROWSING THE IMAGE HEADERS</H2>
+<P>
+
+To examine the header of the current image:
+<P>
+<PRE>
+    1. move the mouse to the Images menu button
+    2. select the "Display header" item
+</PRE>
+<P>
+or
+<P>
+<PRE>
+    1. move the mouse to the image display window
+    2. type the h keystroke command
+</PRE>
+<P>
+Examine the image header by using the scroll bars.
+<P>
+
+To step sequentially forwards or backwards through the image list press
+the Next or Prev buttons on the image header display panel and examine
+the displayed headers.
+<P>
+
+The image header display panel can be used to correlate the contents of
+the image header with the warning messages which appear in the status
+line when the image is displayed.
+For example xguiphot complains that the expected keyword FILTERS cannot
+be found in the header of image xapphot$data/gcluster.fits. Examining
+the header reveals that the image is an artificial image created with the
+artdata package which did not put a FILTERS keyword into the image header.
+<P>
+<P>
+
+<H2>I.11. CHECKING THE IMAGE HEADERS</H2>
+<P>
+
+The status line can only display a single line of text. 
+By default xguiphot tries to read 6 keywords from the image header:
+RDNOISE, GAIN, EXPTIME, AIRMASS, FILTERS, and UT. AIRMASS, FILTERS, and UT
+are not actually used in the analysis but are read from the image header
+and written to the
+output results files. Their values default to INDEF, INDEF, and
+INDEF if they are not found in the image headers. EXPTIME is used to
+normalize the computed instrumental magnitude scale and defaults to 1.0.
+GAIN and RDNOISE (actually only GAIN in most cases) are used to normalize
+the computed mangitude errors, and default to 1.0 and 0.0 if not
+found in the image header.
+<P>
+
+To check that xguiphot is reading the correct values of the required
+keywords from the image headers:
+<P>
+<PRE>
+    1. move the mouse to the image display window
+    2. type :imnumber 1
+    3. move the mouse to the Images menu button
+    4. select the "Impars pset" item
+</PRE>
+<P>
+Examine the values of  the ireadnoise and igain parameters. Are these
+0.0 and 1.0 or are the values different. What about the ietime parameter?
+Is it 1 or some other number, and does this number agree with what is
+in the image header? Similarly what about iairmass, ifilter, and iotime?
+Are these values INDEF or are they real values? 
+<P>
+
+Moving to the next image by typing n in the image display window and
+and watch the values of above parameters change. Do they look correct ?
+<P>
+<P>
+
+<H2>I.12. QUIT TUTORIAL I</H2>
+<P>
+
+Quit tutorial I by pressing the Quit button.
+<P>
+<P>
+
+</BODY>
+</HTML>

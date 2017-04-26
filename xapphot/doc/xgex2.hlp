@@ -1,0 +1,642 @@
+.help xgex2 Mar99 xapphot
+.ih
+TUTORIAL II. USING XGUIPHOT TO CREATE, VIEW, EDIT, AND SAVE OBJECT LISTS
+
+Xguiphot provides facilities for creating, displaying, editing, and saving
+objects lists. Objects lists can be read from the objects files, created
+interactively using the image display and mouse, or created automatically
+using the builtin object finding algorithm. The following tutorial demonstrates
+these cabilities using test images and object files in the directory
+xapphot$data/.
+
+To begin the tutorial unlearn the xapphot package and start the xguiphot
+task do one or other of the following:
+
+.nf
+    cl> xgex2
+
+	or 
+
+    cl> unlearn xapphot
+    cl> epar xguiphot
+	... set images to "xapphot$data/*.fits"
+	... set objects to "xapphot$data/*.coo.*"
+	... set results to "default"
+	... set tutorial to "xapphot$doc/xgex2.html"
+	... type :go
+.fi
+
+After the gui is activated the first image in the input list, gcluster.fits,
+is displayed in the image display window, and the gui is ready for user input.
+
+.ih
+II.1. CREATING OBJECTS LISTS FROM OBJECTS FILES
+
+To read the current objects file into an object list:
+
+.nf
+    1. move the mouse to the Lists menu button
+    2. select the "Current file" item
+.fi
+
+or
+
+.nf
+    1. move the mouse to the image display window
+    2. type the r keystroke command
+.fi
+
+Examine the status line. You should see a message of the form
+"Read 700 objects file from objects file xapphot$data/gcluster.coo.1".
+This means that the objects list has been created and  is ready to
+be used.
+
+.ih
+II.2. MARKING THE OBJECTS LISTS ON THE IMAGE DISPLAY
+
+To overlay the current objects list on the displayed image:
+
+.nf
+    1. move the mouse to the Lists menu button
+    2. select the "Mark list" item
+.fi
+
+or
+
+.nf
+    1. move the mouse to the image display window
+    2. type the m keystroke command
+.fi
+
+Note that it is not necessary to read the current objects file before
+marking the objects. Any command that expects to operate on the objects
+list, will automatically try to read it in from the current objects file, if
+it does not already exist.
+
+Note that all the objects in the objects list are marked with
+a green +. The shape, color, and size of the default mark can be altered
+by editing the omarkpars parameter set. For example to change the default mark
+to a point as may be desirable in very crowded fields:
+
+.nf
+     1. move the mouse to the Lists menu button
+     2. select the "Omarkpars pset ..." item
+     3. move the mouse to the ocharmark parameter entry box
+     4. select the "point" item
+     5. click on the Apply Button
+     6. click on the Erase Button
+     7. click on the Show Button
+.fi
+
+To overlay size and shape information on the displayed image repeat
+commands 3-7 above but instead of selecting  item "point" in step 4,
+select item "shape" instead. Dismiss the omarkchars parameter editing box.
+
+Examine the displayed image. Note that that the extended objects are
+clearly marked by ellipses. Smaller objects are marked with ellipses or
+crosses depending on whether or not they are galaxies, i.e. have shape
+information, or are stars, i.e. are point sources.
+
+.ih
+II.3. EXAMINING THE OBJECT LIST
+
+To examine the actual objects list created in the previous section:
+
+.nf
+    1. move the mouse to the Lists menu button
+    2. select the "List panel ..." item
+.fi
+
+Move through the object list using the scrollbars. Note that objects
+1-600 are ellipses defined by 6 fields: x coordinate, y coordinate,
+geometry (always ellipse in this case), semi-major axis, axial ratio,
+and position angle.  Objects 601-700 are point sources defined by x
+and y coordinates only.
+
+Now step through the image list, mark each image with its coordinate list,
+and examine the list in the list panel as follows:
+
+.nf
+    1. move to the image display window
+    2. type the n  keystroke command to display the next image
+    3. type the m keystroke command to mark objects
+    4. scroll through the object list displayed in the List panel
+    5. repeat steps 1-4 for all the input images
+.fi
+
+Note that there are 2000 objects in xapphot$data/globular.fits and all of
+them are stars. The images xapphot$data/gcluster.fits and
+xapphot$data/globular.fits are artificial images created with the artdata
+package. The accompanying input objects files were created with
+the artdata package starlist and gallist tasks and edited for input
+to xguiphot.
+
+The next 4 images are of standard star fields in m92. They were taken
+at Kitt Peak. The associated objects files were created using a finding chart
+for m92, the IRAF image display program ximtool, and the IRAF tasks
+display and rimcursor.
+
+The 7th image is of the Sombrero galaxy. The input objects file was typed
+in by hand. Note that the sky region, by default marked in blue, is a
+rectangle which is offset from the object region. In general the sky
+region is only marked if the geometry is defined or if the sky region
+is offset from the object region.
+
+The 8th image is of M51. Numerous point source and extended objects are
+marked on it. Note that there are two offset sky regions and it is not
+necessarily obvious which sky region goes with which object. There are
+three ways to find out:
+
+.nf
+    1. move the mouse inside the green rectangle
+    2. note the x and y coordinates
+    3. move the mouse to the objects list in the List panel
+    4. scroll the objects list searching for the nearest object
+.fi
+
+or
+
+.nf
+     1. move the mouse to the Lists menu button
+     2. select the "Omarkpars pset ..." item
+     3. move the mouse to the onumber parameter entry box
+     4. click on the left mouse button
+     5. click on the Apply Button
+     6. click on the Erase Button
+     7. click on the Show Button
+.fi
+
+Note that that the green rectangle marked O10 goes with the 
+blue circle marked S10 and that the green ellipse marked O7 goes with the
+blue rectangle marked S7, and that the numbers 7 and 10 correspond to
+the sequence numbers in the object list.
+
+Turn numbering off by typing the command :onumber no in the image display
+window. Note that the value of the onumber parameter in the omarkpars
+parameter editing panel is automatically set to no at the same time.
+
+To try the third method of locating an object in the object list:
+
+.nf
+    1. move the mouse to the image display window
+    2. move the mouse close to the object (not sky) region
+       of interest
+    3. type the ~ keystroke command
+
+    or
+
+    3. press the left mouse button
+    4. select the "Find nearest in list" item
+.fi
+
+You will either see a warning message in the status line saying
+something like "Warning: Marked object not in object list" or the
+object nearest the cursor position will be high-lighted in the object
+list. Try pointing the cursor at the large green ellipse near the
+center of the image and typing ~.
+
+.ih
+II.4. CREATING OBJECTS LISTS AUTOMATICALLY
+
+Objects list can be created automatically using a builtin object
+detection algorithm. Before exercising this option set the input
+objects file list to "" as shown below:
+
+.nf
+    1. move to the Files menu button
+    2. select the "Files panel ..." option
+    3. move to the Input Objects Files Objects entry box
+    4. move the cursor to the beginning of the current entry
+    5. click the left mouse button to position the cursor
+    6. type Control k to delete the entry and press CR
+    7. move to the first image in the input image list
+    8. click the left mouse button
+.fi
+
+Note that the default input objects file list is now empty and the current
+input objects file is now undefined.
+
+To create an objects list using the builtin object detection algorithm
+and default findpars parameters:
+
+.nf
+    1. move the mouse to the Lists menu button
+    2. select the "Find list ..." item
+.fi
+
+or
+
+.nf
+    1. move to the image display window
+    2. type the @ keystroke command
+.fi
+
+Examine the status line. When the command has completed a message
+should appear stating how many objects were detected. Examine the
+image display window. The detected objects should be
+marked on the image display. Examine the objects list in the
+list panel. The detected objects should be listed in the list panel.
+
+Users should realize that the current object detection algorithm is
+optimized for stellar objects. The algorithm is controlled by the impars
+parameters ihwhmpsf, idatamin, and idatamax and the findpars parameter set.
+
+To determine and set a good value value for the ihwhmpsf parameter:
+
+.nf
+    1. move the mouse to the image display window
+    2. move the mouse to a likely looking stellar object
+    3. press the left mouse button
+    4. select the "Compute model fit" item
+    5. note the value of Hw printed in the status line
+    6. repeat steps 2-5 for several objects
+    7. type :ihwhmpsf <bestvalue> in the image display window
+.fi
+
+Note that steps 3-4 can be replaced by typing the x keystroke command.
+
+To activate the model fitting panel:
+
+.nf
+    1. move the mouse to the image display window
+    2. move the mouse to a likely looking stellar object
+    3. press the left mouse button
+    4. select the "Show model plot" item
+    5. note the value of Hw printed in the model fitting panel status line
+    6. move to a new object
+    7. press the left mouse button
+    8. select the "Compute model fit" item
+    9. note the value of Hw printed in the model fitting panel status line
+   10. repeat steps 6-9 for several objects
+   10. type :ihwhmpsf <bestvalue> in the image display window
+.fi
+
+Note that steps 7-8 can be replaced by typing the x keystroke command.
+
+It is also possible to set the ihhmpsf from the model fitting panel.
+Once a good value has been computed:
+
+.nf
+    1. move the mouse to the model fitting panel
+    2. press the Activate button
+    3. press the Setwidth button
+    4. press the Deactivate button
+.fi
+
+The new ihwhmpsf can also be entered by activating the impars parameter set
+editing panel and typing in the new value.
+
+Now rerun the object detection algorithm using the new value of ihwhmpsf
+(in my case it was 1.25 instead of 1.0) by typing @ in the image display
+window. Note that there is not much difference, 38 objects were
+found this time instead of 36 in my case.
+
+To adjust the remaining detection algorithm parameters:
+
+.nf
+    1. move the mouse to the Lists menu button
+    2. delect the "Findpars pset ..." item
+.fi
+
+Note that the default detection threshold is 320. This means that only objects
+with peak counts > 320 counts above background will be detected and
+explains why the majority of the objects were not detected. What
+is a reasonable value for fthreshold? This depends on what you are
+trying to do. If the object of the exercise is to
+detect everything down to something like 4 * sigma where sigma
+is the standard deviation of the background, then one should set
+the detection threshold appropriately.
+
+A good value for sigma can be found by moving to an isolated star and
+typing the x keystroke command to compute the model fit. The last quantity
+in the status line printout is the standard deviation of the background
+in counts. Repeating this operation for a few objects in the image
+xapphot$data/gcluster.fits
+suggests that sigma is ~ 20 counts, so the detection threshold should
+be ~80 counts. To set a new value for the detection threshold:
+
+.nf
+    1. move to the fthreshold entry box in the findpars panel
+    2. type backspace repeatedly to delete the existing entry
+    3. type in 80.0 and press CR
+    4. press the Apply button
+    5. press the Find button
+.fi
+
+Examine the displayed image and the new object list in the List panel.
+Do the detections look good? If so save the new list as follows:
+
+.nf
+    1. move to the Save List area on the List panel 
+    2. press the Save button
+.fi
+
+Examine the status line.  A message should appear stating how many objects
+were written to the objects file. Note that the default output object file
+names have the form image.obj.#.
+
+Now work through the remaining images in the list using the default
+parameters and saving the object lists in objects files as shown below.
+
+.nf
+    1. move to the image display window
+    2. type n to display the next image
+    3. type @ to create the objects list
+    4. press the Save button to save the detected lists to disk
+.fi
+
+Note that the default detection parameters did a reasonable job for the
+first 6 images, but produced a lot of "spurious" detections in difficult
+regions, e.g. the dust lane of ngc4594 in ngc4594.fits and the center
+of ngc5194 in ngc5194.fits.
+
+Now change the input objects list from the null list "" to default in
+order to pick up the new lists using either the Files panel as
+described earlier or one of the following colon commands.
+
+.nf
+    1. move to the image display window
+    2. type :objects default
+.fi
+
+or
+
+.nf
+    1. move to the image display window
+    2. :objects *.obj.*
+.fi
+
+Note that the latter command will pick up all files contain ".obj." in
+their names regardless of the names and number of the input images, whereas the
+former command will only pick up the highest version number file for
+each image.
+
+Now step through the image with the n and m keystroke commands and the
+list panel to check the new lists.
+
+
+.ih
+II.5. CREATING OBJECT LISTS INTERACTIVELY WITH THE IMAGE CURSOR
+
+Object lists can also be created interactively using the image display and
+image cursor. This technique can be quite useful for making simple
+x and y coordinate lists, for making lists containing a few extended
+objects, or for making lists of mixed extended and point sources.
+
+Before beginning this example set the input objects list to "" as shown
+below.
+
+.nf
+    1. move to the image display window
+    2. type :objects ""
+.fi
+
+The first few examples will show how to create simple coordinate lists
+using the image display and image cursor.
+
+To create a simple object list of x and y coordinates:
+
+.nf
+    1. move to the Files menu button
+    2. select the "Files panel ..." item
+    3. move to the image xapphot$data/m92v1.fits
+    4. click the left mouse button
+    5. move the mouse to the Lists menu button
+    6. select the "Draw list ..." item
+.fi
+
+or simply type the command :imname xapphot$data/m92v1.fits in the
+image display window followed by the z and a keystroke commands.
+
+After the prompt appears in the status line:
+
+.nf
+    1. enter o followed by CR to select the object only option
+    2. move to the object(s) of interest and type .
+    3. type q to quit
+    4. type e to erase the current marks and m to mark the new list
+    5. examine the new list in the List panel
+.fi
+
+To add new objects to the list either type the a keystroke command in the
+image display window, or select the "Add objects(s) ..." item from the Edit
+menu, or hit the Draw button in the View and Edit section of the List panel
+and repeat steps 1-5.
+
+Objects can be deleted or undeleted from the objects list, by selecting
+the "Delete object(s) ..." or "Undelete object(s) ..." items from the
+Edit menu, or by moving to the appropriate objects in the image display window
+and typing the d or u keystroke commands, or by clicking on the object
+in the List panel and hitting the Delete or Undelete key. The entire
+objects list can be deleted by selecting the "Delete list" item from
+the Edit menu, or by typing z in the image display window, or by hitting the
+Init button in the List panel. Try out some of the above functions.
+It is not hard to recreate the list if you make a mistake.
+
+To create an object list consisting of same sized circular apertures
+with same sized concentric circular sky annuli:
+
+.nf
+     1. move to the image display window
+     2. type i to redisplay the current image
+     3. type z followed by a to initialize the list
+     4. at the prompt type a to select object plus annular sky option
+     5. move to star and type c
+     6. move to desired radius of circle and type c
+     7. type c again to add circular sky annulus
+     8. move to desired inner radius of sky annulus and type c
+     9. move to outer radius of sky annulus and type c
+    10. move to new object and type a followed by a
+    11. Repeat step 10 for each new object
+    12. Type q to quit
+.fi
+
+Move to the image xapphot$data/ngc4594.fits and use it to create an
+object list consisting of a single elliptical object aperture
+and an offset rectangular sky region as follows:
+
+.nf
+     1. move to the image display window
+     2. type z followed by a to initialize the objects list
+     3. type b to select the object and offset sky option
+     4. move to center of large galaxy and type e
+     5. move to position of semi-major axis and type e
+     6. move to position of semi-minor axis and type e
+     7. move to center of offset sky region and type r
+     8. move to semi-major axis of rectangle and type r
+     9. move to semi-minor axis or rectangle and type r
+    10. type q to quit
+.fi
+
+Examine the marked apertures and the object list in the List panel.
+
+To create an object list consisting of a single object for which you
+know the geometry already:
+
+.nf
+     1. activate the List panel from the Lists menu
+     2. move the mouse to the List panel
+     3. press the Init button to initalize the list
+     4. go to the Enter object geometry box
+     5. type in "285 194 ellipse 140 0.65 0.0 ; 520 282 rectangle 0 50 0.5 90"
+     6. hit the Enter button
+     7. hit the Erase button
+     8. hit the Show button
+.fi
+
+Examine the marked object in the image display and the object list in the 
+List panel.  If all you see are two + signs marking the center of the
+object and sky region, press the Omarkpars button to activate the omarkpars
+parameter editing panel, set the ocharmark parameter to "shape", and repeat
+steps 7-8 above.
+Note that on some systems it is possible  to cut and paste from a text file
+displayed in another window into the object geometry entry box.
+
+.ih
+II.6. CREATING OBJECTS LISTS INTERACTIVELY WITH MARKERS
+
+Object list can also be created interactively using the photometry 
+marker. This method is most suitable for defining object and sky
+apertures for large objects.
+
+Move to the image xapphot$data/ngc4594.fits and use markers to create an
+object list consisting of a single elliptical object aperture
+and an offset rectangular sky region as follows:
+
+.nf
+     1. move to the image display window
+     2. type z to initialize the objects list
+     3. press the left mouse button
+     4. select the "Set offset sky" item
+     5. move the mouse to the center of the elliptical galaxy
+     6. press the left mouse button
+     7. select the "Show phot marker" item
+     8. move the mouse to the desired sky position
+     9. press the left mouse button
+    10. select the "Offset sky marker" item
+.fi
+
+At this point the object and sky region markers should be visible and
+positioned more or less at the desired object and sky positions. The object
+and sky marker geometry however corresponds to the default object and
+sky geometries defined in the photpars and skypars parameter sets.
+The geometry, position, size and shape of the markers must now
+be adjusted interactively as follows. 
+
+
+To resize the object marker:
+
+.nf
+    1. move the mouse to the boundary of the object marker
+    2. wait until the cursor changes to a dot inside a square
+    3. press the left mouse button
+    4. drag out the marker boundary until it is the desired size
+    5. release the left mouse button
+.fi
+
+To reposition the enlarged object marker:
+
+.nf
+    1. move the mouse inside the marker
+    2. wait until the cursor changes to a small cross
+    3. press the left mouse button
+    4. drag the marker to the correct position
+    5. release the left mouse button
+.fi
+
+To change the object marker geometry from circular to elliptical:
+
+.nf
+    1. move the mouse inside the object marker
+    2. wait until the cursor changes to a small cross
+    3. press the right mouse button
+    4. select the Object geometry menu
+    5. select the Ellipse item
+    6. release the right mouse button
+.fi
+
+To change the shape of the object marker which probably still looks like
+a circle:
+
+.nf
+    1. follow the instructions for resizing the object marker
+.fi
+
+but try not to let the marker get too small since it becomes hard to
+manipulate in that case.
+
+To rotate the object marker ellipse:
+
+.nf
+    1. hold down the Shift key
+    2. place the mouse on the border of the ellipse
+    3. wait until the cursor changes to a . in a box
+    4. press the left mouse button
+    5. drag the ellipse around to the desired position angle
+    6. release the left mouse button and the Shift key
+.fi
+
+
+To adjust the sky markers:
+
+To resize of the sky marker:
+
+.nf
+    1. decrease the size of the inner sky marker as described 
+       for the object marker but make sure that the inner sky
+       marker does not completely disappear 
+    2. increase the size of the outer sky marker as described
+       for the object marker
+.fi
+
+To position the sky marker:
+
+.nf
+    1. position the outer sky marker as described for the object
+       marker
+    2. the inner sky marker will automatically reposition with
+       it
+.fi
+
+To change the sky geometry to rectangle:
+
+.nf
+    1. move to the object marker
+    2. follow the instructions for the object marker but ...
+    3. select the Sky geometry menu instead of the Object
+       geometry menu and ...
+    4. the Rectangle geometry instead of the Ellipse geometry
+.fi
+
+To resize the rectangular sky marker:
+
+.nf
+    1. follow the instructions for resizing the object marker but ...
+    2. wait until the cursor changes to a box with arrows instead of
+       a box with a . inside and ...
+    3. drag on the corners of the box
+.fi
+
+To rotate the rectangular sky marker:
+
+.nf
+    1. follow the instructions for rotating the object marker but ...
+    2. wait until the cursor changes to a box with arrows instead
+       of a box with a . inside
+.fi
+
+To save the marker geometry to the object list:
+
+.nf
+    1. move the mouse inside the object marker
+    2. press the right mouse button
+    3. select the "Save to objects list" item
+    4. check the list panel to see if the object appeared correctly
+.fi
+
+.ih
+II.7. QUIT TUTORIAL II
+
+Quit xguiphot by hitting the Quit button.
+
+.endhelp

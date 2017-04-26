@@ -1,0 +1,5404 @@
+# FXCOR.GUI  --  Default  GUI  description  file  for  the  FXCOR  task.
+
+reset-server
+appInitialize  fxcor  Fxcor  {
+	Fxcor*objects:\
+\
+	toplevel		Layout		fxcLayout\
+	fxcLayout		Frame		menuFrame\
+	menuFrame		Layout		menuBar\
+	fxcLayout		Group		graphGroup\
+\
+	menuBar			MenuButton	fileButton\
+	menuBar			MenuButton	editButton\
+	menuBar			MenuButton	modeButton\
+	menuBar			MenuButton	paramButton\
+	menuBar			MenuButton	plotButton\
+	menuBar			Command		mainPrev\
+	menuBar			Command		mainNext\
+	menuBar			Command		mainWrite\
+	menuBar			Command		mainRedraw\
+	menuBar			Command		mainHelp\
+	menuBar			Command		mainQuit\
+\
+	graphGroup		Gterm		gterm\
+\
+	toplevel		TopLevelShell	results\
+	results			Layout		resLayout\
+	resLayout		Frame		resMenuFrame\
+	resMenuFrame		Layout		resMenuBar\
+	resMenuBar		Command		resultsClear\
+	resMenuBar		Command		resultsDone\
+\
+	resLayout		Label		resultTitle\
+	resLayout		Frame		resultFrame\
+	resultFrame		AsciiText	resultList\
+\
+	toplevel		TopLevelShell	tmpGraph\
+	tmpGraph		Layout		tgLayout\
+	tgLayout		Frame		tgMenuFrame\
+	tgMenuFrame		Layout		tgMenuBar\
+	tgMenuBar		Command		tgDone\
+	tgLayout		Group		tgGraphGroup\
+	tgGraphGroup		Gterm		tgGterm\
+\
+	toplevel		TopLevelShell	smodeShell\
+	smodeShell		Layout		smLayout\
+	smLayout		Frame		smMenuFrame\
+	smMenuFrame		Layout		smMenuBar\
+	smLayout		Group		smGraphGroup\
+\
+	smMenuBar		MenuButton	smodeModeButton\
+	smMenuBar		MenuButton	smodePlotButton\
+	smMenuBar		Command		smodeRedraw\
+	smMenuBar		Command		smodeHelp\
+	smMenuBar		Command		smodeBack\
+\
+	smGraphGroup		Gterm		smodeGterm\
+\
+	toplevel		TopLevelShell	fmodeShell\
+	fmodeShell		Layout		fmLayout\
+	fmLayout		Frame		fmMenuFrame\
+	fmMenuFrame		Layout		fmMenuBar\
+	fmLayout		Group		fmGraphGroup\
+\
+	fmMenuBar		MenuButton	fmodeModeButton\
+	fmMenuBar		MenuButton	fmodePlotButton\
+	fmMenuBar		Command		fmodeOptions\
+	fmMenuBar		Command		fmodeEditFilter\
+	fmMenuBar		Command		fmodeRedraw\
+	fmMenuBar		Command		fmodeHelp\
+	fmMenuBar		Command		fmodeBack\
+\
+	fmGraphGroup		Gterm		fmodeGterm\
+\
+	toplevel		TopLevelShell	fmOptions\
+	fmOptions		Layout		fmOptsLayout\
+\
+	fmOptsLayout		Group		foptTitleGroup\
+	foptTitleGroup		Label		foptFormLabel\
+\
+	fmOptsLayout		Group		fmOptsGroup\
+	fmOptsGroup		Layout		foptOptions\
+	foptOptions		Layout		foptLabel\
+	foptLabel		Label		foptSpecLabel\
+	foptLabel		Label		foptScaleLabel\
+	foptLabel		Label		foptOverlayLabel\
+	foptLabel		Label		foptZoomLabel\
+\
+	foptOptions		Layout		foptText\
+	foptText		Frame		foptSpecFrame\
+	foptSpecFrame		Command		foptSpecValue\
+	foptText		Frame		foptScaleFrame\
+	foptScaleFrame		Command		foptScaleValue\
+	foptText		Frame		foptOvlFrame\
+	foptOvlFrame		Command		foptOvlValue\
+	foptText		Frame		foptZoomFrame\
+	foptZoomFrame		Layout		foptZoomLayout\
+	foptZoomLayout		Arrow		foptZoomLess\
+	foptZoomLayout		TextBox		foptZoomValue\
+	foptZoomLayout		Arrow		foptZoomMore\
+\
+	fmOptsLayout		Group		foptCmdGroup\
+	foptCmdGroup		Layout		fmOptsCmd\
+	fmOptsCmd		Command		fmOptsApply\
+	fmOptsCmd		Command		fmOptsUnlearn\
+	fmOptsCmd		Command		fmOptsHelp\
+	fmOptsCmd		Command		fmOptsDismiss\
+\
+	toplevel		TopLevelShell	tclShell\
+	tclShell		Layout		tclLayout\
+	tclLayout		Group		tclCmdGroup\
+	tclCmdGroup		Layout		tclCmd\
+	tclCmd			Command		tclClear\
+	tclCmd			Command		tclExecute\
+	tclCmd			Command		tclDismiss\
+	tclLayout		Frame		tclFrame\
+	tclFrame		AsciiText	tclEntry\
+\
+	toplevel		TopLevelShell	saveShell\
+	saveShell		Layout		saveLayout\
+	saveLayout		Frame		saveFrame\
+	saveFrame		Label		saveLabel\
+	saveLayout		Group		saveCmdGroup\
+	saveCmdGroup		Layout		saveCmdLayout\
+	saveCmdLayout		Command		saveYes\
+	saveCmdLayout		Command		saveNo\
+	saveCmdLayout		Command		saveCancel\
+\
+	toplevel		TopLevelShell	filename\
+	filename		Layout		fileLayout\
+	fileLayout		Group		fnameGroup\
+	fileLayout		Group		fnameCmdGroup\
+\
+	fnameGroup		Layout		fnameLayout\
+	fnameLayout		Label		fnameLabel\
+	fnameLayout		Frame		fnameFrame\
+	fnameFrame		AsciiText	fnameEntry\
+\
+	fnameCmdGroup		Layout		fnameCmdLayout\
+	fnameCmdLayout		Command		fnameOkay\
+	fnameCmdLayout		Command		fnameClear\
+	fnameCmdLayout		Command		fnameDismiss\
+\
+	toplevel		TopLevelShell	fxcpars\
+	fxcpars			Layout		fxcpLayout\
+\
+	fxcpLayout		Group		fxcpTitleGroup\
+	fxcpTitleGroup		Label		fxcpFormLab\
+\
+	fxcpLayout		Group		fxcpParGroup\
+	fxcpParGroup		Layout		fxcpParams\
+\
+	fxcpParams		Group		fxcpInputGroup\
+	fxcpInputGroup		Layout		fxcpInputLayout\
+	fxcpInputLayout		Label		fxcpObjLab\
+	fxcpInputLayout		Frame		fxcpObjFrame\
+	fxcpObjFrame		AsciiText	fxcpObjVal\
+	fxcpInputLayout		Label		fxcpTempLab\
+	fxcpInputLayout		Frame		fxcpTempFrame\
+	fxcpTempFrame		AsciiText	fxcpTempVal\
+	fxcpInputLayout		Label		fxcpApLab\
+	fxcpInputLayout		Frame		fxcpApFrame\
+	fxcpApFrame		AsciiText	fxcpApVal\
+\
+	fxcpParams		Group		fxcpPsetGroup\
+	fxcpPsetGroup		Layout		fxcpPsetLayout\
+	fxcpPsetLayout		Command		fxcpKeywpars\
+	fxcpPsetLayout		Command		fxcpContinpars\
+	fxcpPsetLayout		Command		fxcpFiltpars\
+\
+	fxcpParams		Group		fxcpPeakGroup\
+	fxcpPeakGroup		Layout		fxcpPeakLayout\
+	fxcpPeakLayout		Label		fxcpFuncLab\
+	fxcpPeakLayout		Frame		fxcpFuncFrame\
+	fxcpFuncFrame		MenuButton	fxcpFuncVal\
+	fxcpPeakLayout		Label		fxcpHgtLab\
+	fxcpPeakLayout		Frame		fxcpHgtFrame\
+	fxcpHgtFrame		AsciiText	fxcpHgtVal\
+	fxcpPeakLayout		TextToggle	fxcpPeak\
+	fxcpPeakLayout		Label		fxcpWidthLab\
+	fxcpPeakLayout		Frame		fxcpWidthFrame\
+	fxcpWidthFrame		AsciiText	fxcpWidthVal\
+	fxcpPeakLayout		Label		fxcpMinLab\
+	fxcpPeakLayout		Frame		fxcpMinFrame\
+	fxcpMinFrame		AsciiText	fxcpMinVal\
+	fxcpPeakLayout		Label		fxcpMaxLab\
+	fxcpPeakLayout		Frame		fxcpMaxFrame\
+	fxcpMaxFrame		AsciiText	fxcpMaxVal\
+	fxcpPeakLayout		Label		fxcpWgtLab\
+	fxcpPeakLayout		Frame		fxcpWgtFrame\
+	fxcpWgtFrame		AsciiText	fxcpWgtVal\
+	fxcpPeakLayout		Label		fxcpBkgLab\
+	fxcpPeakLayout		Frame		fxcpBkgFrame\
+	fxcpBkgFrame		AsciiText	fxcpBkgVal\
+	fxcpPeakLayout		Label		fxcpCenterLab\
+	fxcpPeakLayout		Frame		fxcpCenterFrame\
+	fxcpCenterFrame		AsciiText	fxcpCenterVal\
+	fxcpPeakLayout		Label		fxcpPWidthLab\
+	fxcpPeakLayout		Frame		fxcpPWidthFrame\
+	fxcpPWidthFrame		AsciiText	fxcpPWidthVal\
+\
+	fxcpParams		Group		fxcpPrepGroup\
+	fxcpPrepGroup		Layout		fxcpPrepLayout\
+	fxcpPrepLayout		Label		fxcpContinLab\
+	fxcpPrepLayout		Frame		fxcpContinFrame\
+	fxcpContinFrame		MenuButton	fxcpContinVal\
+	fxcpPrepLayout		Label		fxcpFiltLab\
+	fxcpPrepLayout		Frame		fxcpFiltFrame\
+	fxcpFiltFrame		MenuButton	fxcpFiltVal\
+	fxcpPrepLayout		Label		fxcpRebinLab\
+	fxcpPrepLayout		Frame		fxcpRebinFrame\
+	fxcpRebinFrame		MenuButton	fxcpRebinVal\
+	fxcpPrepLayout		TextToggle	fxcpPixcor\
+	fxcpPrepLayout		Label		fxcpApodizeLab\
+	fxcpPrepLayout		Frame		fxcpApodizeFrame\
+	fxcpApodizeFrame	AsciiText	fxcpApodizeVal\
+	fxcpPrepLayout		Label		fxcpOSampLab\
+	fxcpPrepLayout		Frame		fxcpOSampFrame\
+	fxcpOSampFrame		AsciiText	fxcpOSampVal\
+	fxcpPrepLayout		Label		fxcpTSampLab\
+	fxcpPrepLayout		Frame		fxcpTSampFrame\
+	fxcpTSampFrame		AsciiText	fxcpTSampVal\
+\
+	fxcpParams		Group		fxcpOutputGroup\
+	fxcpOutputGroup		Layout		fxcpOutputLayout\
+	fxcpOutputLayout	Label		fxcpOutLab\
+	fxcpOutputLayout	Frame		fxcpOutFrame\
+	fxcpOutFrame		AsciiText	fxcpOutVal\
+	fxcpOutputLayout	Label		fxcpVerbLab\
+	fxcpOutputLayout	Frame		fxcpVerbFrame\
+	fxcpVerbFrame		MenuButton	fxcpVerbVal\
+	fxcpOutputLayout	Label		fxcpCCFLab\
+	fxcpOutputLayout	Frame		fxcpCCFFrame\
+	fxcpCCFFrame		MenuButton	fxcpCCFVal\
+	fxcpOutputLayout	TextToggle	fxcpAutoWrite\
+	fxcpOutputLayout	TextToggle	fxcpAutoDraw\
+	fxcpOutputLayout	TextToggle	fxcpHUpdate\
+\
+	fxcpLayout		Group		fxcpCmdGroup\
+	fxcpCmdGroup		Layout		fxcparsCmd\
+	fxcparsCmd		Command		fxcparsApply\
+	fxcparsCmd		Command		fxcparsUnlearn\
+	fxcparsCmd		Command		fxcparsUpdate\
+	fxcparsCmd		Command		fxcparsCancel\
+	fxcparsCmd		Command		fxcparsHelp\
+	fxcparsCmd		Command		fxcparsDismiss\
+\
+	toplevel		TopLevelShell	filtpars\
+	filtpars		Layout		filtparsLayout\
+\
+	filtparsLayout		Group		filtTitleGroup\
+	filtTitleGroup		Label		filtFormLabel\
+\
+	filtparsLayout		Group		filtparsGroup\
+	filtparsGroup		Layout		filtOptions\
+	filtOptions		Layout		filtLabel\
+	filtLabel		Label		filtOptionName\
+	filtLabel		Label		filtTypeName\
+	filtLabel		Label		filtCutonName\
+	filtLabel		Label		filtCutoffName\
+	filtLabel		Label		filtFullonName\
+	filtLabel		Label		filtFulloffName\
+	filtOptions		Layout		filtText\
+	filtText		Frame		filtOptionFrame\
+	filtOptionFrame		MenuButton	filtOptionValue\
+	filtText		Frame		filtTypeFrame\
+	filtTypeFrame		MenuButton	filtTypeValue\
+	filtText		Frame		filtCutonFrame\
+	filtCutonFrame		AsciiText	filtCutonValue\
+	filtText		Frame		filtCutoffFrame\
+	filtCutoffFrame		AsciiText	filtCutoffValue\
+	filtText		Frame		filtFullonFrame\
+	filtFullonFrame		AsciiText	filtFullonValue\
+	filtText		Frame		filtFuloffFrame\
+	filtFuloffFrame		AsciiText	filtFulloffValue\
+\
+	filtparsLayout		Group		filtCmdGroup\
+	filtCmdGroup		Layout		filtparsCmd\
+	filtparsCmd		Command		filtparsApply\
+	filtparsCmd		Command		filtparsUnlearn\
+	filtparsCmd		Command		filtparsUpdate\
+	filtparsCmd		Command		filtparsCancel\
+	filtparsCmd		Command		filtparsHelp\
+	filtparsCmd		Command		filtparsDismiss\
+\
+	toplevel		TopLevelShell	helpShell\
+	helpShell		Layout		helpLayout\
+	helpLayout		Layout		helpMenuLayout\
+	helpMenuLayout		Command		helpBack\
+	helpMenuLayout		Command		helpForward\
+	helpMenuLayout		Command		helpHome\
+	helpMenuLayout		Command		helpTutorial\
+	helpMenuLayout		Command		helpDismiss\
+	helpLayout		Frame		helpTextFrame\
+	helpTextFrame		HTML		helpText\
+        helpLayout       	Label           hfLabel\
+        helpLayout       	Frame           hfindFrame\
+        hfindFrame         	AsciiText       hfEntry\
+        helpLayout       	Command         hfFind\
+        helpLayout       	Command         hfClear\
+        helpLayout       	TextToggle      hfDir\
+        helpLayout       	TextToggle      hfCase\
+	helpShell		Parameter	help\
+	helpShell		Parameter	showhelp\
+\
+	toplevel		TopLevelShell	keywpars\
+	keywpars		Layout		keywparsLayout\
+\
+	keywparsLayout		Group		keywTitleGroup\
+	keywTitleGroup		Label		keywFormLabel\
+\
+	keywparsLayout		Group		keywparsIGroup\
+	keywparsIGroup		Layout		keywparsIList\
+	keywparsIList		Layout		keywILabel\
+	keywILabel		Label		keywRAName\
+	keywILabel		Label		keywDECName\
+	keywILabel		Label		keywUTName\
+	keywILabel		Label		keywUTMIDName\
+	keywILabel		Label		keywEXPTIMEName\
+	keywILabel		Label		keywEPOCHName\
+	keywILabel		Label		keywDATEOBSName\
+	keywparsIList		Layout		keywIText\
+	keywIText		Frame		keywRAFrame\
+	keywRAFrame		AsciiText	keywRAValue\
+	keywIText		Frame		keywDECFrame\
+	keywDECFrame		AsciiText	keywDECValue\
+	keywIText		Frame		keywUTFrame\
+	keywUTFrame		AsciiText	keywUTValue\
+	keywIText		Frame		keywUTMIDFrame\
+	keywUTMIDFrame		AsciiText	keywUTMIDValue\
+	keywIText		Frame		keywETIMEFrame\
+	keywETIMEFrame		AsciiText	keywEXPTIMEValue\
+	keywIText		Frame		keywEPOCHFrame\
+	keywEPOCHFrame		AsciiText	keywEPOCHValue\
+	keywIText		Frame		keywDATEFrame\
+	keywDATEFrame		AsciiText	keywDATEOBSValue\
+\
+	keywparsLayout		Group		keywparsOGroup\
+	keywparsOGroup		Layout		keywparsOList\
+	keywparsOList		Layout		keywOLabel\
+	keywOLabel		Label		keywHJDName\
+	keywOLabel		Label		keywMJDOBSName\
+	keywOLabel		Label		keywVOBSName\
+	keywOLabel		Label		keywVRELName\
+	keywOLabel		Label		keywVHELIOName\
+	keywOLabel		Label		keywVLSRName\
+	keywOLabel		Label		keywVSUNName\
+	keywparsOList		Layout		keywOText\
+	keywOText		Frame		keywHJDFrame\
+	keywHJDFrame		AsciiText	keywHJDValue\
+	keywOText		Frame		keywMJDOBSFrame\
+	keywMJDOBSFrame		AsciiText	keywMJDOBSValue\
+	keywOText		Frame		keywVOBSFrame\
+	keywVOBSFrame		AsciiText	keywVOBSValue\
+	keywOText		Frame		keywVRELFrame\
+	keywVRELFrame		AsciiText	keywVRELValue\
+	keywOText		Frame		keywVHELIOFrame\
+	keywVHELIOFrame		AsciiText	keywVHELIOValue\
+	keywOText		Frame		keywVLSRFrame\
+	keywVLSRFrame		AsciiText	keywVLSRValue\
+	keywOText		Frame		keywVSUNFrame\
+	keywVSUNFrame		AsciiText	keywVSUNValue\
+\
+	keywparsLayout		Group		keywCmdGroup\
+	keywCmdGroup		Layout		keywparsCmd\
+	keywparsCmd		Command		keywparsApply\
+	keywparsCmd		Command		keywparsUnlearn\
+	keywparsCmd		Command		keywparsUpdate\
+	keywparsCmd		Command		keywparsCancel\
+	keywparsCmd		Command		keywparsHelp\
+	keywparsCmd		Command		keywparsDismiss\
+\
+	toplevel		TopLevelShell	dialog\
+	dialog			Layout		dialogLayout\
+	dialogLayout		Frame		dialogMenuFrame\
+	dialogMenuFrame		Layout		dialogMenuBar\
+	dialogMenuBar		Command		dialogClear\
+	dialogMenuBar		Command		dialogDone\
+	dialogLayout		Label		dialogTitle\
+	dialogLayout		Frame		dialogFrame\
+	dialogFrame		AsciiText	dialogInfo\
+\
+	toplevel		TopLevelShell	icfitShell\
+	icfitShell		Layout		icLayout\
+	icLayout		Frame		icMenuFrame\
+	icMenuFrame		Layout		icMenuBar\
+	icLayout		Group		icGraphGroup\
+\
+	icMenuBar		MenuButton	icPlotButton\
+	icMenuBar		MenuButton	icFuncButton\
+	icMenuBar		MenuButton	icOrderButton\
+	icMenuBar		MenuButton	icMiscButton\
+	icMenuBar		Toggle		icMarkRej\
+	icMenuBar		Command		icEdit\
+	icMenuBar		Command		icRefit\
+	icMenuBar		Command		icRedraw\
+	icMenuBar		Command		icHelp\
+	icMenuBar		Command		icQuit\
+\
+	icGraphGroup		Gterm		icGterm\
+\
+	toplevel		TopLevelShell	icHelpShell\
+	icHelpShell		Layout		icHelpLayout\
+	icHelpLayout		Layout		icHelpMenuLayout\
+	icHelpMenuLayout	Command		icHelpBack\
+	icHelpMenuLayout	Command		icHelpForward\
+	icHelpMenuLayout	Command		icHelpHome\
+	icHelpMenuLayout	Command		icHelpTutorial\
+	icHelpMenuLayout	Command		icHelpDismiss\
+	icHelpLayout		Frame		icHelpTextFrame\
+	icHelpTextFrame		HTML		icHelpText\
+\
+	toplevel		TopLevelShell	icShowShell\
+	icShowShell		Layout		icShowLayout\
+	icShowLayout		Frame		icShowMenuFrame\
+	icShowMenuFrame		Layout		icShowMenuBar\
+	icShowMenuBar		Command		icShowDismiss\
+	icShowLayout		Frame		icTextFrame\
+	icTextFrame		AsciiText	icShowText\
+\
+	icLayout		Parameter	icfit\
+	icLayout		Parameter	icrefit\
+	icLayout		Parameter	ichelp\
+	icLayout		Parameter	icshow\
+\
+	toplevel		TopLevelShell	icfitPars\
+	icfitPars		Layout		icfitpLayout\
+\
+	icfitpLayout		Group		icfparsTitleGroup\
+	icfparsTitleGroup	Label		icfparsFormLabel\
+\
+	icfitpLayout		Group		icfparsGroup\
+	icfparsGroup		Layout		icfparsOptions\
+	icfparsOptions		Layout		icfparsLabel\
+	icfparsLabel		Label		icFuncName\
+	icfparsLabel		Label		icOrderName\
+	icfparsLabel		Label		icGrowName\
+	icfparsLabel		Label		icMarkrejName\
+	icfparsLabel		Label		icNaverageName\
+	icfparsLabel		Label		icNiterName\
+	icfparsLabel		Label		icLowrejName\
+	icfparsLabel		Label		icHirejName\
+	icfparsLabel		Label		icSampleName\
+	icfparsOptions		Layout		icfparsText\
+	icfparsText		Frame		icFuncFrame\
+	icFuncFrame		MenuButton	icFuncValue\
+	icfparsText		Frame		icOrderFrame\
+	icOrderFrame		AsciiText	icOrderValue\
+	icfparsText		Frame		icGrowFrame\
+	icGrowFrame		AsciiText	icGrowValue\
+	icfparsText		Frame		icMarkrejFrame\
+	icMarkrejFrame		Command		icMarkrejValue\
+	icfparsText		Frame		icNaverageFrame\
+	icNaverageFrame		AsciiText	icNaverageValue\
+	icfparsText		Frame		icNiterFrame\
+	icNiterFrame		AsciiText	icNiterValue\
+	icfparsText		Frame		icLowrejFrame\
+	icLowrejFrame		AsciiText	icLowrejValue\
+	icfparsText		Frame		icHirejFrame\
+	icHirejFrame		AsciiText	icHirejValue\
+	icfparsText		Frame		icSampleFrame\
+	icSampleFrame		AsciiText	icSampleValue\
+\
+	icfitpLayout		Group		icfpCmdGroup\
+	icfpCmdGroup		Layout		icfparsCmd\
+	icfparsCmd		Command		icfparsApply\
+	icfparsCmd		Command		icfparsUnlearn\
+	icfparsCmd		Command		icfparsUpdate\
+	icfparsCmd		Command		icfparsCancel\
+	icfparsCmd		Command		icfparsHelp\
+	icfparsCmd		Command		icfparsDismiss\
+\
+	toplevel		TopLevelShell	fileBrowser\
+	fileBrowser		Layout		fbLayout\
+	fbLayout		Group		fnavGroup\
+	fbLayout		Group		fbCmdGroup\
+	fbLayout		Parameter	directory\
+\
+	fnavGroup		Layout		fnavLayout\
+	fnavLayout		Command		fnavHome\
+	fnavLayout		Command		fnavUp\
+	fnavLayout		Command		fnavRoot\
+	fnavLayout		Command		fnavRescan\
+	fnavLayout		Label		filterLabel\
+	fnavLayout		Frame		filterFrame\
+	filterFrame		AsciiText	filterEntry\
+	fnavLayout		Command		filterClear\
+	fnavLayout		Group		dirGroup\
+	dirGroup		Frame		dirFrame\
+	dirFrame		Viewport	dirView\
+	dirView			List		dirList\
+	fnavLayout		Group		fileGroup\
+	fileGroup		Frame		fgFrame\
+	fgFrame			Viewport	fileView\
+	fileView		List		fileList\
+	fnavLayout		Label		curdirLabel\
+	fnavLayout		Frame		curdirFrame\
+	curdirFrame		AsciiText	curdirEntry\
+	fnavLayout		Command		curdirClear\
+	fnavLayout		Label		fbLabel\
+	fnavLayout		Frame		fbFrame\
+	fbFrame			AsciiText	fbEntry\
+	fnavLayout		Command		fbClear\
+\
+	fbCmdGroup		Layout		fbCmdLayout\
+	fbCmdLayout		Command		fbcObj\
+	fbCmdLayout		Command		fbcTemp\
+	fbCmdLayout		Command		fbcHelp\
+	fbCmdLayout		Command		fbcDismiss\
+\
+        toplevel          	TopLevelShell   ccfname\
+        ccfname           	Layout          ccfLayout\
+        ccfLayout         	Group           ccfnameGroup\
+        ccfLayout         	Group           ccfnameCmdGroup\
+\
+        ccfnameGroup      	Layout          ccfnameLayout\
+        ccfnameLayout     	Label           ccfnameLabel\
+        ccfnameLayout     	Frame           ccfnameFrame\
+        ccfnameFrame      	AsciiText       ccfnameEntry\
+        ccfnameLayout     	Label           ccfType\
+        ccfnameLayout     	TextToggle      ccfFile\
+        ccfnameLayout     	TextToggle      ccfImage\
+\
+        ccfnameCmdGroup   	Layout          ccfnameCmdLayout\
+        ccfnameCmdLayout  	Command         ccfnameOkay\
+        ccfnameCmdLayout  	Command         ccfnameDismiss\
+\
+\
+	toplevel		TransientShell	warning\
+	warning			Layout		warn\
+	warn			Frame		warnFrame\
+	warnFrame		Layout		WFlayout\
+	WFlayout		Icon		warnIcon\
+	WFlayout		TextBox		warnText\
+	warn			Frame		warnBtnFrame\
+	warnBtnFrame		Command		warnDismiss\
+\
+\
+	toplevel		Parameter	fxcor\
+	fxcor			Parameter	fxcorPars\
+	fxcor			Parameter	keywPars\
+	fxcor			Parameter	filtPars\
+	fxcor			Parameter	fmodePars\
+	fxcor			Parameter	textout\
+	fxcor			Parameter	alert\
+	fxcor			Parameter	ready\
+\
+	fxcor			Parameter	imgStr\
+	fxcor			Parameter	imgList\
+	fxcor			Parameter	apStr\
+	fxcor			Parameter	apList\
+\
+	fxcor			Parameter	autowritePar\
+	fxcor			Parameter	tmpPlot\
+	fxcor			Parameter	wasWritten\
+	fxcor			Parameter	taskQuit\
+	fxcor			Parameter	listStat\
+	fxcor			Parameter	dialogText\
+	fxcor			Parameter	resultStat\
+	fxcor			Parameter	verbResultStat\
+	fxcor			Parameter	modeChange
+
+
+
+
+    !-------------------------------------------------------
+    ! Define some global resources for the main menu panels.
+    !-------------------------------------------------------
+    *beNiceToColormap:				false
+    *allowShellResize:				true
+
+    *background:				gray75
+    !*Group.background:				gray67
+    !*Frame.background:				gray67
+    !*Layout.background:			gray67
+    *Text*background:				gray67
+    *SimpleMenu.background:			gray67
+
+    *Command.background:			gray75
+    *Label.background:				gray75
+    *MenuButton.background:			gray75
+    *Toggle.background:				gray75
+
+    *Command.foreground:			black
+    *Label.foreground:				black
+    *MenuButton.foreground:			black
+    *Toggle.foreground:				black
+    *SimpleMenu.foreground:			black
+
+    *Gterm.width:				640
+    *Gterm.height:				480
+
+    *Command.highlightThickness:		2	
+    *Label.highlightThickness:			0
+    *MenuButton.highlightThickness:		2
+    *Toggle.highlightThickness:			2
+
+    *Label.borderWidth:				0
+    *Label.shadowWidth:				0
+
+    *SmeBSB.leftMargin:				10
+
+    *Group.shrinkToFit:				True
+
+    !------------------------------------------------------------
+    ! Define resources to take advantage of the 3D scrollbar look
+    !------------------------------------------------------------
+    *Scrollbar*background:			gray75
+    *Scrollbar*width:				15
+    *Scrollbar*height:				15
+    *Scrollbar*shadowWidth:			2
+    *Scrollbar*cursorName:			top_left_arrow
+    *Scrollbar*pushThumb:			true
+
+    !----------------------------------------
+    !  Menu resources giving a shadow effect.
+    !----------------------------------------
+    *SimpleMenu*background:			gray80
+    *SimpleMenu.foreground:			black
+    *SimpleMenu.borderWidth:			1
+    *SimpleMenu.menuLabel.foreground:		black
+    *SimpleMenu.line1.foreground:		gray61
+    *SimpleMenu.line2.foreground:		gray91
+    *SimpleMenu.line3.foreground:		gray61
+    *SimpleMenu.line4.foreground:		gray91
+    *SimpleMenu.line5.foreground:		gray61
+    *SimpleMenu.line6.foreground:		gray91
+    *SimpleMenu.line7.foreground:		gray61
+    *SimpleMenu.line8.foreground:		gray91
+    *SimpleMenu.line9.foreground:		gray61
+    *SimpleMenu.line10.foreground:		gray91
+    *SimpleMenu.line11.foreground:		gray61
+    *SimpleMenu.line12.foreground:		gray91
+    *SimpleMenu.line13.foreground:		gray61
+    *SimpleMenu.line14.foreground:		gray91
+    *SimpleMenu.line15.foreground:		gray61
+    *SimpleMenu.line16.foreground:		gray91
+    *SimpleMenu.line17.foreground:		gray61
+    *SimpleMenu.line18.foreground:		gray91
+    *SimpleMenu.line19.foreground:		gray61
+    *SimpleMenu.line20.foreground:		gray91
+    *SimpleMenu.line21.foreground:		gray91
+    *SimpleMenu.line22.foreground:		gray91
+    *SimpleMenu.line23.foreground:		gray91
+    *SimpleMenu.line24.foreground:		gray91
+
+
+    !-------------------------------------
+    ! Define new fonts to use for the GUI.
+    !-------------------------------------
+    *font:			7x13bold
+    *Command.font:	-adobe-times-bold-i-normal-*-12-*-*-*-*-*-iso8859-1
+    *MenuButton.font:	-adobe-times-bold-i-normal-*-12-*-*-*-*-*-iso8859-1
+    *Toggle.font:	-adobe-times-bold-i-normal-*-12-*-*-*-*-*-iso8859-1
+    *Label.font:	-adobe-times-bold-i-normal-*-12-*-*-*-*-*-iso8859-1
+    *TextToggle.font:	-adobe-times-bold-i-normal-*-12-*-*-*-*-*-iso8859-1
+    *SmeBSB.font:         	7x13bold
+
+
+
+
+    !--------------------------------------
+    ! Define the CCF mode window resources.
+    !--------------------------------------
+    *fxcor.title:			FXCOR Radial Velocity Analysis Task
+    *fxcor.width:				640
+    *fileButton.label:				File
+    *fileButton.menuName:			fileMenu
+    *editButton.label:				Edit
+    *editButton.menuName:			eparMenu
+    *modeButton.label:				Mode
+    *modeButton.menuName:			modeMenu
+    *paramButton.label:				Parameters
+    *paramButton.menuName:			paramMenu
+    *plotButton.label:				Plots
+    *plotButton.menuName:			plotMenu
+
+    *mainPrev.label:				Prev
+    *mainNext.label:				Next
+    *mainWrite.label:				Save
+    *mainRedraw.label:				Redraw
+    *mainHelp.label:				Help
+    *mainQuit.label:				Quit
+
+    *fxcLayout*borderWidth:			0
+    *fxcLayout.layout:	vertical { \
+	-1 \
+	menuFrame < +inf -inf * > \
+	-2 \
+	graphGroup < +inf -inf * +inf -inf > \
+	-1 \
+    }
+
+    *menuFrame.height:				40
+    *menuFrame.outerOffset:			0
+    *menuFrame.innerOffset:			5
+    *menuFrame.frameType:			chiseled
+    *menuFrame.frameWidth:			2
+    *menuBar.layout:	horizontal { \
+	fileButton  2 \
+	editButton  2 \
+	modeButton  2 \
+	paramButton 2 \
+	plotButton \
+	100 < +inf -inf > \
+	mainPrev    2 \
+	mainNext    2 \
+	mainWrite   2 \
+	mainRedraw  2 \
+	mainHelp    2 \
+	mainQuit \
+    }
+
+    *graphGroup.outerOffset:			2
+    *graphGroup.innerOffset:			0
+    *graphGroup.frameType:			sunken
+    *graphGroup.frameWidth:			2
+    *graphGroup.label:		
+    *graphGroup.layout: horizontal { \
+	2 < +0 -2 > \
+	vertical { \
+	    2 < +0 -2 > \
+	    gterm < +inf -inf * +inf -inf > \
+	    2 < +0 -2 > \
+	} \
+	2 < +0 -2 > \
+    }
+    *gterm.translations:      \
+	    <EnterWindow>:   enter-window() \n\
+	    <LeaveWindow>:   leave-window() \n\
+		   <Key>?:   call(showHelp, ccfKeys) \n\
+	       <KeyPress>:   graphics-input() \n\
+		 <Motion>:   track-cursor()
+
+
+
+    !------------------------------------------
+    ! Define the Spectrum Mode popup resources.
+    !------------------------------------------
+    *smodeShell.title:				Spectrum Mode
+    *smodeShell.width:				640
+    *smodeModeButton.label:			Mode
+    *smodeModeButton.menuName:			smodeModeMenu
+    *smodePlotButton.label:			Plots
+    *smodePlotButton.menuName:			smplotMenu
+    *smodeRedraw.label:				Redraw
+    *smodeHelp.label:				Help
+    *smodeBack.label:				Back
+
+    *smLayout*borderWidth:			0
+    *smLayout.layout:	vertical { \
+	-1 \
+	smMenuFrame < +inf -inf * > \
+	-2 \
+	smGraphGroup < +inf -inf * +inf -inf > \
+	-1 \
+    }
+
+    *smMenuFrame.height:			40
+    *smMenuFrame.outerOffset:			0
+    *smMenuFrame.innerOffset:			5
+    *smMenuFrame.frameType:			chiseled
+    *smMenuFrame.frameWidth:			2
+    *smMenuBar.layout:				horizontal { \
+	smodeModeButton	 2 \
+	smodePlotButton	 2 \
+	100 < +inf -inf >  \
+	smodeRedraw	 2 \
+	smodeHelp	 2 \
+	smodeBack	 2 \
+    }
+
+    *smGraphGroup.outerOffset:			2
+    *smGraphGroup.innerOffset:			0
+    *smGraphGroup.frameType:			sunken
+    *smGraphGroup.frameWidth:			2
+    *smGraphGroup.label:		
+    *smGraphLayout.layout: horizontal { \
+	2 < +0 -2 > \
+	vertical { \
+	    2 < +0 -2 > \
+	    smodeGterm < +inf -inf * +inf -inf > \
+	    2 < +0 -2 > \
+	} \
+	2 < +0 -2 > \
+    }
+    *smodeGterm.translations:	   \
+	    <EnterWindow>:   enter-window() \n\
+	    <LeaveWindow>:   leave-window() \n\
+		   <Key>?:   call(showHelp, smKeys) \n\
+	       <KeyPress>:   graphics-input() \n\
+		 <Motion>:   track-cursor()
+
+
+    !-----------------------------------------
+    ! Define the Fourier Mode popup resources.
+    !-----------------------------------------
+    *fmodeShell.title:				Fourier Mode
+    *fmodeShell.width:				640
+    *fmodeModeButton.label:			Mode
+    *fmodeModeButton.menuName:			fmodeModeMenu
+    *fmodePlotButton.label:			Plots
+    *fmodePlotButton.menuName:			fmodePlotMenu
+    *fmodeOptions.label:			Plot Opts
+    *fmodeEditFilter.label:			Filter Opts
+    *fmodeRedraw.label:				Redraw
+    *fmodeHelp.label:				Help
+    *fmodeBack.label:				Back
+
+    *fmLayout*borderWidth:			0
+    *fmLayout.layout:	vertical { \
+	-1 \
+	fmMenuFrame < +inf -inf * > \
+	-2 \
+	fmGraphGroup < +inf -inf * +inf -inf > \
+	-1 \
+    }
+
+    *fmMenuFrame.height:			40
+    *fmMenuFrame.outerOffset:			0
+    *fmMenuFrame.innerOffset:			5
+    *fmMenuFrame.frameType:			chiseled
+    *fmMenuFrame.frameWidth:			2
+    *fmMenuBar.layout:	horizontal { \
+	fmodeModeButton	 2 \
+	fmodePlotButton	 2 \
+	fmodeOptions	 2 \
+	fmodeEditFilter	 2 \
+	100 < +inf -inf > \
+	fmodeRedraw	 2 \
+	fmodeHelp	 2 \
+	fmodeBack	 2 \
+    }
+
+    *fmGraphGroup.outerOffset:			2
+    *fmGraphGroup.innerOffset:			0
+    *fmGraphGroup.frameType:			sunken
+    *fmGraphGroup.frameWidth:			2
+    *fmGraphGroup.label:		
+    *fmGraphLayout.layout: horizontal { \
+	2 < +0 -2 > \
+	vertical { \
+	    2 < +0 -2 > \
+	    fmodeGterm < +inf -inf * +inf -inf > \
+	    2 < +0 -2 > \
+	} \
+	2 < +0 -2 > \
+    }
+    *fmodeGterm.translations:	   \
+	    <EnterWindow>:   enter-window() \n\
+	    <LeaveWindow>:   leave-window() \n\
+		   <Key>?:   call(showHelp, fmKeys) \n\
+	       <KeyPress>:   graphics-input() \n\
+		 <Motion>:   track-cursor()
+
+
+    
+    !----------------------------------------------------------
+    ! Define the resources for the fourier mode options window.
+    !----------------------------------------------------------
+    *fmOptions.width:				300
+    *fmOptions.height:				250
+    *fmOptions.background:			gray75
+    *fmOptsLayout.background:			gray75
+    *fmOptsLayout*Frame*frameType:		sunken
+    *fmOptsLayout*Frame.frameWidth:		1
+    
+    *fmOptsLayout*borderWidth:			0
+    *fmOptsLayout.layout: vertical { \
+	0 < +0 -0 > \
+	foptTitleGroup < +inf -inf * > \
+	fmOptsGroup    < +inf -inf * +inf -inf > \
+	foptCmdGroup   < +inf -inf * > \
+	0 < +0 -0 > \
+    }
+    *foptTitleGroup.label:				
+    *foptTitleGroup.background:			gray75
+    *foptTitleGroup.innerOffset:		0
+    *foptTitleGroup.outerOffset:		0
+    *foptFormLabel.label:			Fourier Mode Plot Options
+    *foptFormLabel.background:			gray67
+    *foptFormLabel.internalHeight:		13
+    
+    *fmOptsGroup.label:						
+    *fmOptsGroup.outerOffset:			7
+    *foptOptions*background:			gray75
+    *foptOptions*TextBox*background:		gray67
+    *foptOptions*Arrow.background:		gray67
+    *foptOptions*Arrow.foreground:		gray75
+    *foptOptions*Command.background:		gray67
+    *foptOptions*Command.borderWidth:		0
+    *foptOptions*Command.shadowWidth:		0
+    *foptOptions*Command.highlightThickness:	2
+    *foptOptions*Command.height:		25
+    *foptOptions.layout: horizontal { \
+	foptLabel < * +inf -inf > \
+	3 < +0 -3 > \
+	foptText < +inf -inf * +inf -inf > \
+    }
+    
+    *foptOptions*Label.justify:			right
+    *foptLabel.layout:	vertical { \
+	5 \
+	foptSpecLabel	 < * +inf -inf > 2  \
+	foptScaleLabel	 < * +inf -inf > 2  \
+	foptOverlayLabel < * +inf -inf > 2  \
+	foptZoomLabel	 < * +inf -inf >    \
+	5 \
+    }
+    *foptSpecLabel.width:			250
+    *foptSpecLabel.label:			Spectrum to Plot:
+    *foptScaleLabel.label:			Plot Scaling:
+    *foptOverlayLabel.label:			Overlay Filter:
+    *foptZoomLabel.label:			FFT Zoom Factor:
+
+    
+    *fmOptsGroup.background:			gray75
+    *foptText.layout: vertical { \
+	5 \
+	foptSpecFrame  < * +inf -inf > 2  \
+	foptScaleFrame < * +inf -inf > 2  \
+	foptOvlFrame   < * +inf -inf > 2  \
+	foptZoomFrame  < * +inf -inf >	  \
+	5 \
+    }
+    *foptSpecValue.label:			split_plot
+    *foptScaleValue.label:			log
+    *foptOvlValue.label:			false
+    *foptZoomValue.label:			1.0
+
+    *foptZoomFrame*internalWidth:		4
+    *foptZoomFrame*Arrow.width:			16
+    *foptZoomFrame*Arrow.height:		25
+    *foptZoomLayout.layout: horizontal { \
+	foptZoomLess \
+	foptZoomValue < +inf -100% * > \
+	foptZoomMore \
+    }
+    *foptZoomFrame.frameType:			sunken
+    *foptZoomFrame.frameWidth:			2
+    *foptZoomValue.width:			40
+    *foptZoomValue.height:			25
+    *foptZoomLess.direction:			left
+    *foptZoomMore.direction:			right
+
+    
+    
+    ! Do the command bar group resources.
+    !------------------------------------
+    *foptCmdGroup.label:					
+    *foptCmdGroup.innerOffset:			0
+    *foptCmdGroup.outerOffset:			0
+    *foptCmdGroup.borderWidth:			0
+    *foptCmdGroup*Command.background:		gray75
+    *foptCmdGroup.background:			gray75
+    *fmOptsCmd.background:			gray67
+    *fmOptsCmd.layout: vertical { \
+	5 \
+	horizontal { \
+	    5 \
+	    fmOptsApply	  1 \
+	    fmOptsUnlearn   \
+	    10 < +inf -10>  \
+	    fmOptsHelp	  1 \
+	    fmOptsDismiss   \
+	    5 \
+	} \
+	5 \
+    }
+    *fmOptsApply.label:				Apply
+    *fmOptsUnlearn.label:			Unlearn
+    *fmOptsHelp.label:				Help
+    *fmOptsDismiss.label:			Dismiss
+
+
+    !-----------------------------------------
+    ! Set the temporary plot window resources.
+    !-----------------------------------------
+    *tmpGraph.title:				Hit any key to quit...
+    *tmpGraph.width:				640
+    *tgDone.label:				Dismiss
+    *tgDone.width:				150
+
+    *tgLayout*borderWidth:			0
+    *tgLayout.layout:	vertical { \
+	-1 \
+	tgMenuFrame < +inf -inf * > \
+	-2 \
+	tgGraphGroup < +inf -inf * +inf -inf > \
+	-1 \
+    }
+
+    *tgMenuFrame.height:			40
+    *tgMenuFrame.outerOffset:			0
+    *tgMenuFrame.innerOffset:			5
+    *tgMenuFrame.frameType:			chiseled
+    *tgMenuFrame.frameWidth:			2
+    *tgMenuBar.layout:	horizontal { \
+	50 < +inf -inf > \
+	tgDone \
+	5  \
+    }
+
+    *tgGraphGroup.outerOffset:			2
+    *tgGraphGroup.innerOffset:			0
+    *tgGraphGroup.frameType:			sunken
+    *tgGraphGroup.frameWidth:			2
+    *tgGraphGroup.label:			
+    *tgGraphLayout.layout: horizontal { \
+	2 < +0 -2 > \
+	vertical { \
+	    2 < +0 -2 > \
+	    tgGterm < +inf -inf * +inf -inf > \
+	    2 < +0 -2 > \
+	} \
+	2 < +0 -2 > \
+    }
+
+
+    
+    !----------------------------
+    ! Main Task Parameter Editor
+    !----------------------------
+    *fxcpars.width:				450
+    *fxcpLayout.background:			gray75
+    *fxcpLayout*Frame*frameType:		sunken
+    *fxcpLayout*Frame.frameWidth:		1
+    *fxcpLayout*SimpleMenu.background:		gray67
+
+
+    *fxcpLayout*borderWidth:			0
+    *fxcpLayout.layout: vertical { \
+	0 < +0 -0 > \
+	fxcpTitleGroup < +inf -inf * > \
+	fxcpParGroup   < +inf -inf * +inf -inf > \
+	fxcpCmdGroup   < +inf -inf * > \
+	0 < +0 -0 > \
+    }
+    *fxcpTitleGroup.label:
+    *fxcpTitleGroup.background:			gray75
+    *fxcpTitleGroup.innerOffset:		0
+    *fxcpTitleGroup.outerOffset:		0
+    *fxcpFormLab.label:				FXCOR Task Parameters
+    *fxcpFormLab.background:			gray67
+    *fxcpFormLab.internalHeight:		10
+    
+    *fxcpParGroup.label:
+    *fxcpParGroup.outerOffset:			3
+    *fxcpParGroup.background:			gray75
+    *fxcpParams*background:			gray75
+    *fxcpParams*Text*editType:			edit
+    *fxcpParams*Text*displayCaret:		False
+    *fxcpParams*Text*background:		gray67
+!    *fxcpParams*Text.Translations: #override \
+!     <Key>Right: forward-character() 		\n\
+!      <Key>Left: backward-character() 		\n\
+!     Ctrl<Key>A: beginning-of-line() 		\n\
+!     Ctrl<Key>K: kill-to-end-of-line() 		\n\
+!     Ctrl<Key>M: newline() 			\n\
+!     <Key>Linefeed: newline-and-indent() 		\n\
+!     <Key>Return: newline() 			\n\
+!     Ctrl<Key>Delete: delete-previous-character() call(fxcHighlight,fxcparsApply) \n\
+!     Ctrl<Key>BackSpace: delete-previous-character() call(fxcHighlight,fxcparsApply) \n\
+!     Ctrl<Key>H: delete-previous-character() call(fxcHighlight,fxcparsApply) \n\
+!          <Key>: insert-char() call(fxcHighlight,fxcparsApply)
+
+    *fxcpParams*MenuButton.background:		gray67
+    *fxcpParams*MenuButton.highlightThickness:	2
+    *fxcpParams*Command.highlightThickness:	2
+    *fxcpParams*Label.justify:			right
+    *fxcpParams*Label.width:			200
+    *fxcpParams*Frame.background:		gray75
+    *fxcpParams.layout: vertical { \
+	horizontal { \
+	    fxcpInputGroup < +inf -inf * > \
+	    fxcpPsetGroup \
+	} \
+	fxcpPeakGroup < +inf -inf * +inf -inf > \
+	fxcpPrepGroup < +inf -inf * +inf -inf > \
+	fxcpOutputGroup < +inf -inf * > \
+    }
+
+    *fxcpInputGroup.label:			Input Parameters
+    *fxcpInputGroup.outerOffset:		7
+    *fxcpInputGroup.innerOffset:		5
+    *fxcpInputGroup.background:			gray75
+    *fxcpInputLayout*Label.width:		170
+    *fxcpInputLayout*Label.justify:		right
+    *fxcpInputLayout*Text.height:		23
+    *fxcpInputLayout.layout: horizontal { \
+	vertical { \
+	    fxcpObjLab < * +inf -inf > \
+	    fxcpTempLab < * +inf -inf > \
+	    fxcpApLab < * +inf -inf > \
+	} \
+	vertical { \
+	    fxcpObjFrame < +inf -inf * > \
+	    fxcpTempFrame < +inf -inf * > \
+	    fxcpApFrame < +inf -inf * > \
+	} \
+    }
+    *fxcpObjLab.label:				Objects:
+    *fxcpTempLab.label:				Templates:
+    *fxcpApLab.label:				Apertures:
+
+    *fxcpPsetGroup.label:			Pset Editors
+    *fxcpPsetGroup.outerOffset:			7
+    *fxcpPsetGroup.innerOffset:			5
+    *fxcpPsetGroup.background:			gray75
+    *fxcpPsetGroup.width:			140
+    *fxcpPsetGroup.height:			100
+    *fxcpPsetLayout*Command.background:		gray75
+    *fxcpPsetLayout*Command.borderWidth:	2
+    *fxcpPsetLayout*Command.shadowWidth:	2
+    *fxcpPsetLayout.layout: vertical { \
+	2 \
+	fxcpKeywpars	\
+	fxcpContinpars	\
+	fxcpFiltpars	\
+	2 < +inf -inf > \
+    }
+    *fxcpKeywpars.label:			Keywpars
+    *fxcpContinpars.label:			Continpars
+    *fxcpFiltpars.label:			Filtpars
+
+    *fxcpPeakGroup.label:			Peak Fitting
+    *fxcpPeakGroup.outerOffset:			7
+    *fxcpPeakGroup.innerOffset:			5
+    *fxcpPeakGroup.background:			gray75
+    *fxcpPeakLayout*MenuButton.background:	gray67
+    *fxcpPeakLayout*MenuButton.borderWidth:	0
+    *fxcpPeakLayout*MenuButton.shadowWidth:	0
+    *fxcpPeakLayout*Text.height:		23
+    *fxcpPeakLayout*TextToggle.location:	0 0 80 23
+    *fxcpPeakLayout*TextToggle.offIcon:		diamond0s
+    *fxcpPeakLayout*TextToggle.onIcon:		diamond1s
+    *fxcpPeakLayout*TextToggle.frameWidth:	0
+    *fxcpPeakLayout*TextToggle*justify:		left
+    *fxcpPeakLayout*TextToggle.highlightColor:	yellow
+    *fxcpPeakLayout.layout: vertical { \
+	horizontal {  \
+	    fxcpFuncLab 4 \
+	    fxcpFuncFrame < +inf -inf * > \
+	    fxcpHgtLab	4 fxcpHgtFrame	< +inf -inf * > \
+	    10 \
+	    fxcpPeak \
+	} \
+	2 \
+	horizontal {  \
+	    fxcpWidthLab  4 fxcpWidthFrame  < +inf -inf * > \
+	    fxcpMinLab	4 fxcpMinFrame	< +inf -inf * > \
+	    fxcpMaxLab	4 fxcpMaxFrame	< +inf -inf * > \
+	    fxcpWgtLab	4 fxcpWgtFrame	< +inf -inf * > \
+	} \
+	2 \
+	2 \
+	horizontal {  \
+	    fxcpBkgLab	4 fxcpBkgFrame	< +inf -inf * > \
+	    fxcpCenterLab  4 fxcpCenterFrame  < +inf -inf * > \
+	    fxcpPWidthLab  4 fxcpPWidthFrame  < +inf -inf * > \
+	} \
+    }
+    *fxcpFuncLab.label:				Fitting Func
+    *fxcpFuncVal.menuName:			fxcFuncMenu
+    *fxcpFuncVal.label:				gaussian
+    *fxcpHgtLab.label:				Height
+    *fxcpPeak.label:				Peak
+    *fxcpPeak.justify:				left
+    *fxcpWidthLab.label:			Fit Width
+    *fxcpMinLab.label:				Min
+    *fxcpMaxLab.label:				Max
+    *fxcpWgtLab.label:				Weight
+    *fxcpBkgLab.label:				Background
+    *fxcpCenterLab.label:			Center
+    *fxcpPWidthLab.label:			Peak Width
+
+    *fxcpPrepGroup.label:			Data Preparation
+    *fxcpPrepGroup.outerOffset:			7
+    *fxcpPrepGroup.innerOffset:			5
+    *fxcpPrepGroup.background:			gray75
+    *fxcpPrepLayout*MenuButton.background:	gray67
+    *fxcpPrepLayout*MenuButton.borderWidth:	0
+    *fxcpPrepLayout*MenuButton.shadowWidth:	0
+    *fxcpPrepLayout*MenuButton.height:		23
+    *fxcpPrepLayout*Text*height:		23
+    *fxcpPrepLayout*TextToggle.location:	0 0 150 23
+    *fxcpPrepLayout*TextToggle.offIcon:		diamond0s
+    *fxcpPrepLayout*TextToggle.onIcon:		diamond1s
+    *fxcpPrepLayout*TextToggle.frameWidth:	0
+    *fxcpPrepLayout*TextToggle*justify:		left
+    *fxcpPrepLayout*TextToggle.highlightColor:	yellow
+    *fxcpPrepLayout.layout: vertical { \
+	horizontal {  \
+	    fxcpContinLab 4 fxcpContinFrame < +inf -inf * > \
+	    fxcpFiltLab	  4 fxcpFiltFrame   < +inf -inf * > \
+	    fxcpRebinLab  4 fxcpRebinFrame  < +inf -inf * > \
+	} \
+	horizontal {  \
+	    vertical {	\
+		fxcpOSampLab < * +inf -inf >  \
+		fxcpTSampLab < * +inf -inf >  \
+	    } \
+	    vertical {	\
+		fxcpOSampFrame < +inf -inf * > \
+		fxcpTSampFrame < +inf -inf * > \
+	    } \
+	} \
+	horizontal {  \
+	    fxcpPixcor < +inf -inf * > \
+	    10 < +inf -inf > \
+	    fxcpApodizeLab 4 fxcpApodizeFrame \
+	} \
+    }
+    *fxcpContinLab.label:			Continuum
+    *fxcpContinVal.label:			both
+    *fxcpContinVal.menuName:			fxcContMenu
+    *fxcpFiltLab.label:				Filter
+    *fxcpFiltVal.label:				none
+    *fxcpFiltVal.menuName:			fxcFiltMenu
+    *fxcpRebinLab.label:			Rebin
+    *fxcpRebinVal.label:			smallest
+    *fxcpRebinVal.menuName:			fxcRebinMenu
+    *fxcpPixcor.label:				Pixel Correlation Only
+    *fxcpPixcor.justify:			left
+    *fxcpApodizeLab.label:			Apodize%
+    *fxcpOSampLab.label:			Obj Samples
+    *fxcpTSampLab.label:			Temp Samples
+
+    *fxcpOutputGroup.label:			Output Parameters
+    *fxcpOutputGroup.outerOffset:		7
+    *fxcpOutputGroup.innerOffset:		5
+    *fxcpOutputGroup.background:		gray75
+    *fxcpOutputLayout*Text.height:		23
+    *fxcpOutputLayout*TextToggle.location:	0 0 120 23
+    *fxcpOutputLayout*TextToggle.offIcon:	diamond0s
+    *fxcpOutputLayout*TextToggle.onIcon:	diamond1s
+    *fxcpOutputLayout*TextToggle.frameWidth:	0
+    *fxcpOutputLayout*TextToggle*justify:	left
+    *fxcpOutputLayout*TextToggle.highlightColor:yellow
+    *fxcpOutputLayout*MenuButton.background:	gray67
+    *fxcpOutputLayout*MenuButton.borderWidth:	0
+    *fxcpOutputLayout*MenuButton.shadowWidth:	0
+    *fxcpOutputLayout*MenuButton.height:	23
+    *fxcpOutputLayout.layout: horizontal { \
+	vertical { \
+	    2 \
+	    fxcpOutLab < * +inf -inf >	\
+	    fxcpVerbLab < * +inf -inf > \
+	    fxcpCCFLab < * +inf -inf >	\
+	    2 \
+	} \
+	vertical { \
+	    2 \
+	    fxcpOutFrame < +inf -inf * >  \
+	    fxcpVerbFrame < +inf -inf * > \
+	    fxcpCCFFrame < +inf -inf * >  \
+	    2 \
+	} \
+	20 < +20 -20 > \
+	vertical { \
+	    2 \
+	    fxcpAutoWrite 2 \
+	    fxcpAutoDraw  2 \
+	    fxcpHUpdate	  2 \
+	    2 \
+	} \
+    }
+    *fxcpOutLab.label:				Output File:
+    *fxcpVerbLab.label:				Verbose Level:
+    *fxcpVerbVal.label:				long
+    *fxcpVerbVal.menuName:			fxcOutMenu
+    *fxcpCCFLab.label:				CCF Output Type:
+    *fxcpCCFVal.label:				image
+    *fxcpCCFVal.menuName:			fxcCCFMenu
+    *fxcpAutoWrite.label:			Auto Write
+    *fxcpAutoDraw.label:			Auto Draw
+    *fxcpHUpdate.label:				Header Update
+
+
+    ! Do the command bar group resources.
+    !------------------------------------
+    *fxcpCmdGroup.label:
+    *fxcpCmdGroup.innerOffset:			5
+    *fxcpCmdGroup*Command.background:		gray75
+    *fxcpCmdGroup.background:			gray67
+    *fxcparsCmd.background:			gray67
+    *fxcparsCmd.layout: vertical { \
+	2 \
+	horizontal { \
+	    fxcparsApply   2 \
+	    fxcparsUnlearn 2 \
+	    fxcparsUpdate  2 \
+	    fxcparsCancel \
+	    10 < +inf -10> \
+	    fxcparsHelp	   2 \
+	    fxcparsDismiss \
+	} \
+	2 \
+    }
+    *fxcparsApply.label:			Apply
+    *fxcparsUnlearn.label:			Unlearn
+    *fxcparsUpdate.label:			Update
+    *fxcparsCancel.label:			Cancel
+    *fxcparsHelp.label:				Help
+    *fxcparsDismiss.label:			Dismiss
+    
+
+    !-----------------------------------------------------
+    ! Define some global resources for the FILTPARS popup.
+    !-----------------------------------------------------
+    *filtpars.width:				350
+    *filtpars.height:				300
+    *filtpars.background:			gray75
+    *filtparsLayout.background:			gray75
+    *filtparsLayout*Frame*frameType:		sunken
+    *filtparsLayout*Frame.frameWidth:		1
+    *filtparsLayout*SimpleMenu.background:	gray67
+    
+    *filtparsLayout*borderWidth:		0
+    *filtparsLayout.layout: vertical { \
+	0 < +0 -0 > \
+	filtTitleGroup < +inf -inf * > \
+	filtparsGroup  < +inf -inf * +inf -inf > \
+	filtCmdGroup   < +inf -inf * > \
+	0 < +0 -0 > \
+    }
+    *filtTitleGroup.label:		
+    *filtTitleGroup.innerOffset:		0
+    *filtTitleGroup.outerOffset:		0
+    *filtFormLabel.label:			Fourier Filter Parameters
+    *filtFormLabel.background:			gray67
+    *filtFormLabel.internalHeight:		13
+    
+    *filtparsGroup.label:		
+    *filtparsGroup.outerOffset:			7
+    *filtOptions*background:			gray75
+    *filtOptions*Text*editType:			edit
+    *filtOptions*Text*displayCaret:		False
+    *filtOptions*Text*background:		gray67
+    *filtOptions*MenuButton.background:		gray67
+    *filtOptions*MenuButton.borderWidth:	0
+    *filtOptions*MenuButton.shadowWidth:	0
+    *filtOptions*MenuButton.highlightThickness: 2
+    *filtOptions.layout: horizontal { \
+	filtLabel < * +inf -inf > \
+	3 < +0 -3 > \
+	filtText < +inf -inf * +inf -inf > \
+    }
+    
+    *filtLabel.layout: vertical { \
+	5 \
+	filtOptionName	< * +inf -inf > 2 \
+	filtTypeName	< * +inf -inf > 2 \
+	filtCutonName	< * +inf -inf > 2 \
+	filtCutoffName	< * +inf -inf > 2 \
+	filtFullonName	< * +inf -inf > 2 \
+	filtFulloffName < * +inf -inf >	  \
+	5 \
+    }
+    *filtOptionName.width:			250
+    *filtOptionName.label:			Which Spectrum to Filter:
+    *filtTypeName.label:			Filter Function Type:
+    *filtCutonName.label:			Filter Cuton:
+    *filtCutoffName.label:			Filter Cutoff:
+    *filtFullonName.label:			(Ramp) Filter full on:
+    *filtFulloffName.label:			(Ramp) Filter full off:
+    *filtOptionValue.menuName:			filtOpMenu
+    *filtTypeValue.menuName:			filtTypeMenu
+    
+    
+    *filtText*Text*background:			gray67
+    *filtText*Text*editType:			edit
+    *filtText*Text*displayCaret:		False
+    *filtText.background:			gray75
+    *filtparsGroup.background:			gray75
+    *filtText.layout: vertical { \
+	2 \
+	filtOptionFrame < * +inf -inf > 2 \
+	filtTypeFrame	< * +inf -inf > 2 \
+	filtCutonFrame	< * +inf -inf > 2 \
+	filtCutoffFrame < * +inf -inf > 2 \
+	filtFullonFrame < * +inf -inf > 2 \
+	filtFuloffFrame < * +inf -inf >	  \
+	2 \
+    }
+    *filtOptions*Label.justify:			right
+    *filtOptionValue.label:			
+    *filtTypeValue.label:		
+    
+    
+    ! Do the command bar group resources.
+    !------------------------------------
+    *filtCmdGroup.label:		
+    *filtCmdGroup.innerOffset:			0
+    *filtCmdGroup.outerOffset:			0
+    *filtCmdGroup.borderWidth:			0
+    *filtCmdGroup*Command.background:		gray75
+    *filtparsCmd.background:			gray67
+    *filtparsCmd.layout: vertical { \
+	5 \
+	horizontal { \
+	    5 \
+	    filtparsApply   1 \
+	    filtparsUnlearn 1 \
+	    filtparsUpdate  1 \
+	    filtparsCancel    \
+	    10 < +inf -10>    \
+	    filtparsHelp    1 \
+	    filtparsDismiss   \
+	    5 \
+	} \
+	5 \
+    }
+    *filtparsApply.label:			Apply
+    *filtparsUpdate.label:			Update
+    *filtparsUnlearn.label:			Unlearn
+    *filtparsCancel.label:			Cancel
+    *filtparsHelp.label:			Help
+    *filtparsDismiss.label:			Dismiss
+
+
+    !----------------------------------
+    !  KEYWPARS Pset Editor Resources.
+    !----------------------------------
+    *keywpars.width:				380
+    *keywpars.height:				540
+    *keywparsLayout*Frame*frameType:		sunken
+    *keywparsLayout*Frame.frameWidth:		2
+
+    *keywparsLayout*borderWidth:		0
+    *keywparsLayout.layout:	vertical { \
+	0 < +0 -0 > \
+	keywTitleGroup < +inf -inf * > \
+	keywparsIGroup < +inf -inf * +inf -inf > \
+	keywparsOGroup < +inf -inf * +inf -inf > \
+	keywCmdGroup   < +inf -inf * > \
+	0 < +0 -0 > \
+    }
+
+    *keywTitleGroup.label:	
+    *keywTitleGroup.innerOffset:	       0
+    *keywTitleGroup.outerOffset:	       0
+    *keywFormLabel.label:		       Image Header Keyword Translations
+    *keywFormLabel.background:		       gray67
+    *keywFormLabel.internalHeight:	       13
+
+    ! Do the input command group resources.
+    !------------------------------------
+    *keywparsIGroup.label:			Input Keywords
+    *keywparsIGroup.outerOffset:		7
+    *keywparsIGroup.background:			gray75
+    *keywparsIList.background:			gray75
+    *keywparsIList.layout: horizontal { \
+	keywILabel  < +inf * > \
+	3 < +0 -3 > \
+	keywIText < +inf -inf * +inf -inf > \
+    }
+
+    
+    *keywparsIList*Label.justify:		right
+    *keywparsIList*Label.width:			200
+    *keywparsIList*Frame.background:		gray75
+    *keywILabel.background:			gray75
+    *keywILabel.layout: vertical { \
+	5 \
+	keywRAName	< * +inf -inf > 2 \
+	keywDECName	< * +inf -inf > 2 \
+	keywUTName	< * +inf -inf > 2 \
+	keywUTMIDName	< * +inf -inf > 2 \
+	keywEXPTIMEName < * +inf -inf > 2 \
+	keywEPOCHName	< * +inf -inf > 2 \
+	keywDATEOBSName < * +inf -inf >	  \
+	5 \
+    }
+    *keywRAName.label:				Right Ascension:
+    *keywDECName.label:				Declination:
+    *keywUTName.label:				UT:
+    *keywUTMIDName.label:			UT midpoint:
+    *keywEXPTIMEName.label:			Exposure Time:
+    *keywEPOCHName.label:			Epoch:
+    *keywDATEOBSName.label:			Observation Date:
+
+    *keywIText*Text*background:			gray67
+    *keywIText*Text*editType:			edit
+    *keywIText*Text*displayCaret:		False
+    *keywIText.background:			gray75
+    *keywIText.layout: vertical { \
+	5 < +0 -0 > \
+	keywRAFrame    < * +inf -inf > 2 \
+	keywDECFrame   < * +inf -inf > 2 \
+	keywUTFrame    < * +inf -inf > 2 \
+	keywUTMIDFrame < * +inf -inf > 2 \
+	keywETIMEFrame < * +inf -inf > 2 \
+	keywEPOCHFrame < * +inf -inf > 2 \
+	keywDATEFrame  < * +inf -inf >	 \
+	5 < +0 -0 > \
+    }
+
+
+    ! Do the output keyword group resources.
+    !---------------------------------------
+    *keywparsOGroup.label:			Output Keywords
+    *keywparsOGroup.outerOffset:		7
+    *keywparsOGroup.background:			gray75
+    *keywparsOList.background:			gray75
+    *keywparsOList.layout: horizontal { \
+	keywOLabel  < * > \
+	3 < +0 -3 > \
+	keywOText < +inf -inf * +inf -inf > \
+    }
+
+    *keywparsOList*Label.justify:		right
+    *keywpars0List*Label.width:			200
+    *keywparsOList*Frame.background:		gray75
+    *keywOLabel.background:			gray75
+    *keywOLabel.layout: vertical { \
+	5 \
+	keywHJDName    < * +inf -inf > 2 \
+	keywMJDOBSName < * +inf -inf > 2 \
+	keywVOBSName   < * +inf -inf > 2 \
+	keywVRELName   < * +inf -inf > 2 \
+	keywVHELIOName < * +inf -inf > 2 \
+	keywVLSRName   < * +inf -inf > 2 \
+	keywVSUNName   < * +inf -inf >	 \
+	5 \
+    }
+    *keywHJDName.label:				Heliocentric Julian Date:
+    *keywMJDOBSName.label:			Modified Julian Date:
+    *keywVOBSName.label:			Observed Velocity:
+    *keywVRELName.label:			Relative Velocity:
+    *keywVHELIOName.label:			Heliocentric Velocity:
+    *keywVLSRName.label:			LSR Velocity:
+    *keywVSUNName.label:			VSUN:
+
+    *keywOText*Text*background:			gray67
+    *keywOText*Text*editType:			edit
+    *keywOText*Text*displayCaret:		False
+    *keywOText.background:			gray75
+    *keywOText.layout: vertical { \
+	5 \
+	keywHJDFrame	< * +inf -inf > 2 \
+	keywMJDOBSFrame < * +inf -inf > 2 \
+	keywVOBSFrame	< * +inf -inf > 2 \
+	keywVRELFrame	< * +inf -inf > 2 \
+	keywVHELIOFrame < * +inf -inf > 2 \
+	keywVLSRFrame	< * +inf -inf > 2 \
+	keywVSUNFrame	< * +inf -inf >	  \
+	5 \
+    }
+
+    ! Do the command bar group resources.
+    !------------------------------------
+    *keywCmdGroup.label:			
+    *keywCmdGroup.outerOffset:			0
+    *keywCmdGroup.innerOffset:			0
+    *keywCmdGroup*Command.background:		gray75
+    *keywparsCmd.background:			gray67
+    *keywparsCmd.layout: vertical { \
+	5 \
+	horizontal { \
+	    5 \
+	    keywparsApply   1 \
+	    keywparsUnlearn 1 \
+	    keywparsUpdate  1 \
+	    keywparsCancel \
+	    10 < +inf -inf > \
+	    keywparsHelp    1 \
+	    keywparsDismiss \
+	    5 \
+	} \
+	5 \
+    }
+    *keywparsApply.label:			Apply
+    *keywparsUnlearn.label:			Unlearn
+    *keywparsUpdate.label:			Update
+    *keywparsCancel.label:			Cancel
+    *keywparsHelp.label:			Help
+    *keywparsDismiss.label:			Dismiss
+
+
+    !------------------------------------------
+    ! Set the scrolling results list resources.
+    !------------------------------------------
+    *results.title:				Results Log
+    *results.width:				575
+    *results.height:				250
+    *resultsClear.label:			Clear
+    *resultsClear.width:			150
+    *resultsDone.label:				Dismiss
+    *resultsDone.width:				150
+
+    *resLayout.background:			gray75
+    *resLayout*borderWidth:			0
+    *resLayout.layout:	vertical { \
+	0 < +0 -0 > \
+	resMenuFrame < +inf -inf * > \
+	7 \
+	resultTitle  < +inf -inf * > \
+	resultFrame   < +inf -inf * +inf -inf > \
+	0 < +0 -0 > \
+    }
+
+    *resMenuFrame.height:			40
+    *resMenuFrame.background:			gray67
+    *resMenuFrame.outerOffset:			0
+    *resMenuFrame.innerOffset:			5
+    *resMenuFrame.frameType:			chiseled
+    *resMenuFrame.frameWidth:			2
+    *resMenuBar.background:			gray67
+    *resMenuBar.layout: horizontal { \
+	5  \
+	resultsClear 50 < +inf -inf > resultsDone \
+	5  \
+    }
+    *resultTitle.label:			
+    *resultTitle.height:			30
+    *resultTitle.borderWidth:			0
+    *resultTitle.shadowWidth:			0
+    *resultTitle.background:			gray75
+    *resultTitle.justify:			left
+    *resultTitle.font:				7x13bold
+    *resultFrame.frameType:			sunken
+    *resultFrame.frameWidth:			3
+    *resultFrame.background:			gray75
+    *resultList*background:			gray75
+    *resultList*scrollVertical:			always
+    *resultList*scrollHorizontal:		whenNeeded
+    *resultList*editType:			edit
+    *resultList*type:				string
+
+
+
+    !---------------------------------
+    !  Save query resources.
+    !---------------------------------
+    *saveShell.width:				325
+    *saveShell.height:				100
+    *saveShell*borderWidth:			0
+    *saveShell*frameType:			chiseled
+    *saveShell*frameWidth:			2
+    *saveShell*innerOffset:			5
+    *saveShell*outerOffset:			2
+    *saveShell*Command.internalWidth:		8
+    *saveShell*Command.internalHeight:		4
+    *saveShell*Frame.label:						
+    *saveShell*Group.label:						
+
+    *saveLayout.layout: vertical { \
+	1 \
+	saveFrame < +inf -inf *  +inf -inf > \
+	saveCmdGroup < +inf -inf * > \
+	-1 \
+    }
+
+    *saveCmdLayout.layout: horizontal { \
+	saveYes \
+	20 < +inf -20 > \
+	saveNo \
+	20 < +inf -20 > \
+	saveCancel \
+    }
+    *saveLabel.label:				Save Result Before Quitting?
+    *saveYes.label:				Yes
+    *saveNo.label:				No
+    *saveCancel.label:				Cancel
+
+
+    !----------------------------------
+    ! Filename prompt dialog resources.
+    !----------------------------------
+    *filename.title:				Select a filename...
+    *filename.width:				380
+    *filename.height:				100
+    *filename*borderWidth:			0
+    *filename*Group.frameType:			chiseled
+    *filename*Group.frameWidth:			2
+    *filename*Group.innerOffset:		5
+    *filename*Group.outerOffset:		2
+    *filename*Group.label:						
+
+    *fileLayout.layout:	 vertical { \
+	fnameGroup < +inf -inf * > \
+	5 < -5 > \
+	fnameCmdGroup < +inf -inf * > \
+    }
+
+    *fnameLayout.layout: horizontal { \
+	fnameLabel 5 \
+	fnameFrame < +inf -inf * > \
+    }
+    *fnameLabel.label:				Output Filename:
+    *fnameFrame.frameType:			sunken
+    *fnameFrame.frameWidth:			2
+    *fnameEntry*editType:			edit
+    *fnameEntry*height:				25
+    *fnameEntry*background:			gray67
+    *fnameEntry*foreground:			black
+
+    *fnameCmdLayout.layout: horizontal { \
+	fnameOkay \
+	200 < +inf -200 > \
+	fnameClear \
+	fnameDismiss \
+    }
+    *fnameOkay.label:				Okay
+    *fnameClear.label:				Clear
+    *fnameDismiss.label:			Dismiss
+
+
+
+    !----------------
+    !  Help Window.
+    !----------------
+    *helpShell.title:				Help
+    *helpShell.width:				620
+    *helpShell.height:				600
+    *helpLayout*borderWidth:			0
+    *helpLayout*Frame*frameType:		sunken
+    *helpLayout*Frame*frameWidth:		3
+    *helpLayout*Scrollbar*width:		17
+    *helpLayout*Scrollbar*height:		17
+    *helpLayout*Scrollbar*shadowWidth:		2
+    *helpLayout*Scrollbar*cursorName:		top_left_arrow
+    *helpLayout*Scrollbar*pushThumb:		true
+   
+    *helpLayout.layout: vertical { \
+	0 < +0 -0 > \
+	helpMenuLayout < +inf -inf * > \
+	-3 \
+	helpTextFrame < +inf -inf * +inf -inf > \
+        0 < +0 -0 > \
+        horizontal { \
+            5 \
+            hfLabel 5 hfindFrame < +inf -inf *> \
+            2 \
+            hfFind 2 hfClear 5 hfDir 5 hfCase \
+            5 \
+        } \
+        2 \
+    }
+    *helpLayout*TextToggle*location:        	0 0 90 25
+    *helpLayout*TextToggle*offIcon:         	diamond0s
+    *helpLayout*TextToggle*onIcon:          	diamond1s
+    *helpLayout*TextToggle*highlightColor:  	yellow
+    *helpLayout*TextToggle*frameType:       	chiseled
+    *helpLayout*TextToggle*frameWidth:      	2
+    *hfEntry*editType:                          edit
+    *hfEntry*font:                              7x13
+    *hfEntry*displayCaret:                      True
+    *hfEntry*height:				23
+    *hfLabel.label:                             Find:
+    *hfFind.label:                              Find
+    *hfFind.shadowWidth:                        1
+    *hfClear.label:                             Clear
+    *hfClear.shadowWidth:                       1
+    *hfDir.label:                               Backwards
+    *hfCase.label:                              Caseless
+    *hfCase.on:                                 true
+
+    *helpMenuLayout*Command.background:		gray75
+    *helpMenuLayout*Command.internalHeight:	2
+    *helpMenuLayout*Command.highlightThickness: 2
+    *helpMenuLayout.background:			gray67
+    *helpMenuLayout.layout: vertical { \
+	5 \
+	horizontal { \
+	    5 < +0 -5 > \
+	    helpBack \
+	    helpForward \
+	    helpHome \
+	    helpTutorial \
+	    20 < +inf -20 > \
+	    helpDismiss \
+	    5 < +0 -5 > \
+	} \
+	5 \
+    }
+    *helpBack.label:				Back
+    *helpBack.sensitive:			False
+    *helpForward.label:				Forward
+    *helpForward.sensitive:			False
+    *helpHome.label:				Home
+    *helpTutorial.label:			Tutorial
+    *helpDismiss.label:				Dismiss
+ 
+    *helpText.width:				450
+    *helpText.height:				500
+    *helpText.anchorUnderlines:			1
+    *helpText.visitedAnchorUnderlines:		1
+    *helpText.verticalScrollOnRight:		true
+    *helpText.font:				7x13
+    *helpText.fixedFont:			7x13
+    *helpText.fixedboldFont:			7x13bold
+    *helpText.plainFont:			7x13
+    *helpText.plainboldFont:			7x13bold
+    *helpText.listingFont:			7x13
+    *helpText.boldFont:				7x13bold
+
+
+
+    !---------------------------------
+    ! Define the Help popup resources.
+    !---------------------------------
+    *dialog.title:				
+    *dialog.width:				600
+    *dialog.height:				650
+    *dialogClear.label:				Clear
+    *dialogClear.width:				150
+    *dialogDone.label:				Dismiss
+    *dialogDone.width:				150
+
+    *dialogLayout.background:			gray75
+    *dialogLayout*borderWidth:			0
+    *dialogLayout.layout: vertical { \
+	0 < +0 -0 > \
+	dialogMenuFrame < +inf -inf * > \
+	dialogFrame	< +inf -inf * +inf -inf > \
+	0 < +0 -0 > \
+    }
+
+    *dialogMenuFrame.height:			40
+    *dialogMenuFrame.background:		gray67
+    *dialogMenuFrame.outerOffset:		0
+    *dialogMenuFrame.innerOffset:		5
+    *dialogMenuFrame.frameType:			chiseled
+    *dialogMenuFrame.frameWidth:		2
+    *dialogMenuBar.background:			gray67
+    *dialogMenuBar.layout: horizontal { \
+	dialogClear \
+	50 < +inf -inf > \
+	dialogDone \
+    }
+    *dialogTitle.label:							
+    *dialogTitle.height:			30
+    *dialogTitle.background:			gray75
+    *dialogInfo*background:			gray75
+    *dialogTitle.borderWidth:			0
+    *dialogTitle.shadowWidth:			0
+    *dialogFrame.frameType:			sunken
+    *dialogFrame.frameWidth:			3
+    *dialogFrame.background:			gray75
+    *dialogInfo*scrollVertical:			always
+    *dialogInfo*scrollHorizontal:		whenNeeded
+    *dialogInfo*editType:			edit
+    *dialogInfo*type:				string
+    
+
+
+
+    !-------------------------+
+    ! File Browser resources. |
+    !-------------------------+
+    *fileBrowser.width:				450
+    *fileBrowser.height:			375
+    *fileBrowser.title:				Open a New File...
+    *fileBrowser*borderWidth:			0
+    *fileBrowser*Group.frameType:		chiseled
+    *fileBrowser*Group.frameWidth:		2
+    *fileBrowser*Group.innerOffset:		3
+    *fileBrowser*Group.outerOffset:		3
+    *fileBrowser*Group.label:				
+
+    *fbLayout.layout: vertical { \
+	2 \
+	fnavGroup < +inf -inf * +inf -inf > \
+	-2 \
+	horizontal { \
+	    -5 \
+	    fbCmdGroup < +inf -inf * > \
+	    -5 } \
+	-3 \
+    }
+
+    *fnavGroup*Frame.frameType:			sunken
+    *fnavGroup*Frame.frameWidth:		2
+    *fnavGroup*Text*editType:			edit
+    *fnavGroup*Text*height:			25
+    *fnavGroup*Text*background:			gray67
+    *fnavGroup*Text*foreground:			black
+    *fnavGroup*Text*font:			7x13
+    *fnavGroup*List.background:			gray67
+    *fnavGroup*List.verticalList:		True
+    *fnavGroup*List.defaultColumns:		1
+    *fnavGroup*List.forceColumns:		True
+    *fnavGroup*List.font:			7x13
+    *fnavGroup*Label.justify:			left
+    *fnavGroup*Command.shadowWidth:		1
+    *fnavGroup*Viewport.allowVert:		True
+    *fnavGroup*Viewport.allowHoriz:		False
+    *fnavGroup*Viewport.forceBars:		True
+    *fnavGroup*Viewport.useRight:		True
+    *fnavGroup*Group.outerOffset:		7
+    *fnavGroup*Group.innerOffset:		3
+    *fnavLayout.layout: vertical { \
+	5 \
+	vertical { \
+	    -1 \
+	    horizontal { \
+		5 \
+		fnavHome < * +inf -inf > 2 \
+		fnavUp < * +inf -inf > 2 \
+		fnavRoot < * +inf -inf > 2 \
+		fnavRescan < * +inf -inf > \
+		20 < +inf -20 > \
+		filterLabel 2 filterFrame < +inf -inf * > 2 filterClear 5 \
+		5 \
+	    } \
+	    3 \
+	} \
+	5 \
+	horizontal { \
+	    -5 \
+	    dirGroup < +inf -inf * +inf - inf  > \
+	    -8 \
+	    fileGroup < +inf -inf * +inf - inf	> \
+	    -5 \
+	} \
+	0 \
+	horizontal { \
+	    curdirLabel 5 curdirFrame < +inf -inf * > 2 curdirClear 5 } \
+	5 \
+	horizontal { \
+	    fbLabel 2 fbFrame < +inf -inf * > 2 fbClear 5\
+	} \
+	3 \
+    }
+    *fileBrowser*fnavGroup*dirGroup.label:		Directories
+    *fileBrowser*fnavGroup*fileGroup.label:		Files
+    *fileBrowser*fnavGroup*dirGroup.innerOffset:	3
+    *fileBrowser*fnavGroup*fileGroup.innerOffset:	3
+    *fileBrowser*fnavGroup*dirGroup.outerOffset:	7
+    *fileBrowser*fnavGroup*fileGroup.outerOffset:	7
+
+    *filterLabel.label:				Filter
+    *filterClear.label:				Clear
+    *curdirLabel.label:				Directory:
+    *curdirClear.label:			     	Clear
+    *fbLabel.label:			     	Selection:\ 
+    *fbClear.label:			     	Clear
+    *fnavHome.label:				Home
+    *fnavUp.label:				Up
+    *fnavRoot.label:				Root
+    *fnavRescan.label:				Rescan
+
+    *fbCmdLayout.outerOffset:			0
+    *fbCmdLayout.layout: horizontal { \
+	5 \
+	vertical { 2 fbcObj 2 } \
+	5 \
+	vertical { 2 fbcTemp 2 } \
+	20 < +inf -20 > \
+	vertical { 2 fbcHelp 2 } \
+	2 \
+	vertical { 2 fbcDismiss 2 } \
+	5 \
+    }
+    *fbcObj.label:				Load As Object
+    *fbcTemp.label:				Load As Template
+    *fbcHelp.label:				Help
+    *fbcDismiss.label:				Dismiss
+
+
+    !--------------------------------
+    ! Define the ICFIT GUI resources.
+    !--------------------------------
+    *icfitShell.title:				Interactive Curve Fitting
+    *icfitShell.width:				640
+    *icfitShell*SimpleMenu.background:		gray67
+    *icPlotButton.label:			Plots
+    *icPlotButton.menuName:			icPlotMenu
+    *icFuncButton.label:			Function
+    *icFuncButton.menuName:			icFuncMenu
+    *icOrderButton.label:			Order
+    *icOrderButton.menuName:			icOrderMenu
+    *icMiscButton.label:			Misc
+    *icMiscButton.menuName:			icMiscMenu
+    *icMarkRej.label:				Mark Rej
+    *icEdit.label:				Edit Fit Pars
+    *icRefit.label:				Refit
+    *icRedraw.label:				Redraw
+    *icHelp.label:				Help
+    *icQuit.label:				Back
+
+    *icLayout*borderWidth:			0
+    *icLayout.layout:	vertical { \
+	-1 \
+	vertical { \
+	    icMenuFrame < +inf -inf * > 3 \
+	    icGraphGroup < +inf -inf * +inf -inf > \
+	} \
+	-1 \
+    }
+
+    *icMenuFrame.height:			40
+    *icMenuFrame.outerOffset:			0
+    *icMenuFrame.innerOffset:			5
+    *icMenuFrame.frameType:			chiseled
+    *icMenuFrame.frameWidth:			2
+    *icMenuBar*SmeBSB.leftMargin:		25
+    *icMenuBar.layout:	horizontal { \
+	icPlotButton   2 \
+	icFuncButton   2 \
+	icOrderButton  2 \
+	icMiscButton   2 \
+	icMarkRej      2 \
+	icEdit	       2 \
+	icRefit	       2 \
+	100 < +inf -inf > \
+	icRedraw       2 \
+	icHelp	       2 \
+	icQuit	       2 \
+    }
+    *icMarkRej.state:				on
+
+    *icGraphGroup.outerOffset:			2
+    *icGraphGroup.innerOffset:			0
+    *icGraphGroup.frameType:			sunken
+    *icGraphGroup.frameWidth:			2
+    *icGraphGroup.label:			
+    *icGraphLayout.layout: horizontal { \
+	2 < +0 -2 > \
+	vertical { \
+	    2 < +0 -2 > \
+	    icGraphFrame < +inf -inf * +inf -inf > \
+	    2 < +0 -2 > \
+	} \
+	2 < +0 -2 > \
+    }
+
+    *icGterm.translations:	\
+	       <Btn1Down>:	call(icMarker,$x,$y) m_create() \n\
+	    <EnterWindow>:	enter-window() \n\
+	    <LeaveWindow>:	leave-window() \n\
+	       <KeyPress>:	graphics-input() \n\
+		 <Motion>:	track-cursor() call(icWcsUpdate,$x,$y)
+
+    ! ICFIT Help
+    !-----------
+    *icHelpShell.title:				  Help
+    *icHelpShell.width:				  560
+    *icHelpShell.height:			  400
+    *icHelpLayout*borderWidth:			  0
+    *icHelpLayout*Frame*frameType:		  sunken
+    *icHelpLayout*Frame*frameWidth:		  2
+    *icHelpLayout*Frame.outerOffset:		  0
+    *icHelpLayout*Scrollbar*width:		  17
+    *icHelpLayout*Scrollbar*height:		  17
+    *icHelpLayout*Scrollbar*shadowWidth:	  2
+    *icHelpLayout*Scrollbar*cursorName:		  top_left_arrow
+    *icHelpLayout*Scrollbar*pushThumb:		  true
+   
+    *icHelpLayout.layout: vertical { \
+	-1 \
+	icHelpMenuLayout < +inf -inf * > \
+	icHelpTextFrame < +inf -inf * +inf -inf > \
+	-1 \
+    }
+    *icHelpTextFrame.background:		  gray75
+    *icHelpMenuLayout*Command.background:	  gray75
+    *icHelpMenuLayout*Command.internalHeight:	  2
+    *icHelpMenuLayout*Command.highlightThickness: 2
+    *icHelpMenuLayout.background:		  gray67
+    *icHelpMenuLayout.layout: vertical { \
+	5 \
+	horizontal { \
+	    5 < +0 -5 > \
+	    icHelpBack \
+	    icHelpForward \
+	    icHelpHome \
+	    icHelpTutorial \
+	    20 < +inf -20 > \
+	    icHelpDismiss \
+	    5 < +0 -5 > \
+	} \
+	5 \
+    }
+    *icHelpBack.label:				Back
+    *icHelpBack.sensitive:			False
+    *icHelpForward.label:			Forward
+    *icHelpForward.sensitive:			False
+    *icHelpHome.label:				Home
+    *icHelpTutorial.label:			Tutorial
+    *icHelpTutorial.sensitive:			False
+    *icHelpDismiss.label:			Dismiss
+ 
+    *icHelpText.width:				450
+    *icHelpText.height:				500
+    *icHelpText.anchorUnderlines:		1
+    *icHelpText.visitedAnchorUnderlines:	1
+    *icHelpText.verticalScrollOnRight:		true
+    *icHelpText.font:				7x13
+    *icHelpText.fixedFont:			7x13
+    *icHelpText.fixedboldFont:			7x13bold
+    *icHelpText.plainFont:			7x13
+    *icHelpText.plainboldFont:			7x13bold
+    *icHelpText.listingFont:			7x13
+    *icHelpText.boldFont:			7x13bold
+
+    ! ICFIT Show
+    *icShowShell.title:				Curfit Show
+    *icShowShell.width:				512
+    *icShowShell.height:			525
+    *icShowShell*borderWidth:			0
+    *icShowDismiss.label:			Dismiss
+    *icShowLayout.layout: vertical { \
+	0 < +0 -0 > \
+	icShowMenuFrame <+inf -inf * > \
+	icTextFrame <+inf -inf * +inf -inf> \
+	0 < +0 -0 > \
+    }
+
+    *icShowMenuFrame.height:			40
+    *icShowMenuFrame.background:		gray75
+    *icShowMenuFrame.outerOffset:		0
+    *icShowMenuFrame.innerOffset:		5
+    *icShowMenuFrame.frameType:			chiseled
+    *icShowMenuFrame.frameWidth:		2
+    *icShowMenuBar.layout: horizontal { \
+	50 <+inf -inf>	\
+	icShowDismiss 2 \
+    }
+    *icTextFrame.frameType:			sunken
+    *icTextFrame.frameWidth:			3
+    *icTextFrame.background:			gray75
+    *icShowText*scrollVertical:			always
+    *icShowText*scrollHorizontal:		whenNeeded
+
+
+
+    !--------------------------------------------------
+    !  Resources for the ICFIT parameter editor window. 
+    !--------------------------------------------------
+    *icfitPars.width:				350
+    *icfitPars.height:				370
+
+    *icfitpLayout.background:			gray75
+    *icfitpLayout*Frame*frameType:		sunken
+    *icfitpLayout*Frame.frameWidth:		1
+    *icfitpLayout*SimpleMenu.background:	gray67
+
+    *icfitpLayout*borderWidth:			0
+    *icfitpLayout.layout: vertical { \
+	0 < +0 -0 > \
+	icfparsTitleGroup < +inf -inf * > \
+	icfparsGroup	  < +inf -inf * +inf -inf > \
+	icfpCmdGroup	  < +inf -inf * > \
+	0 < +0 -0 > \
+    }
+    *icfparsTitleGroup.label:
+    *icfparsTitleGroup.background:		gray75
+    *icfparsTitleGroup.innerOffset:		0
+    *icfparsTitleGroup.outerOffset:		0
+    *icfparsFormLabel.label:			Continuum Fitting Parameters
+    *icfparsFormLabel.background:		gray67
+    *icfparsFormLabel.internalHeight:		10
+    
+    *icfparsGroup.label:
+    *icfparsGroup.outerOffset:			   7
+    *icfparsGroup.background:			   gray75
+    *icfparsOptions*background:			   gray75
+    *icfparsOptions*Text*editType:		   edit
+    *icfparsOptions*Text*displayCaret:		   False
+    *icfparsOptions*Text*background:		   gray67
+    *icfparsOptions*Command.background:		   gray67
+    *icfparsOptions*Command.borderWidth:	   0
+    *icfparsOptions*Command.shadowWidth:	   0
+    *icfparsOptions*Command.highlightThickness:	   2
+    *icfparsOptions*MenuButton.background:	   gray67
+    *icfparsOptions*MenuButton.borderWidth:	   0
+    *icfparsOptions*MenuButton.shadowWidth:	   0
+    *icfparsOptions*MenuButton.highlightThickness: 2
+    *icfparsOptions.layout: horizontal { \
+	icfparsLabel < * +inf -inf > \
+	3 < +0 -3 > \
+	icfparsText < +inf -inf * +inf -inf > \
+    }
+    
+    *icfparsOptions*Label.justify:	right
+    *icfparsOptions*Label.width:	200
+    *icfparsOptions*Frame.background:	gray75
+    *icfparsLabel.background:		gray75
+    *icfparsLabel.layout: vertical { \
+	5 \
+	icFuncName	< * +inf -inf > 2 \
+	icOrderName	< * +inf -inf > 2 \
+	icGrowName	< * +inf -inf > 2 \
+	icMarkrejName	< * +inf -inf > 2 \
+	icNaverageName	< * +inf -inf > 2 \
+	icNiterName	< * +inf -inf > 2 \
+	icLowrejName	< * +inf -inf > 2 \
+	icHirejName	< * +inf -inf > 2 \
+	icSampleName	< * +inf -inf >	  \
+	5 \
+    }
+    *icFuncName.label:			Fitting Function:
+    *icOrderName.label:			Function Order:
+    *icGrowName.label:			Grow Radius:
+    *icMarkrejName.label:		Mark Rejected Points:
+    *icNaverageName.label:		Npts to Average:
+    *icNiterName.label:			Number of Iterations:
+    *icLowrejName.label:		Low Sigma Rejection:
+    *icHirejName.label:			High Sigma Rejection:
+    *icSampleName.label:		Sample Regions:
+    
+    *icfparsText.layout: vertical { \
+	5 \
+	icFuncFrame	 < * +inf -inf > 2 \
+	icOrderFrame	 < * +inf -inf > 2 \
+	icGrowFrame	 < * +inf -inf > 2 \
+	icMarkrejFrame	 < * +inf -inf > 2 \
+	icNaverageFrame	 < * +inf -inf > 2 \
+	icNiterFrame	 < * +inf -inf > 2 \
+	icLowrejFrame	 < * +inf -inf > 2 \
+	icHirejFrame	 < * +inf -inf > 2 \
+	icSampleFrame	 < * +inf -inf >   \
+	5 \
+    }
+    *icFuncValue.label:			spline3
+    *icFuncValue.menuName:		icparsFuncMenu
+    *icMarkrejValue.label:		yes
+    *icSampleValue.scrollHorizontal:	Never
+
+    
+    ! Do the command bar group resources.
+    !------------------------------------
+    *icfpCmdGroup.label:
+    *icfpCmdGroup.outerOffset:		0
+    *icfpCmdGroup.innerOffset:		5
+    *icfpCmdGroup.background:		gray67
+    *icfpCmdGroup*Command.background:	gray75
+    *icfparsCmd.background:		gray67
+    *icfparsCmd.layout: vertical { \
+	horizontal { \
+	    icfparsApply   2 \
+	    icfparsUnlearn 2 \
+	    icfparsUpdate  2 \
+	    icfparsCancel \
+	    10 < +inf -10> \
+	    icfparsHelp	   2 \
+	    icfparsDismiss \
+	} \
+    }
+    *icfparsApply.label:		Apply
+    *icfparsUnlearn.label:		Unlearn
+    *icfparsUpdate.label:		Update
+    *icfparsCancel.label:		Cancel
+    *icfparsHelp.label:			Help
+    *icfparsDismiss.label:		Dismiss
+
+
+    !----------------+
+    ! CCF save dialog.
+    !----------------+
+    *ccfname.width:                             380
+    *ccfname.height:                            130
+    *ccfname*borderWidth:                       0
+    *ccfname*Group.frameType:                   chiseled
+    *ccfname*Group.frameWidth:                  2
+    *ccfname*Group.innerOffset:                 5
+    *ccfname*Group.outerOffset:                 2
+    *ccfname*Group.label:                               
+
+    *ccfLayout*TextToggle.location:             0 0 80 23
+    *ccfLayout*TextToggle.justify:              left
+    *ccfLayout*TextToggle.frameWidth:           0
+    *ccfLayout*TextToggle.highlightColor:       yellow
+    *ccfLayout*TextToggle.offIcon:              square0s
+    *ccfLayout*TextToggle.onIcon:               square1s
+    *ccfLayout*TextToggle.outerOffset:          0
+    *ccfLayout.layout: vertical { \
+        5 < -5 > \
+        ccfnameGroup < +inf -inf * > \
+        5 < -5 > \
+        ccfnameCmdGroup < +inf -inf * > \
+        5 < -5 > \
+    }
+
+    *ccfnameLayout.layout: vertical { \
+        horizontal { ccfnameLabel 5 ccfnameFrame < +inf -inf * > } \
+        10 \
+        horizontal { 10 ccfType 10 < +inf > ccfFile 10 ccfImage 5 < +inf > } \
+    }
+    *ccfnameLabel.label:                        Filename: 
+    *ccfnameLabel.justify:                      right
+    *ccfnameFrame.frameType:                    sunken
+    *ccfnameFrame.frameWidth:                   2
+    *ccfnameEntry*editType:                     edit
+    *ccfnameEntry*height:                       25
+    *ccfnameEntry*background:                   gray70
+    *ccfnameEntry*foreground:                   black
+    *ccfType.label:                             Save As:
+    *ccfType.justfy:                            right
+    *ccfImage.label:                            Image
+    *ccfFile.label:                             Text File
+    *ccfFile.on:                                True
+
+    *ccfnameCmdLayout.layout: horizontal { \
+        ccfnameOkay \
+        200 < +inf -200 > \
+        ccfnameDismiss \
+    }
+    *ccfnameOkay.label:                         Okay
+    *ccfnameDismiss.label:                      Dismiss
+
+
+    !----------------+
+    ! WARNING dialog.
+    !----------------+
+    *warning.geometry:				+400+300
+    *warning*background:			gray
+    *warning*borderWidth:			0
+    *warning*TextBox.frameWidth:		0
+    *warning*Command.width:			90
+    *warning*Command.height:			30
+    *warning*Frame.frameType:			sunken
+    *warning*Frame.frameWidth:			2
+    *warning*Frame.innerOffset:			3
+    *warn.layout: vertical { \
+	2 \
+	horizontal { \
+	    2 \
+	    warnFrame < +inf -inf * +inf > \
+	    2 \
+	} \
+	2 \
+	horizontal { \
+	    5 < +inf -5 > \
+	    warnBtnFrame \
+	    5 < +inf -5 > \
+	} \
+	2 \
+    }
+
+    *WFlayout.layout: horizontal { \
+	5 < -5 > \
+	vertical { \
+	    5 < +inf -5 > \
+	    warnIcon \
+	    5 < +inf -5 > \
+	} \
+	5 < -5 > \
+	warnText < +inf -inf * +inf -inf > \
+	5 < -5 > \
+    }
+    *warnIcon.location:				0 0 40 40
+    *warnIcon.image:				WARNING
+    *warnText.label:				generic warning text
+    *warnText.width:				270
+    *warnText.height:				60
+    *warnDismiss.label:				Dismiss
+
+
+
+    !--------------------------
+    ! Define a Debug Tcl shell.
+    !--------------------------
+    *tclShell.width:				400
+    *tclShell.height:				150
+    *tclShell.title:				Debug TCL Command Entry
+
+    *tclLayout*borderWidth:			0
+    *tclLayout*Frame.frameType:			sunken
+    *tclLayout*Frame.frameWidth:		2
+    *tclLayout*Text*background:			gray75
+    *tclLayout*Text*editType:			edit
+    *tclLayout.layout:	vertical { \
+	0 < +0 -0 > \
+	tclCmdGroup   < +inf -inf * > \
+	tclFrame < +inf -inf * +inf -inf> \
+	0 < +0 -0 > \
+    }
+
+    ! Do the command bar group resources.
+    !------------------------------------
+    *tclCmdGroup.label:		
+    *tclCmdGroup.outerOffset:			0
+    *tclCmdGroup.innerOffset:			0
+    *tclCmdGroup*Command.background:		gray75
+    *tclCmdGroup.background:			gray67
+    *tclCmd.background:				gray67
+    *tclCmd.layout: vertical { \
+	5 \
+	horizontal { \
+	    5 \
+	    tclClear   1 \
+	    tclExecute	 \
+	    10 < +inf -10>    \
+	    tclDismiss	 \
+	    5 \
+	} \
+	5 \
+    }
+    *tclClear.label:				Clear
+    *tclExecute.label:				Execute
+    *tclDismiss.label:				Dismiss
+
+}
+
+# Start up the GUI.
+createObjects
+
+# Define the bitmaps.
+createBitmap check 16 16 {
+   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x60,
+   0x00, 0x30, 0x00, 0x18, 0x00, 0x0c, 0x08, 0x06, 0x18, 0x03, 0xb0, 0x01,
+   0xe0, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00}
+
+createBitmap null 16 16 {
+   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+   0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}
+
+createBitmap larrow 16 16 {
+   0x00, 0x00, 0x00, 0x03, 0x80, 0x03, 0xc0, 0x03, 0xe0, 0x1e, 0x70, 0x1e,
+   0x38, 0x18, 0x1c, 0x18, 0x1c, 0x18, 0x38, 0x18, 0x70, 0x1e, 0xe0, 0x1e,
+   0xc0, 0x03, 0x80, 0x03, 0x00, 0x03, 0x00, 0x00};
+
+createBitmap rarrow 16 16 {
+   0x00, 0x00, 0xc0, 0x00, 0xc0, 0x01, 0xc0, 0x03, 0x78, 0x07, 0x78, 0x0e,
+   0x18, 0x1c, 0x18, 0x38, 0x18, 0x38, 0x18, 0x1c, 0x78, 0x0e, 0x78, 0x07,
+   0xc0, 0x03, 0xc0, 0x01, 0xc0, 0x00, 0x00, 0x00};
+
+createBitmap grayLarrow 16 16 {
+   0x00, 0x00, 0x00, 0x01, 0x80, 0x02, 0x40, 0x01, 0xa0, 0x0a, 0x50, 0x16,
+   0x28, 0x08, 0x14, 0x10, 0x14, 0x08, 0x28, 0x10, 0x50, 0x0a, 0xa0, 0x14,
+   0x40, 0x03, 0x80, 0x02, 0x00, 0x01, 0x00, 0x00};
+
+createBitmap grayRarrow 16 16 {
+   0x00, 0x00, 0x80, 0x00, 0x40, 0x01, 0xc0, 0x02, 0x28, 0x05, 0x50, 0x0a,
+   0x08, 0x14, 0x10, 0x28, 0x08, 0x28, 0x10, 0x14, 0x68, 0x0a, 0x50, 0x05,
+   0x80, 0x02, 0x40, 0x01, 0x80, 0x00, 0x00, 0x00};
+
+# Turn on the button bitmaps.
+send mainPrev	 "set bitmap larrow"
+send mainNext	 "set bitmap rarrow"
+
+
+# Post the reactivate callback
+proc reactivate { args } { 
+	send fxcLayout map 
+	send resultList	 set string ""
+} ; send server postActivateCallback reactivate
+
+
+# Activate the user interface.
+send gterm setGterm
+activate
+
+set winWidth		512			;# graph window width
+set winHeight		512			;# graph window height
+
+set eparFGColor		black			;# param entry FG color
+set eparBGColor		gray67			;# param entry BG color
+set eparHLColor		gray90			;# param entry HL color
+set eparCmdColor	gray75			;# param menubar color
+
+set autowrite		0			;# Other global vars
+set exitStat		0
+set fileset		0
+set queryAction		"foo"
+
+proc winResize { w width height } {	
+	global winWidth winHeight
+
+	set winWidth $width
+	set winHeight $height
+	GKey r
+}
+send gterm	addCallback winResize resize
+send fmodeGterm addCallback winResize resize
+send smodeGterm addCallback winResize resize
+
+#-----------------------------+
+#   DEBUG Utility Callbacks   |
+#-----------------------------+
+#send smodeShell map
+
+
+#-----------------------+
+#   Utility Callbacks	|
+#-----------------------+
+
+#  Procedures for sending client cursor commands.
+proc GKey { key args } { send client gkey $key	 }
+proc GCmd { args }     { send client gcmd $args	 }
+
+#  Procedures to test True/False strings in resources.
+proc true  { v } \
+    { expr { $v=="true" || $v=="True" || $v=="TRUE" || $v==1 || $v=="yes"   }
+}
+proc false { v } \
+    { expr { $v=="false" || $v=="False" || $v=="FALSE" || $v==0 || $v=="no" }
+}
+
+#  No-op procedure for text widgets with no callbacks to swallow newline.
+proc noop { args } { }
+
+#  Common functions.
+proc min { a b } { expr {($a < $b) ? $a : $b} }
+proc max { a b } { expr {($a > $b) ? $a : $b} }
+
+
+
+#------------------------+
+#  MAIN PANEL CALLBACKS	 |
+#------------------------+
+
+# Various callbacks.
+proc Quit { args } {
+    global written fileset autowrite queryAction
+
+    #if {($written == 0 || $fileset == 0) && $autowrite == 0} { }
+    if { ($written == 0 || $fileset == 0) } {
+	set fname "none"
+	set queryAction "quit"
+	send saveLabel { set label "Save results before quitting?" }
+	send saveShell map
+
+    } elseif { $written == 1 || $autowrite == 1 } {
+	# It's gonna be a clean goodbye.
+	if { $written == 0 } { Write }
+	GKey q
+
+	# Clean up various windows.
+	send dialog unmap		
+	send tclShell unmap
+	deactivate unmap 
+    }
+    send gterm eraseDialog
+     
+} ; send mainQuit addCallback Quit
+
+
+
+proc taskUnmap { param old new }  {
+    send dialog unmap
+    send tclShell unmap
+    deactivate unmap 
+} ; send taskQuit addCallback taskUnmap
+
+send mainRedraw addCallback "GKey r"
+
+send mainHelp addCallback "showHelp ccfKeys"
+
+proc Write { args } { 
+    # Need to popup the filename stuff....
+    global written fileset queryAction
+	
+    if {$fileset == 0} {
+	set exitStat 0
+	set queryAction "save"
+	send filename map
+    } else {
+	GKey w 
+	if { $written == 1 } {
+	    send client yes 
+	}
+	#GCmd ui_showv 0
+	set written 1
+    }
+} ; send mainWrite addCallback Write
+
+proc Next  { widget args } { 
+    global written exitStat fileset autowrite
+
+    set exitStat 1
+    if {$written == 0} {
+	if {$autowrite == 1} {
+	    if {$fileset == 0} {
+		set queryAction "save"
+		send filename map
+	    } else {
+		GKey n
+	    }
+	} else {
+	    set fname "none"
+	    set queryAction "save"
+	    send saveShell map
+	    send saveLabel { set label "Save results before continuing?" }
+	}
+    } else {
+	GKey n 
+    }
+} ; send mainNext addCallback Next
+
+proc Prev  { widget args } { 
+    global written exitStat fileset autowrite
+
+    set exitStat -1
+    if {$written == 0} {
+	if {$autowrite == 1} {
+	    if {$fileset == 0} {
+		set queryAction "save"
+		send filename map
+	    } else {
+		GKey p
+	    }
+	} else {
+	    set fname "none"
+	    set queryAction "save"
+	    send saveShell map
+	    send saveLabel { set label "Save results before continuing?" }
+	}
+    } else {
+	GKey p 
+    }
+} ; send mainPrev addCallback Prev
+
+set liststat	-999
+
+proc listStatCallback { param old new } {
+    global liststat
+    set liststat $new
+    setListStat
+} ; send listStat addCallback listStatCallback
+
+proc setListStat { args } {
+    global liststat
+
+    if {$liststat < 0} {
+	send mainNext { set sensitive true    }
+	send mainPrev { set sensitive false   }
+	send mainPrev { set bitmap grayLarrow }
+	send mainNext { set bitmap rarrow     }
+    } elseif {$liststat == 0} {
+	send mainPrev { set sensitive false   }
+	send mainNext { set sensitive false   }
+	send mainPrev { set bitmap grayLarrow }
+	send mainNext { set bitmap grayRarrow }
+    } elseif {$liststat == 1} {
+	send mainPrev { set sensitive true    }
+	send mainNext { set sensitive false   }
+	send mainPrev { set bitmap larrow     }
+	send mainNext { set bitmap grayRarrow }
+    } else {
+	send mainPrev { set sensitive true    }
+	send mainNext { set sensitive true    }
+	send mainPrev { set bitmap larrow     }
+	send mainNext { set bitmap rarrow     }
+    }
+}
+
+
+# The correlation RESULTS Callback
+
+proc resListCallback { param old new } {
+    send resultList append [format "%s" $new ]
+} ; send resultStat addCallback resListCallback
+
+proc vResListCallback { param old new } {
+    send dialogInfo set string $new
+} ; send verbResultStat addCallback vResListCallback
+
+
+# The 'ready' call back to let us know if we have data.
+proc readyCB { param old new } {
+    global eparHLColor eparCmdColor
+
+    if { $new == -1 } {
+	send menuBar setSensitive False
+	send gterm setSensitive False
+	send fbcObj  set background $eparHLColor
+	send fbcTemp set background $eparHLColor
+	send fbcDismiss setSensitive False
+    } elseif { $new == 0 } {
+	send menuBar setSensitive True
+	send gterm setSensitive True
+	send gterm setGterm
+	send fbcDismiss setSensitive True
+    }
+} ; send ready addCallback readyCB
+
+
+
+
+#----------------------------------------
+#	  MAIN MENUBAR PROCEDURES	|
+#----------------------------------------
+
+#-----------------------------------
+# Do the Fitting Function procedure.
+#-----------------------------------
+set fitfunc	1
+
+proc setFitFunc { param old new }  {
+	global fitFunc fitfunc funcMenuDescription
+	set fitfunc $new
+	editMenu funcMenu menuBar $funcMenuDescription
+} ; #send fitFunc addCallback setFitFunc
+
+proc setFunction { func args } {
+    global	fitfunc funcMenuDescription
+
+    switch $func { 
+	1	{ GCmd function gaussian }
+	2	{ GCmd function parabola }
+	3	{ GCmd function lorentz	 }
+	4	{ GCmd function center1d }
+	5	{ GCmd function sinc	 }
+    }
+    set fitfunc $func
+    editMenu funcMenu menuBar $funcMenuDescription
+}
+
+# Define the fitting function menu.
+set funcMenuDescription {
+    { "Fitting Funcs"	f.title	  }
+    {			f.dblline }
+    { "  Gaussian"	f.exec { setFunction 1 }
+				bitmap {($fitfunc==1) ? "check" : "null"} }
+    { "  Parabola"	f.exec { setFunction 2 }
+				bitmap {($fitfunc==2) ? "check" : "null"} }
+    { "  Lorentz"	f.exec { setFunction 3 }
+				bitmap {($fitfunc==3) ? "check" : "null"} }
+    { "  Center1d"	f.exec { setFunction 4 }
+				bitmap {($fitfunc==4) ? "check" : "null"} }
+    { "  Sinc"		f.exec { setFunction 5 }
+				bitmap {($fitfunc==5) ? "check" : "null"} }
+} ; createMenu funcMenu menuBar $funcMenuDescription
+
+
+#--------------------------------
+# Do the output option procedure.
+#--------------------------------
+set outtype	1
+
+proc setOutOp { param old new }	 {
+    global outputOp outtype outMenuDescription
+    set outtype $new
+    editMenu outMenu menuBar $outMenuDescription
+} ; #send outputOp addCallback setOutOp
+
+proc setOuttype { out args } {
+    global	outtype outMenuDescription
+
+    switch $out { 
+	1	{ GCmd verbose short	}
+	2	{ GCmd verbose long	}
+	3	{ GCmd verbose nolog	}
+	4	{ GCmd verbose nogki	}
+	5	{ GCmd verbose txtonly	}
+	6	{ GCmd verbose stxtonly }
+    }
+    set outtype $out
+
+    editMenu outMenu menuBar $outMenuDescription
+}
+
+# Define the output options menu.
+set outMenuDescription {
+    { "Output Formats"	f.title	  }
+    {			f.dblline }
+    { "  Short"		f.exec	{ setOuttype 1 }
+				bitmap {($outtype==1) ? "check" : "null" }  }
+    { "  Long"		f.exec	{ setOuttype 2 }
+				bitmap {($outtype==2) ? "check" : "null" }  }
+    { "  Nolog"		f.exec	{ setOuttype 3 }
+				bitmap {($outtype==3) ? "check" : "null" }  }
+    { "  Nogki"		f.exec	{ setOuttype 4 }
+				bitmap {($outtype==4) ? "check" : "null" }  }
+    { "  Txtonly"	f.exec	{ setOuttype 5 }
+				bitmap {($outtype==5) ? "check" : "null" }  }
+    { "  Stxtonly"	f.exec	{ setOuttype 6 }
+				bitmap {($outtype==6) ? "check" : "null" }  }
+} ; createMenu outMenu menuBar $outMenuDescription
+
+
+#-------------------------------
+# Do the rebin option procedure.
+#-------------------------------
+set rebinop	1
+
+proc setRebinOp { param old new }  {
+    global rebinOp rebinop rebinMenuDescription
+    set rebinop $new
+    editMenu rebinMenu menuBar $rebinMenuDescription
+} ; #send rebinOp addCallback setRebinOp
+
+proc setRebin { rebin args } {
+    global	rebinop rebinMenuDescription
+
+    switch $rebin { 
+	1	{ GCmd rebin object   }
+	2	{ GCmd rebin template }
+	3	{ GCmd rebin smallest }
+	4	{ GCmd rebin largest  }
+    }
+    set rebinop $rebin
+
+    editMenu rebinMenu menuBar $rebinMenuDescription
+}
+
+# Define the rebin options menu.
+set rebinMenuDescription {
+    { "Rebin Options"	f.title	  }
+    {			f.dblline }
+    { "  Object"	f.exec	{ setRebin 1 }
+				bitmap {($rebinop==1) ? "check" : "null" }  }
+    { "  Template"	f.exec	{ setRebin 2 }
+				bitmap {($rebinop==2) ? "check" : "null" }  }
+    { "  Smallest"	f.exec	{ setRebin 3 }
+				bitmap {($rebinop==3) ? "check" : "null" }  }
+    { "  Largest"	f.exec	{ setRebin 4 }
+				bitmap {($rebinop==4) ? "check" : "null" }  }
+} ; createMenu rebinMenu menuBar $rebinMenuDescription
+
+
+#------------------------------------
+# Do the continuum option procedure.
+#------------------------------------
+set continop	 1
+
+proc setContinOp { param old new }  {
+    global continOp continop contMenuDescription
+    set continop $new
+    editMenu contMenu menuBar $contMenuDescription
+} ; #send continOp addCallback setContinOp
+
+proc setContin { contin args } {
+    global  continop contMenuDescription
+
+    switch $contin {
+	1	{ GCmd continuum object }
+	2	{ GCmd continuum template }
+	3	{ GCmd continuum both }
+	4	{ GCmd continuum none }
+    }
+    set continop $contin
+
+    editMenu contMenu menuBar $contMenuDescription
+}
+
+# Define the continuum options menu.
+set contMenuDescription {
+    { "Continuum Options"  f.title		}
+    {			   f.dblline		}
+    { "  Object"   f.exec { setContin 1 } 
+			    bitmap {($continop==1) ? "check" : "null" } }
+    { "  Template" f.exec { setContin 2 } 
+			    bitmap {($continop==2) ? "check" : "null" } }
+    { "  Both"	   f.exec { setContin 3 } 
+			    bitmap {($continop==3) ? "check" : "null" } }
+    { "  None"	   f.exec { setContin 4 } 
+			    bitmap {($continop==4) ? "check" : "null" } }
+} ; createMenu contMenu menuBar $contMenuDescription
+
+
+#-----------------------------------
+# Define the parameter options menu.
+#-----------------------------------
+
+createMenu paramMenu paramButton {
+    { "Fit Functions"	f.menu funcMenu	  }
+    { "Continuum"	f.menu contMenu	  }
+    { "Rebin"		f.menu rebinMenu  }
+    { "Output"		f.menu outMenu	  }
+}
+
+
+#-----------------------------
+# Declare the main File menu.
+#-----------------------------
+
+createMenu fileMenu fileButton {
+    { "  | New Object"	       f.exec { send fileBrowser map } }
+    { "  | New Template"       f.exec { send fileBrowser map } }
+    {			       f.dblline		       }
+    { "w| Save Results"        f.exec { send client gkey w   } }
+    { "  | Save CCF"           f.exec { send ccfname map     } }
+    {			       f.dblline		       }
+    { "  | Log Results"        f.exec { scrollOpen	     } }
+    { "v| Show verbose log"   f.exec { GCmd ui_showv 1      } }
+    { "  | New output file..." f.exec { send filename map    } }
+    {			       f.dblline		       }
+    { "q | Quit"	       f.exec { GCmd ui_quit 0	     } }
+}
+
+proc newOutputFile { args } {
+    global exiStat
+    set exitStat 999
+    send filename map
+}
+
+
+# Define the Edit menu options.
+set eparMenuDescription {
+    { "Task Parameters"	 f.exec { fxcOpen     } }
+    {			 f.dblline		}
+    { "KEYWPARS pset"	 f.exec { keywOpen    } }
+    { "CONTINPARS pset"	 f.exec { fxcContOpen } }
+    { "FILTPARS pset"	 f.exec { filtOpen    } }
+} ; createMenu eparMenu editButton $eparMenuDescription
+
+
+# Define the plot options menu.
+set plotMenuDescription {
+    { "e | Summary Plot" f.exec { GKey e } }
+    { "a | Antisym Plot" f.exec { GKey a } }
+    {			 f.dblline	   }
+    { "m | Mark Points"	 f.exec { GKey m } }
+    { "j | Residuals"	 f.exec { GKey j } }
+    { "r | Redraw"	 f.exec { GKey r } }
+} ; createMenu plotMenu plotButton $plotMenuDescription
+
+
+
+########################################
+#  Define the Spectrum Mode procedures #
+########################################
+
+set  smpltype		1
+
+# Define the output options menu.
+set smplotMenuDescription {
+    { " n | Norm. Spectrum"	 f.exec	 { setSMPlotType 1 }
+				bitmap {($smpltype==1) ? "check" : "null" }  }
+    { " i | Original Spectrum"	 f.exec	 { setSMPlotType 2 }
+				bitmap {($smpltype==2) ? "check" : "null" }  }
+    { " p | Prepared Spectrum"	 f.exec	 { setSMPlotType 3 }
+				bitmap {($smpltype==3) ? "check" : "null" }  }
+    {				f.dblline				     }
+    { "	 Summary Plot"		f.exec	{ GKey e }			     }
+} ; createMenu smplotMenu smMenuBar $smplotMenuDescription
+
+proc setSMPlotType { pltype args } {
+    global  smpltype  smplotMenuDescription
+
+    switch $pltype {
+	1	{ GKey n }
+	2	{ GKey i }
+	3	{ GKey p }
+    }
+    set smpltype $pltype
+    editMenu smplotMenu smMenuBar $smplotMenuDescription
+}
+
+send smodeHelp	 addCallback "showHelp smKeys"
+send smodeRedraw addCallback "GKey r"
+send smodeBack	 addCallback "GKey q"
+
+
+
+###################################
+#   Do the FFT mode options panel #
+###################################
+
+set	splitplot	1		;# duplicates of task params
+set	logscale	1
+set	overlay		1
+set	fftzoom		1.0
+
+
+# Define the callbacks for the options panel.
+#--------------------------------------------
+
+proc opsApplyCallback { widget args } {
+    global eparBGColor eparCmdColor
+
+    set spec	[ send foptSpecValue  get label]
+    set scale	[ send foptScaleValue get label]
+    set overlay [ send foptOvlValue   get label]
+
+    if {$spec == "object"} {	     GCmd ui_fmopset which obj
+    } elseif {$spec == "template"} { GCmd ui_fmopset which temp
+    } elseif {$spec == "split"} {    GCmd ui_fmopset which split
+    }
+    if {$scale == "log"} {	     GCmd ui_fmopset logscale log
+    } elseif {$scale == "linear"} {  GCmd ui_fmopset logscale linear
+    }
+    if {$overlay == "true"} {	     GCmd ui_fmopset overlay on
+    } elseif {$overlay == "false"} { GCmd ui_fmopset overlay off
+    }
+
+    set zoom [send foptZoomValue get label]
+    GCmd ui_fmopset zoom $zoom
+
+    GKey r
+    foreach i { foptSpecValue foptScaleValue foptOvlValue \
+	foptZoomLess foptZoomValue foptZoomMore } { 
+	    send $i "set background $eparBGColor"
+    }
+    send fmOptsApply "set background $eparCmdColor"
+
+} ; send fmOptsApply addCallback opsApplyCallback
+
+proc opsUnlearnCallback { widget args } {
+    global eparHLColor
+
+    send foptSpecValue	set label split
+    send foptScaleValue set label log
+    send foptOvlValue	set label on
+    send foptZoomValue	set label 1.0
+    GCmd ui_fmopset which split
+    GCmd ui_fmopset logscale log
+    GCmd ui_fmopset overlay on
+    GCmd ui_fmopset zoom 1.0
+
+    foreach i { fmOptsApply foptSpecValue foptScaleValue foptOvlValue \
+	foptZoomLess foptZoomValue foptZoomMore } { 
+	    send $i "set background $eparHLColor"
+    }
+} ; send fmOptsUnlearn addCallback opsUnlearnCallback
+
+proc opsHelpCallback { widget args } {
+    showHelp params
+} ; send fmOptsHelp addCallback opsHelpCallback
+
+send fmOptsDismiss addCallback "send fmOptions unmap "
+
+
+proc fmodeParsCallback { param old new } {
+    foreach item $new {
+	set keyw  [lindex $item 0]
+	set value [lindex $item 1]
+	switch $keyw {
+	    which      { send foptSpecValue  set label $value }
+	    logscale   { send foptScaleValue set label $value }
+	    overlay    { send foptOvlValue   set label $value }
+	    zoom       { send foptZoomValue  set label $value }
+	}
+    }
+} ; send fmodePars addCallback fmodeParsCallback
+
+proc fopsSpecCallback args {
+    global eparHLColor
+    set value [ send foptSpecValue get label ]
+    if {$value == "object"} {
+	send foptSpecValue { set label "template" }
+    } elseif {$value == "template"} {
+	send foptSpecValue { set label "split" }
+    } elseif {$value == "split"} {
+	send foptSpecValue { set label "object" }
+    }
+    send foptSpecValue	"set background $eparHLColor"
+    send fmOptsApply	"set background $eparHLColor"
+} ; send foptSpecValue	addCallback fopsSpecCallback
+
+proc fopsScaleCallback args {
+    global eparHLColor
+    set value [ send foptScaleValue get label ]
+    if {$value == "log"} {
+	send foptScaleValue { set label linear }
+    } else {
+	send foptScaleValue { set label log }
+    }
+    send foptScaleValue "set background $eparHLColor"
+    send fmOptsApply	"set background $eparHLColor"
+} ; send foptScaleValue	 addCallback fopsScaleCallback
+
+proc fopsOverlayCallback args {
+    global eparHLColor
+    set value [ send foptOvlValue get label ]
+    if {$value == "on"} {
+	send foptOvlValue { set label off }
+    } else {
+	send foptOvlValue { set label on }
+    }
+    send foptOvlValue "set background $eparHLColor"
+    send fmOptsApply  "set background $eparHLColor"
+} ; send foptOvlValue  addCallback fopsOverlayCallback
+
+proc fopsZoomCallback { widget args } {
+    global eparHLColor
+
+    set curval [ send foptZoomValue get label ]
+    if {$widget == "foptZoomLess"} {
+	if {$curval >= 1.5} {
+	    set newval [expr $curval - 0.5]
+	    send foptZoomValue set label $newval
+	    send fmOptsApply "set background $eparHLColor"
+	} else {
+	    send fmodeGterm bell
+	}
+    } else {
+	set newval [expr $curval + 0.5]
+	send foptZoomValue set label $newval
+	send fmOptsApply "set background $eparHLColor"
+    }
+    send foptZoomLess  "set background $eparHLColor"
+    send foptZoomValue "set background $eparHLColor"
+    send foptZoomMore  "set background $eparHLColor"
+}
+send foptZoomLess addCallback fopsZoomCallback
+send foptZoomMore addCallback fopsZoomCallback
+
+
+#########################################
+#  Define the Fourier Mode procedures.	#
+#########################################
+
+set ftype		2
+set filtop		1
+set fActivePlot	       fplotPSBefore
+
+
+# Define the Mode options menu
+set fmodePlotMenuDescription {
+    { "b | PS before filtering"	 f.exec { GKey b
+					  set fActivePlot fplotPSBefore
+					} }
+    { "p | PS after filtering"	 f.exec { GKey p
+					  set fActivePlot fplotPSAfter
+					}
+				 sensitive {($filtop!=4) ? "true" : "false" } }
+    { "g | FFT before filtering" f.exec { GKey g
+					  set fActivePlot fplotFTBefore
+					} }
+    { "f | FFT after filtering"	 f.exec { GKey f
+					  set fActivePlot fplotFTAfter
+					}
+				 sensitive {($filtop!=4) ? "true" : "false" } }
+    { "o | Object Spectrum"	 f.exec { GKey o
+					  set fActivePlot fplotObjPlot
+					}
+				 sensitive {($filtop!=4) ? "true" : "false" } }
+    { "t | Template Spectrum"	 f.exec { GKey t
+					  set fActivePlot fplotTempPlot
+					}
+				 sensitive {($filtop!=4) ? "true" : "false" } }
+} ; createMenu fmodePlotMenu fmodePlotButton	    $fmodePlotMenuDescription
+
+
+proc fmOpen { args } {
+    global filtop
+    send fmodeShell map
+    send fmodeGterm setGterm
+}
+
+
+send fmodeHelp		addCallback "showHelp fmKeys"
+send fmodeOptions	addCallback "send fmOptions map"
+send fmodeRedraw	addCallback "GKey r"
+send fmodeBack		addCallback "GKey q"
+send fmodeEditFilter	addCallback filtOpen
+
+
+#########################################
+# Do the temporary graphics procedures. #
+#########################################
+
+proc tmpGraphCallback { param old new } {
+	if {$new == "a" || $new == "e" || $new == "p"} {
+	    tmpGraphOpen
+	} else {
+	    tmpGraphCancel
+	}
+} ; send tmpPlot addCallback tmpGraphCallback
+
+proc tmpGraphOpen { args } {
+	send tmpGraph map
+	send tgGterm setCursorType ginMode
+	send tgGterm setGterm
+}
+
+proc tmpGraphCancel { args } {
+	global mStack mIndex
+
+	set curmode	$mStack($mIndex)
+	if {$curmode == 1} {
+	    send gterm setCursorType ginMode
+	    send gterm setGterm
+	} elseif {$curmode == 3} {
+	    send smodeGterm setCursorType ginMode
+	    send smodeGterm setGterm
+	}
+	send tmpGraph unmap
+
+}
+
+proc tmpGraphQuit args { GKey q }
+send tgDone addCallback tmpGraphQuit
+
+
+#------------------------------------------
+#  Save query procedures
+#------------------------------------------
+
+proc setAutoWrite { param old new }  {
+    global autowrite
+    set autowrite $new
+} ; send autowritePar addCallback setAutoWrite
+
+
+proc querySave { widget args } { 
+    global queryAction
+
+    send saveShell unmap
+    if {$widget == "saveYes"} {
+	set exitStat 0
+	send filename map
+    } elseif {$widget == "saveNo"} {
+	if {$queryAction == "quit"} {
+	    GCmd ui_quit 0
+	    send dialog unmap
+	    #send list unmap
+	    send tclShell unmap
+	    deactivate unmap
+	} elseif {$queryAction == "new"} {
+	    listImLoad "none"
+	}
+    }
+}
+send saveYes	addCallback querySave
+send saveNo	addCallback querySave
+send saveCancel addCallback "send saveShell unmap"
+
+
+
+#-----------------------------
+#  RESULTS OUTPUT PROCEDURES
+#-----------------------------
+
+set resTitle \
+"   OBJECT     IMAGE      REF    HJD      AP   SHIFT    FWHM     VHELIO    VERR"
+
+proc scrollOpen { args } { 
+    global resTitle
+    send resultTitle set label $resTitle
+    send results map
+}
+
+send resultsClear addCallback { send resultList set string "" }
+send resultsDone  addCallback "send results unmap"
+
+
+#---------------------------------------------+
+#  Procedure used by the filename prompt box. |
+#---------------------------------------------+
+
+proc doFileText { widget mode fname args } {
+    global exitStat written fileset queryAction
+
+    if {$exitStat == 0} {
+	if {$queryAction == "quit"} {
+	    GCmd ui_quit 1 $fname
+	} elseif {$queryAction == "new"} {
+	    listImLoad $fname
+	} elseif {$queryAction == "save"} {
+	    GCmd ui_output 0 $fname
+	    set written 1
+	} else {
+	    GCmd output $fname
+	}
+    } elseif {$exitStat == 999} {	    # just change file name
+	GCmd ui_output $exitStat $fname
+	send resultList set string ""
+    } else {
+	GCmd ui_output $exitStat $fname
+    }
+    set fileset 1
+    send filename unmap
+} ; send fnameEntry addCallback doFileText
+
+proc doFileOkay { widget args } {
+	set fname [send fnameEntry get string]
+	doFileText widget linemode $fname
+} ; send fnameOkay addCallback doFileOkay
+
+proc doFileClear { args } {
+    send fnameEntry set string ""
+}; send fnameClear   addCallback doFileClear
+
+send fnameDismiss addCallback "send filename unmap "
+
+
+
+##############################
+#   Do the dialog box stuff  #
+##############################
+
+# Do the save-query dialog routines.
+set written	0
+
+proc setWasWritten { param old new }  {
+	global written
+	set written $new
+} ; send wasWritten addCallback setWasWritten
+
+proc dialogDone	 { widget args } { send dialog unmap }
+proc dialogClear { widget args } { send dialogInfo set string "" }
+
+proc openDialog { param old new } { 
+    send dialog map 
+    send dialogInfo set string $new
+} ; send dialogText	   addCallback openDialog
+
+send dialogDone	 addCallback dialogDone
+send dialogClear addCallback dialogClear
+
+
+########################################
+#   Define some TCL debug procedures   #
+########################################
+
+proc tclOpen {} { send tclShell map }
+
+proc tclCommandClear { widget args } { 
+    send tclEntry set string "" 
+} ; send tclClear addCallback tclCommandClear
+
+proc tclCommandExecute { widget args } { \
+	send server [send tclEntry {get string}] 
+} ; send tclExecute addCallback tclCommandExecute
+
+proc tclCommand { widget mode command args } { 
+    send server $command 
+} ; send tclEntry addCallback tclCommand
+
+send tclDismiss addCallback	  "send tclShell unmap"
+
+
+##############################
+#   Do the dialog box stuff  #
+##############################
+
+# Do the save-query dialog routines.
+set written	0
+
+proc setWasWritten { param old new }  {
+	global written
+	set written $new
+} ; send wasWritten addCallback setWasWritten
+
+proc dialogDone	 { widget args } { send dialog unmap }
+proc dialogClear { widget args } { send dialogInfo set string "" }
+
+proc openDialog { param old new } { 
+    send dialog map 
+    send dialogInfo set string $new
+} ; send dialogText	   addCallback openDialog
+
+send dialogDone	 addCallback dialogDone
+send dialogClear addCallback dialogClear
+
+
+#----------------------------------------------+
+#     Define procedures for the help panel     |
+#----------------------------------------------+
+
+# Stuff for keeping track of visited anchors.
+set links	{ 0 }
+set linkIndex	  0
+set visited(0)	empty
+
+proc getHelpText { param old new } {
+    send helpText setText $new
+}; send help addCallback getHelpText
+
+proc anchorSelected {widget cbtype event text href args} {
+    global visited links linkIndex
+    set anchID [send helpText anchorToId $href]
+    set visited($href) 1
+    if {$linkIndex == 0} {
+	send helpBack set sensitive True
+	if {[lindex $links 1] != $anchID} {
+	    set links { 0 }
+	    send helpForward set sensitive False
+	} 
+    } 
+    if {$linkIndex > 0 && [lindex $links [expr $linkIndex + 1]] != $anchID} {
+	#set links [lrange $links 0 $linkIndex]
+	set pos [send helpText positionToId 0 0]
+	set links [lreplace $links $linkIndex end $pos]
+    }
+    if {[lindex $links [expr $linkIndex + 1]] != $anchID} {
+	lappend links $anchID
+	incr linkIndex
+    } else {
+	send helpForward set sensitive False
+	incr linkIndex
+    }
+    if {$linkIndex == [expr [llength $links] - 1]} {
+	send helpForward set sensitive False
+    }
+    send helpText gotoId $anchID
+    send helpText retestAnchors
+}; send helpText addCallback anchorSelected anchor
+
+proc testAnchor {widget cbtype href} {
+    global visited
+    return [info exists visited($href)]
+}; send helpText addCallback testAnchor testAnchor
+
+
+# Callbacks to position forwards and backwards in link list.
+proc hlpForward args {
+    global links linkIndex
+    incr linkIndex
+    if {$linkIndex <= [llength $links]} {
+	set anchID [lindex $links $linkIndex] 
+	send helpText gotoId $anchID
+	send helpText retestAnchors
+	if {$linkIndex == [expr [llength $links] - 1]} {
+	    send helpForward set sensitive False
+	    send helpBack set sensitive True
+	} else {
+	    send helpBack set sensitive True
+	}
+    } else {
+	incr linkIndex -1
+    }
+}; send helpForward addCallback hlpForward
+
+proc hlpBack args {
+    global links linkIndex
+    incr linkIndex -1
+    if {$linkIndex >= 0} {
+	set anchID [lindex $links $linkIndex] 
+	send helpText gotoId $anchID
+	send helpText retestAnchors
+	if {$linkIndex == 0} { send helpBack set sensitive False   }
+	if {$linkIndex >= 0} { send helpForward set sensitive True }
+    } else {
+	incr linkIndex 1
+    }
+}; send helpBack addCallback hlpBack
+
+proc hlpHome args {
+    global links linkIndex
+    set links { 0 }
+    set linkIndex  0
+    send helpText gotoId 0
+    send helpForward set sensitive False
+    send helpBack set sensitive False
+}; send helpHome addCallback hlpHome
+
+proc helpTutorial args {
+    showHelp tutorial
+}; send helpTutorial addCallback helpTutorial
+
+proc showhelp {param old new} {
+    showHelp $new
+}; send showhelp addCallback showhelp
+
+proc showHelp {name args} {
+    #send helpText gotoId [send helpText anchorToId #$name]
+    anchorSelected widget cbtype event text #$name
+    send helpShell map
+}
+
+proc hlpFind args {
+    set phrase  [send hfEntry get string]
+    set dir  forward
+    set case caseless
+
+    if { $phrase != "" } {
+        if { [send hfDir get on] }  { set dir backward  }
+        if { [send hfCase get on] } { set case caseSensitive  }
+        if { [send helpText searchText $phrase start end $dir $case ] > 0} {
+            set elid   [lindex [lindex $start 0] 0]
+            set id     [max 1 [expr $elid - 10] ]
+            send helpText gotoId $id
+            send helpText setSelection $start $end
+        } else {
+            send warnText set label "Search string not found."
+            send warning map
+        }
+    } else {
+        send warnText set label "Warning: No search phrase entered."
+        send warning map
+    }
+} ; foreach w { hfEntry hfFind } { send $w addCallback hlpFind }
+
+send hfClear addCallback { send hfEntry set string "" }
+
+
+send helpDismiss addCallback "send helpShell unmap"
+
+
+#############################
+#  Do the Mode Menu stuff.  #
+#############################
+set	mode		1
+set	mIndex		1
+set	mStack(1)	1
+set	mStack(2)	0
+set	mStack(3)	0
+
+
+proc taskChangeMode { param old new } {
+	global mode mIndex mStack
+	if {$new == 0} {
+	    quitMode $new
+	} else {
+	    changeMode $new
+	}
+} ; send modeChange addCallback taskChangeMode
+
+proc quitMode { widget args } {
+	global mode mStack mIndex
+	global modeMenuDescription
+
+	set curmode	$mStack($mIndex)
+	set indx	[ expr ($mIndex == 1) ? 1 : [expr $mIndex-1] ]
+	set prevmode	$mStack($indx)
+
+	if {$curmode == 2} {				;# FFT Mode
+	    if {$prevmode == 1} {			;# CCF Mode
+		send menuBar setSensitive true
+		send gterm setSensitive true
+		send gterm setCursorType ginMode
+		send gterm setGterm
+		setListStat
+
+		send fxcpars	setSensitive true
+		send filtpars	setSensitive true
+		send keywpars	setSensitive true
+		send icfitPars	setSensitive true
+		#send list	 setSensitive true
+
+	    } elseif {$prevmode == 3} {			;# SPEC Mode
+		send smMenuBar setSensitive true
+		send smodeGterm setSensitive true
+		send smodeGterm setCursorType ginMode
+		send smodeGterm setGterm
+	    }
+	    send fmodeShell unmap
+	    send filtpars unmap
+	    send fmOptions unmap
+	    send dialog unmap
+	} elseif {$curmode == 3} {			;# SPEC Mode
+	    if {$prevmode == 1} {			;# CCF Mode
+		send menuBar setSensitive true
+		send gterm setSensitive true
+		send gterm setCursorType ginMode
+		send gterm setGterm
+		setListStat
+
+		send fxcpars	setSensitive true
+		send filtpars	setSensitive true
+		send keywpars	setSensitive true
+		send icfitPars	setSensitive true
+		#send list	 setSensitive true
+
+	    } elseif {$prevmode == 2} {			;# FFT Mode
+		send fmMenuBar setSensitive true
+		send fmodeGterm setSensitive true
+		send fmodeGterm setCursorType ginMode
+		send fmodeGterm setGterm
+
+		send filtpars  setSensitive true
+		send fmOptions setSensitive true
+	    }
+	    send smodeShell unmap
+	    send dialog unmap
+	} elseif {$curmode == 4 || $curmode == 5} {	;# Cont Modes
+	    send menuBar setSensitive true
+	    send gterm setSensitive true
+	    send gterm setCursorType ginMode
+	    send gterm setGterm
+	    setListStat
+
+	    if {$prevmode == 1} {			;# CCF Mode
+		send fxcpars	setSensitive true
+		send filtpars	setSensitive true
+		send keywpars	setSensitive true
+		send icfitPars	setSensitive true
+		#send list	 setSensitive true
+	    } elseif {$prevmode == 2} {			;# Spec Mode
+		send filtpars setSensitive true
+		send fmOptions setSensitive true
+	    }
+
+	    send dialog unmap
+	    send icfitPars  unmap
+	    send icfitShell unmap
+	}
+	set mIndex  [ expr ($mIndex == 1) ? 1 : [expr $mIndex-1] ]
+	set mode $mStack($mIndex)
+
+	editMenu modeMenu modeButton $modeMenuDescription
+	editMenu fmodeModeMenu fmodeModeButton $modeMenuDescription
+	editMenu smodeModeMenu smodeModeButton $modeMenuDescription
+}
+
+proc changeMode { newmode args } {
+	global mode mIndex mStack liststat
+	global modeMenuDescription
+
+	set curmode	$mStack($mIndex)
+	
+	if {$newmode == 1} {				;# CCF Mode 
+	    while {$mIndex>1} {
+		set curmode  $mStack($mIndex)
+		if {$curmode == 2} {
+		    send fmodeShell unmap
+		} elseif {$curmode == 3} {
+		    send smodeShell unmap
+		}
+		incr mIndex -1
+	    }
+	    send menuBar setSensitive true
+	    setListStat
+	    send gterm setCursorType ginMode
+	    send gterm setSensitive true
+	    send gterm setGterm
+
+	    send fxcpars setSensitive true
+	    send filtpars setSensitive true
+	    send keywpars setSensitive true
+	    send icfitPars  setSensitive true
+
+	} elseif {$newmode == 2} {			;# Fourier Mode
+	    if {$curmode == 1} {
+		send menuBar setSensitive false
+		send mainNext { set bitmap grayRarrow }
+		send mainPrev { set bitmap grayLarrow }
+		send gterm setSensitive false
+		send gterm setCursorType idle
+
+		send fxcpars	setSensitive false
+		send keywpars	setSensitive false
+		send icfitPars	setSensitive false
+		#send list	 setSensitive false
+
+	    } elseif {$curmode == 3} {
+		send smMenuBar setSensitive false
+		send smodeGterm setSensitive false
+		send smodeGterm setCursorType idle
+	    }
+	    send fmMenuBar setSensitive true
+	    send fmodeGterm setSensitive true
+	    send fmodeGterm setCursorType ginMode
+	    send fmodeGterm setGterm
+	    send filtpars  setSensitive true
+	    send fmOptions setSensitive true
+	    fmOpen
+	    incr mIndex
+	} elseif {$newmode == 3} {			;# Spectrum Mode
+	    if {$curmode == 1} {
+		send menuBar setSensitive false
+		send mainNext { set bitmap grayRarrow }
+		send mainPrev { set bitmap grayLarrow }
+		send gterm setSensitive false
+		send gterm setCursorType idle
+
+		send fxcpars setSensitive false
+		send filtpars setSensitive false
+		send keywpars setSensitive false
+		send icfitPars	setSensitive false
+
+	    } elseif {$curmode == 2} {
+		send fmMenuBar setSensitive false
+		#send fmodeHelp { set bitmap grayQmark }
+		send fmodeGterm setSensitive false
+		send fmodeGterm setCursorType idle
+
+		send filtpars  setSensitive false
+		send fmOptions setSensitive false
+	    }
+	    send smMenuBar setSensitive true
+	    send smodeGterm setSensitive true
+	    send smodeGterm setCursorType ginMode
+	    send smodeGterm setGterm
+	    send smodeShell map
+	    incr mIndex
+
+	} elseif {$newmode == 4 || $newmode == 5} {
+	    # At present we can only be called from correlation mode.
+	    send menuBar setSensitive false
+	    #send mainHelp { set bitmap grayQmark }
+	    send mainNext { set bitmap grayRarrow }
+	    send mainPrev { set bitmap grayLarrow }
+	    send gterm setSensitive false
+	    send gterm setCursorType idle
+
+	    send fxcpars setSensitive false
+	    send filtpars setSensitive false
+	    send keywpars setSensitive false
+
+	    send icfitShell map
+	    send icGterm setGterm
+	    incr mIndex
+	}
+	set mStack($mIndex) $newmode
+	set mode $newmode
+
+	editMenu modeMenu modeButton $modeMenuDescription
+	editMenu fmodeModeMenu fmodeModeButton $modeMenuDescription
+	editMenu smodeModeMenu smodeModeButton $modeMenuDescription
+}
+
+
+# Define the Mode options menu
+set modeMenuDescription {
+    { "x | Correlation"	   f.exec { GKey x } }
+    { "f | Fourier"	   f.exec { GKey f } }
+    { "s | Spectrum"	   f.exec { GKey s } }
+    { "o | Obj Continuum"  f.exec { GKey o }
+				    sensitive {($mode==1) ? "true" : "false" } }
+    { "t | Temp Continuum" f.exec { GKey t }
+				    sensitive {($mode==1) ? "true" : "false" } }
+    {			   f.dblline	   }
+    { "	 Debug Tcl Entry"  f.exec tclOpen  }
+}
+createMenu modeMenu	 modeButton		$modeMenuDescription
+createMenu fmodeModeMenu fmodeModeButton	$modeMenuDescription
+createMenu smodeModeMenu smodeModeButton	$modeMenuDescription
+
+
+
+
+################################################################################
+#  Procedures used by the fileBrowser.
+################################################################################
+
+# File browsing globals
+set curdir	""				;# current directory
+set pattern	"*.??h,*.fits"			;# filename template
+set format	"fmtSrc"			;# SaveAs format
+
+
+# Browser selection callback.
+proc browserSelect { widget event args } {
+    global curdir helpOption
+
+    set opt [expr {$widget == "dirList" ? "dirlist" : "select"}]
+    set item [send $widget getItem itemno]
+    send $widget getItem itemno
+
+    if { $itemno != "none" } {
+	GCmd directory $opt $item
+	if { $widget != "dirList" } {
+	    send fbEntry set string $item
+	}
+    }
+}
+send dirList  addEventHandler browserSelect buttonReleaseMask
+send fileList addEventHandler browserSelect buttonReleaseMask
+
+
+proc setImage { widget args } {
+    global eparCmdColor
+
+    set name [ send fbEntry get string ]
+    if {$name != ""} {
+	if {$widget == "fbcObj"} {
+	    GCmd objects $name
+	} else {
+	    GCmd templates $name
+	}
+	send $widget set background $eparCmdColor
+    } else {
+	Wexec "No image name specified!"
+    }
+} ; foreach w { fbcObj fbcTemp } { send $w addCallback setImage }
+
+
+# Client callback.
+proc browserListing { param old new } {
+    global curdir pattern
+
+    set option [ lindex $new 0 ]
+    switch $option {
+	dirlist	    { set list [lindex $new 1]
+		      send dirList  setList $list resize
+		    }
+	filelist    { set list [lindex $new 1]
+		      send fileList setList $list resize
+		    }
+	template    { set pattern [lindex $new 1]
+		      send filterEntry set string $pattern
+		    }
+	curdir	    { set dir [lindex $new 1]
+		      set node [expr [string first "!" $dir] + 1]
+		      set curdir [string range $dir $node end]
+		      send curdirEntry set string $curdir
+		      send curdirEntry set insertPosition \
+			  [string length $curdir]
+		    }
+	selection   { send fbEntry set string [lindex $new 1]
+		      send fbEntry set insertPosition \
+			  [string length [lindex $new 1] ]
+		    }
+    }
+} ; send directory addCallback browserListing
+
+
+# Set the filename matching template.
+proc setTemplate { widget mode pattern args } {
+    GCmd directory template $pattern
+} ; send filterEntry addCallback setTemplate
+
+
+send fnavHome	 addCallback "GCmd directory home"
+send fnavUp	 addCallback "GCmd directory up"
+send fnavRoot	 addCallback "GCmd directory root"
+send fnavRescan	 addCallback "GCmd directory rescan"
+send fbClear     addCallback "send curdirEntry set string \"\""
+send curdirClear addCallback "send fbEntry set string \"\""
+send filterClear addCallback "send filterEntry set string \"\""
+send fbcHelp	 addCallback "showHelp params"
+send fbcDismiss	 addCallback "send fileBrowser unmap"
+
+################################################################################
+# Warning dialog.  This pops up a dialog box with the given warning message.
+################################################################################
+
+proc Wexec { message args } {
+    send warnText set label $message
+    send warning map
+}
+send warnDismiss addCallback "send warning unmap"
+
+
+# The parameter "alert" is used to forward alerts from the client.  The 
+# special 'dismiss' value can be used to shut down the alert from the
+# client, using 'browser' will cause the file browser to be mapped.
+
+proc setAlert {param old new} {
+    if {$new == "dismiss"} {
+	send warning unmap
+    } elseif {$new == "browser"} {
+	send fileBrowser map
+    } else {
+	set swidth [ expr 7 * [string length $new] ]
+	send warnText set width $swidth
+	send warnText set label $new
+	send warning set width [ expr 90 + $swidth ]
+	send warnFrame set width [ expr 90 + $swidth ]
+	send warning map
+    }
+} ; send alert addCallback setAlert
+
+
+#-------------------------
+#  ICFIT Panel Procedures
+#-------------------------
+
+set auto_refit		1
+
+set ic_plot		0		;# Initial plot menu
+set ic_order		1
+set ic_func		"spline3"
+set ic_plotop(0)	"X vs. Y"
+set ic_plotop(1)	"X vs. Residuals"
+set ic_plotop(2)	"X vs. Ratio (U/Fit)"
+set ic_plotop(3)	"X vs. Non-linear part of Y"
+set ic_plotop(4)	"Y vs. X"
+set ic_plotop(5)	"Y vs. Residuals"
+set ic_plotop(6)	"Y vs. Ratio (U/Fit)"
+set ic_plotop(7)	"Y vs. Non-linear part of Y"
+set ic_plotop(8)	"Residuals vs. X"
+set ic_plotop(9)	"Residuals vs. Y"
+set ic_plotop(10)	"Residuals vs. Ratio (U/Fit)"
+set ic_plotop(11)	"Residuals vs. Non-linear part of Y"
+set ic_plotop(12)	"Ratio vs. X"
+set ic_plotop(13)	"Ratio vs. Y"
+set ic_plotop(14)	"Ratio vs. Residuals"
+set ic_plotop(15)	"Ratio vs. Non-linear part of Y"
+set ic_plotop(16)	"Non-linear part of Y vs. X"
+set ic_plotop(17)	"Non-linear part of Y vs. Y"
+set ic_plotop(18)	"Non-linear part of Y vs. Ratio (Y/Fit)"
+set ic_plotop(19)	"Non-linear part of Y vs. Residuals"
+
+
+# Attach the cursor keystroke callbacks.
+
+proc icToggleMarkrej { widget callback new_state args } {
+    if {$new_state == 0} {
+	send client gcmd markrej no
+    } else {
+	send client gcmd markrej yes
+    }
+    send client gkey r
+}
+
+send icMarkRej	addCallback icToggleMarkrej
+send icEdit	addCallback "send icfitPars map"
+
+proc icDoRefit args {
+    global eparCmdColor
+
+    send client gkey f
+    send icRefit set background $eparCmdColor
+    send icfparsApply set background $eparCmdColor
+} ; send icRefit addCallback icDoRefit
+
+
+# Define the ICFIT 'plots' menu. 
+#-------------------------------
+
+proc setPlotMenuDescription { args } {
+    global ic_plotop ic_plot
+
+    for { set i 0 } { $i <= 19 } { incr i }  {
+	lappend items " \"$ic_plotop($i)\" f.exec \{ setPlot $i \} \
+	    bitmap \{\($ic_plot == $i\) ? \"check\" : \"null\" \}"
+    }
+    editMenu icPlotMenu icPlotButton $items
+} ; setPlotMenuDescription
+
+proc setPlot { plot args }  {
+    global ic_plot
+
+    set ic_plot $plot
+    switch $ic_plot {
+	0	{ send client gcmd graph h x y }
+	1	{ send client gcmd graph h x r }
+	2	{ send client gcmd graph h x d }
+	3	{ send client gcmd graph h x n }
+	4	{ send client gcmd graph h y x }
+	5	{ send client gcmd graph h y r }
+	6	{ send client gcmd graph h y d }
+	7	{ send client gcmd graph h y n }
+	8	{ send client gcmd graph h r x }
+	9	{ send client gcmd graph h r y }
+	10	{ send client gcmd graph h r d }
+	11	{ send client gcmd graph h r n }
+	12	{ send client gcmd graph h d x }
+	13	{ send client gcmd graph h d y }
+	14	{ send client gcmd graph h d r }
+	15	{ send client gcmd graph h d n }
+	16	{ send client gcmd graph h n x }
+	17	{ send client gcmd graph h n y }
+	18	{ send client gcmd graph h n r }
+	19	{ send client gcmd graph h n d }
+    }
+    setPlotMenuDescription
+}
+
+
+
+# Define the ICFIT 'order' menu.
+#-------------------------------
+
+
+# The Order menu is created on the fly instead of having a (very) long
+# definition string.  We also create the sub-menu here.
+
+proc setOrderMenuDescription { args } {
+    global ic_order
+
+    for { set i 1 } { $i <= 9 } { incr i }  { 
+	lappend itemList " \" $i\" f.exec \{ setOrder $i \} \
+	    bitmap \{\($ic_order == $i\) ? \"check\" : \"null\" \}"
+    }
+    lappend itemList " f.dblline "
+    set s1 "Others"
+    set s2 " send icfitPars map "
+    lappend itemList "$s1 f.exec \" $s2 \" "
+
+    editMenu icOrderMenu icOrderButton $itemList
+} ; setOrderMenuDescription
+
+proc setOrder { order args }  {
+    global ic_order auto_refit
+    global eparHLColor
+    global mStack mIndex
+
+    set curmode     $mStack($mIndex)
+
+    set ic_order $order
+    send client gcmd order $order
+    setOrderMenuDescription
+    if { $auto_refit == 1 && $curmode > 3 } { 
+	send client gkey f 
+    } else {
+	send icRefit set background $eparHLColor
+	send icfparsApply set background $eparHLColor
+    }
+}
+
+
+# Define the ICFIT 'misc' menu.
+#------------------------------
+
+set icMiscMenuDescription {
+    { "	 Initialize samples"  f.exec { send client gkey t      }	    }
+    { "	 Overplot next fit"   f.exec { send client gkey o      }	    }
+    { "	 Show"		      f.exec { send client gcmd show   }	    }
+    { "	 Show (verbose)"      f.exec { send client gcmd vshow  }	    }
+    { "	 Show errors"	      f.exec { send client gcmd errors }	    }
+    { "	 Show data and fit"   f.exec { send client gcmd xyshow }	    }
+    {			      f.dblline					    }
+    { "	 Auto Refit"	      f.exec { icToggleAutoRefit		    }
+				bitmap {($auto_refit==1)?"check":"null"} }
+}
+createMenu icMiscMenu icMiscButton $icMiscMenuDescription
+
+proc icToggleAutoRefit { args } {
+    global icMiscMenuDescription auto_refit
+
+    if {$auto_refit == 1} {
+	set auto_refit 0
+    } else {
+	set auto_refit 1
+    }
+    editMenu icMiscMenu icMiscButton $icMiscMenuDescription
+}
+
+
+# Define the 'function' menu stuff.
+#----------------------------------
+
+proc setFuncMenuDescription { args } {
+    global ic_func 
+
+    set icFuncMenuDescription {
+	{ "  Chebyshev"	 f.exec { setFunc chebyshev }
+			 bitmap {($ic_func=="chebyshev") ? "check" : "null" } }
+	{ "  Legendre"	 f.exec { setFunc legendre  }
+			 bitmap {($ic_func=="legendre")	 ? "check" : "null" } }
+	{ "  Spline1"	 f.exec { setFunc spline1   }
+			 bitmap {($ic_func=="spline1")	 ? "check" : "null" } }
+	{ "  Spline3"	 f.exec { setFunc spline3   }
+			 bitmap {($ic_func=="spline3")	 ? "check" : "null" } }
+    }
+    editMenu icFuncMenu	    icFuncButton $icFuncMenuDescription
+} ; setFuncMenuDescription
+
+set icfpFuncMenuDescription {
+    { "	 Chebyshev"  f.exec { setParsFunc chebyshev } }
+    { "	 Legendre"   f.exec { setParsFunc legendre  } }
+    { "	 Spline1"    f.exec { setParsFunc spline1   } }
+    { "	 Spline3"    f.exec { setParsFunc spline3   } }
+} ; createMenu icparsFuncMenu icFuncValue  $icfpFuncMenuDescription
+
+proc setParsFunc { func args }	{
+    global eparHLColor
+
+    send icFuncValue set label $func
+    send icFuncValue  set background $eparHLColor
+    send icfparsApply set background $eparHLColor
+}; send icFuncValue addCallback setParsFunc
+
+proc setFunc { func args }  {
+    global ic_func auto_refit
+    global eparHLColor
+    global mStack mIndex
+
+    set curmode     $mStack($mIndex)
+
+    set ic_func $func
+    send client gcmd function $func
+    setFuncMenuDescription
+    if { $auto_refit == 1 && $curmode > 3 } { 
+	send client gkey f 
+    } else {
+	send icRefit set background $eparHLColor
+	send icfparsApply set background $eparHLColor
+    }
+}
+
+
+# ICFIT Marker Procedures 
+# -----------------------
+
+set icMarker 0
+set icWcsBox 0
+
+proc icfit { param old new } {
+    global icwcs icMarker ic_plot ic_func ic_order
+
+    set cmd  [lindex $new 0]
+    switch $cmd {
+    open	-
+    close	-
+    params	{ set refit 0
+		  set func [lindex $new 1];  set ord  [lindex $new 2]
+		  set samp [lindex $new 3];  set nav  [lindex $new 4]
+		  set nit  [lindex $new 5];  set low  [lindex $new 6]
+		  set hi   [lindex $new 7];  set grow [lindex $new 8]
+		  set mrej [lindex $new 9]
+
+		  set icwcs(width) [send icGterm get width]	
+		  set icwcs(height) [send icGterm get height]	
+		  icWcsBox
+
+		  if {$func != [send icFuncValue get label]} {
+		      set refit 1
+		      send icFuncValue set label $func
+		      set ic_func $func
+		  } 
+		  if {$ord  != [send icOrderValue get string]} {
+		      set refit 1
+		      send icOrderValue set string $ord
+		      set ic_order $ord
+		  } 
+		  if {$samp != [send icSampleValue get string]} {
+		      set refit 1
+		      send icSampleValue set string $samp
+		  } 
+		  if {$nav  != [send icNaverageValue get string]} {
+		      set refit 1
+		      send icNaverageValue set string $nav
+		  } 
+		  if {$nit  != [send icNiterValue get string]} {
+		      set refit 1
+		      send icNiterValue set string $nit
+		  } 
+		  if {$low  != [send icLowrejValue get string]} {
+		      set refit 1
+		      send icLowrejValue set string $low
+		  } 
+		  if {$hi   != [send icHirejValue get string]} {
+		      set refit 1
+		      send icHirejValue set string $hi
+		  } 
+		  if {$grow != [send icGrowValue get string]} {
+		      set refit 1
+		      send icGrowValue set string $grow
+		  } 
+		  if {$mrej != [send icMarkrejValue get label]} {
+		      set refit 1
+		      send icMarkrejValue set label $mrej
+		      if {$mrej == "yes"} {	 send icMarkRej set state 1
+		      } elseif {$mrej == "no"} { send icMarkRej set state 0
+		      }
+		  }
+    
+		  #if {$refit == 1} { send client gkey f }
+		  setFuncMenuDescription
+		  setOrderMenuDescription
+		}
+    graph	{ set a [lindex $new 2]; set b [lindex $new 3]
+
+		  if {$a == "x" && $b == "y"} { set ic_plot 0  }
+		  if {$a == "x" && $b == "r"} { set ic_plot 1  }
+		  if {$a == "x" && $b == "d"} { set ic_plot 2  }
+		  if {$a == "x" && $b == "n"} { set ic_plot 3  }
+		  if {$a == "y" && $b == "x"} { set ic_plot 4  }
+		  if {$a == "y" && $b == "r"} { set ic_plot 5  }
+		  if {$a == "y" && $b == "d"} { set ic_plot 6  }
+		  if {$a == "y" && $b == "n"} { set ic_plot 7  }
+		  if {$a == "r" && $b == "x"} { set ic_plot 8  }
+		  if {$a == "r" && $b == "y"} { set ic_plot 9  }
+		  if {$a == "r" && $b == "d"} { set ic_plot 10 }
+		  if {$a == "r" && $b == "n"} { set ic_plot 11 }
+		  if {$a == "d" && $b == "x"} { set ic_plot 12 }
+		  if {$a == "d" && $b == "y"} { set ic_plot 13 }
+		  if {$a == "d" && $b == "r"} { set ic_plot 14 }
+		  if {$a == "d" && $b == "n"} { set ic_plot 15 }
+		  if {$a == "n" && $b == "x"} { set ic_plot 16 }
+		  if {$a == "n" && $b == "y"} { set ic_plot 17 }
+		  if {$a == "n" && $b == "r"} { set ic_plot 18 }
+		  if {$a == "n" && $b == "d"} { set ic_plot 19 }
+		  setPlotMenuDescription
+		}
+    wcs		{
+	icMarkerDestroy icMarker
+
+	set icwcs(wcs) $new
+	set vx1 [lindex $new 1]; set vx2 [lindex $new 2]
+	set vy1 [lindex $new 3]; set vy2 [lindex $new 4]
+	set wx1 [lindex $new 5]; set wx2 [lindex $new 6]
+	set wy1 [lindex $new 7]; set wy2 [lindex $new 8]
+
+	set icwcs(dx) [expr "($wx2-$wx1)/($vx2-$vx1)/($icwcs(width)-1)"]
+	set icwcs(x0) [expr "$wx1-$icwcs(dx)*$vx1*($icwcs(width)-1)"]
+	set icwcs(dy) [expr "($wy2-$wy1)/($vy1-$vy2)/($icwcs(height)-1)"]
+	set icwcs(y0) [expr "$wy1-$icwcs(dy)*(1-$vy1)*($icwcs(height)-1)"]
+	}
+    }
+}; send icfit addCallback icfit
+
+
+proc icrefit { param old new } {
+    global auto_refit
+    if { $new == "yes" || $new == "YES" } {
+	set auto_refit 1
+    } elseif { $new == "no" || $new == "NO" } {
+	set auto_refit 0
+    }
+}; send icrefit addCallback icrefit
+
+
+set icHelpText {
+<HTML> <HEAD> <TITLE> INTERACTIVE CURVE FITTING CURSOR OPTIONS </TITLE> </HEAD>
+<BODY>
+<H3>1. INTERACTIVE CURVE FITTING CURSOR OPTIONS</H3>
+
+<PRE>
+?	Print options
+a	Add point to constrain fit
+c	Print the coordinates and fit of point nearest the cursor
+d	Delete data point nearest the cursor
+f	Fit the data and redraw or overplot
+g	Redefine graph keys.  Any of the following data types may be along
+	either axis.
+	    x  Independent variable	y  Dependent variable
+	    f  Fitted value		r  Residual (y - f)
+	    d  Ratio (y / f)		n  Nonlinear part of y
+h-l	Graph keys.  Defaults are h=(x,y), i=(y,x), j=(x,r), k=(x,d), l=(x,n)
+o	Overplot the next graph
+q	Exit the interactive curve fitting.  Carriage return will also exit.
+r	Redraw graph
+s	Set sample range with the cursor
+t	Initialize the sample range to all points
+v	Change the weight of the point nearest the cursor
+u	Undelete the deleted point nearest the cursor
+w	Set the graph window.  For help type 'w' followed by '?'.
+x	Change the x value of the point nearest the cursor
+y	Change the y value of the point nearest the cursor
+z	Delete sample region nearest cursor
+I	Interrupt task immediately
+</PRE>
+
+<H3>2. INTERACTIVE CURVE FITTING COLON COMMANDS</H3>
+
+The parameters are listed or set with the following commands which may be
+abbreviated.  To list the value of a parameter type the command alone.
+
+<PRE>
+:show [file]		Show the values of all the parameters
+:vshow [file]		Show the values of all the parameters verbosely
+:xyshow [file]		Show the x, y, y fit, and weight data values
+:evaluate <value>	Print the fit at the specified value
+:errors [file]		Print the errors of the fit (default STDOUT)
+:function [value]	Fitting function (chebyshev, legendre, spline3, spline1)
+:grow [value]		Rejection growing radius
+:naverage [value]	Sample averaging or medianing window
+:order [value]		Fitting function order
+:low_reject [value]	Low rejection threshold
+:high_reject [value]	High rejection threshold
+:niterate [value]	Number of rejection iterations
+:sample [value]		Sample ranges
+:markrej [value]	Mark rejected points?
+</PRE>
+
+Additional commands are available for setting graph formats and manipulating
+the graphics.  Use the following commands for help.
+
+<PRE>
+:/help			Print help for graph formatting option
+:.help			Print help for general graphics options
+</PRE>
+
+<H3>3. INTERACTIVE CURVE FITTING GRAPH KEYS</H3>
+
+The graph keys are h, i, j, k, and l.  The graph keys may be redefined to
+put any combination of axes types along either graph axis with the 'g' key.
+To define a graph key select the desired key to redefine and then specify
+the axes types for the horizontal and vertical axes by a pair of comma
+separated types from the following:
+
+<PRE>
+d  Ratio (y / f)
+f  Fitted values
+r  Residuals of fit (y - f)
+n  Nonlinear part of data (linear component of fit subtracted)
+x  Indepedent variable
+y  Dependent variable (data being fit)
+</PRE>
+</BODY> </HTML>
+} ; send icHelpText setText $icHelpText
+
+
+proc icShow { param old new } {
+    send icShowText set string $new
+    send icShowShell map
+}; send icshow addCallback icShow
+
+send icHelp	   addCallback "send icHelpShell map"
+send icRedraw	   addCallback "send client gkey r"
+send icQuit	   addCallback "send client gkey q"
+send icShowDismiss addCallback "send icShowShell unmap"
+send icHelpDismiss addCallback "send icHelpShell unmap"
+
+proc icWinResize {widget width height} {
+    global icwcs
+
+    set icwcs(width) $width
+    set icwcs(height) $height
+    icfit icfit dummy $icwcs(wcs)
+    icWcsBox
+}; send icGterm addCallback icWinResize resize
+
+proc icMarker {x y} {
+    global icMarker
+
+    icMarkerDestroy icMarker
+
+    send icGterm createMarker icMarker {
+	createMode	interactive
+	type		rectangle
+	activated	true
+	visible		true
+	sensitive	true
+	x		$x
+	y		$y
+    }
+    send icMarker addCallback icMarkerDestroy destroy
+
+    set icMarker 1
+}
+
+proc icMarkerDestroy {widget args} {
+    global icMarker icWcsBox
+
+    if {[set $widget]} {send $widget destroy}
+    set $widget 0
+}
+
+
+proc icWindow args {
+    global icwcs
+
+    set window [send icMarker getRegion ]
+    set x [lindex $window 2]
+    set y [lindex $window 3]
+    set width [lindex $window 4]
+    set height [lindex $window 5]
+    if {($width < 1.) || ($height < 1.)} {
+	send client gcmd "window INDEF INDEF INDEF INDEF"
+	return
+    }
+
+    # Convert screen coords to world coordinates.
+    set wx1 [expr "$icwcs(x0) + $icwcs(dx) * ($x - $width)"]
+    set wx2 [expr "$icwcs(x0) + $icwcs(dx) * ($x + $width)"]
+    set wy1 [expr "$icwcs(y0) + $icwcs(dy) * ($y + $height)"]
+    set wy2 [expr "$icwcs(y0) + $icwcs(dy) * ($y - $height)"]
+
+    send client gcmd "window $wx1 $wx2 $wy1 $wy2"
+}
+
+proc icWcsBox args {
+    global icWcsBox
+
+    icMarkerDestroy icWcsBox
+
+    send icGterm createMarker icWcsBox {
+	type		text
+	createMode	noninteractive
+	width		25ch
+	height		1ch
+	lineWidth	0
+	imageText	true
+	textBgColor	black
+	textColor	yellow
+	visible		false
+    }
+
+    set width [send icGterm get width]	
+    set height [send icGterm get height]	
+    set boxwidth [send icWcsBox get width]
+    set boxheight [send icWcsBox get height]
+
+    send icWcsBox setAttributes \
+	x		[expr "$width - $boxwidth - 5"] \
+	y		[expr "$height - $boxheight - 5"] \
+	activated	true \
+	visible		true \
+	sensitive	true
+
+    send icWcsBox addCallback icMarkerDestroy destroy
+
+    set icWcsBox 1
+}
+
+proc icWcsUpdate {x y} {
+    global icwcs icWcsBox
+
+    # Convert screen coords to world coordinates.
+    if {$icWcsBox} {
+	set wx [expr "$icwcs(x0) + $icwcs(dx) * $x"]
+	set wy [expr "$icwcs(y0) + $icwcs(dy) * $y"]
+	send icWcsBox "set text \{$wx $wy\}; redraw noerase"
+    }
+}
+
+
+
+#------------------------------------------------
+# Callbacks for the ICFIT parameter editor popup.
+#------------------------------------------------
+
+set icfParsWidgets {
+    icFuncValue icOrderValue icGrowValue icMarkrejValue icNaverageValue
+    icNiterValue icLowrejValue icHirejValue icSampleValue 
+}
+
+set icfParsTextWidgets {
+    icOrderValue icGrowValue icNaverageValue
+    icNiterValue icLowrejValue icHirejValue icSampleValue 
+}
+
+# Define the translations used to highlight an epar panel text field when
+# something is changed so we don't have to rely on the <cr> to do it.
+
+set icfpTextTranslations "#override \
+    <Key>Right: forward-character()                                       \n\
+     <Key>Left: backward-character()                                      \n\
+    Ctrl<Key>A: beginning-of-line()                                       \n\
+    Ctrl<Key>K: kill-to-end-of-line()                                     \n\
+    Ctrl<Key>M: newline()                                                 \n\
+ <Key>Linefeed: newline-and-indent()                                      \n\
+   <Key>Return: newline()                                                 \n\
+   <Key>Delete: delete-previous-character() call(icfparsHighlight,WIDGET) \n\
+<Key>BackSpace: delete-previous-character() call(icfparsHighlight,WIDGET) \n\
+    Ctrl<Key>H: delete-previous-character() call(icfparsHighlight,WIDGET) \n\
+         <Key>: insert-char() call(icfparsHighlight,WIDGET)"
+
+foreach w $icfParsTextWidgets {
+    regsub -all "WIDGET" $icfpTextTranslations $w trans
+    send $w set translations $trans
+}
+
+
+proc icfparsHighlight { widget args } {
+    global eparHLColor
+
+    if {$widget == "icMarkrejValue"}  { 
+	set val [ send icMarkrejValue get label ]
+	if {$val == "no" || $val == "NO"} {
+	   send icMarkrejValue set label YES
+	} else {
+	   send icMarkrejValue set label NO
+	}
+    }
+    send $widget      set background $eparHLColor
+    send icfparsApply set background $eparHLColor
+}
+foreach i $icfParsWidgets { send $i addCallback icfparsHighlight }
+
+
+# Enter widget event handler to display a caret when active.
+set icfParsTextWidgets {
+    icOrderValue icGrowValue icNaverageValue icNiterValue icLowrejValue 
+    icHirejValue icSampleValue 
+}
+
+proc icShowCaret { widget event args } {
+    if { $event == "enterNotify" } {
+	send $widget set displayCaret True
+    } elseif { $event == "leaveNotify" } {
+	send $widget set displayCaret False
+    }
+}
+foreach widget $icfParsTextWidgets {
+    send $widget addEventHandler icShowCaret enterWindowMask leaveWindowMask
+}
+
+
+#------------------------
+# GUI parameter callback.
+#------------------------
+
+proc icfparsApplyCallback { widget args } {
+    global auto_refit eparBGColor eparCmdColor
+    global icfParsWidgets ic_func ic_order
+    global mStack mIndex
+
+    set curmode     $mStack($mIndex)
+    if { $curmode > 3 } {
+        send client gcmd function 	[ send icFuncValue get label	]
+        send client gcmd order	  	[ send icOrderValue get string  ]
+        send client gcmd sample	  	[ send icSampleValue get string ]
+    } elseif { $curmode == 1 } {
+        send client gcmd c_function	[ send icFuncValue get label	]
+        send client gcmd cn_order	[ send icOrderValue get string	]
+        send client gcmd c_sample	[ send icSampleValue get string ]
+    }
+    send client gcmd grow	 [ send icGrowValue get string	   ]
+    send client gcmd markrej	 [ send icMarkrejValue get label   ]
+    send client gcmd naverage	 [ send icNaverageValue get string ]
+    send client gcmd niterate	 [ send icNiterValue get string	   ]
+    send client gcmd low_reject	 [ send icLowrejValue get string   ]
+    send client gcmd high_reject [ send icHirejValue get string	   ]
+
+    if { $curmode > 3 } {
+        send client gcmd function [ send icFuncValue get label	   ]
+        send client gcmd order	  [ send icOrderValue get string   ]
+        send client gcmd sample	  [ send icSampleValue get string  ]
+    }
+
+    if {[send icMarkrejValue get label] == "no"} {
+	send icMarkRej set state 0
+    } else {
+	send icMarkRej set state 1
+    }
+    set ic_func	 [send icFuncValue get label]
+    set ic_order [send icOrderValue get string]
+
+    if { $auto_refit == 1 && $curmode > 3 } { send client gkey f }
+
+    foreach i $icfParsWidgets { send $i set background $eparBGColor }
+    send icfparsApply set background $eparCmdColor
+} ; send icfparsApply addCallback icfparsApplyCallback
+
+proc icfparsUnlearnCallback { widget args } {
+    global  eparBGColor eparCmdColor icfParsWidgets
+
+    #send client gcmd unlearn continpars
+    #send client gcmd ui_contstat
+    send client gcmd gui params
+
+    foreach i $icfParsWidgets { send $i set background $eparBGColor }
+    send icfparsApply set background $eparCmdColor
+} ; send icfparsUnlearn addCallback icfparsUnlearnCallback
+
+proc icfparsCancelCallback { widget args } {
+    global icfParsWidgets eparBGColor eparCmdColor
+
+    #send client gcmd ui_contstat
+    send client gcmd gui params
+    foreach i $icfParsWidgets { send $i set background $eparBGColor }
+    send icfparsApply set background $eparCmdColor
+} ; send icfparsCancel addCallback icfparsCancelCallback
+
+proc icfparsHelpCallback { widget args } {
+    showHelp params
+} ; send icfparsHelp addCallback icfparsHelpCallback
+
+proc icfparsDismissCallback { widget args } {
+    send icfitPars unmap
+    send icfparsCancel setSensitive true
+} ; send icfparsDismiss addCallback icfparsDismissCallback
+
+
+
+##############################################################################
+#		 FILTPARS PSET EDITOR DEFINITIONS			     #
+##############################################################################
+
+
+set filtVals {
+    filtOptionValue filtTypeValue filtCutonValue filtCutoffValue
+    filtFullonValue filtFulloffValue
+}
+set filtTextVals {
+    filtCutonValue filtCutoffValue filtFullonValue filtFulloffValue
+}
+
+
+# Define the translations used to highlight an epar panel text field when
+# something is changed so we don't have to rely on the <cr> to do it.
+
+set filtTextTranslations "#override \
+    <Key>Right: forward-character()                                     \n\
+     <Key>Left: backward-character()                                    \n\
+    Ctrl<Key>A: beginning-of-line()                                     \n\
+    Ctrl<Key>K: kill-to-end-of-line()                                   \n\
+    Ctrl<Key>M: newline()                                               \n\
+ <Key>Linefeed: newline-and-indent()                                    \n\
+   <Key>Return: newline()                                               \n\
+   <Key>Delete: delete-previous-character() call(filtHighlight,WIDGET)  \n\
+<Key>BackSpace: delete-previous-character() call(filtHighlight,WIDGET)  \n\
+    Ctrl<Key>H: delete-previous-character() call(filtHighlight,WIDGET)  \n\
+         <Key>: insert-char() call(filtHighlight,WIDGET)"
+
+foreach w $filtTextVals {
+    regsub -all "WIDGET" $filtTextTranslations $w trans
+    send $w set translations $trans
+}
+
+
+proc filtOpen { args } {
+    send filtpars map
+    GCmd ui_filtstat
+}
+
+proc filtParsCallback { param old new } {
+    global ftype filtop filtFuncMenuDescription filtOpMenuDescription
+    global fmodePlotMenuDescription
+
+    foreach item $new {
+	set value [lindex $item 1]
+	switch [lindex $item 0] {
+	filter	 { send filtOptionValue	 set label   $value
+		   if {$value == "object"} {	     set filtop 1
+		   } elseif {$value == "template"} { set filtop 2
+		   } elseif {$value == "both"} {     set filtop 3
+		   } elseif {$value == "none"} {     set filtop 4
+		   }
+		   editMenu filtOpMenu filtOptionValue $filtOpMenuDescription
+
+		 }
+	filtfunc { send filtTypeValue	 set label   $value
+		   if {$value == "square"} {	     set ftype 1
+		   } elseif {$value == "ramp"}	{    set ftype 2
+		   } elseif {$value == "welch"}	 {   set ftype 3
+		   } elseif {$value == "hanning"}  { set ftype 4
+		   }
+		   editMenu filtTypeMenu filtTypeValue $filtFuncMenuDescription
+		 }
+	cuton	 { send filtCutonValue	 set string  $value }
+	cutoff	 { send filtCutoffValue	 set string  $value }
+	fullon	 { send filtFullonValue	 set string  $value }
+	fulloff	 { send filtFulloffValue set string  $value }
+	}
+    }
+    editMenu fmodePlotMenu fmodePlotButton $fmodePlotMenuDescription
+} ; send filtPars addCallback filtParsCallback
+
+
+###############################
+# Process the panel commands. #
+###############################
+
+set filtItems {
+    filtOptionValue filtTypeValue
+    filtCutonValue filtCutoffValue filtFullonValue filtFulloffValue
+}
+
+proc filtResetBkg { args } {
+    global filtItems eparBGColor eparCmdColor
+    foreach i $filtItems { send $i set background $eparBGColor }
+    send filtparsApply set background $eparCmdColor
+}
+
+proc filtApplyCallback { widget args } {
+    global filtItems fActivePlot
+    global filtop fmodePlotMenuDescription
+    global mStack mIndex
+
+    # What we'll do is "read out" the whole form by looping over the widgets.
+    # We get both a label and string resource for each widget first, and only
+    # send the appropriate one to the client.
+    foreach item $filtItems {
+	switch $item {
+	filtOptionValue	 { set lval [send $item get label]
+			   GCmd ui_filtset option  $lval 
+			   if {$lval == "object"} {	    
+			       if {$fActivePlot == "fplotTempPlot"} {
+				   fChangePlot fplotObjPlot
+			       }
+			   } elseif {$lval == "template"} { 
+			       if {$fActivePlot == "fplotObjPlot"} {
+				   fChangePlot fplotTempPlot
+			       }
+			   } elseif {$lval == "both"} {	    
+			   } elseif {$lval == "none"} {	    
+			       if {$fActivePlot == "fplotPSAfter" || \
+				   $fActivePlot == "fplotObjPlot" || \
+				   $fActivePlot == "fplotTempPlot"} {
+				       fChangePlot fplotPSBefore
+			       } elseif {$fActivePlot == "fplotFFTAfter"} {
+				   fChangePlot fplotFFTBefore
+			       }
+			   }
+			 }
+	filtTypeValue	 { set lval [send $item get label]
+			   GCmd ui_filtset type	   $lval 
+			 }
+	filtCutonValue	 { set sval [send $item get string]
+			   GCmd ui_filtset cuton   $sval 
+			 }
+	filtCutoffValue	 { set sval [send $item get string]
+			   GCmd ui_filtset cutoff  $sval 
+			 }
+	filtFullonValue	 { set sval [send $item get string]
+			   GCmd ui_filtset fullon  $sval 
+			 }
+	filtFulloffValue { set sval [send $item get string]
+			   GCmd ui_filtset fulloff $sval 
+			 }
+	}
+    }
+
+    # Clean up from the change highlights
+    filtResetBkg
+
+    # Draw the new filter results to the screen (Fourier Mode only)
+    if {$mStack($mIndex) == 2} {
+	GKey r
+    }
+
+    editMenu fmodePlotMenu fmodePlotButton $fmodePlotMenuDescription
+} ; send filtparsApply addCallback filtApplyCallback
+
+proc filtUnlearnCallback { widget args } {
+    global filtVals eparBGColor eparCmdColor
+    global filtop fmodePlotMenuDescription
+    GCmd unlearn filtpars
+    GCmd ui_filtstat
+
+    foreach i $filtVals { send $i "set background $eparBGColor" }
+    send filtparsApply "set background $eparCmdColor"
+    editMenu fmodePlotMenu fmodePlotButton $fmodePlotMenuDescription
+} ; send filtparsUnlearn addCallback filtUnlearnCallback
+
+proc filtUpdateCallback { widget args } {
+    GCmd filter	 [ send filtOptionValue get label   ]
+    GCmd f_type	 [ send filtTypeValue get label	    ]
+    GCmd cuton	 [ send filtCutonValue get string   ]
+    GCmd cutoff	 [ send filtCutoffValue get string  ]
+    GCmd fullon	 [ send filtFullonValue get string  ]
+    GCmd fulloff [ send filtFulloffValue get string ]
+    GCmd ui_filtstat
+} ; send filtparsUpdate addCallback filtUpdateCallback
+
+proc filtCancelCallback { widget args } {
+    filtResetBkg
+    GCmd ui_filtstat
+} ; send filtparsCancel addCallback filtCancelCallback
+
+proc filtHelpCallback { widget args } {
+    showHelp params
+} ; send filtparsHelp addCallback filtHelpCallback
+
+send filtparsDismiss addCallback "send filtpars unmap"
+
+
+# Define the filter type menu.
+set filtFuncMenuDescription {
+    { "	 Square"	f.exec { setFiltFunc 1 }
+				bitmap {($ftype == 1) ? "check" : "null" } }
+    { "	 Ramp"		f.exec { setFiltFunc 2 }
+				bitmap {($ftype == 2) ? "check" : "null" } }
+    { "	 Welch"		f.exec { setFiltFunc 3 }
+				bitmap {($ftype == 3) ? "check" : "null" } }
+    { "	 Hanning"	f.exec { setFiltFunc 4 }
+				bitmap {($ftype == 4) ? "check" : "null" } }
+} ; createMenu filtTypeMenu filtTypeValue $filtFuncMenuDescription
+
+proc setFiltFunc { filtfunc args } {
+	global	ftype filtFuncMenuDescription
+	set ftype $filtfunc
+	if {$filtfunc == 1} {	    send filtTypeValue set label square
+	} elseif {$filtfunc == 2} { send filtTypeValue set label ramp
+	} elseif {$filtfunc == 3} { send filtTypeValue set label welch
+	} elseif {$filtfunc == 4} { send filtTypeValue set label hanning
+	}
+	filtHighlight filtTypeValue
+	editMenu filtTypeMenu filtTypeValue $filtFuncMenuDescription
+}
+
+# Define the filter options menu.
+set filtOpMenuDescription {
+    { "	 Object"	f.exec { setFiltOption 1 }
+				bitmap {($filtop == 1) ? "check" : "null" } }
+    { "	 Template"	f.exec { setFiltOption 2 }
+				bitmap {($filtop == 2) ? "check" : "null" } }
+    { "	 Both"		f.exec { setFiltOption 3 }
+				bitmap {($filtop == 3) ? "check" : "null" } }
+    { "	 None"		f.exec { setFiltOption 4 }
+				bitmap {($filtop == 4) ? "check" : "null" } }
+}
+createMenu filtOpMenu filtOptionValue $filtOpMenuDescription
+
+proc setFiltOption { filt args } {
+	global	filtop filtOpMenuDescription
+	set filtop $filt
+	if {$filt == 1} {	send filtOptionValue set label object
+	} elseif {$filt == 2} { send filtOptionValue set label template
+	} elseif {$filt == 3} { send filtOptionValue set label both
+	} elseif {$filt == 4} { send filtOptionValue set label none
+	}
+	filtHighlight filtOptionValue
+	editMenu filtOpMenu filtOptionValue $filtOpMenuDescription
+}
+
+
+# Highlight fields that were changed.
+
+proc filtHighlight { widget args } {
+    global eparHLColor
+    send $widget       "set background $eparHLColor"
+    send filtparsApply "set background $eparHLColor"
+}
+send filtOptionValue addCallback filtHighlight 
+send filtTypeValue   addCallback filtHighlight 
+
+
+# Event handler to highlight widget and apply button when a CR is hit.
+proc filtTextHighlight { widget val args } {
+    global eparHLColor
+    send $widget       "set background $eparHLColor"
+    send filtparsApply "set background $eparHLColor"
+}
+
+# Enter widget event handler to display a caret when active.
+proc filtShowCaret { widget event args } {
+    if { $event == "enterNotify" } {
+	send $widget set displayCaret True
+    } elseif { $event == "leaveNotify" } {
+	send $widget set displayCaret False
+    }
+}
+
+set filtTextWidgets { 
+    filtCutonValue filtCutoffValue filtFullonValue filtFulloffValue
+}
+foreach widget $filtTextWidgets {
+    send $widget addEventHandler filtShowCaret enterWindowMask
+    send $widget addEventHandler filtShowCaret leaveWindowMask
+    send $widget addCallback filtTextHighlight
+}
+
+
+
+
+##############################################################################
+#		     KEYWPARS PSET EDITOR PROCEDURES			     #
+##############################################################################
+
+set keywValues {
+	keywRAValue keywDECValue keywUTValue keywUTMIDValue keywEXPTIMEValue
+	keywEPOCHValue keywDATEOBSValue keywHJDValue keywMJDOBSValue
+	keywVOBSValue keywVRELValue keywVHELIOValue keywVLSRValue keywVSUNValue
+}
+
+# Define the translations used to highlight an epar panel text field when
+# something is changed so we don't have to rely on the <cr> to do it.
+
+set keywTextTranslations "#override \
+    <Key>Right: forward-character()                                     \n\
+     <Key>Left: backward-character()                                    \n\
+    Ctrl<Key>A: beginning-of-line()                                     \n\
+    Ctrl<Key>K: kill-to-end-of-line()                                   \n\
+    Ctrl<Key>M: newline()                                               \n\
+ <Key>Linefeed: newline-and-indent()                                    \n\
+   <Key>Return: newline()                                               \n\
+   <Key>Delete: delete-previous-character() call(keywHighlight,WIDGET)  \n\
+<Key>BackSpace: delete-previous-character() call(keywHighlight,WIDGET)  \n\
+    Ctrl<Key>H: delete-previous-character() call(keywHighlight,WIDGET)  \n\
+         <Key>: insert-char() call(keywHighlight,WIDGET)"
+
+foreach w $keywValues {
+    regsub -all "WIDGET" $keywTextTranslations $w trans
+    send $w set translations $trans
+}
+
+
+proc keywOpen { args } {
+	send keywpars map
+	GCmd ui_keywstat
+}
+
+proc keywParsCallback { param old new } {
+    foreach item $new {
+	set value [lindex $item 1]
+	switch [lindex $item 0] {
+	ra	 { send keywRAValue	 set string $value }
+	dec	 { send keywDECValue	 set string $value }
+	ut	 { send keywUTValue	 set string $value }
+	utmiddle { send keywUTMIDValue	 set string $value }
+	exptime	 { send keywEXPTIMEValue set string $value }
+	epoch	 { send keywEPOCHValue	 set string $value }
+	date_obs { send keywDATEOBSValue set string $value }
+	hjd	 { send keywHJDValue	 set string $value }
+	mjd_obs	 { send keywMJDOBSValue	 set string $value }
+	vobs	 { send keywVOBSValue	 set string $value }
+	vrel	 { send keywVRELValue	 set string $value }
+	vhelio	 { send keywVHELIOValue	 set string $value }
+	vlsr	 { send keywVLSRValue	 set string $value }
+	vsun	 { send keywVSUNValue	 set string $value }
+	}
+    }
+} ; send keywPars addCallback keywParsCallback
+
+
+proc keywResetBkg { args } {
+    global keywValues eparBGColor eparCmdColor
+    foreach widget $keywValues { 
+	send $widget   "set background $eparBGColor"
+    }
+    send keywparsApply "set background $eparCmdColor"
+}
+
+
+# Process the panel commands. 
+#----------------------------
+
+proc keywDoApply { args } {
+    global	keywValues eparBGColor eparCmdColor
+
+    foreach widget $keywValues {
+	set sval [ send $widget get string ]
+	switch $widget {
+	keywRAValue	 { GCmd ui_keywset ra	    $sval }
+	keywDECValue	 { GCmd ui_keywset dec	    $sval }
+	keywUTValue	 { GCmd ui_keywset ut	    $sval }
+	keywUTMIDValue	 { GCmd ui_keywset utmiddle $sval }
+	keywEXPTIMEValue { GCmd ui_keywset exptime  $sval }
+	keywEPOCHValue	 { GCmd ui_keywset epoch    $sval }
+	keywDATEOBSValue { GCmd ui_keywset date_obs $sval }
+	keywHJDValue	 { GCmd ui_keywset hjd	    $sval }
+	keywMJDOBSValue	 { GCmd ui_keywset mjd_obs  $sval }
+	keywVOBSValue	 { GCmd ui_keywset vobs	    $sval }
+	keywVRELValue	 { GCmd ui_keywset vrel	    $sval }
+	keywVHELIOValue	 { GCmd ui_keywset vhelio   $sval }
+	keywVLSRValue	 { GCmd ui_keywset vlsr	    $sval }
+	keywVSUNValue	 { GCmd ui_keywset vsun	    $sval }
+	}
+	send $widget	 "set background $eparBGColor"
+    }
+
+    # Clean up from the change highlights.
+    send keywparsApply "set background $eparCmdColor"
+
+} ; send keywparsApply addCallback keywDoApply
+
+proc keywUnlearnCallback { widget args } {
+    GCmd unlearn keywpars
+    GCmd ui_keywstat
+    keywResetBkg
+} ; send keywparsUnlearn addCallback keywUnlearnCallback
+
+proc keywUpdateCallback { widget args } {
+    GCmd ra	  [ send keywRAValue get string	     ]
+    GCmd dec	  [ send keywDECValue get string     ]
+    GCmd ut	  [ send keywUTValue get string	     ]
+    GCmd utmiddle [ send keywUTMIDValue get string   ]
+    GCmd exptime  [ send keywEXPTIMEValue get string ]
+    GCmd epoch	  [ send keywEPOCHValue get string   ]
+    GCmd date_obs [ send keywDATEOBSValue get string ]
+    GCmd hjd	  [ send keywHJDValue get string     ]
+    GCmd mjd_obs  [ send keywMJDOBSValue get string  ]
+    GCmd vobs	  [ send keywVOBSValue get string    ]
+    GCmd vrel	  [ send keywVRELValue get string    ]
+    GCmd vhelio	  [ send keywVHELIOValue get string  ]
+    GCmd vlsr	  [ send keywVLSRValue get string    ]
+    GCmd vsun	  [ send keywVSUNValue get string    ]
+    GCmd ui_keywstat
+} ; send keywparsUpdate addCallback keywUpdateCallback
+
+proc keywCancelCallback { widget args } {
+    keywResetBkg
+    GCmd ui_keywstat
+} ; send keywparsCancel addCallback keywCancelCallback
+
+proc keywHelpCallback { widget args } {
+    showHelp params
+} ; send keywparsHelp addCallback keywHelpCallback
+
+send keywparsDismiss addCallback "send keywpars unmap"
+
+
+# Highlight fields that were changed.
+proc keywHighlight { widget val args } {
+    global eparHLColor
+    send $widget       "set background $eparHLColor"
+    send keywparsApply "set background $eparHLColor"
+}
+
+proc keywShowCaret { widget event args } {
+    if { $event == "enterNotify" } {
+	send $widget set displayCaret True
+    } elseif { $event == "leaveNotify" } {
+	send $widget set displayCaret False
+    }
+}
+foreach widget $keywValues {
+    send $widget addEventHandler keywShowCaret enterWindowMask
+    send $widget addEventHandler keywShowCaret leaveWindowMask
+    send $widget addCallback keywHighlight
+}
+
+
+
+##############################################################################
+#		     TASK PARAMETER EDITOR DEFINITIONS			     #
+##############################################################################
+
+set fxcToggleWidgets { 
+	fxcpPixcor fxcpAutoWrite fxcpAutoDraw fxcpHUpdate fxcpPeak
+}
+set fxcWidgets { 
+	fxcpObjVal fxcpTempVal fxcpApVal fxcpHgtVal fxcpApodizeVal
+	fxcpOSampVal fxcpTSampVal fxcpOutVal fxcpVerbVal fxcpCCFVal
+	fxcpWidthVal fxcpMinVal fxcpMaxVal fxcpWgtVal fxcpBkgVal
+	fxcpContinVal fxcpFiltVal fxcpRebinVal fxcpFuncVal
+	fxcpCenterVal fxcpPWidthVal
+}
+set fxcTextWidgets { 
+	fxcpObjVal fxcpTempVal fxcpApVal fxcpHgtVal fxcpApodizeVal
+	fxcpOSampVal fxcpTSampVal fxcpOutVal
+	fxcpWidthVal fxcpMinVal fxcpMaxVal fxcpWgtVal fxcpBkgVal
+	fxcpCenterVal fxcpPWidthVal
+}
+
+
+# Define the translations used to highlight an epar panel text field when
+# something is changed so we don't have to rely on the <cr> to do it.
+
+set fxcpTextTranslations "#override \
+    <Key>Right: forward-character()           				\n\
+     <Key>Left: backward-character()          				\n\
+    Ctrl<Key>A: beginning-of-line()           				\n\
+    Ctrl<Key>K: kill-to-end-of-line()         				\n\
+    Ctrl<Key>M: newline()                     				\n\
+ <Key>Linefeed: newline-and-indent()          				\n\
+   <Key>Return: newline()                     				\n\
+   <Key>Delete: delete-previous-character() call(fxcHighlight,WIDGET)	\n\
+<Key>BackSpace: delete-previous-character() call(fxcHighlight,WIDGET)	\n\
+    Ctrl<Key>H: delete-previous-character() call(fxcHighlight,WIDGET) 	\n\
+         <Key>: insert-char() call(fxcHighlight,WIDGET)"
+
+foreach w $fxcTextWidgets { 
+    regsub -all "WIDGET" $fxcpTextTranslations $w trans
+    send $w set translations $trans
+}
+
+
+proc fxcOpen { args } {
+    send fxcpars map
+    GCmd ui_fxcstat
+}
+
+proc fxcorParsCallback { param old new } {
+    global fileset autowrite
+    global continop filtop fitfunc rebinop outtype
+    global funcMenuDescription outMenuDescription
+    global rebinMenuDescription contMenuDescription
+    global filtOpMenuDescription
+
+    foreach item $new {
+	set value [lindex $item 1]
+	switch [lindex $item 0] {
+	objects	    { send fxcpObjVal	 set string $value }
+	templates   { send fxcpTempVal	 set string $value }
+	apertures   { send fxcpApVal	 set string $value }
+	continuum   { send fxcpContinVal set label $value
+		      if {$value == "object"}	      { set continop 1
+		      } elseif {$value == "template"} { set continop 2
+		      } elseif {$value == "both"}     { set continop 3
+		      } elseif {$value == "none"}     { set continop 4
+		      }
+		      editMenu contMenu menuBar $contMenuDescription
+		    }
+	filter	    { send fxcpFiltVal	   set label $value
+		      send filtOptionValue set label $value
+		      if {$value == "object"}	      { set filtop 1
+		      } elseif {$value == "template"} { set filtop 2
+		      } elseif {$value == "both"}     { set filtop 3
+		      } elseif {$value == "none"}     { set filtop 4
+		      }
+		      editMenu filtOpMenu filtOptionValue $filtOpMenuDescription
+		    }
+	rebin	    { send fxcpRebinVal	  set label $value
+		      if {$value == "object"}	      { set rebinop 1
+		      } elseif {$value == "template"} { set rebinop 2
+		      } elseif {$value == "smallest"} { set rebinop 3
+		      } elseif {$value == "largest"}  { set rebinop 4
+		      }
+		      editMenu rebinMenu menuBar $rebinMenuDescription
+		    }
+	pixcorr	    { if {$value == "yes"}	{ send fxcpPixcor set on True
+		      } elseif {$value == "no"} { send fxcpPixcor set on False
+		      }
+		    }
+	osample	    { send fxcpOSampVal	  set string $value }
+	rsample	    { send fxcpTSampVal	  set string $value }
+	apodize	    { send fxcpApodizeVal set string $value }
+	function    { send fxcpFuncVal	  set label  $value
+		      if {$value == "gaussian"}	      { set fitfunc 1
+		      } elseif {$value == "parabola"} { set fitfunc 2
+		      } elseif {$value == "lorentz"}  { set fitfunc 3
+		      } elseif {$value == "center1d"} { set fitfunc 4
+		      } elseif {$value == "sinc"}     { set fitfunc 5
+		      }
+		      editMenu funcMenu menuBar $funcMenuDescription
+		    }
+	width	    { send fxcpWidthVal	 set string $value }
+	height	    { send fxcpHgtVal	 set string $value }
+	peak	    { if {$value == "yes"}	{ send fxcpPeak set on True
+		      } elseif {$value == "no"} { send fxcpPeak set on False
+		      }
+		    }
+	minwidth    { send fxcpMinVal	 set string $value }
+	maxwidth    { send fxcpMaxVal	 set string $value }
+	weights	    { send fxcpWgtVal	 set string $value }
+	background  { send fxcpBkgVal	 set string $value }
+	window	    { send fxcpPWidthVal set string $value }
+	wincenter   { send fxcpCenterVal set string $value }
+	output	    { send fxcpOutVal	 set string $value 
+		      set fileset 0
+		      if {$value != ""} { set fileset 1 } 
+		    }
+	verbose	    { send fxcpVerbVal	 set label  $value
+		      if {$value == "short"}	      { set outtype 1
+		      } elseif {$value == "long"}     { set outtype 2
+		      } elseif {$value == "nolog"}    { set outtype 3
+		      } elseif {$value == "nogki"}    { set outtype 4
+		      } elseif {$value == "txtonly"}  { set outtype 5
+		      } elseif {$value == "stxtonly"} { set outtype 6
+		      }
+		      editMenu outMenu menuBar $outMenuDescription
+		    }
+	imupdate    { if {$value == "yes"}	{ send fxcpHUpdate set on True
+		      } elseif {$value == "no"} { send fxcpHUpdate set on False
+		      }
+		    }
+	autowrite   { if {$value == "yes"}	{ set autowrite 1
+						  send fxcpAutoWrite set on True
+		      } elseif {$value == "no"} { set autowrite 0
+						 send fxcpAutoWrite set on False
+		      }
+		    }
+	autodraw    { if {$value == "yes"}	{ send fxcpAutoDraw set on True
+		      } elseif {$value == "no"} { send fxcpAutoDraw set on False
+		      }
+		    }
+	ccftype	    { send fxcpCCFVal	set label  $value }
+	}
+    }
+} ; send fxcorPars addCallback fxcorParsCallback
+
+proc fxcContOpen args {
+    global icfit_mode
+    set icfit_mode 0
+    send icfitPars map
+    GCmd ui_contstat
+}
+send fxcpContinpars addCallback fxcContOpen
+send fxcpKeywpars   addCallback keywOpen
+send fxcpFiltpars   addCallback filtOpen
+
+
+# Highlight fields that were changed.
+proc fxcHighlight { widget args } {
+    global eparHLColor
+    send $widget set background $eparHLColor
+    send fxcparsApply set background $eparHLColor
+}
+foreach widget $fxcWidgets	 { send $widget addCallback fxcHighlight }
+foreach widget $fxcToggleWidgets { send $widget addCallback fxcHighlight }
+
+
+
+###############################
+# Process the panel commands. #
+###############################
+
+proc fxcDoApply { args } {
+    global fxcWidgets fxcToggleWidgets eparCmdColor eparBGColor
+
+    # What we'll do is "read out" the whole form by looping over the widgets.
+    # We get both a label and string resource for each widget first, and only 
+    # send the appropriate one to the client.
+    foreach item $fxcWidgets {
+	switch $item {
+	fxcpObjVal	{ set sval [send $item get string]
+			  if {$sval != ""} { GCmd ui_fxcset obj	      $sval }
+			}
+	fxcpTempVal	{ set sval [send $item get string]
+			  if {$sval != ""} { GCmd ui_fxcset temp      $sval }
+			}
+	fxcpApVal	{ set sval [send $item get string]
+			  if {$sval != ""} { GCmd ui_fxcset aper      $sval }
+			}
+	fxcpHgtVal	{ set sval [send $item get string]
+			  if {$sval != ""} { GCmd ui_fxcset height    $sval }
+			}
+	fxcpWidthVal	{ set sval [send $item get string]
+			  if {$sval != ""} { GCmd ui_fxcset width     $sval }
+			}
+	fxcpMinVal	{ set sval [send $item get string]
+			  if {$sval != ""} { GCmd ui_fxcset minw      $sval }
+			}
+	fxcpMaxVal	{ set sval [send $item get string]
+			  if {$sval != ""} { GCmd ui_fxcset maxw      $sval }
+			}
+	fxcpWgtVal	{ set sval [send $item get string]
+			  if {$sval != ""} { GCmd ui_fxcset weight    $sval }
+			}
+	fxcpBkgVal	{ set sval [send $item get string]
+			  if {$sval != ""} { GCmd ui_fxcset back      $sval }
+			}
+	fxcpCenterVal	{ set sval [send $item get string]
+			  if {$sval != ""} { GCmd ui_fxcset wincenter $sval }
+			}
+	fxcpPWidthVal	{ set sval [send $item get string]
+			  if {$sval != ""} { GCmd ui_fxcset window    $sval }
+			}
+	fxcpApodizeVal	{ set sval [send $item get string]
+			  if {$sval != ""} { GCmd ui_fxcset apodize   $sval }
+			}
+	fxcpOSampVal	{ set sval [send $item get string]
+			  if {$sval != ""} { GCmd ui_fxcset osamp     $sval }
+			}
+	fxcpTSampVal	{ set sval [send $item get string]
+			  if {$sval != ""} { GCmd ui_fxcset tsamp     $sval }
+			}
+	fxcpOutVal	{ set sval [send $item get string]
+			  if {$sval != ""} { GCmd ui_fxcset log	      $sval }
+			}
+
+	fxcpFuncVal	{ set lval [send $item get label]
+			  if {$lval != ""} { GCmd ui_fxcset func      $lval }
+			}
+	fxcpContinVal	{ set lval [send $item get label]
+			  if {$lval != ""} { GCmd ui_fxcset cont      $lval }
+			}
+	fxcpFiltVal	{ set lval [send $item get label]
+			  if {$lval != ""} { GCmd ui_fxcset filt      $lval }
+			}
+	fxcpRebinVal	{ set lval [send $item get label]
+			  if {$lval != ""} { GCmd ui_fxcset rebin     $lval }
+			} 
+	fxcpVerbVal	{ set lval [send $item get label]
+			  if {$lval != ""} { GCmd ui_fxcset verb      $lval }
+			}
+	fxcpCCFVal	{ set lval [send $item get label]
+			  if {$lval != ""} { GCmd ui_fxcset ccf	      $lval }
+			}
+	}
+    }
+
+    foreach item $fxcToggleWidgets {
+	switch $item {
+	fxcpPixcor	{ set oval [send $item get on]
+			  if { [true $oval] } {
+			      GCmd ui_fxcset pixcor yes
+			  } else {
+			      GCmd ui_fxcset pixcor no
+			  }
+			}
+	fxcpPeak	{ set oval [send $item get on]
+			  if { [true $oval] } {
+			      GCmd ui_fxcset peak yes
+			  } else {
+			      GCmd ui_fxcset peak no
+			  }
+			}
+	fxcpAutoWrite	{ set oval [send $item get on]
+			  if { [true $oval] } {
+			      GCmd ui_fxcset awrite yes
+			  } else {
+			      GCmd ui_fxcset awrite no
+			  }
+			}
+	fxcpAutoDraw	{ set oval [send $item get on]
+			  if { [true $oval] } {
+			      GCmd ui_fxcset adraw yes
+			  } else {
+			      GCmd ui_fxcset adraw no
+			  }
+			}
+	fxcpHUpdate	{ set oval [send $item get on]
+			  if { [true $oval ] } {
+			      GCmd ui_fxcset imupdt yes
+			  } else {
+			      GCmd ui_fxcset imupdt no
+			  }
+			}
+	}
+    }
+
+    # Re-correlate based on the changes but only if we have an output file
+    # specified so we avoid the filename prompt.
+    #if { [send fxcpOutVal get string] != "" } {
+    #    GKey x		
+    #} else {
+    #	Wexec "No output file specified,\ntype 'x' to do a new correlation."
+    #}
+    if { [send fxcpOutVal get string] != "" } {
+        GKey x		
+    }
+
+    # Clean up from the change highlights.
+    send fxcparsApply set background $eparCmdColor
+    foreach widget $fxcWidgets { \
+	send $widget set background $eparBGColor }
+    foreach widget $fxcToggleWidgets { \
+	send $widget set background $eparCmdColor }
+} ; send fxcparsApply addCallback fxcDoApply
+
+proc fxcUnlearnCallback { widget args } {
+    GCmd unlearn fxcpars
+    GCmd ui_fxcstat
+} ; send fxcparsUnlearn addCallback fxcUnlearnCallback
+
+proc fxcUpdateCallback { widget args } {
+    fxcDoApply
+    GCmd update
+} ; send fxcparsUpdate addCallback fxcUpdateCallback
+
+proc fxcCancelCallback { widget args } {
+    global fxcWidgets fxcToggleWidgets eparCmdColor eparBGColor
+    GCmd ui_fxcstat
+
+    send fxcparsApply set background $eparCmdColor
+    foreach widget $fxcToggleWidgets { \
+	send $widget set background $eparCmdColor }
+    foreach widget $fxcWidgets { \
+	send $widget set background $eparBGColor }
+} ; send fxcparsCancel addCallback fxcCancelCallback
+
+proc fxcHelpCallback { widget args } {
+    showHelp params
+} ; send fxcparsHelp addCallback fxcHelpCallback
+
+proc fxcDismissCallback { widget args } {
+    send fxcpars unmap
+} ; send fxcparsDismiss addCallback fxcDismissCallback
+
+
+# Create the menus used in this form.
+createMenu fxcFuncMenu	fxcpFuncVal  {
+    { "Gaussian"      f.exec  { send fxcpFuncVal set label gaussian
+				fxcHighlight fxcpFuncVal } }
+    { "Parabola"      f.exec  { send fxcpFuncVal set label parabola
+				fxcHighlight fxcpFuncVal } }
+    { "Lorentz"	      f.exec  { send fxcpFuncVal set label lorentz
+				fxcHighlight fxcpFuncVal } }
+    { "Center1d"      f.exec  { send fxcpFuncVal set label center1d
+				fxcHighlight fxcpFuncVal } }
+    { "Sinc"	      f.exec  { send fxcpFuncVal set label sinc
+				fxcHighlight fxcpFuncVal } }
+}
+
+createMenu fxcOutMenu	fxcpVerbVal  {
+    { "Short"	      f.exec  { send fxcpVerbVal set label short
+				fxcHighlight fxcpVerbVal } }
+    { "Long"	      f.exec  { send fxcpVerbVal set label long
+				fxcHighlight fxcpVerbVal } }
+    { "Nolog"	      f.exec  { send fxcpVerbVal set label nolog
+				fxcHighlight fxcpVerbVal } }
+    { "Nogki"	      f.exec  { send fxcpVerbVal set label nogki
+				fxcHighlight fxcpVerbVal } }
+    { "Txtonly"	      f.exec  { send fxcpVerbVal set label txtonly
+				fxcHighlight fxcpVerbVal } }
+    { "Stxtonly"      f.exec  { send fxcpVerbVal set label stxtonly
+				fxcHighlight fxcpVerbVal } }
+}
+
+createMenu fxcRebinMenu fxcpRebinVal {
+    { "Object"	      f.exec  { send fxcpRebinVal set label object
+				fxcHighlight fxcpRebinVal } }
+    { "Template"      f.exec  { send fxcpRebinVal set label template
+				fxcHighlight fxcpRebinVal } }
+    { "Smallest"      f.exec  { send fxcpRebinVal set label smallest
+				fxcHighlight fxcpRebinVal } }
+    { "Largest"	      f.exec  { send fxcpRebinVal set label largest
+				fxcHighlight fxcpRebinVal } }
+}
+
+createMenu fxcContMenu	fxcpContinVal  {
+    { "Object"	      f.exec  { send fxcpContinVal set label object
+				fxcHighlight fxcpContinVal } }
+    { "Template"      f.exec  { send fxcpContinVal set label template
+				fxcHighlight fxcpContinVal } }
+    { "Both"	      f.exec  { send fxcpContinVal set label both
+				fxcHighlight fxcpContinVal } }
+    { "None"	      f.exec  { send fxcpContinVal set label none
+				fxcHighlight fxcpContinVal } }
+}
+
+createMenu fxcFiltMenu	fxcpFiltVal  {
+    { "Object"	      f.exec  { send fxcpFiltVal set label object
+				fxcHighlight fxcpFiltVal } }
+    { "Template"      f.exec  { send fxcpFiltVal set label template
+				fxcHighlight fxcpFiltVal } }
+    { "Both"	      f.exec  { send fxcpFiltVal set label both
+				fxcHighlight fxcpFiltVal } }
+    { "None"	      f.exec  { send fxcpFiltVal set label none
+				fxcHighlight fxcpFiltVal } }
+}
+
+createMenu fxcCCFMenu	fxcpCCFVal {
+    { "Image"		f.exec { send fxcpCCFVal set label image
+				 fxcHighlight fxcpCCFVal } }
+    { "Text file"	f.exec { send fxcpCCFVal set label text
+				 fxcHighlight fxcpCCFVal } }
+}
+
+
+# Show caret when we enter the field.
+
+proc fxcShowCaret { widget event args } {
+    if { $event == "enterNotify" } {
+	send $widget set displayCaret True
+    } elseif { $event == "leaveNotify" } {
+	send $widget set displayCaret False
+    }
+}
+foreach widget $fxcTextWidgets {
+    send $widget addEventHandler fxcShowCaret enterWindowMask
+    send $widget addEventHandler fxcShowCaret leaveWindowMask
+}
+
+
+
+###################################
+# Process the ccf save commands.  #
+###################################
+
+proc doCCFText { widget fname args } {
+    if {$fname == ""} {
+     	Wexec "No output file specified."
+    } else {
+        if {[send ccfFile get on]} {
+            send client gcmd ccftype text
+        } else {
+            send client gcmd ccftype image
+        }
+        send client gcmd wccf $fname
+	send ccfname unmap
+    }
+} ; send ccfnameEntry    addCallback doCCFText
+
+proc doCCFOkay { widget args } {
+    set fname [send ccfnameEntry get string]
+    if {$fname == ""} {
+     	Wexec "No output file specified."
+    } else {
+        doCCFText junk $fname
+    }
+} ; send ccfnameOkay     addCallback doCCFOkay
+
+send ccfnameDismiss  addCallback "send ccfname unmap"
+
+proc ccfDoToggle { widget type state args } {
+    if {$widget == "ccfImage"} {
+        send ccfFile  set on [ expr (!$state)]
+    } else {
+        send ccfImage set on [ expr (!$state)]
+    }
+} ; foreach w { ccfFile ccfImage } { send $w addCallback ccfDoToggle }
+

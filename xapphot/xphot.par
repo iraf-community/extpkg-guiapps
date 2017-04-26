@@ -1,0 +1,21 @@
+# Parameters for the XPHOT development task
+
+images,s,a,"*",,,List of images to be analyzed
+objects,s,h,"default",,,List of input objects files
+results,s,h,"default",,,List of output results files
+robjects,s,h,"",,,List of optional output objects files
+impars,pset,h,"",,,The image data parameters
+dispars,pset,h,"",,,The image display parameters
+findpars,pset,h,"",,,The object list detection parameters
+omarkpars,pset,h,"",,,The object list marking parameters
+cenpars,pset,h,"",,,The centering algorithm parameters
+skypars,pset,h,"",,,The sky fitting algorithm parameters
+photpars,pset,h,"",,,The photometry algorithm parameters
+cplotpars,pset,h,"",,,The object contour plotting parameters
+splotpars,pset,h,"",,,The object surface plotting parameters
+interactive,b,h,yes,,,Run task interactively ?
+logresults,b,h,no,,,Log results in interactive mode ?
+update,b,h,no,,,Update the parameters at task termination ?
+verbose,b,h,yes,,,Print messages in non-interactive mode ?
+graphics,s,h,"stdgraph",,,The default graphics device
+gcommands,*gcur,h,"",,,The default graphics cursor

@@ -1,0 +1,85 @@
+.help splotpars Jan99 xapphot
+.ih
+NAME
+splotpars -- Edit the surface plotting parameters
+.ih
+USAGE
+splotpars
+.ih
+PARAMETERS
+.ls anx = 31 (pixels), any = 31 (pixels)
+The default width of the region to be plotted in pixels. These parameters  are
+used only if xguiphot cannot determine the size of the object and sky apertures.
+.le
+.ls az1 = INDEF (ADU)
+The minimum data value to be plotted.  If \fBaz1 = INDEF\fR, the minimum data
+value is used.
+.le
+.ls az2 = INDEF (ADU)
+The maximum data value to be plotted.  If \fBaz2 = INDEF\fR, the maximum data 
+value is used.
+.le
+.ls alabel = no
+Draw and label the axes ?
+.le
+.ls angv = 25 (degrees)
+The vertical viewing angle in degrees.
+.le
+.ls angh = -33 (degrees)
+The horizontal viewing angle in degrees.
+.le
+
+.ih
+DESCRIPTION
+The \fIsplotpars\fR parameter set controls the surface plotting algorithms
+used by the xguiphot object and sky viewing routines.
+
+.ih
+EXAMPLES
+
+1. List the splotpars parameters.
+
+.nf
+    xa> lpar splotpars
+.fi
+
+2. Edit the splotpars parameters.
+
+.nf
+    xa> splotpars
+.fi
+
+3. Edit the splotpars parameters and run xguiphot.
+
+.nf
+    da> epar xguiphot
+
+        ... edit a few xguiphot parameters
+
+        ... move to the splotpars parameter and type :e
+
+        ... edit the splotpars parameters and type :q
+
+        ... finish editing the remaining pset and task parameters
+
+        ... type :go to run xguiphot
+.fi
+
+4. Save the current splotpars parameter set in the text file splotnite1.par.
+
+.nf
+    da> splotpars
+
+        ... edit some parameters
+
+        ... type ":w splotnite1.par" from within epar
+.fi
+
+.ih
+TIME REQUIREMENTS
+.ih
+BUGS
+.ih
+SEE ALSO
+lpar,epar,xguiphot
+.endhelp

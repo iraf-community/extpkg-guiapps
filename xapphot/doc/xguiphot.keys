@@ -1,0 +1,271 @@
+	           Xgphot Keystroke Commands
+
+    ?  Toggle help panel            Q  Quit task
+    :  Colon comand                CR  Erase status line	
+
+    $  List input and output files
+    n  Display next image           p  Display previous image
+    i  Redisplay current image      h  List current image header
+    x  Fit model to object         \X  Refit model to object
+    y  Toggle model plotting       \Y  Enter model plotting submenu
+
+    ]  Read next objects file       [  Read previous objects file
+    r  Reread current objects file  l  List current objects list
+    @  Autofind objects list      z,a  Draw objects list
+    m  Mark objects list            e  Erase objects list
+
+    ^  Rewind object list           ~  Move to nearest list object
+    f  Move to next list object     b  Move to previous list object
+    z  Delete entire objects list   d  Delete nearest list object
+    u  Undelete nearest list object a  Add object to list
+
+    v  Draw object and sky polygons
+   SP  Measure nearest object       *  Find and measure objects
+
+    #  Measure entire object list
+    o  Measure next list object     -  Measure previous list object
+    +  Measure rest of object list  .  Measure nearest list object
+
+    ;  Print last result            g  Plot object analysis results
+    G  Plot shape analysis results  ,  Plot sky analysis results
+    j  Enter object display submenu k  Enter sky display submenu
+    c  Enter object plots submenu   s  Enter sky plots submenu
+
+
+	   Model Fitting Submenu Keystroke Commands
+
+
+   \Y  Enter submenu                q  Quit submenu
+    f  Refit                        r  Replot
+    p  Print fit results            m  Print moments analysis
+    h  Set ihwhmpsf to fitted value
+
+
+	   Object Region Display Submenu Keystroke Commands
+
+    j  Enter submenu                q Quit submenu
+    i  Display object               o Overlay contours on object
+    a  Overlay aperture on object   m Overlay moments analysis on object
+    c  Contour object               s Mesh plot of object
+    g  Replot
+
+
+	   Sky Region Display Submenu Keystroke Commands
+
+    k  Enter submenu                q Quit submenu
+    i  Display sky                  o Overlay contours on sky
+    a  Overlay aperture on sky      c  Contour sky
+    s Mesh plot of object           g  Replot
+
+	   Object Analysis Plots Submenu Keystroke Commands
+
+    c  Enter submenu                q Quit submenu
+    r  Show major axis plot         t Show position angle plot
+    c  Show flux vs aperture plot   e Show axis ratio vs aperture plot
+    p  Show angle vs aperture plot  w Show width estimate vs aperture plot
+
+	   Sky Analysis Plots Submenu Keystroke Commands
+
+    s  Enter submenu                q Quit submenu
+    r  Show major axis plot         t Show position angle plot
+    h  Show histogram plot
+
+
+	   File Management Colon Commands
+
+    :images   [template]    Show / Set a new image template
+    :objects  [template]    Show / Set a new objects file template
+    :results  [template]    Show / Set a new results file template
+    :robjects [template]    Show / Set a new output objects file template
+
+    :imname   [name]        Show / Select the current image
+    :olname   [name]        Show / Select the current objects file
+    :rlname                 Show the current results file
+    :glname                 Show the current output objects file
+
+    :imnumber [number]      Show / Select the current image number
+    :olnumber [number]      Show / Select the current objects file number
+    :rlname                 Show the current results file number
+    :glname                 Show the current output objects file number
+
+    :logresults [yes/no]    Log the results to the results file ?
+
+
+           Object List Management Commands
+
+    :oselect   number      Select the current object
+    :odelete   number      Delete the current object
+    :oundelete number      Undelete the current object
+    :oadd      geometry    Add object to object list
+    :osave     file        Save current object list to objects file
+
+	   Parameter Set Commands
+
+    :lpar pset             List the current values of the pset parameters
+    :unlearn pset          Reset the pset parameters to their default values
+    :epar pset             Edit the pset parameters
+			   (impars, dispars, findpars, omarkpars, cenpars,
+			    skypars, photpars, cplotpars, splotpars)
+
+
+           Impars Parameter Colon Commands
+
+   :iscale      [value]    Show / Set the image scale
+   :ihwhmpsf    [value]    Show / Set the hwhm of the psf
+   :iemission   [yes/no]   Show / Set emission features switch
+   :iskysigma   [value]    Show / Set the sigma of the background
+   :imindata    [value]    Show / Set the minimum good data value
+   :imaxdata    [value]    Show / Set the maximum good data value
+
+   :inoisemodel [name]     Show / Set the noise model (poisson)
+   :ikgain      [value]    Show / Set the CCD gain image keyword
+   :ikreadnoise [value]    Show / Set the CCD readout noise image keyword
+   :igain       [value]    Show / Set the CCD gain in e-/ADU
+   :ireadnoise  [value]    Show / Set the CCD readout noise in e-
+
+   :ikexptime   [value]    Show / Set the exposure time image keyword
+   :ikairmass   [value]    Show / Set the airmass image keyword
+   :ikfilter    [value]    Show / Set the ifilter id image keyword
+   :ikobstime   [value]    Show / Set the time of observation image keyword
+   :ietime      [value]    Show / Set the exposure time
+   :iairmass    [value]    Show / Set the airmass value
+   :ifilter     [value]    Show / Set the ifilter id
+   :iotime      [value]    Show / Set the time of observation
+
+
+           Dispars Parameter Colon Commands
+
+   :derase      [yes/no]   Show / Set the erase status
+   :dfill       [yes/no]   Show / Set the fill status
+   :dxviewport  [value]    Show / Set the x viewport
+   :dyviewport  [value]    Show / Set the y viewport
+   :dxmag       [value]    Show / Set the x magnification
+   :dymag       [value]    Show / Set the y magnification
+
+   :dztransform [name]     Show / Set the intensity transform
+                                (linear,log,none)
+   :dzlimits    [name]     Show / Set the intensity limits algorithm
+                                (median,image,user)
+   :dzcontrast  [value]    Show / Set the intensity contrast
+   :dznsample   [value]    Show / Set the number of sample lines
+   :dz1         [value]    Show / Set the minimum intensity level
+   :dz2         [value]    Show / Set the maximum intensity level
+   :dlutfile    [value]    Show / Set the user lookup table file
+   :drepeat     [yes/no]   Show / Set repeat status
+
+
+
+           Findpars Parameter Colon commands
+
+   :fthreshold  [value]    Show / Set the detection threshold
+   :fradius     [value]    Show / Set the fitting radius
+   :fsepmin     [value]    Show / Set the minimum separation
+   :froundlo    [value]    Show / Set the lower ellipticity limit
+   :froundhi    [value]    Show / Set the upper ellipticity limit
+   :fsharplo    [value]    Show / Set the lower sharpness limit
+   :fsharphi    [value]    Show / Set the upper sharpness limit
+
+
+           Omarkpars Parameter Colon Commands
+
+   :objmark     [yes/no]   Show / Set the object marking switch
+   :otolerance  [value]    Show / Set the object matching tolerance
+   :ocharmark   [value]    Show / Set the object marking parameter
+   :onumber     [yes/no]   Show / Set the object numbering switch
+   :opcolormark [value]    Show / Set the object mark color
+   :oscolormark [value]    Show / Set the sky mark color
+   :osizemark   [value]    Show / Set the mark size
+
+
+           Cenpars Parameter Colon Commands
+
+    :calgorithm [value]    Show / Set the centering algorithm
+                                (none, centroid, gauss, ofilter)
+    :cradius    [value]    Show / Set the centering radius
+    :cthreshold [value]    Show / Set the centering threshold
+    :cminsnrati [value]    Show / Set the minimum signal-to-noise ratio
+    :cmaxiter   [value]    Show / Set the maximum number of iterations
+    :cxyshift   [value]    Show / Set the maximum x or y coordinate shift
+
+    :ctrmark    [yes/no]   Show / Set the center marking switch
+    :ccharmark  [value]    Show / Set the center marking character
+                                (point, box, cross, plus, circle, diamond)
+    :ccolormark [value]    Show / Set the center mark color
+                                (red, blue, green, yellow)
+    :csizemark  [value]    Show / Set the center mark size
+
+
+           Skypars Parameter Colon Commands
+
+    :smode      [value]    Show / Set the sky fitting mode
+                                (concentric, offset)
+    :sgeometry  [value]    Show / Set the sky fitting geometry
+                                (circle, ellipse, rectangle, polygon)
+    :srannulus  [value]    Show / Set the inner radius of sky annulus
+    :saxratio   [value]    Show / Set the sky annulus axis ratio
+    :sposangle  [value]    Show / Set the sky annulus position angle in degrees
+
+    :salgorithm [value]    Show / Set the sky fitting algorithm
+                                (zero, constant, mean, median, mode32,
+                                 hcentroid, hgauss, hofilter, hcrosscor)
+    :sconstant  [value]    Show / Set the constant for constant sky fitting
+    :shwidth    [value]    Show / Set the half-width of histogram in sigma
+    :shbinsize  [value]    Show / Set the resolution of histogram in sigma
+    :shsmooth   [yes/no]   Show / Set the histogram smoothing switch
+    :smaxiter   [value]    Show / Set the maximum number of fitting iterations
+
+    :sloclip    [value]    Show / Set the lower clipping factor in %
+    :shiclip    [value]    Show / Set the upper clipping factor in %
+    :snreject   [value]    Show / Set the maximum number of rejection iterations
+    :sloreject  [value]    Show / Set the lower k-sigma rejection limit
+    :shireject  [value]    Show / Set the upper k-sigma rejection limit
+    :srgrow     [value]    Show / Set the region growing radius
+
+    :skymark    [yes/no]   Show / Set the sky marking switch
+    :scolormark [value]    Show / Set the sky aperture mark color
+                                (red, blue, green, yellow)
+
+          Photpars Parameter Colon Commands
+
+    :pgeometry  [value]    Show / Set the photometry aperture geometry
+                                (circle, ellipse, rectangle, polygon)
+    :papertures [value]    Show / Set the photometry apertures
+    :paxratio   [value]    Show / Set the photometry aperture axis ratio
+    :pposangle  [value]    Show / Set the aperture position angle in degrees
+    :pzmag      [value]    Show / Set the photometry zero point
+    :photmark   [yes/no]   Show / Set the photometry aperture marking switch
+    :pcolormark [value]    Show / Set the photometry aperture mark color
+                                (red, blue, green, yellow)
+
+         Eplotpars Parameter Colon Commands
+
+    :enx        [value]    Show / Set number of columns to be contoured
+    :eny        [value]    Show / Set number of lines to be contoured
+    :ez1        [value]    Show / Set minimum greylevel to be contoured
+    :ez2        [value]    Show / Set maximum greylevel to be contoured
+    :ez0        [value]    Show / Set the greylevel of the zero contour
+    :encontours [value]    Show / Set the number of contours to be plotted
+    :edz        [value]    Show / Set the contour greylevel interval
+    :ehilomark  [value]    Show / Set the high / low contour marking option
+                                  (none, hilo, pixel)
+    :edashpat   [value]    Show / Set the bit pattern for drawing dashed lines
+    :elabel     [yes/no]   Show / Set the major contours labeling switch
+    :ebox       [yes/no]   Show / Set the box drawing switch
+    :eticklabel [yes/no]   Show / Set the tick mark labeling switch
+    :exmajor    [value]    Show / Set the number of major x axis divisions
+    :exminor    [value]    Show / Set the numver of minor x axis divisions
+    :eymajor    [value]    Show / Set the number of major y axis divisions
+    :eyminor    [value]    Show / Set the numver of minor y axis divisions
+    :eround     [yes/no]   Show / Set the axis rounding switch
+    :efill      [yes/no]   Show / Set viewport filling switch
+
+
+          Aplotpars Parameter Colon Commands
+
+    :anx        [value]    Show / Set number of columns to be plotted
+    :any        [value]    Show / Set number of lines to be plotted
+    :az1        [value]    Show / Set minimum greylevel to be plotted
+    :az2        [value]    Show / Set maximum greylevel to be plotted
+    :alabel     [yes/no]   Show / Set the axes drawing switch
+    :angv       [value]    Show / Set the verticle viewing angle
+    :angh       [value]    Show / Set the horizontal viewing angle

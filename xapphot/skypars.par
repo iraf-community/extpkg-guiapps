@@ -1,0 +1,23 @@
+# SKY FITTING PARAMETERS
+
+smode,s,h,"concentric","|concentric|offset|",,Position of sky aperture
+sgeometry,s,h,"circle","|circle|ellipse|rectangle|polygon|",,The sky annulus geometry
+srannulus,r,h,20.0,,,Inner radius of sky annulus in scale units
+swannulus,r,h,5.0,,,Width of sky annulus in scale units
+saxratio,r,h,1.0,0.0,1.0,Ratio of short to long axis of sky annulus
+sposangle,r,h,0.0,0.0,360.0,Position angle of long axis of sky annulus 
+salgorithm,s,h,"hcentroid","|none|constant|mean|median|mode|hcentroid|hofilter|hcrosscor|hgauss|",,Sky fitting algorithm
+sconstant,r,h,0.0,,,User sky value for constant sky
+shwidth,r,h,3.0,,,Half width of histogram in sky sigma
+shbinsize,r,h,0.20,,,Binsize of histogram in sky sigma
+shsmooth,b,h,yes,,,Boxcar smooth the histogram
+smaxiter,i,h,10,,,Maximum number of sky fitting iterations
+sloclip,r,h,0.0,,,Lower clipping factor in percent
+shiclip,r,h,0.0,,,Upper clipping factor in percent
+snreject,i,h,50,,,Maximum number of sky fitting rejection iterations
+sloreject,r,h,3.0,,,Lower K-sigma rejection limit in sky sigma
+shireject,r,h,3.0,,,Upper K-sigma rejection limit in sky sigma
+srgrow,r,h,0.0,,,Region growing radius in scale units
+skymark,b,h,yes,,,Mark the sky annulus on the display
+scolormark,s,h,"yellow","|red|blue|green|yellow|",,The color of the marked sky annulus
+mode,s,h,'ql'

@@ -1,0 +1,9 @@
+If tasks are run in interactive mode have them write out a geometry file
+at the same time they write out a results file. This gets around the
+problem of the object list being dynamic in the version of xapphot.
+This avoids the problem of mixed geometries causing trouble for the output
+format as well.  Details to be worked out later.
+
+Divide commands into command subsets with a specific letter as prefix, e.g.
+f for files i for image. Try to make the first three letters of a command
+define it uniquely.

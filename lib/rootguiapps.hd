@@ -1,0 +1,8 @@
+# Root task entry for the guiapps package help tree.  Defines `guiapps' as
+# both a task and a package in the guiapps help database.
+
+guiapps		men  = guiapps$guiapps.men,
+		hlp  = guiapps$guiapps.men,
+		sys  = guiapps$guiapps.hlp,
+		pkg  = guiapps$guiapps.hd,
+		src  = guiapps$guiapps.cl

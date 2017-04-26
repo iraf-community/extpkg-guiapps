@@ -1,0 +1,31 @@
+modversion,s,h,"V1.0",,,"
+
+# FIT PARAMETERS"
+lower,r,h,-10.,,,Lower bandpass relative to center
+upper,r,h,10.,,,Upper bandpass relative to center
+profile,s,h,"gaussian","gaussian|lorentzian|voigt",,"Profile (gaussian|lorentzian|voigt)"
+modnsub,i,h,3,1,,"Number of subpixels in calculation
+
+# FIT SELECTIONS"
+fitback,b,h,no,,,"Fit background?"
+fitpos,b,h,yes,,,"Fit profile positions?"
+fitint,b,h,yes,,,"Fit profile intensities?"
+fitgfwhm,b,h,yes,,,"Fit Gausian FWHM?"
+fitlfwhm,b,h,yes,,,"Fit Lorentzian FWHM?
+
+# FIT CONTRAINTS"
+relpos,b,h,no,,,"Constrain relative positions?"
+relint,b,h,no,,,"Constrain relative intensities?"
+relgfwhm,b,h,no,,,"Constrain relative Gaussian FWHM?"
+rellfwhm,b,h,no,,,"Constrain relative Lorentzian FWHM?"
+eqgfwhm,b,h,no,,,"Constrain to same Gaussian FWHM?"
+eqlfwhm,b,h,no,,,"Constrain to same Lorentzian FWHM?
+
+# FIT PLOTS"
+modplot,b,h,yes,,,"Plot models?"
+modpdraw,b,h,yes,,,"Draw profiles?"
+modpcolor,s,h,"cyan","background|foreground|red|green|blue|cyan|yellow|magenta|purple|gray",,"Color of profiles"
+modsdraw,b,h,yes,,,"Draw sum of profiles?"
+modscolor,s,h,"magenta","background|foreground|red|green|blue|cyan|yellow|magenta|purple|gray",,"Color of sum of profiles"
+modcdraw,b,h,yes,,,"Draw continuum of profiles?"
+modccolor,s,h,"cyan","background|foreground|red|green|blue|cyan|yellow|magenta|purple|gray",,"Color of continuum"

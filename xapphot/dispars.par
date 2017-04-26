@@ -1,0 +1,17 @@
+# Parameter file for DISPARS pset
+
+derase,b,h,yes,,,Erase previously displayed frame ?
+dfill,b,h,yes,,,Scale image to fit display window ?
+dxviewport,r,h,1.0,0.0,1.0,Horizontal size of display window
+dyviewport,r,h,1.0,0.0,1.0,Vertical size of display window
+dxmag,r,h,1.0,,,Horizontal image magnification
+dymag,r,h,1.0,,,Vertical image magnification 
+dztransform,s,h,linear,,,Image greylevel transformation (linear|log|none|user)
+dzlimits,s,h,median,,,Image greylevel limits (median|image|user)
+dzcontrast,r,h,0.25,,,Contrast adjustment for zlimits median algorithm
+dznsample,i,h,5,,,Number of sample lines for zlimits median algorithm
+dz1,r,h,INDEF,,,Minimum greylevel to be displayed for zlimits user algorithm
+dz2,r,h,INDEF,,,Maximum greylevel to be displayed for zlimits user algorithm
+dlutfile,f,h,"",,,File containing user defined look up table
+drepeat,b,h,no,,,Use previous display parameters ?
+mode,s,h,'ql'

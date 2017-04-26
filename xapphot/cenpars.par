@@ -1,0 +1,13 @@
+# Parameter file for CENPARS pset
+
+calgorithm,s,h,"centroid1d","|none|centroid1d|gauss1d|ofilter1d|",,Centering algorithm
+cradius,r,h,3.5,0.0,,Centering radius in iscale units
+cthreshold,r,h,INDEF,,,Centering threshold in iskysigma above background
+cminsnratio,r,h,3.0,0.0,,Minimum signal-to-noise ratio
+cmaxiter,i,h,10,,,Maximum number of iterations
+cxyshift,r,h,5.0,,,Maximum coordinate shift in iscale units
+ctrmark,b,h,no,,,Mark computed centers on the image display ?
+ccharmark,s,h,"plus","|point|box|plus|circle|diamond|",,The center mark character
+ccolormark,s,h,"red","|red|blue|green|yellow|",,The center mark color
+csizemark,r,h,5.0,,,The center mark size in iscale units
+mode,s,h,'ql'

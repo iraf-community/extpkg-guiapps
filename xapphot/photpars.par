@@ -1,0 +1,8 @@
+pgeometry,s,h,"circle",|circle|ellipse|rectangle|polygon|,,"Geometry of photometry apertures"
+papertures,s,h,"15.0",,,"Photometry aperture axes lengths in scale units"
+paxratio,r,h,1.,0.,1.,"Ratio of short to long photometry aperture axes"
+pposangle,r,h,0.,0.,360.,"Position angle of photometry aperture axes"
+pzmag,r,h,25.,,,"Zero point of magnitude scale"
+photmark,b,h,yes,,,"Mark apertures on the display"
+pcolormark,s,h,"red",|red|green|blue|yellow|,,"The color of the marked apertures"
+mode,s,h,"ql",,,

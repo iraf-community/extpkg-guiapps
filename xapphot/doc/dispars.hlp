@@ -1,0 +1,279 @@
+.help dispars Jan99 xapphot
+.ih
+NAME
+dispars -- Edit the image display parameters
+.ih
+USAGE
+dispars
+.ih
+PARAMETERS
+
+.ls derase = yes
+Erase the screen before displaying the image ?
+.le
+.ls dfill = yes
+Interpolate the image to fit the display window ?
+.le
+.ls dxviewport = 1.0, dyviewport = 1.0
+The horizontal and vertical sizes of the display window in viewport or
+normalized coordinates.
+.le
+.ls xmag = 1.0, ymag = 1.0
+The horizontal and vertical image magnifications used when \Idfill\fR =
+"no".  Magnifications greater than 1 map image pixels into more than 1
+display pixel and magnifications less than 1 map more than 1 image pixel
+into a display pixel.
+.le
+.ls dztransform = "linear"
+The algorithm used to transform the image intensity levels to the display
+levels.  The choices are:
+.ls "linear"
+Map the minimum and maximum image intensities linearly to the minimum and
+maximum display levels.
+.le
+.ls "log"
+Map the minimum and maximum image intensities linearly to the range 1 to 1000,
+take the logarithm (base 10), and then map the logarithms to the display
+range.
+.le
+.ls "none"
+Apply no mapping of the image intensities.
+For most image displays, values exceeding
+the maximum display value are truncated by masking the highest bits.
+This corresponds to applying a modulus operation to the intensity values
+and produces "wrap-around" in the display levels.
+.le
+.ls "user"
+Use the look-up table of image intensities and  corresponding
+display intensities in the file specified by \fIdlutfile\fR.  
+.le
+.le
+.ls dzlimits = "median"
+The algorithm used to determine the minimum and maximum image intensities
+to map to the minimum and maximum display intensities. The choices are:
+.ls median
+Compute the image intensity limits using an automatic mapping algorithm
+and the parameters \fIdznsample\fR and \fIdzcontrast\fR.
+.le
+.ls image
+Use the minimum and maximum values in the image header or by subsampling the
+entire image.
+.le
+.ls user
+Use the values \fIdz1\fR and \fIdz2\fR supplied by the user. If dz1 and dz2
+are INDEF then default to the "median" algorithm.
+.le
+.le
+.ls dzcontrast = 0.25
+The contrast factor for the \fIdzlimits\fR = "median" algorithm.
+If a value of zero is given then the minimum and maximum of the
+intensity sample is used.
+.le
+.ls dznsample = 5
+The number of sample lines for the \fIdzlimits\fR = "median"
+algorithm.
+.le
+.ls dz1 = INDEF (ADU), z2 = INDEF (ADU)
+The minimum and maximum image intensity to be mapped to the minimum and maximum
+display levels if \fIdzlimits\fR = "user".
+.le
+.le
+.ls dlutfile = ""
+The name of the text file containing the look-up table for the
+\fIdztransform\fR = "user" algorithm.
+The table should contain two columns per line; column 1 contains the
+intensity, column 2 the desired greyscale output.
+.le
+.ls drepeat = no
+Use the previous intensity transformation if defined ?
+.le
+
+.ih
+DESCRIPTION
+
+The \fIdispars\fR parameters control the xguiphot image display algorithms.
+These parameters are used to map the image to the display window in 
+coordinate and intensity space. The current image display algorithms are
+based on but not identical to the algorithms used by the
+IRAF \fIdisplay\fR task.
+
+Xguiphot only supports a single image display window. By default the
+image display window is erased before a new image is displayed 
+(\fIderase\fR = "yes"). The user may choose not to erase the
+previous image display by setting \fIderase\fR = "no", although this option
+currently has little practical value.
+
+By default (\fIfill\fR = "yes"),  xguiphot spatially interpolates the image
+to fill the image display window in its largest dimension  while
+preserving an aspect ratio of 1 to 1.  When the display window is not
+automatically filled, the image is scaled by the magnification factors
+\fIxmag\fR and \fIymag\fR and centered in the display window.  If the
+number of image pixels exceeds the number of display pixels in the window
+only the central portion of the image which fills the window is loaded. 
+The spatial interpolation algorithm is described in the section MAGNIFY AND
+FILL ALGORITHM.
+
+There are several options for mapping the pixel values to the display values.
+There are two steps: selecting the mapping function or transform, and
+determining the range of image intensities to map to the full display range.
+
+The mapping transform is set by the \fIdztransform\fR parameter.
+The most direct mapping is "none" which loads the
+image pixel values into the display without any transformation or range
+mapping.  As most displays only use the lowest bits, this may result in a
+wrap-around effect for images with a range exceeding the display range.
+This is sometimes desirable because it produces a contoured image which
+is not saturated at the brightest or faintest points.
+The "none" algorithm is the fastest method of loading the display.  Another
+transformation, "linear", maps the selected image range linearly to the full
+display range.  The logarithmic transformation, "log", maps the image range
+linearly between 1 and 1000 and then maps the logarithm (base 10) linearly
+to the full display range.  In the latter two transformations pixel values
+greater than the selected maximum display intensity are set to the maximum
+display value and pixel values less than the minimum intensity
+are set to the minimum display value.
+
+If \fIdztransform\fR = "user", a look up table of intensity values and their
+corresponding greyscale levels is read from the file specified by the
+\fIdlutfile\fR parameter.  From this information, a piecewise linear
+look up table containing 4096 discrete values is composed.  The look-up table
+file is a text file containing two columns per line: column 1 contains the
+intensity, column 2 the desired greyscale output.  The greyscale values
+specified by the user must match those available on the output device.
+
+The method for setting the range of image pixel values is determined
+by the \fIdzlimits\fR parameter. By default xguiphot uses an automatic
+algorithm "median" which gives good results for most
+astronomical images.  The automatic mapping algorithm is described
+in the section MEDIAN ALGORITHM and has two parameters, \fIdznsample\fR and
+\fIdzcontrast\fR.
+
+If \fIdzlimits\fR = "image" then the the minimum and maximum pixel values
+in the image are taken from the image header or estimated from a  subsample
+of the image pixels.  This insures that the full range of the image is displayed
+but is generally slower than the "median" algorithm (because all the image
+pixels are sampled) and, for images with a large dynamic range, will
+generally show only the brightest parts of the image.
+
+If \fIdzlimits\fR is "user" then the user must specify the intensity
+limits explicitly
+via the \fIdz1\fR and \fIdz2\fR parameters. If dz1 or dz2 are undefined
+then the "user" algorithm defaults to the "median" algorithm.
+
+It is often desirable to load images with the same intensity
+transformations.  The option \fIrepeat\fR repeats the transformations from
+the previous image loaded.
+
+.ih
+MAGNIFY AND FILL ALGORITHM
+The spatial interpolation algorithm magnifies (or demagnifies) the
+image along each axis by the desired amount.  The fill option is a
+special case of magnification in that the magnification factors are set
+by the requirement that the image just fit the display window in its
+maximum dimension with an aspect ratio (ratio of magnifications) of 1.
+There are two requirements on the interpolation algorithm; all the
+image pixels must contribute to the interpolated image and the
+interpolation must be time efficient.  The second requirement means that
+simple linear interpolation is used.  If more complex interpolation is
+desired then tasks in the images package must be used to first
+interpolate the image to the desired size before loading the display
+frame.
+
+If the magnification factors are greater than 0.5 (sampling step size
+less than 2) then the image is simply interpolated.  However, if the
+magnification factors are less than 0.5 (sampling step size greater
+than 2) the image is first block averaged by the smallest amount such
+that magnification in the reduced image is again greater than 0.5.
+Then the reduced image is interpolated to achieve the desired
+magnifications.  The reason for block averaging rather than simply
+interpolating with a step size greater than 2 is the requirement that
+all of the image pixels contribute to the displayed image.  If this is
+not desired then the user can explicitly subsample using image
+sections.  The effective difference is that with subsampling the
+pixel-to-pixel noise is unchanged and small features may be lost due to
+the subsampling.  With block averaging pixel-to-pixel noise is reduced
+and small scale features still contribute to the displayed image.
+
+.ih
+MEDIAN ALGORITHM
+The median algorithm is designed to display the image values near the median
+image value without the time consuming process of computing a full image
+histogram.  This is particularly useful for astronomical images which
+generally have a very peaked histogram corresponding to the background
+sky in direct imaging or the continuum in a two dimensional spectrum.
+
+A subset of the image is examined.  Approximately 600 pixels are
+sampled evenly over the image.  The number of lines is a user parameter,
+\fIdznsample\fR.  The pixels are ranked in brightness to
+form the function I(i) where i is the rank of the pixel and I is its value.
+Generally the midpoint of this function (the median) is very near the peak
+of the image histogram and there is a well defined slope about the midpoint
+which is related to the width of the histogram.  At the ends of the
+I(i) function there are a few very bright and dark pixels due to objects
+and defects in the field.  To determine the slope a linear function is fit
+with iterative rejection;
+
+	I(i) = intercept + slope * (i - midpoint)
+
+If more than half of the points are rejected then there is no well defined
+slope and the full range of the sample defines the intensity limits.
+Otherwise the endpoints of the linear
+function are used (provided they are within the original range of the
+sample):
+
+.nf
+	z1 = I(midpoint) + (slope / zcontrast) * (1 - midpoint)
+	z2 = I(midpoint) + (slope / zcontrast) * (npoints - midpoint)
+.fi
+
+As can be seen, the parameter \fIzcontrast\fR may be used to adjust the contrast
+produced by this algorithm.
+
+.ih
+EXAMPLES
+1. List the image data dependent parameters.
+
+.nf
+        xp> lpar dispars
+.fi
+
+2. Edit the image data dependent parameters.
+
+.nf
+        xp> dispars
+.fi
+
+3. Edit the image data parameters and run xguiphot.
+
+.nf
+    xp> epar xguiphot
+
+        ... edit a few parameters
+
+        ... move to the dispars parameter and type :e
+
+        ... edit the dispars parameters and type :q
+
+        ... finish editing other pset and task parameters
+
+        ... type :go to startup the task
+.fi
+
+4. Save the current image data dependent parameter set in a text file
+call disnite1.par.
+
+.nf
+    xp> dispars
+
+        ... edit a few parameters
+
+        ... type ":w disnite1.par"  from within epar
+.fi
+
+
+.ih
+BUGS
+.ih
+SEE ALSO
+lpar,epar,xguiphot,omarkpars
+.endhelp

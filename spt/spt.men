@@ -1,0 +1,13 @@
+   spectool - Spectrum display and analysis tool
+   tutorial - Spectool tutorial
+
+THE FOLLOWING ARE PARAMETER SETS FOR SPECTOOL
+  spterrors - Error calculation parameters
+   sptgraph - Graph format parameters
+   spticfit - Curve fitting parameters
+  sptlabels - Labeling parameters
+   sptlines - Line parameters
+   sptmodel - Line profile fitting parameters
+ sptsigclip - Sigma clipping parameters
+   sptstack - Stacking parameters
+    sptstat - Statistics parameters

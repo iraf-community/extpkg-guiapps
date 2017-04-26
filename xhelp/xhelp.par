@@ -1,0 +1,17 @@
+#  Parameter file for the XHelp task
+
+topic,s,a,"",,,"Help topic to print"
+file_template,b,h,no,,,"template is a filename matching template"
+search,b,h,no,,,"Search database for help topic?"
+option,s,h,"help","help|source|sysdoc",,"Type of help (help,source,sysdoc)"
+home,s,h,"",,,"Homepage to be used"
+printer,s,h,"printer",,,"Printer name"
+showtype,b,h,no,,,"Indicate packages in list?"
+
+quickref,s,h,"uparm$quick.ref",,,"Quick-reference file"
+uifname,s,h,"xhelp$xhelp.gui",,,"User interface filename"
+helpdb,s,h,"helpdb",,,"Help database to be used"
+coords,*gcur,h,"",,,"Cursor"
+
+# Mode parameter
+mode,s,h,"ql"

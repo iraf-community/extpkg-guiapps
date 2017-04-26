@@ -1,0 +1,143 @@
+.help xgex5 Mar99 xapphot
+
+.ih
+V. USING XGUIPHOT TO DO CROWDED-FIELD STELLAR APERTURE PHOTOMETRY
+
+Xguiphot can be used to do crowded-field aperture photometry of
+a single image, The following example shows one way of doing this kind
+of operation.
+
+To begin the tutorial:
+
+.nf
+    cl> xgex5
+
+    or
+
+    cl> unlearn xapphot
+    cl> epar xguiphot
+        ... set images to "xapphot$data/globular.fits"
+	... set objects to ""
+	... set results to "default"
+	... set tutorial to "xapphot$doc/xgex5.html"
+.fi
+
+Note that the input objects list is intentionally set to null
+because we are going to generate the objects list internally.
+
+The first step is to determine a good value for the ihwhmpsf, imindata,
+imaxdata, and fthreshold parameters used by the automatic star detection
+routine.  To do this we need to first estimate the width of a typical stellar
+profile and the standard deviation of the background as follows:
+
+.nf
+    1. move to the image display window
+    2. move to a bright isolated star
+    3. type the y keystroke to activate the model fitting panel
+    4. make a note of the value after Hw: which is the half-width at
+       half-max of the psf and the second value after Sky: which
+       is the sky sigma value
+    5. measure a few other stars by pointing at them with the
+       mouse and typing the x keystroke command, and note the 
+       half-width at half-max and sky sigma values 
+    6. decide on good values for the hwhmpsf and the sky sigma
+    7. dismiss the model fitting panel
+.fi
+
+A good value of ihhmpsf is ~1.5. The sky value and sigma are
+around 150 and 6. We note that the brightest stars are not saturated
+and that there are very few low valued pixels so we don't need to
+determine values for imaxdata and imindata for this image.
+We do need to make sure that the gain, readout noise, exposure time, filter,
+airmass, and ut are being read correctly from the image header. To enter
+the above information and make the necessary checks:
+
+.nf
+     1. move to the List menu
+     2. select the "Impars pset ..." item
+     3. change ihwhmpsf to 1.5 and press CR
+     4. note that the ifilter value is undefined but ignore this for
+        the purpose of the tutorial 
+     5. press Apply
+     6. press Dismiss
+     7. move to the List menu
+     8. press the left mouse button
+     9. select the "Findpars pset ..." item
+    10. change fthrehold from 320 to 24 which is about 4 * the sky sigma
+	determined above and press CR
+    11. press Apply
+    12. press Dismiss 
+.fi
+
+Now we are ready to find objects. Move to the List menu and select
+the "Find list" item,  or alternatively type the @ keystroke command
+in the image display window. Wait for a few moments and then examine
+the status line and the image display. The detection algorithm says it
+found 1562 objects in this image which looks pretty reasonable.
+
+Now that we have the object list we are ready to do a quick check on the
+algorithm parameters before beginning processing. 
+First check the centering parameters as follows:
+
+.nf
+    1. go to the Phot menu
+    2. select the "Cenpars pset ..." item
+    3. change calgorithm from "centroid1d" to "none" to avoid wandering
+       centers in this crowded field
+    3. change ctrmark from no to  yes since this is a crowded field,
+       and we want to mark centers not apertures 
+    4. press Apply
+    5. press Dismiss
+.fi
+
+Next check the sky fitting parameters as follows:
+
+.nf
+    1. go to the Phot menu
+    2. select the "Skypars pset ..." item
+    3. set srannulus to 10 and swannulus to 5
+    4. make sure that smode is "concentric" and "sgeometry" is circular
+    5. set skymark to no to avoid marking sky apertures in this
+       crowded field
+    6. press Apply
+    7. press Dismiss
+.fi
+
+Finally check the photometry parameters as follows:
+
+.nf
+    1. go to the Phot menu
+    3. select the "Photpars pset ..." item
+    3. set papertures to 3.0 which is close to the optimal value
+       of ~fwhmpsf
+    4. set photmark to no to avoid marking photometry apertures in
+       this crowded field
+    5. press Apply
+    6. press Dismiss
+.fi
+
+Now activate the plotting panel by selecting the "Photometry plots ..."
+item from the Results menu, or typing g in the image display window.
+Make a trial measurement by moving to a marked star and typing the . keystroke
+command, or press the left mouse button in the image display window
+and selection the "Measure nearest in list" item. Do the plots look ok ? Is
+the star marked correctly ? If so we are ready to measure the cluster. 
+
+.nf
+    1. dismiss the plotting panel because we do not want to make
+       plots of all 1652 stars!
+    2. go to the Files menu
+    3. press the left mouse button
+    4. select the "Enable logging" item
+    5. move to the the Phot menu
+    6. press the left mouse button
+    7. select the "Measure list" item  
+    8. go to the Files menu
+    9. select the "Disable logging" item
+.fi
+
+Click on the Quit button to quit the tutorial.
+
+The results will be in the file globular.fits.mag.1.
+
+.endhelp

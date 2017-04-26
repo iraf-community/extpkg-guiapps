@@ -1,0 +1,8 @@
+shift,r,q,0.,,,Coordinate shift
+redshift,r,q,0.,,,Redshift
+first,r,q,,,,Coordinate of first pixel
+last,r,q,,,,Coordinate of last pixel
+step,r,q,,,,Coordinate step per pixel
+mvavg,i,q,3,1,,Moving average width (pixels)
+mvmed,i,q,3,1,,Moving median width (pixels)
+gconvolve,i,q,3,1,,Gaussian convolution width (pixels)

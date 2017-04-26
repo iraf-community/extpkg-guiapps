@@ -1,0 +1,40 @@
+.help revisions Dec00 guiapps.spt
+.nf
+
+onedspec/deblend.x
+    The minimum LFWHM is now 1% of a subpixel instead of 10%.
+    (2/25/02, Valdes)
+
+sptmodel.x
+sptmodel.par
+    The modnsub parameter is now visible in the parameter set though there
+    is no GUI control.  This is to allow using very small LFWHM constraints.
+    (2/25/02, Valdes)
+
+sptmodel.x
+    A return argument in the call to voigt was a type coerced variable.
+    Replaced with a variable of the right type and added an error check
+    against a divide by zero.  (2/17/03, Valdes)
+
+===================
+V1.2: February 2003
+===================
+
+t_spectool.x
+    The reg variable was not being initialized.  (5/28/02, Valdes)
+
+doc/spectool.html
+    1.	Spectrum arithmetic section updated to explain about creating new
+	spectrum types.
+
+    2.	Error section updated to explain how to create an error array.
+    (12/1/00, Valdes)
+
+sptarith.x
+    1.	If an argument references a non-existent spectrum for a
+	selected spectrum type that is present in the template register
+	then an error is printed instead of crashing.
+    2.	If an expression is successfully evaluated and a spectrum type is
+	selected which does not currently exist it is created.
+    (12/1/00, Valdes)
+.endhelp

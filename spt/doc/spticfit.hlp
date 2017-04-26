@@ -1,0 +1,40 @@
+.help spticfit Aug99 spt
+.ih
+NAME
+spticfit -- Spectool parameter set curve fitting.
+.ih
+PARAMETERS
+The following parameters define the default parameters for the
+interactive curve fitting options.  The values are read by
+SPECTOOL when it starts up and the last defined values are saved
+when it exits.
+
+.ls function = "spline3"
+Fitting function?  The values are
+.nf
+     legendre - Legendre polynomial
+    chebyshev - Chebyshev polynomial
+      spline1 - Linear spline
+      spline3 - Cubic spline
+.fi
+.ls order = 1
+Order of fitting function.  This is the number of polynomial coefficients
+or number of spline pieces.
+.le
+.ls low_reject = 2., high_reject = 4.
+Rejection sigma values for iterative rejection.
+.le
+.ls niterate = 10
+Number of rejection iterations.
+.le
+.ls grow = 1.
+Rejection growing radius in pixels.  When a value is rejected neighboring
+pixels within this distance are also rejected.
+.le
+.ls markrej = yes
+Mark rejected points?
+.le
+.ih
+SEE ALSO
+spectool, icfit
+.endhelp

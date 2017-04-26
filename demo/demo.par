@@ -1,0 +1,4 @@
+# Parameters for DEMO GUI task.
+
+uifname,f,h,"demo$puzzle.gui",,,user interface file
+coords,*gcur,h,,,,graphics cursor input

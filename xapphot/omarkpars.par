@@ -1,0 +1,10 @@
+# Parameter file for the OMARKPARS pset
+
+objmark,b,h,yes,,,Mark object list on the image display ?
+ocharmark,s,h,"plus","|point|box|plus|circle|diamond|shape|",,The object marker character
+onumber,b,h,no,,,Number the marked objects ?
+opcolormark,s,h,"green","|red|blue|green|yellow|",,The object aperture marker color
+oscolormark,s,h,"blue","|red|blue|green|yellow|",,The object sky marker color
+osizemark,r,h,5.0,,,The object marker size in scale units
+otolerance,r,h,5.0,,,Object position matching tolerance in scale units
+mode,s,h,'ql'

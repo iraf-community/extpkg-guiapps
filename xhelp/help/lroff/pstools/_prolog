@@ -1,0 +1,94 @@
+%!PS-Adobe-1.0
+%%Creator: IRAF lroff2ps translator
+%%CreationDate: Wed May 19 14:34:47 1999
+%%Pages: (atend)
+%%DocumentFonts: (atend)
+%%EndComments
+%%BeginProlog
+
+/PLG{ 	gsave 					% Guess at the page length 
+	newpath clippath pathbbox 		% (Letter or A4).
+	grestore				% [ not yet used ]
+	exch pop add exch pop
+} bind def
+/PL PLG def					% set page length to guess
+
+/hoffset {  40 	} def				% header offset
+/foffset {  20 	} def				% footer offset
+/HdrY	{ PL hoffset sub  } bind def		% header Y position
+/FtrY	{ foffset	  } bind def		% footer Y position
+
+/inch	{ 72 mul } def				% 72 points per inch
+/pica	{ 12 mul } def				% 1 pica = 12 points
+/xOrg	72 	   def				% 1 inch left margin
+/yOrg	720    	   def				% 1 inch top margin
+/xSize	6.5 inch   def				% text line width
+/ySize	9.5 inch   def				% text area height
+/yDelta 12 	   def				% line spacing
+/Line	1 	   def				% line number
+/Page	0 	   def				% page number
+/pnum   4 string   def				% page number cvs buffer
+/res	10.00	   def				% pixel resolution factor
+
+/TA { 	newpath 				% Draw a box around our text
+	xOrg yOrg moveto 			% area as a debugging procedure.
+	   0 -664 rlineto
+	 467    0 rlineto
+	   0  664 rlineto
+	closepath 
+	stroke
+} bind def
+
+/FS {	findfont exch scalefont } bind def 	% find and scale a font
+/Fonts [					% create an array of fonts
+	10 /Times-Roman FS
+	10 /Times-Bold FS
+	10 /Times-Italic FS
+	10 /Courier FS
+	12 /Times-Bold FS
+] def
+/R  {	Fonts 0 get setfont } bind def 		% set roman font
+/B  {	Fonts 1 get setfont } bind def 		% set bold font
+/I  {	Fonts 2 get setfont } bind def 		% set italic font
+/TT {	Fonts 3 get setfont } bind def 		% set teletype font
+/H  {	Fonts 4 get setfont } bind def 		% set header font
+
+/NL {	Line 1 add SL 	} bind def 		% newline
+/X  {	exch		} def
+/H  {	res div 
+	currentpoint X pop 
+	moveto 		} def			% horizontal position
+/S  {	X H show 	} bind def 		% show
+/SL {	/Line exch def 				% set line position
+	xOrg yOrg Line yDelta mul sub moveto
+} bind def
+
+
+/BP {	 					% Begin page.
+	xOrg HdrY moveto R (TEE \(Nov97\)) show	% write the header
+	 280 HdrY moveto R (system) show
+	 485 HdrY moveto R (TEE \(Nov97\)) show
+	1 SL R
+} bind def
+
+/EP {	     					% End page.
+	/Page Page 1 add def			% increment page number
+	xOrg FtrY moveto R (NOAO/IRAF) show	% write the footer
+	250  FtrY moveto R (IRAF V2.11 May 1997) show
+	530  FtrY moveto R Page pnum cvs show
+	showpage				% show the page
+} bind def
+
+%%EndProlog
+%%Page: 1 1
+%-----------------------------------------------------------------------------
+
+initgraphics
+TA
+BP
+EP
+
+% end of listing
+%%Trailer
+%%DocumentFonts: Times-Roman Times-Bold Times-Italic Courier
+%%Pages: 1

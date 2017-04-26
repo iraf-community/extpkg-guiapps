@@ -1,0 +1,245 @@
+.help sptgraph Aug99 spt
+.ih
+NAME
+sptgraph -- Spectool parameter set for the graph format
+.ih
+PARAMETERS
+The following parameters define the format of the graph and the appearance
+of the primary spectrum and error spectrum.  The values are read by
+SPECTOOL when it starts up and the last defined values are saved
+when it exits.
+
+
+The following are for the "Graph Spectra" Panel.
+.ls ptype = "line1" (see PLOT TYPES)
+Primary spectrum plot type from the list of possible plot types.
+The other spectrum types default to lines of various styles.
+.le
+.ls etype = "vebar" (see PLOT TYPES)
+Spectrum error plot type from the list of possible plot types.  The common
+types for the error spectrum are "vebar", "vline", or "line2".  The vebar
+and vline types produce error bars or lines of length corresponding to the
+error spectrum values.  All other produce parallel spectra  to the primary
+spectrum at +/- the error spectrum values.
+.le
+.ls pcolor = "foreground" (see COLORS)
+Spectrum plot color.  This is for the highest precedence spectrum displayed
+and other associated spectra are shown with incremented color values.
+.le
+.ls xmarksize = 2., ymarksize = 2.
+Spectrum x and y mark sizes for the marker types.  Positive integer values
+select standard sizes which increase with the value.  Positive values
+less than 1 are drawn in normalized display units (fractions of the window
+size).  Negative values are drawn in the units of the graph.
+.le
+
+
+The following are for the "Graph Labels" Panel.
+.ls sysid = yes
+Show the system ID banner?
+.le
+.ls title = "default"
+Graph title string.  The special value "default" creates a standard default
+graph title with the image name, title, aperture number, and beam number.
+.le
+.ls subtitle = ""
+Graph subtitle string.
+.le
+.ls titlecolor = "green" (see COLORS)
+Color for the title block of the graph.
+.le
+.ls xlabel = "default",  ylabel = "default"
+X and Y axis labels.  The special values "default" create axes labels
+determined from the spectrum file header.
+.le
+.ls dunits = "default" (see DUNITS)
+Dispersion units to display.  The special value "default" uses the display
+dispersion units defined in the spectrum file.  Note that this is different
+from the "Axis units" parameter in the "Graph Labels" panel which changes
+the units fields of the labels.
+.le
+.ls funits = "default" (see FUNITS)
+Flux units to display.  The special value "default" uses the
+display flux units defined in the spectrum file.  Note that this is different
+from the "Axis units" parameter in the "Graph Labels" panel which
+changes the units fields of the labels.
+.le
+.ls xaxlabcolor = "green", yaxlabcolor = "green" (see COLORS)
+X and Y axes label colors.
+.le
+
+
+The following are for the "Graph Axes" Panel.
+.ls xviewmin = 0.15, xviewmax = 0.95, yviewmin = 0.15, yviewmax = 0.90
+Viewport limits.  The viewport is the region of the display window where
+the axes are drawn.  The values are given in fractions of the window size.
+The origin is the lower left.  Remember to allow space for the
+title block, the axes labels, and the axes values.
+.le
+.ls xdrawaxis = "both" (both|bottom|top|none)
+Position to draw X axes.
+.le
+.ls ydrawaxis = "both" (both|left|right|none)
+Position to draw Y axes.
+.le
+.ls xaxwidth = 2., yaxwidth = 2.
+X and Y axes widths.
+.le
+.ls xaxtype = "linear", yaxtype = "linear" (linear|logarithmic)
+X and Y axes types.
+.le
+.ls xaxcolor = "cyan", yaxcolor = "cyan" (see COLORS)
+X and Y axes colors.
+.le
+.ls xdrawgrid = no, ydrawgrid = no
+Draw X and Y grid?
+.le
+.ls xgridcolor = "foreground", ygridcolor = "foreground" (see COLORS)
+X and Y grid color.
+.le
+.ls framecolor = "background" (see COLORS)
+Frame color.  The frame color is the region outside the graph axes.
+.le
+
+
+The following are for the "Graph Ticks" Panel.
+.ls xdrawticks = yes, ydrawticks = yes
+Draw X and Y ticks?
+.le
+.ls xnmajor = 6, ynmajor = 6
+Number of X and Y major ticks.
+.le
+.ls xnminor = 0, ynminor = 0
+Number of X and Y minor ticks.
+.le
+.ls xlabticks = yes, ylabticks = yes
+Label X and Y ticks?
+.le
+.ls xtickformat = "", ytickformat = ""
+X and Y tick formats.  This allows using a format specifier for the
+numberical values other than the default.  The specifiers are the
+same as IRAF formats described in the help for LISTPIXELS.
+.le
+.ls xticklabcolor = "yellow", yticklabcolor = "yellow" (see COLORS)
+X and Y tick label colors.
+.le
+.ih
+COLORS
+The color names are taken from the following list:  background, foreground,
+red, green, blue, cyan, yellow, magenta, purple, and gray.  The
+background and foreground colors are resources of the xgterm widget.
+Note that using background as a color will typically make the element
+invisible.
+.ih
+PLOT TYPES
+The plot types consist of various line types or marker types specified
+by one of the following values.
+
+.nf
+	    line1 - Solid line
+	    line2 - Line pattern 2
+	    line3 - Line pattern 3
+	    line4 - Line pattern 4
+
+	    hist1 - Solid histogram
+	    hist2 - Histogram pattern 2
+	    hist3 - Histogram pattern 3
+	    hist4 - Histogram pattern 4
+
+	    point - Points
+	      box - Box symbols
+	     plus - Plus symbols
+	    cross - Cross symbols
+	  diamond - Diamond symbols
+	   circle - Circle symbols
+	    hline - Horizontal line
+	    vline - Vertical line
+	    hebar - Horizontal error bar
+	    vebar - Horizontal error bar
+.fi
+
+.ih
+DUNITS
+Spectool can display spectra in a variety of units.  The special unit
+"pixels" display in image pixel coordinates.  The other units require
+that the spectra have coordinate information of a known type in order
+to be able to convert to other units.
+
+The units are specified by strings having a unit type from the list below
+along with the possible preceding modifiers, "inverse", to select the
+inverse of the unit and "log" to select logarithmic units. For example "log
+angstroms" to plot the logarithm of wavelength in Angstroms and "inv
+microns" to plot inverse microns.  The various identifiers may be
+abbreviated as words but the syntax is not sophisticated enough to
+recognized standard scientific abbreviations except as noted below.
+
+.nf
+		     Unit Types
+
+	   angstroms - Wavelength in Angstroms
+	  nanometers - Wavelength in nanometers
+	millimicrons - Wavelength in millimicrons
+	     microns - Wavelength in microns
+	 millimeters - Wavelength in millimeters
+	  centimeter - Wavelength in centimeters
+	      meters - Wavelength in meters
+	       hertz - Frequency in hertz (cycles per second)
+	   kilohertz - Frequency in kilohertz
+	   megahertz - Frequency in megahertz
+	   gigahertz - Frequency in gigahertz
+	         m/s - Velocity in meters per second
+	        km/s - Velocity in kilometers per second
+	          ev - Energy in electron volts
+	         kev - Energy in kilo electron volts
+	         mev - Energy in mega electron volts
+		   z - Redshift
+
+	          nm - Wavelength in nanometers
+	          mm - Wavelength in millimeters
+	          cm - Wavelength in centimeters
+	           m - Wavelength in meters
+	          Hz - Frequency in hertz (cycles per second)
+	         KHz - Frequency in kilohertz
+	         MHz - Frequency in megahertz
+	         GHz - Frequency in gigahertz
+		  wn - Wave number (inverse centimeters)
+.fi
+
+The velocity and redshift units require a trailing value and unit defining the
+velocity zero point.  For example to plot velocity relative to
+a wavelength of 1 micron the unit string would be:
+
+.nf
+	km/s 1 micron
+.fi
+
+Some additional examples of units strings are:
+
+.nf
+	milliang
+	megahertz
+	inv mic
+	log hertz
+	m/s 3 inv mic
+	z 5015 ang
+.fi
+.ih
+FUNITS
+
+Spectool can display the pixel values in various flux units if the
+spectrum data file includes information in the BUNIT keyword matching
+one of the allowed values given below.
+
+.nf
+	    Jansky - Jansky
+		FU - Flux units
+      erg/cm2/s/Hz - CGS Fnu in ergs/cm2/s/Hz
+       erg/cm2/s/A - CGS Flamda in ergs/cm2/s/Hz
+.fi
+
+In addition the units can have the preceeding modifiers "log" and "mag"; e.g.
+log Jansky.
+.ih
+SEE ALSO
+spectool
+.endhelp

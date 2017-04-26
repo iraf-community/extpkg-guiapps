@@ -1,0 +1,4 @@
+labshow,b,h,yes,,,Show spectrum labels?
+labtype,s,h,"graph","spectrum|graph",,Default label positions
+labformat,s,h,"Horizontal",,,Default label format
+labcolor,s,h,"foreground","background|foreground|red|green|blue|cyan|yellow|magenta|purple|gray",,Default label color

@@ -1,0 +1,722 @@
+extern int apabor_(real *in, real *out, integer *npix, integer *knpix);
+extern int apsbor_(real *in, real *out, integer *npix, integer *nsmooh);
+extern int apalir_(real *data, integer *npts, real *mindat, real *maxdat, integer *imin, integer *imax);
+extern int apialr_(real *data, integer *index, integer *npts, real *mindat, real *maxdat);
+extern int apamal_(real *a, integer *npts, real *maxdat, integer *imax);
+extern integer aphgmr_(real *data, real *wgt, integer *npix, real *hgm, integer *nbins, real *z1, real *z2);
+extern integer aphigr_(real *data, real *wgt, integer *index, integer *npix, real *hgm, integer *nbins, real *z1, real *z2);
+extern int apijtr_(real *r, integer *nr, integer *line, real *xc, real *yc);
+extern int apijt2_(real *r, integer *nx, integer *ny, real *xc, real *yc);
+extern int ap2dar_(real *data, integer *nx, integer *ny, real *mindat, real *maxdat, integer *imin, integer *jmin, integer *imax, integer *jmax);
+extern int apqsot_(real *data, integer *a, integer *b, integer *npix);
+extern int aprecl_(real *a, real *b, integer *npts, real *value);
+extern int apwlir_(real *pix, real *w, integer *npts, real *datamn, real *datamx, real *dmin_, real *dmax_, integer *imin, integer *imax);
+extern E_f apwssr_(real *a, real *wgt, integer *npts);
+extern int apxytr_(integer *coords, real *r, integer *nskypx, real *xc, real *yc, integer *blklen);
+extern int apw1sr_(real *a, real *b, real *c, integer *npts, real *k2);
+extern int apindx_(integer *index, integer *npix);
+extern int txcenr_(void);
+extern int txfind_(void);
+extern int txfity_(void);
+extern int txguit_(void);
+extern int txphot_(void);
+extern int xpuiit_(integer *ui);
+extern int xpguit_(integer *gd, integer *ui, integer *xp, integer *dirlit, integer *imlist, integer *objlit, integer *reslit, integer *greslt);
+extern int xpmkhp_(integer *gd, integer *ui, shortint *helpfe);
+extern int xpmktr_(integer *gd, integer *ui, shortint *tutore);
+extern int xpmkdt_(integer *gd, integer *ui, shortint *startr, shortint *curdir, integer *dirlit);
+extern int xpmkit_(integer *gd, integer *ui, shortint *images, integer *imlist);
+extern int xpmkct_(integer *gd, integer *ui, shortint *objecs, integer *objlit);
+extern int xpmkmt_(integer *gd, integer *ui, shortint *resuls, integer *reslit, integer *rlno, shortint *gresus, integer *greslt, integer *glno);
+extern int xpmkpt_(integer *gd, integer *ui, integer *xp);
+extern int xpdgus_(integer *gd, integer *ui, integer *xp);
+extern int xpigus_(integer *gd, integer *ui, integer *xp);
+extern int xpegus_(integer *gd, integer *ui, integer *xp);
+extern int xpagus_(integer *gd, integer *ui, integer *xp);
+extern int xpogus_(integer *gd, integer *ui, integer *xp);
+extern int xpcgus_(integer *gd, integer *ui, integer *xp);
+extern int xpsgus_(integer *gd, integer *ui, integer *xp);
+extern int xppgus_(integer *gd, integer *ui, integer *xp);
+extern int xpfgus_(integer *gd, integer *ui, integer *xp);
+extern int xpmkbr_(integer *gd, integer *ui, integer *xp);
+extern int xpmkhr_(integer *gd, integer *ui, integer *im, integer *listft);
+extern int xpmkst_(integer *gd, integer *ui, integer *xp);
+extern int xptmks_(integer *gd, integer *ui, integer *xp);
+extern int xpomks_(integer *gd, integer *ui, integer *xp, integer *lseqno, integer *seqno);
+extern int xpgsay_(integer *gd, integer *ui, integer *xp);
+extern int xpuife_(integer *ui);
+extern integer sysruk_(shortint *task, shortint *cmd, integer *rukarf, integer *rukint);
+extern integer xpacon_(integer *gd, integer *xp, shortint *cmdstr);
+extern int xpcmee_(integer *im, real *wx, real *wy, integer *c1, integer *c2, integer *l1, integer *l2, real *skymoe, real *aperts, doublereal *sums, doublereal *areas, doublereal *flux, doublereal *sumxsq, doublereal *sumxy, doublereal *sumysq, integer *napers, real *adatan, real *adatax);
+extern int xpcbme_(integer *im, real *wx, real *wy, integer *c1, integer *c2, integer *l1, integer *l2, real *skymoe, real *datamn, real *datamx, real *aperts, doublereal *sums, doublereal *areas, doublereal *flux, doublereal *sumxsq, doublereal *sumxy, doublereal *sumysq, integer *napers, integer *minapt, real *adatan, real *adatax);
+extern int xpemee_(integer *im, real *wx, real *wy, integer *c1, integer *c2, integer *l1, integer *l2, real *skymoe, real *aperts, real *ratio, real *theta, doublereal *sums, doublereal *areas, doublereal *flux, doublereal *sumxsq, doublereal *sumxy, doublereal *sumysq, integer *napers, real *adatan, real *adatax);
+extern int xpebme_(integer *im, real *wx, real *wy, integer *c1, integer *c2, integer *l1, integer *l2, real *skymoe, real *datamn, real *datamx, real *aperts, real *ratio, real *theta, doublereal *sums, doublereal *areas, doublereal *flux, doublereal *sumxsq, doublereal *sumxy, doublereal *sumysq, integer *napers, integer *minapt, real *adatan, real *adatax);
+extern int xprmee_(integer *im, real *wx, real *wy, integer *c1, integer *c2, integer *l1, integer *l2, real *skymoe, real *aperts, real *ratio, real *theta, doublereal *sums, doublereal *areas, doublereal *flux, doublereal *sumxsq, doublereal *sumxy, doublereal *sumysq, integer *napers, real *adatan, real *adatax);
+extern int xprbme_(integer *im, real *wx, real *wy, integer *c1, integer *c2, integer *l1, integer *l2, real *skymoe, real *datamn, real *datamx, real *aperts, real *ratio, real *theta, doublereal *sums, doublereal *areas, doublereal *flux, doublereal *sumxsq, doublereal *sumxy, doublereal *sumysq, integer *napers, integer *minapt, real *adatan, real *adatax);
+extern int xppmee_(integer *im, real *xshift, real *yshift, real *xver, real *yver, integer *nver, integer *c1, integer *c2, integer *l1, integer *l2, real *skymoe, real *aperts, doublereal *sums, doublereal *areas, doublereal *flux, doublereal *sumxsq, doublereal *sumxy, doublereal *sumysq, integer *napers, real *adatan, real *adatax);
+extern int xppbme_(integer *im, real *xshift, real *yshift, real *xver, real *yver, integer *nver, integer *c1, integer *c2, integer *l1, integer *l2, real *skymoe, real *datamn, real *datamx, real *aperts, doublereal *sums, doublereal *areas, doublereal *flux, doublereal *sumxsq, doublereal *sumxy, doublereal *sumysq, integer *napers, integer *minapt, real *adatan, real *adatax);
+extern int xpcops_(doublereal *flux, doublereal *areas, real *mags, real *magers, integer *napers, real *sky, real *sigma, integer *nsky, real *zmag, integer *noise, real *padu);
+extern int xpcons_(doublereal *sums, doublereal *areas, doublereal *flux, real *mags, real *magers, integer *napers, real *sky, real *sigma, integer *nsky, real *zmag, integer *noise, real *padu, real *readne);
+extern int xp2mos_(doublereal *fluxes, doublereal *sumxsq, doublereal *sumxy, doublereal *sumysq, real *hwidts, real *axrats, real *posans, integer *napers);
+extern int xpxdit_(integer *xp);
+extern int xpxcit_(integer *xp);
+extern int xpxsit_(integer *xp);
+extern int xpxpit_(integer *xp);
+extern int xpdint_(integer *xp);
+extern int xpdfre_(integer *xp);
+extern int xpeint_(integer *xp);
+extern int xpefre_(integer *xp);
+extern int xpaint_(integer *xp);
+extern int xpafre_(integer *xp);
+extern int xpxint_(integer *xp);
+extern int xpxfre_(integer *xp);
+extern int xpiint_(integer *xp);
+extern int xpifre_(integer *xp);
+extern int xpoint_(integer *xp);
+extern int xpofre_(integer *xp);
+extern int xpcint_(integer *xp);
+extern int xpcfre_(integer *xp);
+extern int xpsint_(integer *xp);
+extern int xpsfre_(integer *xp);
+extern int xppint_(integer *xp);
+extern int xppfre_(integer *xp);
+extern int xpfint_(integer *xp);
+extern int xpffre_(integer *xp);
+extern int xpxdfe_(integer *xp);
+extern int xpxcfe_(integer *xp);
+extern int xpxsfe_(integer *xp);
+extern int xpxpfe_(integer *xp);
+extern int xpamak_(integer *gd, integer *xp, real *oxver, real *oyver, integer *nover, real *sxver, real *syver, integer *nsver, integer *raster, integer *wcs);
+extern int xpapmk_(integer *gd, integer *xp, real *oxver, real *oyver, integer *nover, integer *raster, integer *wcs);
+extern int xpaamk_(integer *gd, integer *xp, real *xver, real *yver, integer *nver);
+extern int xpoamk_(integer *gd, integer *xp, integer *symbol, real *oxver, real *oyver, integer *nover, real *sxver, real *syver, integer *nsver, integer *raster, integer *wcs);
+extern int xpoapk_(integer *gd, integer *xp, integer *symbol, real *oxver, real *oyver, integer *nover, integer *raster, integer *wcs);
+extern int xpoaak_(integer *gd, integer *xp, integer *symbol, integer *psymbl, real *xshift, real *yshift, real *xver, real *yver, integer *nver);
+extern integer xpacor_(integer *xp);
+extern int xpaplt_(integer *gd, integer *im, integer *xp, real *xver, real *yver, integer *nver, integer *wcs1, integer *wcs2, integer *wcs3);
+extern int xpeplt_(integer *gd, integer *xp, integer *wcs1, integer *wcs2, integer *wcs3);
+extern int xpoapt_(integer *gd, integer *im, integer *xp, integer *symbol, real *xver, real *yver, integer *nver, integer *wcs1, integer *wcs2, integer *wcs3);
+extern int xpoept_(integer *gd, integer *xp, integer *symbol, integer *wcs1, integer *wcs2, integer *wcs3);
+extern integer xparat_(integer *gd, integer *im, integer *xp, real *xver, real *yver, integer *nver, integer *wcsa, integer *wcsp);
+extern integer xpoart_(integer *gd, integer *im, integer *xp, integer *symbol, integer *psymbl, real *xshift, real *yshift, real *xver, real *yver, integer *nver, integer *wcsa, integer *wcsp);
+extern integer xpacot_(integer *gd, integer *xp);
+extern integer xpahwt_(integer *gd, integer *xp);
+extern integer xpaxpt_(integer *gd, integer *xp);
+extern integer xpatpt_(integer *gd, integer *xp);
+extern integer xpoact_(integer *gd, integer *xp, integer *symbol, integer *psymbl);
+extern integer xpoaht_(integer *gd, integer *xp, integer *symbol, integer *psymbl);
+extern integer xpoaxt_(integer *gd, integer *xp, integer *symbol, integer *psymbl);
+extern integer xpoatt_(integer *gd, integer *xp, integer *symbol, integer *psymbl);
+extern int xpacpt_(integer *gd, integer *im, real *xc, real *yc, real *axc, real *ayc, integer *anx, integer *any, real *rmax, integer *wcsa, integer *wcsp, integer *marker);
+extern int xpaept_(integer *gd, integer *im, real *xc, real *yc, real *axc, real *ayc, integer *anx, integer *any, real *amaj, real *aratio, real *atheta, integer *wcsa, integer *wcsp, integer *marker);
+extern int xparpt_(integer *gd, integer *im, real *xc, real *yc, real *axc, real *ayc, integer *anx, integer *any, real *xwidth, real *ywidth, integer *wcsa, integer *wcsp, integer *marker);
+extern int xparyt_(integer *gd, integer *im, real *xc, real *yc, real *axc, real *ayc, integer *anx, integer *any, real *amaj, real *aratio, real *atheta, real *xver, real *yver, integer *wcsa, integer *wcsp, integer *marker);
+extern int xpapyt_(integer *gd, integer *im, real *xc, real *yc, real *axc, real *ayc, integer *anx, integer *any, real *xver, real *yver, integer *nver, integer *wcsa, integer *wcsp, integer *marker);
+extern int xpapl1_(integer *gd, integer *im, integer *xp, real *xver, real *yver, integer *nver, integer *plotte, integer *wcs);
+extern int xpoap1_(integer *gd, integer *im, integer *xp, integer *symbol, real *xver, real *yver, integer *nver, integer *plotte, integer *wcs);
+extern int xpaspt_(integer *gd, integer *xp, integer *im, real *xc, real *yc, real *width, integer *raster, integer *wcs);
+extern int xpoast_(integer *gd, integer *xp, integer *im, real *xc, real *yc, real *width, integer *raster, integer *wcs);
+extern int xpasue_(integer *gd, integer *xp, real *data, integer *ncols, integer *nlines, integer *x1, integer *y1, integer *raster, integer *wcs);
+extern int xpperr_(integer *gd, real *z, integer *ncols, integer *nlines, real *angh, real *angv);
+extern int xpdras_(real *xvals, real *yvals, real *zval, integer *nvals);
+extern int xplabs_(real *xval, real *yval, real *zval, shortint *sppstr, integer *path, integer *up);
+extern int xpdrax_(real *x, real *y1, real *y2, real *zval, integer *nvals);
+extern int xpdray_(real *x1, real *x2, real *y, real *zval, integer *nvals);
+extern integer xpbcer_(integer *im, integer *ol, integer *rl, integer *xp, integer *verboe);
+extern integer xpacer_(integer *gd, integer *im, integer *rl, integer *xp, integer *verboe);
+extern integer xpstat_(integer *xp, real *imbuf, real *denbuf, real *x, real *y, integer *ncols, integer *nlines, integer *c1, integer *c2, integer *l1, integer *l2, integer *sepmin, integer *skip, integer *nxk, integer *nyk, real *datamn, real *datamx);
+extern integer xpafid_(integer *gd, integer *im, integer *rl, integer *xp, integer *verboe);
+extern integer xpstad_(integer *gd, integer *out, integer *xp, real *imbuf, real *denbuf, integer *ncols, integer *nlines, integer *c1, integer *c2, integer *l1, integer *l2, integer *sepmin, integer *skip, integer *nxk, integer *nyk, real *datamn, real *datamx, integer *seqno, integer *verboe);
+extern integer xpdett_(real *densiy, integer *ncols, integer *sepmin, integer *nxk, integer *nyk, real *thresd, integer *cols);
+extern int xpdmos_(real *data, real *den, integer *ncols, integer *skip, integer *nxk, integer *nyk, integer *cols, real *x, real *y, integer *npix, real *mag, real *size, real *ellip, real *theta, real *sharp, integer *nobjs, real *datamn, real *datamx, real *thresd, real *hwhmpf, real *xoff, real *yoff);
+extern integer xptest_(integer *cols, real *x, real *y, integer *npix, real *mag, real *size, real *ellip, real *theta, real *sharps, integer *nobjs, real *c1, real *c2, real *l1, real *l2, real *roundo, real *roundi, real *sharpo, real *sharpi);
+extern int xpwrie_(integer *fd, real *x, real *y, real *mag, integer *npix, real *size, real *ellip, real *theta, real *sharp, integer *nstars, integer *seqno);
+extern int xpmkfs_(integer *gd, integer *xp, real *x, real *y, integer *nstars, integer *seqno, integer *raster, integer *wcs);
+extern integer xpbpht_(integer *im, integer *ol, integer *rl, integer *xp, integer *verboe);
+extern integer xpapht_(integer *gd, integer *im, integer *rl, integer *xp, integer *verboe);
+extern integer xpuapt_(integer *gd, integer *ui, integer *im, integer *rl, integer *xp, integer *verboe);
+extern integer xpbsky_(integer *im, integer *ol, integer *rl, integer *xp, integer *verboe);
+extern integer xpasky_(integer *gd, integer *im, integer *rl, integer *xp, integer *verboe);
+extern int xpbsmh_(real *hgm, real *shgm, integer *nbins, integer *nker, integer *iter);
+extern integer xpctrd_(real *ctrpix, integer *nx, integer *ny, real *norm, real *xc, real *yc, real *xerr, real *yerr);
+extern integer xpmctd_(real *ctrpix, integer *nx, integer *ny, real *norm, real *xc, real *yc, real *xerr, real *yerr);
+extern int xpcmmg_(real *a, integer *npts, real *norm, real *xc, real *err);
+extern int xpcmag_(real *a, integer *npts, real *norm, real *xc, real *err);
+extern int xpmkmg_(real *ctrpix, real *xm, real *ym, integer *nx, integer *ny);
+extern integer xpgctd_(real *ctrpix, integer *nx, integer *ny, real *sigma, integer *maxitr, real *xc, real *yc, real *xerr, real *yerr);
+extern integer xplgcd_(real *ctrpix, integer *nx, integer *ny, real *cx, real *cy, real *sigma, integer *maxitr, real *norm, real *skysia, real *xc, real *yc, real *xerr, real *yerr);
+extern integer xpcbuf_(integer *xp, integer *im, real *wx, real *wy);
+extern integer xpcpix_(integer *im, real *wx, real *wy, integer *capert, real *xc, real *yc, integer *nx, integer *ny);
+extern E_f xpcsno_(real *array, integer *nx, integer *ny, integer *noisel, real *thresd, real *noise, real *gain);
+extern E_f xpcrao_(real *array, integer *nx, integer *ny, real *thresd, real *noise);
+extern E_f xpprao_(real *array, integer *nx, integer *ny, real *thresd, real *noise, real *gain);
+extern integer xpccon_(integer *gd, integer *xp, integer *out, shortint *cmdstr);
+extern int xpcmak_(integer *gd, integer *xp, integer *raster, integer *wcs);
+extern int xpccmk_(integer *gd, integer *xp);
+extern int xpocmk_(integer *gd, integer *xp, integer *symbol, integer *raster, integer *wcs);
+extern int xpocck_(integer *gd, integer *xp, integer *symbol, integer *psymbl);
+extern integer xpclms_(integer *gd, integer *xp, integer *im, integer *ol, integer *rl, integer *gl, integer *key, real *wx, real *wy);
+extern integer xpcmes_(integer *gd, integer *xp, integer *im, integer *rl, integer *gl, integer *key, real *wx, real *wy);
+extern int xpegps_(real *sigma, real *ratio, real *theta, real *nsigma, real *a, real *b, real *c, real *f, integer *nx, integer *ny);
+extern E_f xpegkl_(real *gkernl, real *ngkerl, integer *skip, integer *nx, integer *ny, real *gsums, real *a, real *b, real *c, real *f);
+extern int xpfcoe_(integer *im, integer *c1, integer *c2, integer *l1, integer *l2, integer *bwidth, real *imbuf, real *denbuf, integer *ncols, integer *nlines, real *kernel, integer *skip, integer *nxk, integer *nyk);
+extern int xpgcoe_(integer *im, integer *c1, integer *c2, integer *l1, integer *l2, integer *bwidth, real *imbuf, real *denbuf, integer *ncols, integer *nlines, real *kernel, integer *skip, integer *nxk, integer *nyk, real *gsums, real *datamn, real *datamx);
+extern int xpskcr_(real *in, real *out, integer *npix, real *kernel, integer *skip, integer *nk);
+extern int xpgdsm_(real *in, real *sgd, real *sd, real *sg, real *sgsq, real *p, integer *npix, real *kernel, integer *skip, integer *nk, real *datamn, real *datamx);
+extern int xpgdag_(real *sgd, real *sd, real *sg, real *sgsq, real *p, integer *npix, real *pixels, real *denom, real *sgop);
+extern int xpcpdy_(integer *gd, integer *xp, integer *im, real *xc, real *yc, real *width, integer *raster, integer *wcs, integer *loadcp, integer *overly);
+extern int xpmpdy_(integer *gd, integer *xp, integer *im, real *xver, real *yver, integer *nver, integer *maxras, integer *raster, integer *wcs, integer *loadcp, integer *overly);
+extern int xpocpy_(integer *gd, integer *xp, integer *im, real *xc, real *yc, real *width, integer *raster, integer *wcs, integer *loadcp, integer *overly);
+extern int xpompy_(integer *gd, integer *xp, integer *im, integer *symbol, real *xver, real *yver, integer *nver, integer *maxras, integer *raster, integer *wcs, integer *overly);
+extern int xpcppt_(integer *gd, integer *xp, integer *im, real *xc, real *yc, real *width, integer *raster, integer *wcs);
+extern int xpocpt_(integer *gd, integer *xp, integer *im, real *xc, real *yc, real *width, integer *raster, integer *wcs);
+extern int xpcqpt_(integer *xp, shortint *image, integer *ier, integer *logres);
+extern int xpcwre_(integer *xp, integer *fd, integer *id, shortint *objecs, integer *lid, integer *ier);
+extern int xpdate_(shortint *date, shortint *time, integer *maxch);
+extern integer xpdcon_(integer *gd, integer *xp, shortint *cmdstr);
+extern int xpddes_(integer *xp);
+extern int xpides_(integer *xp);
+extern int xpodes_(integer *xp);
+extern int xpfdes_(integer *xp);
+extern int xpcdes_(integer *xp);
+extern int xpsdes_(integer *xp);
+extern int xppdes_(integer *xp);
+extern int xpedes_(integer *xp);
+extern int xpades_(integer *xp);
+extern int xpdisy_(integer *gd, integer *xp, integer *im, integer *c1, integer *c2, integer *r1, integer *r2, integer *raster, integer *wcs);
+extern E_f xplog0_(real *x);
+extern integer xpdmes_(integer *gd, integer *xp, integer *im, integer *ol, integer *rl, integer *key, real *wx, real *wy, integer *skypos);
+extern int xpemak_(integer *gd, real *xc, real *yc, real *a, real *ratio, real *theta);
+extern int xprmak_(integer *gd, real *xc, real *yc, real *w, real *ratio, real *theta);
+extern int xppmak_(integer *gd, real *xver, real *yver, integer *nver);
+extern int xprgfl_(integer *gd, real *xmin, real *xmax, real *ymin, real *ymax, integer *fstyle, integer *fcolor);
+extern integer xpecon_(integer *gd, integer *xp, shortint *cmdstr);
+extern int xpelle_(real *a, real *ratio, real *theta, real *aa, real *bb, real *cc, real *ff);
+extern int xpepst_(integer *xp, shortint *rootpt, integer *pset);
+extern integer xpfcon_(integer *gd, integer *xp, integer *out, shortint *cmdstr);
+extern integer xpfitr_(integer *xp, integer *im, real *wx, real *wy);
+extern integer xprefr_(integer *xp, integer *ier);
+extern integer xpfity_(integer *xp, integer *im, real *wx, real *wy, real *xver, real *yver, integer *nver, integer *sd, integer *gd);
+extern integer xpdirt_(shortint *dirtee);
+extern integer xpimlt_(shortint *imtemr);
+extern integer xpmkot_(integer *imlist, shortint *otempr, shortint *defaur, shortint *extstr);
+extern integer xpmkrt_(integer *imlist, shortint *otempr, shortint *defaur, shortint *extstr, integer *append);
+extern int xppflt_(integer *gd, integer *xp, integer *dirlit, integer *imlist, integer *objlit, integer *reslit, integer *greslt);
+extern int xpinne_(shortint *image, shortint *input, shortint *ext, shortint *name, integer *maxch);
+extern int xpoute_(shortint *image, shortint *output, shortint *ext, shortint *name, integer *maxch);
+extern int xpoven_(shortint *temple, shortint *filene, integer *maxch);
+extern int xpiven_(shortint *temple, shortint *filene, integer *maxch);
+extern integer xpgets_(shortint *str, real *aperts, integer *maxnas);
+extern integer xprdas_(integer *fd, real *aperts, integer *maxnas);
+extern integer xpdecs_(shortint *str, real *aperts, integer *maxnas);
+extern integer gctor_(shortint *str, integer *ip, real *rval);
+extern integer xpgcon_(integer *gd, integer *xp, shortint *cmdstr);
+extern integer xpggem_(integer *xp, shortint *cmdstr);
+extern integer xpgxpn_(integer *gd, integer *ui, integer *xp, integer *dirlit, integer *imlist, integer *im, integer *objlit, integer *ol, integer *reslit, integer *rl, integer *greslt, integer *gl, shortint *cmdstr, integer *symbol);
+extern integer xpicon_(integer *gd, integer *xp, integer *im, integer *out, shortint *cmdstr);
+extern int xppimr_(integer *gd, integer *im);
+extern int xpimhr_(integer *im, integer *fd, integer *listft);
+extern int xpfmts_(integer *im, shortint *outstr, integer *maxch, integer *lenaxs);
+extern int xpimur_(integer *im, integer *out, integer *listft);
+extern int xppare_(integer *dtype);
+extern int xpgxps_(integer *xp);
+extern int xpgxds_(integer *xp);
+extern int xpgxcs_(integer *xp);
+extern int xpgxss_(integer *xp);
+extern int xpgdpt_(shortint *psetne, integer *xp);
+extern int xpgipt_(shortint *psetne, integer *xp);
+extern int xpgopt_(shortint *psetne, integer *xp);
+extern int xpgcpt_(shortint *psetne, integer *xp);
+extern int xpgspt_(shortint *psetne, integer *xp);
+extern int xpgppt_(shortint *psetne, integer *xp);
+extern int xpgept_(shortint *psetne, integer *xp);
+extern int xpgapt_(shortint *psetne, integer *xp);
+extern int xpgfpt_(shortint *psetne, integer *xp);
+extern int xpkeyt_(integer *im, integer *xp);
+extern int xpetie_(integer *im, integer *xp);
+extern int xpgain_(integer *im, integer *xp);
+extern int xprdne_(integer *im, integer *xp);
+extern int xpfilr_(integer *im, integer *xp);
+extern int xpairs_(integer *im, integer *xp);
+extern int xpotie_(integer *im, integer *xp);
+extern E_f xpplis_(integer *xp, integer *symbol, real *xver, real *yver, integer *nver);
+extern E_f xpslis_(integer *xp, integer *symbol, real *xver, real *yver, integer *nver);
+extern integer xpmag_(integer *xp, integer *im, real *wx, real *wy, real *xver, real *yver, integer *nver, real *skyval, real *skysig, integer *nsky);
+extern integer xpmagf_(integer *xp, integer *im, real *wx, real *wy, real *xver, real *yver, integer *nver, integer *c1, integer *c2, integer *l1, integer *l2);
+extern integer xpcphx_(integer *im, real *wx, real *wy, real *dapert, integer *c1, integer *c2, integer *l1, integer *l2);
+extern integer xpephx_(integer *im, real *wx, real *wy, real *dapert, real *ratio, real *theta, integer *c1, integer *c2, integer *l1, integer *l2);
+extern integer xprphx_(integer *im, real *wx, real *wy, real *dapert, real *ratio, real *theta, integer *c1, integer *c2, integer *l1, integer *l2);
+extern integer xppphx_(integer *im, real *xver, real *yver, integer *nver, integer *c1, integer *c2, integer *l1, integer *l2);
+extern integer xpmbup_(integer *xp, integer *im, integer *objsym, integer *polysm, real *xshift, real *yshift, real *xver, real *yver, integer *nver, integer *c1, integer *c2, integer *l1, integer *l2);
+extern integer xpmagp_(integer *xp, integer *im, integer *objsym, real *xshift, real *yshift, real *xver, real *yver, integer *nver, real *skyval, real *skysig, integer *nsky);
+extern E_f xpsmed_(real *pix, integer *index, integer *npts, integer *medcut);
+extern integer xpimed_(real *weight, integer *index, integer *lo, integer *hi, integer *nmed);
+extern E_f xpwsmd_(real *pix, integer *index, real *weight, integer *npix, integer *med, integer *medcut);
+extern E_f xpmedr_(real *a, integer *index, integer *npix);
+extern integer xppmot_(integer *gd, integer *xp, integer *im, real *wx, real *wy, integer *rl, integer *wcs, integer *plotit, integer *intere);
+extern integer xpelft_(integer *xp, integer *im, real *wx, real *wy, real *mpars, real *pars, real *epars);
+extern int xpgelt_(integer *gd, integer *xp, integer *im, real *pars, real *epars, integer *npars, integer *ier, integer *wcs);
+extern int xpplet_(integer *gd, real *data, integer *nx, integer *ny, real *wx, real *wy, integer *outwih, real *xc, real *yc, real *amp, real *fwhmpf, real *axrato, real *theta, real *sky, integer *ier, integer *wcs);
+extern int xppelt_(real *pars, real *epars, integer *npars, integer *ier, integer *momens);
+extern integer xpfbuf_(integer *im, real *wx, real *wy, integer *width, real *xc, real *yc, integer *nx, integer *ny);
+extern integer xpborr_(real *buf, integer *nx, integer *ny, integer *pnx, integer *pny, integer *ptr);
+extern integer xpznmn_(real *data, integer *npts, real *median, real *sigma, real *lcut, real *hcut);
+extern integer xpqmom_(real *ctrpix, integer *nx, integer *ny, real *lthred, real *uthred, real *thresd, integer *posite, real *par);
+extern integer xpmodm_(real *ctrpix, integer *nx, integer *ny, real *lthred, real *uthred, real *thresd, integer *posite, real *par);
+extern integer xpmods_(real *ctrpix, integer *nx, integer *ny, real *datamn, real *datamx, integer *emissn, integer *noise, real *gain, real *rdnoie, real *hwhmpf, real *tol, integer *maxitr, real *krejet, integer *nrejet, real *inpar, real *outpar, real *outper, integer *npar);
+extern integer xprejt_(real *pix, real *w, integer *npts, real *locut, real *hicut);
+extern int xpfels_(real *x, integer *nvars, real *p, integer *np, real *z);
+extern int xpfeld_(real *x, integer *nvars, real *p, real *dp, integer *np, real *z, real *der);
+extern int xpmoms_(doublereal *sumpx, doublereal *sumsqx, doublereal *sumcbx, integer *npix, real *skyzeo, real *mean, real *sigma, real *skew);
+extern int xpfmos_(real *pix, integer *npix, real *skyzeo, doublereal *sumpx, doublereal *sumsqx, doublereal *sumcbx, real *mean, real *sigma, real *skew);
+extern int xpfims_(real *pix, integer *index, integer *npix, real *skyzeo, doublereal *sumpx, doublereal *sumsqx, doublereal *sumcbx, real *mean, real *sigma, real *skew);
+extern int xpmplt_(integer *gd, integer *xp, integer *im, real *xc, real *yc, real *radius, integer *wcs);
+extern int xpompt_(integer *gd, integer *xp, integer *im, real *xc, real *yc, real *radius, integer *wcs);
+extern int cgausd_(real *x, integer *nvars, real *p, integer *np, real *z);
+extern int cdgaud_(real *x, integer *nvars, real *p, real *dp, integer *np, real *z, real *der);
+extern int gaussw_(real *x, integer *nvars, real *p, integer *np, real *z);
+extern int dgausw_(real *x, integer *nvars, real *p, real *dp, integer *np, real *z, real *der);
+extern int xpopes_(integer *xp, integer *objptr, integer *polypr);
+extern int xpclss_(integer *xp);
+extern integer xprobs_(integer *ol, integer *xp, integer *mode);
+extern integer xpsobs_(integer *xp, shortint *extstr, shortint *newobs, integer *maxch);
+extern integer xpwobs_(integer *fd, integer *xp, integer *listft, integer *number);
+extern integer xpw1ot_(integer *fd, integer *xp, integer *symbol, integer *listft, integer *number, integer *object);
+extern int xpmkos_(integer *gd, integer *xp, integer *raster, integer *wcs);
+extern int xpeobs_(integer *gd, integer *raster);
+extern integer xpnext_(integer *xp, integer *object);
+extern integer xppret_(integer *xp, integer *object);
+extern integer xpfobt_(integer *xp, real *xcursr, real *ycursr, real *xlist, real *ylist);
+extern integer xpnobt_(integer *xp, real *xcursr, real *ycursr, real *xlist, real *ylist);
+extern integer xpnfot_(integer *gd, integer *xp, integer *object);
+extern integer xpndot_(integer *gd, integer *xp, integer *object, integer *raster, integer *wcs);
+extern integer xpnudt_(integer *gd, integer *xp, integer *object, integer *raster, integer *wcs);
+extern integer xpdobt_(integer *gd, integer *xp, integer *raster, integer *wcs, real *xcursr, real *ycursr);
+extern integer xpudot_(integer *gd, integer *xp, integer *raster, integer *wcs, real *xcursr, real *ycursr);
+extern int xpdsyl_(integer *gd, integer *xp, integer *raster, integer *wcs, integer *symbol);
+extern int xpudsl_(integer *gd, integer *xp, integer *raster, integer *wcs, integer *symbol);
+extern int xpaobs_(integer *gd, integer *xp, integer *raster, integer *wcs);
+extern int xpzobs_(integer *xp);
+extern int xppobt_(integer *gd, integer *xp);
+extern int xporbs_(integer *gd, integer *xp, integer *im, integer *psymbl, real *oxver, real *oyver, integer *nover);
+extern int xpobjs_(integer *gd, integer *xp, integer *im, integer *psymbl, real *oxver, real *oyver, integer *nover);
+extern integer xpocon_(integer *gd, integer *xp, shortint *cmdstr, integer *symbol);
+extern integer xpofiy_(integer *xp, integer *im, integer *objsym, real *xshift, real *yshift, real *xver, real *yver, integer *nver, integer *sd, integer *gd);
+extern int xpogey_(integer *xp, integer *symbol, real *oxver, real *oyver, integer *nover, real *sxver, real *syver, integer *nsver, shortint *ogeom, integer *maxogm);
+extern int xpdogy_(integer *xp, real *x, real *y, real *xver, real *yver, integer *nver, shortint *pgeom, integer *maxpgm);
+extern int xpdsgy_(integer *xp, real *x, real *y, real *xver, real *yver, integer *nver, shortint *sgeom, integer *maxsgm);
+extern int xpomke_(integer *gd, integer *symbol, integer *opsyml, integer *spsyml, real *xshift, real *yshift, real *scale, integer *plotot, integer *plotsy, real *defsie);
+extern integer xpopcr_(integer *xp);
+extern integer xposcr_(integer *xp);
+extern integer xposkf_(integer *xp, integer *im, integer *objsym, integer *polysm, real *xshift, real *yshift, real *xver, real *yver, integer *nver);
+extern int xppxps_(integer *xp);
+extern int xppxds_(integer *xp);
+extern int xppxcs_(integer *xp);
+extern int xppxss_(integer *xp);
+extern int xppdpt_(shortint *psetne, integer *xp);
+extern int xppipt_(shortint *psetne, integer *xp);
+extern int xppopt_(shortint *psetne, integer *xp);
+extern int xppcpt_(shortint *psetne, integer *xp);
+extern int xppspt_(shortint *psetne, integer *xp);
+extern int xppppt_(shortint *psetne, integer *xp);
+extern int xppept_(shortint *psetne, integer *xp);
+extern int xppapt_(shortint *psetne, integer *xp);
+extern int xppfpt_(shortint *psetne, integer *xp);
+extern integer xppcon_(integer *gd, integer *xp, integer *out, shortint *cmdstr);
+extern integer xpcfi1_(integer *xp, integer *im, real *wx, real *wy, integer *newcbf, integer *newcer, integer *cier);
+extern integer xpsfi1_(integer *xp, integer *im, real *wx, real *wy, real *xver, real *yver, integer *nver, integer *sd, integer *gd, integer *newsbf, integer *newsky);
+extern integer xpmag1_(integer *xp, integer *im, real *wx, real *wy, real *xver, real *yver, integer *nver, real *sky, real *sigma, integer *nsky, integer *newmbf, integer *newmag);
+extern integer xpplms_(integer *gd, integer *xp, integer *im, integer *ol, integer *rl, integer *gl, integer *key, real *wx, real *wy, real *oxver, real *oyver, integer *nover, real *sxver, real *syver, integer *nsver);
+extern integer xppmes_(integer *gd, integer *xp, integer *im, integer *rl, integer *gl, integer *key, real *wx, real *wy, real *oxver, real *oyver, integer *nover, real *sxver, real *syver, integer *nsver);
+extern integer xpmkpy_(integer *gd, real *x, real *y, integer *maxnvs, integer *itype, integer *icolor, integer *raster, integer *object);
+extern integer xptrpy_(integer *gd, real *x, real *y, integer *maxnvs, integer *object);
+extern int xppyed_(real *xin, real *yin, real *xout, real *yout, integer *nver, real *width);
+extern int xppset_(real *xcen, real *ycen, real *xb, real *yb, real *xe, real *ye, real *width, real *m, real *b, real *xp, real *yp);
+extern int xppyre_(real *hwidth, real *ratio, real *theta, real *xout, real *yout);
+extern integer xppycp_(real *xver, real *yver, real *xintr, real *slope, real *xrangs, integer *nver, real *lx, real *ld);
+extern int xppbar_(integer *xp, shortint *banner, integer *maxch);
+extern int xppres_(integer *xp, shortint *resuls, integer *maxch);
+extern int xpores_(integer *xp, integer *lseqno, integer *seqno, shortint *banner, integer *maxch);
+extern int xppqpt_(integer *xp, shortint *imname, integer *cier, integer *sier, integer *pier, integer *logres);
+extern int xpupqt_(integer *xp, integer *cier, integer *sier, integer *pier, integer *logres);
+extern int xppwre_(integer *xp, integer *fd, integer *seqno, shortint *objecs, integer *loseqo, integer *cier, integer *sier, integer *pier);
+extern integer xprefy_(integer *xp, integer *gd);
+extern integer xpremg_(integer *xp, real *skyval, real *skysig, integer *nsky);
+extern int xpremp_(integer *gd, integer *mappig, integer *refreh);
+extern int xprmwe_(shortint *instr, shortint *outstr, integer *maxch);
+extern integer xpmean_(real *skypix, integer *coords, real *wgt, integer *index, integer *nskypx, integer *snx, integer *sny, real *losiga, real *hisiga, real *rgrow, integer *maxitr, real *skymen, real *skysia, real *skyskw, integer *nsky, integer *nskyrt);
+extern integer xpmedn_(real *skypix, integer *coords, real *wgt, integer *index, integer *nskypx, integer *snx, integer *sny, real *losiga, real *hisiga, real *rgrow, integer *maxitr, real *skymed, real *skysia, real *skyskw, integer *nsky, integer *nskyrt);
+extern integer xpmode_(real *skypix, integer *coords, real *wgt, integer *index, integer *nskypx, integer *snx, integer *sny, real *losiga, real *hisiga, real *rgrow, integer *maxitr, real *skymoe, real *skysia, real *skyskw, integer *nsky, integer *nskyrt);
+extern integer xpgros_(real *skypix, integer *coords, real *wgt, integer *nskypx, real *skyzeo, integer *index, integer *snx, integer *sny, real *rgrow, doublereal *sumpx, doublereal *sumsqx, doublereal *sumcbx);
+extern integer xpcend_(real *skypix, integer *coords, real *wgt, integer *index, integer *nskypx, integer *snx, integer *sny, real *k1, real *hwidth, real *binsie, integer *smooth, real *losiga, real *hisiga, real *rgrow, integer *maxitr, real *skymoe, real *skysia, real *skyskw, integer *nsky, integer *nskyrt);
+extern integer xpsofr_(real *skypix, integer *coords, real *wgt, integer *index, integer *nskypx, integer *snx, integer *sny, real *k1, real *hwidth, real *binsie, integer *smooth, real *losiga, real *hisiga, real *rgrow, integer *maxitr, real *skymoe, real *skysia, real *skyskw, integer *nsky, integer *nskyrt);
+extern integer xpcror_(real *skypix, integer *coords, real *wgt, integer *index, integer *nskypx, integer *snx, integer *sny, real *k1, real *hwidth, real *binsie, integer *smooth, real *losiga, real *hisiga, real *rgrow, integer *maxitr, real *skymoe, real *skysia, real *skyskw, integer *nsky, integer *nskyrt);
+extern integer xpgaus_(real *skypix, integer *coords, real *wgt, integer *index, integer *nskypx, integer *snx, integer *sny, integer *maxfit, real *k1, real *hwidth, real *binsie, integer *smooth, real *losiga, real *hisiga, real *rgrow, integer *maxitr, real *skymoe, real *skysia, real *skyskw, integer *nsky, integer *nskyrt);
+extern int xpimoe_(real *hgm, integer *nbins, real *z1, real *z2, integer *smooth, real *skymoe, integer *ier);
+extern int xpgaul_(real *kernel, integer *nker, real *kmin, real *kmax, real *skysia);
+extern int xpcort_(real *x, real *shgm, integer *nbins, real *skymoe, integer *ier);
+extern int xphise_(real *x, real *hgm, real *w, integer *nbins, real *skymoe, real *skysia, real *skyskw, integer *maxitr, real *tol, integer *ier);
+extern integer xpgrot_(real *skypix, integer *coords, real *wgt, integer *nskypx, integer *index, integer *snx, integer *sny, real *hgm, integer *nbins, real *z1, real *z2, real *rgrow);
+extern integer xpgro2_(real *skypix, integer *coords, real *wgt, integer *nskypx, real *skyzeo, integer *index, integer *snx, integer *sny, real *hgm, integer *nbins, real *z1, real *z2, real *rgrow, doublereal *sumpx, doublereal *sumsqx, doublereal *sumcbx);
+extern int xphgmb_(real *hgm, integer *nbins, real *z1, real *z2, real *skypix);
+extern int xphgm2_(real *hgm, integer *nbins, real *z1, real *z2, real *skypix, real *skyzeo, doublereal *sumpx, doublereal *sumsqx, doublereal *sumcbx);
+extern integer xpscon_(integer *gd, integer *xp, integer *out, shortint *cmdstr);
+extern int xpscnr_(integer *gd, integer *xp, real *data, integer *ncols, integer *nlines, integer *x1, integer *y1, integer *raster, integer *wcs, integer *overly);
+extern int xpsdiy_(integer *gd, integer *xp, integer *im, real *buffer, integer *ncols, integer *nlines, integer *c1, integer *r1, integer *raster, integer *wcs, integer *loadcp);
+extern int xposet_(integer *xp);
+extern int xpcset_(integer *xp);
+extern int xpseti_(integer *xp, integer *paramr, integer *value);
+extern int xpsetp_(integer *xp, integer *paramr, integer *value);
+extern int xpsetr_(integer *xp, integer *paramr, real *value);
+extern int xpsets_(integer *xp, integer *paramr, shortint *value);
+extern integer xpsfid_(integer *im, integer *xp);
+extern integer xpstsd_(integer *stptr, real *imbuf, real *denbuf, integer *ncols, integer *nlines, integer *c1, integer *c2, integer *l1, integer *l2, integer *sepmin, integer *skip, integer *nxk, integer *nyk, real *hwhmpf, real *thresd, real *datamn, real *datamx, real *roundo, real *roundi, real *sharpo, real *sharpi, integer *seqno);
+extern int xpwsys_(integer *stptr, real *x, real *y, real *mag, integer *npix, real *size, real *ellip, real *theta, real *sharp, integer *nstars, integer *seqno);
+extern int xpldps_(integer *xp);
+extern int xplips_(integer *xp);
+extern int xpleps_(integer *xp);
+extern int xplaps_(integer *xp);
+extern int xplops_(integer *xp);
+extern int xplcps_(integer *xp);
+extern int xplsps_(integer *xp);
+extern int xplpps_(integer *xp);
+extern int xplfps_(integer *xp);
+extern integer xpskyf_(integer *xp, integer *im, real *wx, real *wy, real *xver, real *yver, integer *nver);
+extern integer xpcskx_(integer *im, real *wx, real *wy, real *rin, real *rout, real *skypix, integer *coords, real *xc, real *yc, integer *nx, integer *ny);
+extern integer xpeskx_(integer *im, real *wx, real *wy, real *ain, real *aout, real *ratio, real *theta, real *skypix, integer *coords, real *xc, real *yc, integer *nx, integer *ny);
+extern integer xpcbsx_(integer *im, real *wx, real *wy, real *rin, real *rout, real *datamn, real *datamx, real *skypix, integer *coords, real *xc, real *yc, integer *nx, integer *ny, integer *nbad);
+extern integer xpebsx_(integer *im, real *wx, real *wy, real *ain, real *aout, real *ratio, real *theta, real *datamn, real *datamx, real *skypix, integer *coords, real *xc, real *yc, integer *nx, integer *ny, integer *nbad);
+extern integer xprskx_(integer *im, real *wx, real *wy, real *rxin, real *rxout, real *ratio, real *skypix, integer *coords, real *xc, real *yc, integer *nx, integer *ny);
+extern integer xprbsx_(integer *im, real *wx, real *wy, real *rxin, real *rxout, real *ratio, real *datamn, real *datamx, real *skypix, integer *coords, real *xc, real *yc, integer *nx, integer *ny, integer *nbad);
+extern integer xppskx_(integer *im, real *xin, real *yin, real *xout, real *yout, integer *nver, real *skypix, integer *coords, real *xc, real *yc, integer *nx, integer *ny);
+extern integer xppbsx_(integer *im, real *xin, real *yin, real *xout, real *yout, integer *nver, real *datamn, real *datamx, real *skypix, integer *coords, real *xc, real *yc, integer *nx, integer *ny, integer *nbad);
+extern int xprves_(real *wx, real *wy, real *rannus, real *wannus, real *ratio, real *theta, real *xin, real *yin, real *xout, real *yout);
+extern int xprsks_(integer *gd, integer *xp, integer *im, integer *psymbl, real *sxver, real *syver, integer *nsver);
+extern int xpskys_(integer *gd, integer *xp, integer *im, integer *psymbl, real *sxver, real *syver, integer *nsver);
+extern int xpsmas_(integer *gd, integer *xp, real *data, integer *ncols, integer *nlines, integer *x1, integer *y1, real *xc, real *yc, integer *wcs);
+extern int xpsmak_(integer *gd, integer *xp, real *xver, real *yver, integer *nver, integer *raster, integer *wcs);
+extern int xpssmk_(integer *gd, integer *xp, real *xver, real *yver, integer *nver);
+extern int xposmk_(integer *gd, integer *xp, integer *symbol, real *xver, real *yver, integer *nver, integer *raster, integer *wcs);
+extern int xpossk_(integer *gd, integer *xp, integer *symbol, integer *psymbl, real *xshift, real *yshift, real *xver, real *yver, integer *nver);
+extern integer xpscor_(integer *xp);
+extern integer xpslms_(integer *gd, integer *xp, integer *im, integer *ol, integer *rl, integer *gl, integer *key, real *wx, real *wy, real *xver, real *yver, integer *nver);
+extern integer xpsmes_(integer *gd, integer *xp, integer *im, integer *rl, integer *gl, integer *key, real *wx, real *wy, real *xver, real *yver, integer *nver);
+extern int xpsplt_(integer *gd, integer *xp, integer *wcs1, integer *wcs2, integer *wcs3);
+extern integer xpshit_(integer *gd, real *skypix, real *wgt, integer *index, integer *nskypx, real *k1, real *hwidth, real *binsie, integer *smooth, real *skymoe, real *skysia);
+extern int xpisht_(integer *gd, real *xmin, real *xmax, real *ymin, real *ymax, integer *nbins, real *dh);
+extern int xphspt_(integer *gd, real *x, real *hgm, integer *nbins, real *dh, integer *plotte, integer *polyte);
+extern int xphbox_(integer *gp, real *ydata, integer *npts, real *x1, real *x2);
+extern integer xpsrat_(integer *gd, real *skypix, integer *coords, integer *index, integer *nskypx, real *wxc, real *wyc, real *xc, real *yc, integer *nx, integer *ny, real *skymoe, real *skysia);
+extern int xpirst_(integer *gd, real *xc, real *yc, real *xmin, real *xmax, real *ymin, real *ymax);
+extern integer xpspat_(integer *gd, real *skypix, integer *coords, integer *index, integer *nskypx, real *wxc, real *wyc, real *xc, real *yc, integer *nx, integer *ny, real *skymoe, real *skysia);
+extern int xpipat_(integer *gd, real *xc, real *yc, real *xmin, real *xmax, real *ymin, real *ymax);
+extern int xpsxyt_(integer *gd, real *x, real *y, integer *npts, integer *marker, real *xmin, real *xmax, real *skymoe, real *skysia);
+extern int xpspl1_(integer *gd, integer *xp, integer *plotte, integer *wcs);
+extern integer xpstai_(integer *xp, integer *paramr);
+extern integer xpstap_(integer *xp, integer *paramr);
+extern E_f xpstar_(integer *xp, integer *paramr);
+extern int xpstas_(integer *xp, integer *paramr, shortint *value, integer *maxch);
+extern integer xpstrd_(integer *index, shortint *outstr, integer *maxch, shortint *dict);
+extern int xpsqpt_(integer *xp, shortint *imname, integer *ier, integer *logres);
+extern int xpswre_(integer *xp, integer *fd, integer *id, shortint *objecs, integer *lid, integer *ier);
+extern integer xptopt_(real *data, integer *npix, real *center, real *sigma, real *tol, integer *maxitr, integer *ortho);
+extern int xptprr_(real *data, real *der, integer *npix, real *center, real *sigma, real *ampl);
+extern int mktprv_(real *weight, integer *npix, real *center, real *sigma, integer *norm);
+extern E_f xpqzeo_(real *x, real *y);
+extern integer xpucon_(integer *gd, integer *xp, shortint *cmdstr, shortint *cmdlit, shortint *psetlt, integer *pset);
+extern integer xpudms_(integer *gd, integer *ui, integer *xp, integer *im, integer *ol, integer *rl, integer *key, real *wx, real *wy, real *oxver, real *oyver, integer *nover, real *sxver, real *syver, integer *nsver, integer *skypos);
+extern int xpudos_(integer *gd, integer *ui, integer *xp, integer *im, integer *psymbl, real *oxver, real *oyver, integer *nover, real *sxver, real *syver, integer *nsver);
+extern int xpuros_(integer *gd, integer *ui, integer *xp, integer *im, integer *psymbl, real *oxver, real *oyver, integer *nover);
+extern int xpuobs_(integer *gd, integer *ui, integer *xp, integer *im, integer *psymbl, real *oxver, real *oyver, integer *nover);
+extern integer xpupls_(integer *gd, integer *ui, integer *xp, integer *im, integer *ol, integer *rl, integer *gl, integer *key, real *wx, real *wy, real *oxver, real *oyver, integer *nover, real *sxver, real *syver, integer *nsver);
+extern integer xpupms_(integer *gd, integer *ui, integer *xp, integer *im, integer *rl, integer *gl, integer *key, real *wx, real *wy, real *oxver, real *oyver, integer *nover, real *sxver, real *syver, integer *nsver);
+extern int xpusks_(integer *gd, integer *ui, integer *xp, integer *im, integer *psymbl, real *sxver, real *syver, integer *nsver);
+extern int xpurss_(integer *gd, integer *ui, integer *xp, integer *im, integer *psymbl, real *sxver, real *syver, integer *nsver);
+extern int xpwlir_(real *pix, real *w, integer *npts, real *datamn, real *datamx, real *dmin_, real *dmax_, integer *imin, integer *imax);
+extern int xpalir_(real *data, integer *npts, real *mindat, real *maxdat, integer *imin, integer *imax);
+extern int xpqsot_(real *data, integer *a, integer *b, integer *npix);
+extern integer xpclip_(real *skypix, integer *index, integer *npix, real *loclip, real *hiclip, integer *loindx, integer *hiindx);
+extern int xpialr_(real *data, integer *index, integer *npts, real *mindat, real *maxdat);
+extern int xpindx_(integer *index, integer *npix);
+extern int xpsbor_(real *in, real *out, integer *npix, integer *nsmooh);
+extern integer xphigr_(real *data, real *wgt, integer *index, integer *npix, real *hgm, integer *nbins, real *z1, real *z2);
+extern integer xphgmr_(real *data, real *wgt, integer *npix, real *hgm, integer *nbins, real *z1, real *z2);
+extern E_f xpmapr_(real *a, real *a1, real *a2, real *b1, real *b2);
+extern int xpamal_(real *a, integer *npts, real *maxdat, integer *imax);
+extern int xpsxyr_(integer *coords, integer *index, real *r, integer *nskypx, real *xc, real *yc, integer *xblkln, integer *yblkln);
+extern int xpsxye_(integer *coords, integer *index, real *pa, integer *nskypx, real *xc, real *yc, integer *xblkln, integer *yblkln);
+extern E_f xpasur_(real *data, integer *index, integer *npts);
+extern int xprecl_(real *a, real *b, integer *npts, real *value);
+extern E_f xpwssr_(real *a, real *wgt, integer *npts);
+extern int xpwhfd_(integer *xp, integer *out, shortint *task);
+extern int xpwhcr_(integer *xp, integer *out, shortint *task);
+extern int xpwhsy_(integer *xp, integer *out, shortint *task);
+extern int xpwhpt_(integer *xp, integer *out, shortint *task);
+extern int xpwhid_(integer *xp, integer *out, shortint *task);
+extern int xpwhis_(integer *xp, integer *out);
+extern int xpwhfs_(integer *xp, integer *out);
+extern int xpwhio_(integer *xp, integer *out);
+extern int xpwhcs_(integer *xp, integer *out);
+extern int xpwhss_(integer *xp, integer *out);
+extern int xpwhps_(integer *xp, integer *out);
+extern int xprpam_(integer *out, shortint *keywod, real *value, shortint *units, shortint *commes);
+extern int xpipam_(integer *out, shortint *keywod, integer *value, shortint *units, shortint *commes);
+extern int xpbpam_(integer *out, shortint *keywod, logical *value, shortint *units, shortint *commes);
+extern int xpspam_(integer *out, shortint *keywod, shortint *value, shortint *units, shortint *commes);
+extern int xpxfbr_(integer *xp, integer *fd);
+extern int xpxcbr_(integer *xp, integer *fd);
+extern int xpxsbr_(integer *xp, integer *fd);
+extern int xpxpbr_(integer *xp, integer *fd);
+extern int xpwidr_(integer *xp, integer *fd);
+extern int xpwid_(integer *xp, integer *fd, real *xpos, real *ypos, integer *id, shortint *objecs, integer *lid, integer *lastcr);
+extern int xpwcbr_(integer *xp, integer *fd);
+extern int xpwcrs_(integer *xp, integer *fd, integer *ier, integer *lastcr);
+extern int xpcses_(integer *ier, shortint *str, integer *maxch);
+extern int xpwsbr_(integer *xp, integer *fd);
+extern int xpwsrs_(integer *xp, integer *fd, integer *ier, integer *lastcr);
+extern int xpsses_(integer *ier, shortint *str, integer *maxch);
+extern int xpwpbr_(integer *xp, integer *fd);
+extern int xpwprs_(integer *xp, integer *fd, integer *i, integer *pier, shortint *endstr);
+extern int xppses_(integer *ier, shortint *str, integer *maxch);
+extern int xpwmbr_(integer *xp, integer *fd);
+extern int xpwmrs_(integer *xp, integer *fd, integer *i, integer *pier, shortint *endstr);
+extern integer xpxccn_(integer *gd, integer *xp, integer *dirlit, integer *imlist, integer *im, integer *objlit, integer *ol, integer *reslit, integer *rl, integer *greslt, integer *gl, shortint *cmdstr, integer *symbol);
+extern integer xpxcon_(integer *gd, integer *xp, integer *dirlit, integer *imlist, integer *im, integer *objlit, integer *ol, shortint *oextn, integer *reslit, integer *rl, shortint *rextn, integer *greslt, integer *gl, shortint *gextn, shortint *cmdstr);
+extern int xpgimp_(integer *xp, shortint *temple, integer *imlist, integer *im);
+extern int xpgolp_(integer *xp, shortint *temple, integer *imlist, integer *objlit, integer *ol, shortint *oextn);
+extern int xpgrlp_(integer *xp, shortint *temple, integer *imlist, integer *reslit, integer *rl, shortint *rextn);
+extern int xpgglp_(integer *xp, shortint *temple, integer *imlist, integer *greslt, integer *gl, shortint *gextn);
+extern int xpgnem_(integer *xp, shortint *image, integer *im, integer *imno, integer *objlit, integer *ol, shortint *oextn, integer *reslit, integer *rl, shortint *rextn, integer *greslt, integer *gl, shortint *gextn);
+extern int xpfclr_(integer *xp, integer *imlist, integer *im, integer *objlit, integer *ol, shortint *oextn, integer *reslit, integer *rl, shortint *rextn, integer *greslt, integer *gl, shortint *gextn);
+extern integer xpxdcn_(integer *gd, integer *dirlit, integer *xp, integer *imlist, integer *im, integer *objlit, integer *ol, integer *reslit, integer *rl, integer *greslt, integer *gl, shortint *cmdstr, integer *symbol);
+extern integer xpxpcn_(integer *gd, integer *xp, integer *dirlit, integer *imlist, integer *im, integer *objlit, integer *ol, integer *reslit, integer *rl, integer *greslt, integer *gl, shortint *cmdstr, integer *symbol);
+extern integer xpxscn_(integer *gd, integer *xp, integer *dirlit, integer *imlist, integer *im, integer *objlit, integer *ol, integer *reslit, integer *rl, integer *greslt, integer *gl, shortint *cmdstr, integer *symbol);
+extern int xpzsce_(integer *im, real *z1, real *z2, real *contrt, integer *optime, integer *lenste);
+extern integer zscsae_(integer *im, integer *sample, integer *optime, integer *lenste);
+extern int zscsue_(real *a, real *b, integer *npix, integer *step);
+extern integer zscfie_(real *data, integer *npix, real *zstart, real *zslope, real *krej, integer *ngrow, integer *maxitr);
+extern int zscfla_(real *data, real *flat, real *x, integer *npix, real *z0, real *dz);
+extern integer zsccoa_(real *a, shortint *badpix, integer *npix, real *mean, real *sigma);
+extern integer zscres_(real *data, real *flat, real *normx, shortint *badpix, integer *npix, doublereal *sumxsr, doublereal *sumxz, doublereal *sumx, doublereal *sumz, real *thresd, integer *ngrow);
+extern int xpiman_(integer *im, real *zmin, real *zmax, integer *sizese, integer *nsamps);
+extern integer xpuluc_(shortint *fname, real *z1, real *z2);
+extern int xpulue_(integer *lut);
+extern int xpulud_(shortint *utab, real *x, real *y, integer *nvalus);
+extern int xpulut_(real *xvals, real *yvals, integer *nvals);
+/* comlen mem_ 8 */
+/* comlen xercom_ 4 */
+/* comlen frstfg_ 4 */
+/* comlen noaovp_ 16 */
+/* comlen conflg_ 4 */
+/* comlen conre4_ 64 */
+/*:ref: amovi_ 10 3 3 3 3 */
+/*:ref: fseti_ 10 3 3 3 3 */
+/*:ref: smark_ 10 1 3 */
+/*:ref: salloc_ 10 3 3 3 3 */
+/*:ref: clgstr_ 10 3 2 2 3 */
+/*:ref: clgetb_ 8 1 2 */
+/*:ref: gopen_ 3 3 2 3 3 */
+/*:ref: btoi_ 3 1 8 */
+/*:ref: fpathe_ 10 3 2 2 3 */
+/*:ref: imtrgm_ 3 4 3 3 2 3 */
+/*:ref: xerpsh_ 10 0 */
+/*:ref: immap_ 3 3 2 3 3 */
+/*:ref: xerpop_ 8 0 */
+/*:ref: gclear_ 10 1 3 */
+/*:ref: gflush_ 10 1 3 */
+/*:ref: fntleb_ 3 1 3 */
+/*:ref: fntrfb_ 3 4 3 3 2 3 */
+/*:ref: xfopen_ 3 3 2 3 3 */
+/*:ref: xfaccs_ 3 3 2 3 3 */
+/*:ref: stfind_ 3 2 3 2 */
+/*:ref: clgcur_ 3 7 2 4 4 3 3 2 3 */
+/*:ref: fpequr_ 8 2 4 4 */
+/*:ref: xprinf_ 10 1 2 */
+/*:ref: pargsr_ 10 1 2 */
+/*:ref: imtlen_ 3 1 3 */
+/*:ref: pargi_ 10 1 3 */
+/*:ref: xffluh_ 10 1 3 */
+/*:ref: fstati_ 3 2 3 3 */
+/*:ref: fstats_ 10 4 3 3 2 3 */
+/*:ref: xfcloe_ 10 1 3 */
+/*:ref: xfdele_ 10 1 2 */
+/*:ref: stentr_ 3 3 3 2 3 */
+/*:ref: imunmp_ 10 1 3 */
+/*:ref: xfchdr_ 10 1 2 */
+/*:ref: fntclb_ 10 1 3 */
+/*:ref: imtcle_ 10 1 3 */
+/*:ref: gclose_ 10 1 3 */
+/*:ref: sfree_ 10 1 3 */
+/*:ref: gopeni_ 3 4 2 3 2 3 */
+/*:ref: gmsgi_ 10 3 3 2 3 */
+/*:ref: gpagee_ 10 3 3 2 2 */
+/*:ref: amovr_ 10 3 4 4 3 */
+/*:ref: gseti_ 10 3 3 3 3 */
+/*:ref: xcallc_ 10 3 3 3 3 */
+/*:ref: xstrcy_ 10 3 2 2 3 */
+/*:ref: fstatl_ 3 2 3 3 */
+/*:ref: stropn_ 3 3 2 3 3 */
+/*:ref: getlie_ 3 2 3 2 */
+/*:ref: putlie_ 10 2 3 2 */
+/*:ref: strcle_ 10 1 3 */
+/*:ref: fprinf_ 10 2 3 2 */
+/*:ref: pargb_ 10 1 8 */
+/*:ref: itob_ 8 1 3 */
+/*:ref: pargr_ 10 1 4 */
+/*:ref: stnsys_ 3 2 3 3 */
+/*:ref: xmfree_ 10 2 3 3 */
+/*:ref: envgei_ 3 1 2 */
+/*:ref: strtbl_ 10 8 3 2 3 3 3 3 3 3 */
+/*:ref: streq_ 8 2 2 2 */
+/*:ref: erract_ 10 1 3 */
+/*:ref: envlit_ 10 3 3 2 3 */
+/*:ref: envscn_ 3 1 2 */
+/*:ref: eprinf_ 10 1 2 */
+/*:ref: syspac_ 10 2 3 2 */
+/*:ref: sscan_ 10 1 2 */
+/*:ref: gargwd_ 10 2 2 3 */
+/*:ref: strdic_ 3 4 2 2 3 2 */
+/*:ref: gargi_ 10 1 3 */
+/*:ref: nscan_ 3 0 */
+/*:ref: gargb_ 10 1 8 */
+/*:ref: gargr_ 10 1 4 */
+/*:ref: aclrd_ 10 2 5 3 */
+/*:ref: imgs2r_ 3 5 3 3 3 3 3 */
+/*:ref: aaddkr_ 10 4 4 4 4 3 */
+/*:ref: alimr_ 10 4 4 3 4 4 */
+/*:ref: imgl2r_ 3 2 3 3 */
+/*:ref: asrtr_ 10 3 4 4 3 */
+/*:ref: asumr_ 4 2 4 3 */
+/*:ref: xmallc_ 10 3 3 3 3 */
+/*:ref: stcloe_ 10 1 3 */
+/*:ref: amovkr_ 10 3 4 4 3 */
+/*:ref: gimser_ 10 2 3 3 */
+/*:ref: gstati_ 3 2 3 3 */
+/*:ref: gmark_ 10 6 3 4 4 3 4 4 */
+/*:ref: sprinf_ 10 3 2 3 2 */
+/*:ref: gsview_ 10 5 3 4 4 4 4 */
+/*:ref: gswind_ 10 5 3 4 4 4 4 */
+/*:ref: glabax_ 10 4 3 2 2 2 */
+/*:ref: amulkr_ 10 4 4 4 4 3 */
+/*:ref: gplcae_ 10 1 3 */
+/*:ref: amaxkr_ 10 4 4 4 4 3 */
+/*:ref: aminkr_ 10 4 4 4 4 3 */
+/*:ref: gopks_ 10 1 3 */
+/*:ref: gopwk_ 10 3 3 3 3 */
+/*:ref: gacwk_ 10 1 3 */
+/*:ref: srfabd_ 10 0 */
+/*:ref: ggview_ 10 5 3 4 4 4 4 */
+/*:ref: set_ 10 9 4 4 4 4 4 4 4 4 3 */
+/*:ref: ezsrfc_ 10 6 4 3 3 4 4 4 */
+/*:ref: gdawk_ 10 1 3 */
+/*:ref: gclks_ 10 0 */
+/*:ref: ggwind_ 10 5 3 4 4 4 4 */
+/*:ref: itoc_ 3 3 3 2 3 */
+/*:ref: plotit_ 10 3 3 3 3 */
+/*:ref: trn32s_ 10 7 4 4 4 4 4 4 3 */
+/*:ref: gpl_ 10 3 3 4 4 */
+/*:ref: xstrln_ 3 1 2 */
+/*:ref: f77pak_ 10 4 2 9 3 120 */
+/*:ref: pwrzs_ 10 10 4 4 4 9 3 3 3 3 3 120 */
+/*:ref: sthead_ 3 1 3 */
+/*:ref: imseti_ 10 3 3 3 3 */
+/*:ref: gtext_ 10 5 3 4 4 2 2 */
+/*:ref: adivkr_ 10 4 4 4 4 3 */
+/*:ref: nlinir_ 10 10 3 3 3 4 4 3 3 3 4 3 */
+/*:ref: locpr_ 3 1 210 */
+/*:ref: nlfitr_ 10 8 3 4 4 4 3 3 3 3 */
+/*:ref: nlvecr_ 10 5 3 4 4 3 3 */
+/*:ref: nlpger_ 10 3 3 4 3 */
+/*:ref: nlerrr_ 10 8 3 4 4 4 3 4 4 4 */
+/*:ref: nlfrer_ 10 1 3 */
+/*:ref: gscur_ 10 3 3 4 4 */
+/*:ref: gdeace_ 10 2 3 3 */
+/*:ref: greace_ 10 2 3 3 */
+/*:ref: xerror_ 10 2 3 2 */
+/*:ref: aclrr_ 10 2 4 3 */
+/*:ref: clktie_ 3 1 3 */
+/*:ref: brktie_ 10 2 3 3 */
+/*:ref: gargsr_ 10 2 2 3 */
+/*:ref: ctowrd_ 3 4 2 3 2 3 */
+/*:ref: gimcrr_ 10 6 3 3 3 3 3 3 */
+/*:ref: gimqur_ 3 6 3 3 3 3 3 3 */
+/*:ref: gimseg_ 10 15 3 3 3 3 3 4 4 4 4 3 3 4 4 4 4 */
+/*:ref: gimwrp_ 10 7 3 3 3 3 3 3 3 */
+/*:ref: gimlop_ 10 4 3 3 4 4 */
+/*:ref: amapr_ 10 7 4 4 3 4 4 4 4 */
+/*:ref: achtrb_ 10 3 4 2 3 */
+/*:ref: alims_ 10 4 2 3 2 2 */
+/*:ref: achtrs_ 10 3 4 2 3 */
+/*:ref: aluts_ 10 4 2 2 3 2 */
+/*:ref: achtsb_ 10 3 2 2 3 */
+/*:ref: alogr_ 10 4 4 4 3 204 */
+/*:ref: gimwrs_ 10 8 3 3 2 3 3 3 3 3 */
+/*:ref: gamove_ 10 3 3 4 4 */
+/*:ref: gadraw_ 10 3 3 4 4 */
+/*:ref: gfill_ 10 5 3 4 4 3 3 */
+/*:ref: clcmdw_ 10 1 2 */
+/*:ref: fcopy_ 10 2 2 2 */
+/*:ref: clopst_ 3 1 2 */
+/*:ref: clepst_ 10 1 3 */
+/*:ref: clcpst_ 10 1 3 */
+/*:ref: asubkr_ 10 4 4 4 4 3 */
+/*:ref: anegr_ 10 3 4 4 3 */
+/*:ref: fntopb_ 3 2 2 3 */
+/*:ref: fntgfb_ 3 3 3 2 3 */
+/*:ref: finfo_ 3 2 2 3 */
+/*:ref: xstrct_ 10 3 2 2 3 */
+/*:ref: imtopn_ 3 1 2 */
+/*:ref: imaccs_ 3 2 2 3 */
+/*:ref: fnldir_ 3 3 2 2 3 */
+/*:ref: strncp_ 3 3 2 2 3 */
+/*:ref: xmktep_ 10 3 2 2 3 */
+/*:ref: impare_ 10 9 2 2 3 2 3 2 3 3 3 */
+/*:ref: strldx_ 3 2 2 2 */
+/*:ref: ctoi_ 3 3 2 3 3 */
+/*:ref: gctod_ 3 3 2 3 5 */
+/*:ref: gargc_ 10 1 2 */
+/*:ref: cnvtie_ 10 3 3 2 3 */
+/*:ref: gstrcy_ 3 3 2 2 3 */
+/*:ref: pargl_ 10 1 3 */
+/*:ref: clgpsb_ 8 2 3 2 */
+/*:ref: clgpsr_ 4 2 3 2 */
+/*:ref: clgpst_ 10 4 3 2 2 3 */
+/*:ref: clgpsi_ 3 2 3 2 */
+/*:ref: imgetr_ 4 2 3 2 */
+/*:ref: imgstr_ 10 4 3 2 2 3 */
+/*:ref: strne_ 8 2 2 2 */
+/*:ref: amovkd_ 10 3 5 5 3 */
+/*:ref: asokr_ 4 3 4 3 3 */
+/*:ref: amovki_ 10 3 3 3 3 */
+/*:ref: amedr_ 4 2 4 3 */
+/*:ref: aavgr_ 10 4 4 3 4 4 */
+/*:ref: fpequd_ 8 2 5 5 */
+/*:ref: asubr_ 10 4 4 4 4 3 */
+/*:ref: stopen_ 3 4 2 3 3 3 */
+/*:ref: xfseek_ 10 2 3 3 */
+/*:ref: stnext_ 3 2 3 3 */
+/*:ref: xfscan_ 3 1 3 */
+/*:ref: ctor_ 3 3 2 3 4 */
+/*:ref: resetn_ 10 0 */
+/*:ref: gimrex_ 10 7 3 3 3 4 4 4 4 */
+/*:ref: xrealc_ 10 3 3 3 3 */
+/*:ref: clppsb_ 10 3 3 2 8 */
+/*:ref: clppsr_ 10 3 3 2 4 */
+/*:ref: clppst_ 10 3 3 2 2 */
+/*:ref: clppsi_ 10 3 3 2 3 */
+/*:ref: pargd_ 10 1 5 */
+/*:ref: acnvr_ 10 5 4 4 3 4 3 */
+/*:ref: gsetr_ 10 3 3 3 4 */
+/*:ref: conbd_ 10 0 */
+/*:ref: conrec_ 10 10 4 3 3 3 4 4 4 3 3 3 */
+/*:ref: gpline_ 10 4 3 4 4 3 */
+/*:ref: gpmark_ 10 7 3 4 4 3 3 4 4 */
+/*:ref: gvline_ 10 5 3 4 3 4 4 */
+/*:ref: adotr_ 4 3 4 4 3 */
+/*:ref: envfid_ 3 3 2 2 3 */
+/*:ref: gethot_ 10 2 2 3 */
+/*:ref: strupr_ 10 1 2 */
+/*:ref: strmah_ 3 2 2 2 */
+/*:ref: imtgem_ 3 3 3 2 3 */
+/*:ref: aclrs_ 10 2 2 3 */
+/* Rerunning f2c -P may change prototypes or declarations. */

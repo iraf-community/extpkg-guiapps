@@ -1,0 +1,27 @@
+.help spterrors Aug99 spt
+.ih
+NAME
+spterrors -- Spectool parameter set for error computations
+.ih
+PARAMETERS
+The following parameters define the default parameters for the error
+calculations.  The parameters appear in the "Error Calculations" panel.
+The values are read by SPECTOOL when it starts up and the last defined
+values are saved when it exits.
+
+.ls errors = no
+Compute errors?
+.le
+.ls mcsample = 50
+Number of Monte-Carlo samples for errors.
+.le
+.ls mcsigma = 68
+Percentage of samples for sigma estimate
+.le
+.ls mcseed = INDEF
+Random number seed
+.le
+.ih
+SEE ALSO
+spectool
+.endhelp

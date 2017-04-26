@@ -1,0 +1,5 @@
+# Root help directory for the GUIAPPS packages.  This dummy package is
+# necessary in order to have `guiapps' appear as a module in some package, so
+# that the user can type "help guiapps" (with the `guidemos' given as a task).
+
+_guiapps	pkg = guiapps$lib/rootguiapps.hd

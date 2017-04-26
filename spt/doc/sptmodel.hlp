@@ -1,0 +1,87 @@
+.help sptmodel Aug99 spt
+.ih
+NAME
+spterrors -- Spectool parameter set for profile fitting
+.ih
+PARAMETERS
+The following parameters define the default parameters for the profile
+fitting options.  These parameters appear in the "Profile Fitting" panel
+except for the band pass parameters which appear in the "Line List" panel.
+The values are read by SPECTOOL when it starts up and the last defined
+values are saved when it exits.
+
+
+.ls lower = -10., upper = 10.
+Lower and upper bandpass relative to center of line.  This is in
+units of the dispersion.
+.le
+.ls profile = "gaussian" (gaussian|lorentzian|voigt)
+Default profile type for lines.  The choices are gaussian, lorentzian, or
+voigt.
+.le
+
+.ls fitback = no
+Fit a background?
+.le
+.ls fitpos = yes
+Fit profile positions?
+.le
+.ls fitint = yes
+Fit profile intensities?
+.le
+.ls fitgfwhm = yes
+Fit Gausian FWHM?
+.le
+.ls fitlfwhm = yes
+Fit Lorentzian FWHM?
+.le
+
+.ls relpos = no
+Constrain relative positions?
+.le
+.ls relint = no
+Constrain relative intensities?
+.le
+.ls relgfwhm = no
+Constrain relative Gaussian FWHM?
+.le
+.ls rellfwhm = no
+Constrain relative Lorentzian FWHM?
+.le
+.ls eqgfwhm = no
+Constrain to same Gaussian FWHM?
+.le
+.ls eqlfwhm = no
+Constrain to same Lorentzian FWHM?
+.le
+
+
+.ls modplot = yes
+Plot profiles?  This toggles plotting any profile fits.
+.le
+.ls modpdraw = yes
+Draw individual line profiles?
+.le
+.ls modsdraw = yes
+Draw sum of profiles?  This applies when deblending multiple profile
+components.
+.le
+.ls modcdraw = yes
+Draw continuum of profiles?
+.le
+
+The following parameters take one of the color values background,
+foreground, red, green, blue, cyan, yellow, magenta, purple, or gray.
+.ls modpcolor = "cyan"
+Color of individual profiles.
+.le
+.ls modscolor = "magenta"
+Color of sum of profiles.
+.le
+.ls modccolor = "cyan"
+Color of continuum.
+.le
+.ih
+SEE ALSO
+spectool
+.endhelp

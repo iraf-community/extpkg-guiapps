@@ -1,0 +1,37 @@
+# FITSKY code
+
+$checkout libpkg.a ".."
+$update libpkg.a
+$checkin libpkg.a ".."
+$exit
+
+libpkg.a:
+        t_xfitsky.x   <fset.h> <imhdr.h> <gset.h> ../lib/xphot.h              \
+	              ../lib/display.h ../lib/objects.h ../lib/fitsky.h
+	xpbsky.x      <imhdr.h> <imset.h> <mach.h> <math.h> ../lib/xphot.h    \
+		      ../lib/find.h ../lib/objects.h ../lib/impars.h
+	xpfitsky.x    ../lib/xphotdef.h ../lib/imparsdef.h ../lib/fitsky.h    \
+	              ../lib/fitskydef.h
+	xpofitsky.x   ../lib/xphotdef.h ../lib/objects.h ../lib/imparsdef.h   \
+	              ../lib/fitsky.h ../lib/fitskydef.h
+	xposkybuf.x   <imhdr.h> <mach.h> <math.h> ../lib/xphotdef.h           \
+	              ../lib/imparsdef.h ../lib/fitsky.h ../lib/fitskydef.h   \
+		      ../lib/objects.h
+	xprefitsky.x  ../lib/xphotdef.h ../lib/imparsdef.h ../lib/fitsky.h    \
+	              ../lib/fitskydef.h
+	xpsalgs1.x    <mach.h> ../lib/fitsky.h
+	xpsalgs2.x    <mach.h> <math/nlfit.h> ../lib/fitsky.h
+	xpscolon.x    ../lib/xphot.h ../lib/fitsky.h
+	xpskybuf.x    <imhdr.h> <mach.h> <math.h> ../lib/xphotdef.h           \
+	              ../lib/imparsdef.h ../lib/fitsky.h ../lib/fitskydef.h
+	xpskyplots.x  <gio.h> ../lib/fitsky.h
+	xpsmark.x     <math.h> <gset.h> <gim.h> ../lib/impars.h               \
+	              ../lib/fitsky.h ../lib/objects.h
+	xpsmeasure.x  ../lib/xphot.h ../lib/objects.h ../lib/fitsky.h
+	xpsplot.x     <gset.h> ../lib/fitsky.h <gio.h>
+	xpsplot1.x    <gset.h> ../lib/fitsky.h <gio.h>
+	xpswrite.x    ../lib/xphot.h ../lib/fitsky.h
+	xpxscolon.x   ../lib/xphot.h ../lib/display.h ../lib/impars.h         \
+	              ../lib/fitsky.h ../lib/objects.h ../lib/contour.h       \
+		      ../lib/find.h ../lib/surface.h
+	;

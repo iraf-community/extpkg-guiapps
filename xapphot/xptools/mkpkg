@@ -1,0 +1,64 @@
+# Xphot tools subdirectory
+
+$checkout libpkg.a ".."
+$update libpkg.a
+$checkin libpkg.a ".."
+$exit
+
+libpkg.a:
+	xpacolon.x	../lib/surface.h
+	xpalloc.x	../lib/xphotdef.h ../lib/imparsdef.h                 \
+	                ../lib/centerdef.h ../lib/displaydef.h               \
+			../lib/contourdef.h ../lib/fitskydef.h               \
+			../lib/photdef.h ../lib/objectsdef.h                 \
+			../lib/finddef.h ../lib/surfacedef.h                 \
+			../lib/fitsky.h ../lib/phot.h
+	xpdefaults.x	../lib/objects.h
+	xpecolon.x	<error.h> ../lib/contour.h
+	xpepset.x	../lib/xphot.h
+	xpfcolon.x	../lib/xphot.h ../lib/find.h
+	xpfnames.x      <finfo.h> ../lib/xphot.h
+	xpgcolon.x	../lib/xphot.h ../lib/fitsky.h ../lib/phot.h
+	xpwhparams.x	../lib/xphot.h ../lib/impars.h ../lib/center.h       \
+	                ../lib/fitsky.h ../lib/phot.h <time.h> ../lib/find.h
+	xpicolon.x	<error.h> ../lib/xphot.h ../lib/impars.h
+	xpimheader.x	<imhdr.h> <time.h> <ctype.h>
+	xpinpars.x	../lib/display.h ../lib/impars.h ../lib/center.h     \
+	                ../lib/fitsky.h ../lib/phot.h ../lib/contour.h       \
+			../lib/objects.h ../lib/find.h ../lib/surface.h
+	xpkeyset.x	<imhdr.h> ../lib/impars.h
+	xpobjects.x	<gset.h> <gim.h> <math.h> ../lib/xphot.h             \
+	                ../lib/objects.h ../lib/impars.h
+	xpobjlist.x
+	xpocolon.x	../lib/xphot.h ../lib/objects.h
+	xpogeom.x	../lib/impars.h ../lib/objects.h ../lib/fitsky.h     \
+	                ../lib/phot.h
+	xpomark.x	<gset.h> <gim.h> ../lib/objects.h
+	xpoutpars.x	../lib/display.h ../lib/impars.h ../lib/center.h     \
+	                ../lib/fitsky.h ../lib/phot.h ../lib/contour.h       \
+			../lib/objects.h ../lib/find.h ../lib/surface.h
+	xpseqno.x	../lib/xphot.h
+	xpset.x		../lib/display.h ../lib/impars.h ../lib/center.h     \
+	                ../lib/fitsky.h ../lib/phot.h ../lib/contour.h       \
+			../lib/objects.h ../lib/displaydef.h                 \
+			../lib/imparsdef.h ../lib/centerdef.h                \
+			../lib/fitskydef.h ../lib/photdef.h                  \
+			../lib/contourdef.h ../lib/objectsdef.h              \
+			../lib/finddef.h ../lib/find.h ../lib/surfacedef.h   \
+			../lib/surface.h ../lib/xphotdef.h ../lib/xphot.h
+	xpshowpars.x	../lib/display.h ../lib/contour.h ../lib/objects.h   \
+	                ../lib/center.h ../lib/impars.h ../lib/fitsky.h      \
+			../lib/phot.h ../lib/find.h ../lib/surface.h
+	xpstat.x	../lib/display.h ../lib/impars.h ../lib/center.h     \
+	                ../lib/fitsky.h ../lib/phot.h ../lib/contour.h       \
+			../lib/objects.h ../lib/displaydef.h                 \
+			../lib/imparsdef.h ../lib/centerdef.h                \
+			../lib/fitskydef.h ../lib/photdef.h                  \
+			../lib/contourdef.h ../lib/objectsdef.h              \
+			../lib/finddef.h ../lib/find.h ../lib/surfacedef.h   \
+			../lib/surface.h ../lib/xphotdef.h ../lib/xphot.h
+	xpucolon.x	../lib/xphot.h
+	xpwres.x	../lib/center.h ../lib/fitsky.h ../lib/impars.h      \
+			../lib/phot.h
+	xpxcolon.x	<fset.h> ../lib/xphot.h
+	;

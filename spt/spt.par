@@ -1,0 +1,5 @@
+# SPT
+
+dispaxis,i,h,1,1,3,"Default dispersion axis"
+nsum,s,h,"1",,,"Default summing for 2D/3D images"
+version,s,h,"SPT V1.2: February 2003"

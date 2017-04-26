@@ -1,0 +1,67 @@
+
+GUI Plans for GXPHOT
+
+I. Applications Side
+
+1. Upgrade code to latest version of APPHOT. -- done
+This involved modifying the internal storage for the aperture sums
+to be double precision, doing some minor algorithm tweaking, and incorporating
+recent APPHOT bug fixes into the code.
+
+2. Add support for simple shape analysis. -- done
+This involved writing numerical and plotting  code to do 2D moments analysis.
+
+3. Add support for APPHOT/DAOPHOT style output files . -- done
+Final details of file format to be worked out.
+
+4. Add automatic star finding options as in STARFIND/DAOFIND tasks. -- done
+Object list support is already in place along with
+graphics support for creating a list interactively, so this would
+involve adding an  option for creating the list automatically.
+
+
+II. GUI Side
+
+1. Add output file management support to GUI -- done
+
+2. Complete adding input object list support to GUI -- done
+Almost completed when I stopped work on the GUI, needs final integration
+with existing GUI.
+
+3. Finish work on the photometry aperture marker. -- done
+Involves providing a user menu, checking moving and resize callbacks etc.
+
+4. Remove support for polygonal apertures from the GUI for now. -- done
+This simplifies problems like object list management and avoids problems
+with the current marker code.
+
+5. Simplify and rearrange the results window. -- done
+Mostly style changes, adding support for new plot options, etc.
+
+6. Style changes. -- done.
+This involves modifying the current GUIs to conform to the  color, font,
+button label, help facility, widget appearance, standards that we develop
+as a group.
+
+III. Problems with Current GUI System Support
+
+1. Need better multi-gterm widget support. I need to simultaneously maintain a
+gterm window displaying the image as well as one or more gterm widgets
+which display the results. I drive everything from the image display window.
+The problem is that cursor keys like 0, M, etc if executed in the image display
+window will show the last plot, e.g. usually the plot in one of the
+results windows. I don't know if there is any way around this in the
+current system but it is a major problem for combined graphics / imaging
+applications. I don't want to redisplay the window after every plot.
+-- still a problem
+
+2. Need to be able to erase graphics overlays without erasing  the image.
+Can currently do this on the screen but not in the graphics buffer. It
+is tedious to have to redisplay the image to get rid of the graphics.
+Frank found that a simple graphcap entry that will fix / work around
+this problem. -- need to check Franks fix
+
+3. Various marker bug fixes. This are mostly in the polygon marker management
+code which I don't need right away, but I still have some problems with
+stacked markers, marker resizing etc. These are minor and can probably be
+lived with. -- done

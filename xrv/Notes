@@ -1,0 +1,43 @@
+Notes for XRV GUI:
+------------------
+
+DONE	o Plots like the summary plot, antisymmetric, etc should popup in a
+	  separate window with a single "done" button.
+	o Need help buttons on parameter popups
+DONE	o popup editors for psets
+	o Need to figure out Unlearn/Update/Cancel actions
+
+UI Parameters:
+   In the GUI
+	fxcor	Parameter	fxcorPars
+
+	proc fxcorPListCallback { param old new } {
+	    foreach item $new {
+	        switch [lindex $item 0]
+	        <param> ...action [lindex $item 1]
+	        ....
+	    }
+	} ; send fxcorPList addCallback fxcorPListCallback
+
+    In the client
+	cmd_function ()
+		:
+		call ui_fxcorpar ("function", value)
+
+	procedure ui_fxcorpar (par, val)
+		....generate a "{param value}"
+		call gmsg (gp, "fxcorPar", param_list)
+
+	procedure ui_fxc_update (rv)
+		....generate a list of "{param value} {param value}"
+		call gmsg (gp, "fxcorPList", param_list)
+
+
+	The idea is that client actions such as keystroke/colon commands would
+update the gui with the single value that was changed.  The entire parameter
+set would be updated with a single command showing the current state of the 
+client. When the parameter editor form is started an update command will be
+send to fill out the form initially, a "cancel" action would also do this to
+get the changes since the last "apply".  The single parameter procedure only
+needs to worry about parameters that need to be known in the GUI for things
+like menu bitmaps, toggle states, menu labels, etc.

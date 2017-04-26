@@ -1,0 +1,22 @@
+# IMPARS
+
+iscale,r,h,1.0,0.0,,Image scale in units per pixel
+ihwhmpsf,r,h,1.0,0.0,,Hwhm of the psf in iscale units
+iemission,b,h,y,,,Emission features ?
+iskysigma,r,h,INDEF,,,Standard deviation of background in adu
+imindata,r,h,INDEF,,,Minimum good data value in adu
+imaxdata,r,h,INDEF,,,Maximum good data value in adu
+inoisemodel,s,h,"poisson","|poisson|",,Noise model
+ikgain,s,h,"GAIN",,,CCD gain image header keyword
+ikreadnoise,s,h,"RDNOISE",,,CCD readout noise image header keyword
+igain,r,h,1.0,,,CCD gain in electrons per count
+ireadnoise,r,h,0.0,,,CCD readout noise in electrons
+ikexptime,s,h,"EXPTIME",,,Exposure time image header keyword
+ikairmass,s,h,"AIRMASS",,,Airmass image header keyword
+ikfilter,s,h,"FILTERS",,,Filter id image header keyword
+ikobstime,s,h,"UT",,,Time of observation image header keyword
+ietime,r,h,1.0,,,Default exposure time
+iairmass,r,h,INDEF,,,Default airmass
+ifilter,s,h,"INDEF",,,Default filter id
+iotime,s,h,"INDEF",,,Default time of observation
+mode,s,h,'ql'

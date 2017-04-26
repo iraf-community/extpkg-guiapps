@@ -1,0 +1,18 @@
+# Help database for SPT.
+
+$doc		= "./doc/"
+
+# Task documentation
+spectool	hlp=doc$spectool.hlp
+tutorial	hlp=doc$tutorial.hlp
+
+# Pset documentation
+spterrors	hlp=doc$spterrors.hlp
+sptgraph	hlp=doc$sptgraph.hlp
+spticfit	hlp=doc$spticfit.hlp
+sptlabels	hlp=doc$sptlabels.hlp
+sptlines	hlp=doc$sptlines.hlp
+sptmodel	hlp=doc$sptmodel.hlp
+sptsigclip	hlp=doc$sptsigclip.hlp
+sptstack	hlp=doc$sptstack.hlp
+sptstat		hlp=doc$sptstat.hlp

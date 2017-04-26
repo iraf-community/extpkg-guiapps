@@ -1,0 +1,44 @@
+.help sptstack Aug99 spt
+.ih
+NAME
+spterrors -- Spectool parameter set for stacking and overplotting
+.ih
+PARAMETERS
+The following parameters define the default parameters for stacking and
+overploting.  These values appear in the "Overplot and Stack Spectra"
+panel.  The values are read by SPECTOOL when it starts up and the last
+defined values are saved when it exits.
+
+.ls stacklines = no
+Automatically assign line types for stacking or overplotting?
+.le
+.ls stackcolors = yes
+Automatically assign colors for stacking or overplotting?
+.le
+
+.ls stackscale = "scale" (none|scale|offset)
+Scaling option with choices of none, scale, or offset.
+.le
+.ls stacktype = "individual ranges" (absolute|first range|individual ranges)
+Stacking type.  The choices are
+
+.ls absolute
+Stack with steps given by the stack step parameter.  The units the flux
+flux units of the graph.
+.le
+.ls "first range"
+Use the range of the first spectrum and stack in steps of stack step
+parameter times this range.
+.le
+.ls "individual ranges"
+Use the range of each spectrum and stack in steps of stack step parameter
+times this range.
+.le
+.le
+.ls stackstep = 1.1
+Stacking step.  The use of the value depends on the stacking type.
+.le
+.ih
+SEE ALSO
+spectool
+.endhelp

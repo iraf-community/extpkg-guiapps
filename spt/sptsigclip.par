@@ -1,0 +1,4 @@
+sigclip,r,h,INDEF,,,Sigma for clipping
+lowclip,r,h,INDEF.,,,Low sigma clipping factor
+highclip,r,h,5.,,,High sigma clipping factor
+radiusclip,r,h,0.,,,Sigma clipping radius

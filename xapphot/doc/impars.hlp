@@ -1,0 +1,286 @@
+.help impars Jan99 xapphot
+.ih
+NAME
+impars -- Edit the image data parameters
+.ih
+USAGE
+impars
+.ih
+PARAMETERS
+.ls iscale = 1.0 (units per pixel)
+The scale of the image e.g. 0.46 arc-seconds per pixel.
+Most xguiphot length parameters are defined in units of iscale,
+pixels if iscale = 1.0, arc-seconds etc. otherwise. Most xguiphot users
+should leave iscale set to 1.0 unless they need to compare their aperture
+photometry directly with results in the literature.
+.le
+.ls ihwhmpsf = 1.0 (iscale units)
+The half-width at half-maximum of the psf in scale units, e.g. 2.0 pixels,
+or 0.92 arc-seconds if iscale = 0.46 arc-seconds per pixel. Most xguiphot users
+should set ihwhmpsf to a reasonable value in order to optimize the performance
+of the object detection algorithms and the "gauss1d" and "ofilter1d" centering
+algorithms.
+.le
+.ls iemission = yes
+Are the objects to be measured emission objects, iemission = "yes", or
+absorption "objects", iemission = no ? Most xguiphot users should leave
+iemission set to "yes".
+.le
+.ls iskysigma = INDEF (ADU)
+The default standard deviation of the sky pixels in ADU. Xguiphot users
+should set iskysigma to a reasonable value if they plan to set the
+\fIcenpars.threshold\fR parameter to a value other than INDEF or 0.0,
+or to use the sky fitting algorithms "zero" or "constant".
+.le
+.ls imindata = INDEF (ADU)
+The minimum good pixel value.  Xguiphot users should set this parameter
+if they wish to, automatically remove low valued bad data from the object
+detection analysis, remove low valued bad data from the sky
+pixel distribution before sky fitting, flag object measurements with low
+valued bad data in the centering and photometry
+apertures. To avoid biasing the sky estimates xguiphot users should avoid
+setting imindata to a single value for image sets with varying average
+background levels.
+.le
+.ls imaxdata = INDEF (ADU)
+The maximum good pixel value.  Xguiphot users should set this parameter
+if they wish to, automatically remove high valued bad data from the
+object detection analysis, remove high valued bad data from the sky
+pixel distribution before sky fitting, or to automatically
+flag saturated objects.
+.le
+.ls inoisemodel = "poisson"
+The noise model used to estimate the xguiphot magnitude errors.
+Currently the only option is:
+.ls poisson
+Poisson statistics in the object and the sky background as well as
+readout noise are used to estimate the error in the object magnitude
+measurement.
+.le
+
+Xguiphot users should be aware that the parameters ikgain or igain
+and ikreadnoise or ireadnoise must be correctly set in order
+to obtain valid magnitude error estimates from xguiphot. 
+.le
+.ls ikgain = "GAIN"
+The image header keyword defining the gain value whose units are assumed
+to be electrons per ADU. If ikgain is undefined or does not exist then the gain
+defaults to the value of igain.
+.le
+.ls ikreadnoise = "RDNOISE"
+The image header keyword defining the readout noise value whose
+units are assumed to be electrons.  If ikreadnoise is undefined or does
+not exist the readout noise defaults to the value of ireadnoise.
+.le
+.ls igain = 1.0 (electrons / ADU)
+The default gain in electrons per ADU if ikgain is undefined or does not exist.
+Xguiphot users should set the ikgain or igain parameter before making
+measurements in order to obtain magnitude error estimates.
+.le
+.ls ireadnoise = 0.0 (electrons)
+The default readout noise in electrons if ikreadnoise is undefined or does not
+exist.  Xguiphot users should set ikreadnoise or ireadnoise before making
+measurements in order to obtain valid magnitude error estimates.
+.le
+.ls ikexptime = "EXPTIME"
+The image header exposure time keyword. The time units are arbitrary but
+must be consistent for any list of images whose magnitudes are to be compared.
+The computed magnitudes are normalized to 1 timeunit. If ikexptime is
+undefined or does not exist the default exposure is the value of ietime.
+Xguiphot users should set this parameter in order to normalize the
+magnitude scale and simplify future reduction steps.
+.le
+.ls ikairmass = "AIRMASS"
+The image header airmass keyword.  This parameter does not affect the
+xguiphot computations in any way, but the airmass values stored in the
+output files can simplify future reductions steps. If ikairmass is undefined
+or does not exist, the value of iairmass is used.
+.le
+.ls ikfilter = "FILTERS"
+The image header filter id keyword.  This parameter does not affect the
+xguiphot computations in any way, but the filter id values stored in the output
+files can simplify future reductions steps. If ikfilter is undefined or does
+not exist, the value of ifilter is used.
+.le
+.ls ikobstime = "UT"
+The image header time of observation keyword.  This parameter
+does not affect the computations in any way, but the time of observation
+values stored in the output files can simplify future reductions steps.
+If ikobtime is undefined or does not exist, the value of iotime is used.
+.le
+.ls ietime = 1.0
+The default exposure time for the image in arbitrary units if ikexptime
+is undefined or does not exist. The computed magnitudes are normalized
+to 1 timeunit using the value of ietime.
+.le
+.ls xairmass = INDEF
+The default value of the airmass if ikairmass does not exist or is undefined.
+.le
+.ls ifilter = "INDEF"
+The default value of the filter id string if ikfilter does not exisit
+or is undefined.
+.le
+.ls iotime = "INDEF"
+The default value of the time of observation string if ikitime does not
+exist or is undefined.
+.le
+.ih
+DESCRIPTION
+\fIImpars\fR defines the xguiphot parameters which are image data dependent.
+Impars parameters are functions of the telescope and instrument optics,
+the detector noise and linearity characteristics, and the observing
+conditions. Parameters in the \fIfindpars\fR, \fIcenpars\fR,
+\fIskypars\fR and \fIphotpars\fR  parameter sets are defined in units
+of the impars parameters.
+
+The parameter \fIiscale\fR sets the length scale used by the object detection,
+centering, sky fitting and photometry algorithms.  Iscale converts
+distance measurements in iscale units to distance measurements in
+pixel units. The impars parameters \fIihwhmpsf\fR, the cenpars parameters
+\fIcradius\fR and \fIcxyshift\fR, the skypars parameters \fIsrannulus\fR,
+\fIswannulus\fR, and \fIsrgrow\fR, and the photpars parameter \fIpapertures\fR
+are defined in units of iscale.  The iscale parameter is most useful
+in cases where the measurements are to be compared to published
+aperture photometry measurements in the literature.
+
+If the parameter \fIiscale\fR is defined in units of the half-width at
+half-maximum of the psf per pixel, then the remaining iscale dependent
+object detection, centering, sky fitting, and photometry algorithm parameters
+may be defined n units of the half-width at half-maxima of the psf.
+Obviously \fIihwhmpsf\fR should be set to 1.0 in that case. Once an
+optimal set of iscale dependent algorithm parameters is chosen, the user
+need only edit the iscale parameter before executing xguiphot on a new
+set of images.
+
+The parameter \fIihwhmpsf\fR defines the half-width at half-maximum of the
+image psf. Most xguiphot algorithms do not use ihwhmpsf.  The exceptions are
+the object detection algorithms and the the centering algorithms "gauss1d"
+and "ofilter1d".
+
+If  \fIiemission\fR is "yes" the measured objects are assumed to be
+emission objects; if it is "no" the measured objects are assumed to
+be absorption objects. In most cases xguiphot users  should leave iemission
+set to "yes".
+
+The parameter \fIiskysigma\fR provides an estimate of the standard deviation of
+the background pixels. The centering algorithms use iskysigma to estimate
+the signal to noise ratio in the centering box, and in combination
+with the \fIcenpars.cthreshold\fR parameter to define the lower intensity limit
+for good pixels in the centering aperture.
+If iskysigma is INDEF or <= 0.0 the background noise in the centering aperture
+is assumed to be 0 and the default lower intensity limit is
+used. If the sky fitting algorithm is "zero" or "constant"
+iskysigma is used to estimate the contribution of the background noise to the
+magnitude error.
+
+The \fIimindata\fR and \fIimaxdata\fR parameters define the good data range.
+Bad pixels in the centering subraster and in the photometry apertures
+are noted, the measurements tagged with an error code, and the resulting
+magnitudes set to INDEF.  Bad data in the sky aperture is removed before
+the sky fit is performed. Xguiphot users should set imaxdata 
+before making measurements. Normally imindata should be set to
+a value 5-7 standard deviations below the average sky value. However if sky
+values vary a lot within a set of images it may be safer to leave imindata
+set to INDEF.
+
+The two parameters \fIikgain\fR and \fIigain\fR define the image gain.
+The ikgain parameter specifies which keyword in the
+image header contains the gain value. If ikgain is undefined or
+not present in the image header, the value of igain is used.
+Igain must be in units of electrons per ADU.
+Xguiphot users should set either ikgain or igain before making measurements
+in order to insure that the computed magnitude errors are correct.
+
+The two parameters \fIikreadnoise\fR and \fIireadnoise\fR define the image
+readout noise.
+The ikreadnoise parameter specifies which keyword in the
+image header contains the readout noise value. If ikreadnoise is undefined or
+not present in the image header the value of ireadnoise is used.
+Ireadnoise is assumed to be in units of electrons.
+Xguiphot users should set either ikreadnoise or ireadnoise before making any
+measurements in order to insure the computed magnitude errors are correct.
+
+The xguiphot magnitudes are normalized to an exposure time of 1 timeunit using
+the value of the exposure time in the image header parameter 
+\fIikexptime\fR or \fIietime\fR. If ikexptime is undefined or not present
+in the image header the value of ietime is used. Exposure times may be in
+arbitrary units but the units must be the same for image sets which are
+analyzed together.  Xguiphot users should set ikexptime in order to
+simplify future reduction steps.
+
+The two parameters \fIikairmass\fR and \fIiairmass\fR define the airmass
+of the observation. The ikairmass parameter specifies which keyword in the
+image header contains the airmass value. If ikairmass is undefined or
+not present in the image header the value of iairmass is used.
+The airmass values are not used in any xguiphot
+computations.  Xguiphot users should set ikairmass in order to simplify future
+reduction steps.
+
+The two parameters \fIikfilter\fR and \fIifilter\fR define the filter
+of the observation. The ikfilter parameter specifies which keyword in the
+image header contains the filter id. If ikfilter is undefined or
+not present in the image header the value of ifilter is used.
+The filter id values are not used in any xguiphot
+computations.  Xguiphot users should set ikfilter in order to simplify future
+reduction steps.
+
+The two parameters \fIikobstime\fR and \fIiotime\fR define the time 
+of the observation, e.g. UT. The ikobstime parameter specifies which keyword
+in the image header contains the time stamp of the observation. If ikobstime is
+undefined or not present in the image header the value of iotime is used.
+The time of observations values are not used in any xguiphot computations
+computations. Xguiphot users should set ikobstime in order to simplify future
+reduction steps.
+
+.ih
+EXAMPLES
+
+1. List the image data dependent parameters.
+
+.nf
+xp> lpar impars
+.fi
+
+2. Edit the image data dependent parameters.
+
+.nf
+xp> impars
+.fi
+
+3. Edit the image data parameters and run xguiphot.
+
+.nf
+xp> epar xguiphot
+
+... edit a few parameters
+
+... move to the impars parameter and type :e
+
+... edit the impars parameters and type :q
+
+... finish editing the other pset and task parameters
+
+... type :go to startup the task
+.fi
+
+4. Save the current image data dependent parameter set in a text file
+call imnite1.par.
+
+.nf
+xp> impars
+
+... edit a few parameters
+
+... type ":w imnite1.par"  from within epar
+.fi
+
+.ih
+TIME REQUIREMENTS
+
+.ih
+BUGS
+
+.ih
+SEE ALSO
+epar,lpar,xguiphot,findpars,cenpars,skypars,photpars
+.endhelp

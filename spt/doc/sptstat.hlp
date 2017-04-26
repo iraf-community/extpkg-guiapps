@@ -1,0 +1,57 @@
+.help spterrors Aug99 spt
+.ih
+NAME
+spterrors -- Spectool parameter set for statistics measurements
+.ih
+PARAMETERS
+The following parameters define the default parameters for the statistics
+measurements.  The parameters appear in the "Statistics" panel.
+The values are read by SPECTOOL when it starts up and the last defined
+values are saved when it exits.
+
+.ls x_stat = yes
+Measure mean dispersion coordinate of region.
+.le
+.ls n_stat = yes
+Measure number of pixels in region.
+.le
+.ls S = yes
+Measure mean of spectrum in region.
+.le
+.ls N1 = no
+Measure standard deviation about mean.
+.le
+.ls N2 = no
+Measure standard deviation about linear fit.
+.le
+.ls N3 = yes
+Measure standard deviation about continuum.
+.le
+.ls N4 = no
+Measure noise from Poisson statistics.
+.le
+.ls N5 = no
+Measure noise from sigma spectrum.
+.le
+.ls SN1 = no
+Measure S/N from S and N1.
+.le
+.ls SN2 = no
+Measure S/N from S and N1.
+.le
+.ls SN3 = yes
+Measure S/N from S and N3.
+.le
+.ls SN4 = no
+Measure S/N from S and N4.
+.le
+.ls SN5 = no
+Measure S/N from S and N5.
+.le
+.ls SN = no
+Measure mean S/N from data and sigma spectrum.
+.le
+.ih
+SEE ALSO
+spectool
+.endhelp

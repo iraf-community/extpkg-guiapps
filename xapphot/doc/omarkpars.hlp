@@ -1,0 +1,105 @@
+.help omarkpars Jan99 xapphot
+.ih
+NAME
+omarkpars -- Edit the object list marking parameters
+.ih
+USAGE
+omarkpars
+.ih
+PARAMETERS
+.ls objmark = yes
+Enable object list marking on the image display ?
+.le
+.ls ocharmark = "plus"
+The mark to be drawn. The options are: "point", "box",
+"cross", "plus", "circle", "diamond", and "shape". If the "shape"
+option is selected, the object and sky regions are outlined on the
+image display.
+.le
+.ls onumber = no
+Number the marked objects ?
+.le
+.ls opcolormark = "green"
+The color of the marked object region. The options are "red", "blue", "green",
+and "yellow".
+.le
+.ls oscolormark = "blue"
+The color of the marked object sky region. The options are "red", "blue",
+"green", and "yellow".
+.le
+.ls osizemark = 5.0 (iscale units)
+The object mark half-width in scale units if ocharmark is not
+equal to "shape". If osizemark is INDEF the half-width is set to the
+\fIimpars.ihwhmpsf\fR parameter.
+.le
+.ls otolerance = 5.0 (iscale units)
+The position matching tolerance for selecting an object from the object
+list with the image cursor.
+.le
+
+.ih
+DESCRIPTION
+
+The \fIomarkpars\fR parameters control the object marking and interactive
+object selection routines. The default mark size
+\fIosizemark\fR and object matching tolerance \fIotolerance\fR
+scale with the image scale defined by the \fIimpars.iscale\fR parameter.
+
+If \fIobjmark\fR is "yes", the object is marked on the image display
+using the mark type specified by \fIocharmark\fR,  the
+colors specified by \fIopcolormark\fR and \fIoscolormark\fR, and the size
+specified by \fIosizemark\fR. Object numbering can be enabled by setting
+\fIonumber\fR to "yes".
+
+If \fIocharmark\fR is "shape" but the list object or sky geometry is undefined
+then objects and offset sky position are marked with a "plus".
+
+.ih
+EXAMPLES
+
+1. List the omarkpars parameters.
+
+.nf
+xa> lpar omarkpars
+.fi
+
+2. Edit the omarkpars parameters.
+
+.nf
+xa> omarkpars
+.fi
+
+3. Edit the omarkpars parameters and run xguiphot.
+
+.nf
+xa> epar xguiphot
+
+... edit a few xguiphot parameters
+
+... move to the omarkpars parameter and type :e
+
+... edit the omarkpars parameters and type :q
+
+... finish editing the other pset and task parameters
+	
+... type :go to run xguiphot
+.fi
+
+4. Save the current omarkpars parameter set in a text file omarknite1.par.
+
+.nf
+xa> omarkpars
+
+... edit some parameters
+
+... type ":w omarknite1.par"  from within epar
+.fi
+
+.ih
+TIME REQUIREMENTS
+.ih
+BUGS
+.ih
+SEE ALSO
+lpar,epar,xguiphot,dispars,cenpars,skypars,photpars
+.endhelp

@@ -1,0 +1,7 @@
+# STACK/OVERPLOT
+
+stacklines,b,h,no,,,"Automatically assign line types?"
+stackcolors,b,h,yes,,,"Automatically assign colors?"
+stackscale,s,h,"scale","none|scale|offset",,"Scaling option"
+stacktype,s,h,"individual ranges","absolute|first range|individual ranges",,"Stacking type"
+stackstep,r,h,1.1,,,"Stacking step"

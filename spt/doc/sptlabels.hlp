@@ -1,0 +1,35 @@
+.help sptlabels Aug99 spt
+.ih
+NAME
+sptlabels -- Spectool parameter set for graph and spectrum labels
+.ih
+PARAMETERS
+The following parameters define the default parameters for the graph and
+spectrum labeling options.  They appear in the "Spectrum Labels" panel.
+The values are read by SPECTOOL when it starts up and the last defined
+values are saved when it exits.
+
+.ls labshow = yes
+Show spectrum labels?  If this is no then no labels are shown even if
+labels are defined.
+.le
+.ls labtype = "graph"
+Default label positions.  When a label is defined it will be fixed relative
+to the graph window if the value is "graph" or relative to the spectrum
+if the value is "spectrum".  In the former case the label will not move
+as the display range is changed and in the latter case the label will
+remain in the same relative position to features on the graph.
+.le
+.ls labformat = "Horizontal"
+Default label format.  The allowed label formats are "Horizontal",
+"Vertical", or a format string as described under the help for
+"cursors".
+.le
+.ls labcolor = "foreground"
+Default label color.  The colors are background, foreground, red, green,
+blue, cyan, yellow, magenta, purple, or gray.
+.le
+.ih
+SEE ALSO
+spectool, cursors
+.endhelp

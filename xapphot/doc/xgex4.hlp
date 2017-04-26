@@ -1,0 +1,146 @@
+.help xgex4 Mar99 xapphot
+
+.ih
+TUTORIAL IV. USING XGUIPHOT TO MEASURE ISOLATED STANDARD STARS
+
+Xguiphot can be used for making measurements of standard stars,
+since it is possible to work quickly through the images in a large
+data set using the image display and existing finding charts.
+This tutorial illustrates one way of doing this kind of operation.
+
+To begin the tutorial:
+
+.nf
+    cl> xgex4 <myoutputfile>
+
+    or
+
+    cl> unlearn xapphot
+    cl> epar xguiphot
+        ... set images to "xapphot$data/m92*.fits"
+	... set objects to "xapphot$data/m92*.coo.*"
+	... set results to <myoutputfile>
+	... set tutorial to "xapphot$doc/xgex4.html"
+.fi
+
+Note that the results file has been set to a single file, so that all the
+measurements will be written to one file. Make sure you have write 
+permission in the output file directory, and that the output file does
+not already exist.
+
+
+The first thing to do after the gui activates and the first image is
+displayed, is to check the image data dependent parameters as follows:
+
+.nf
+    1. go the Phot menu
+    2. select the "Impars pset" item
+    3. set imaxdata to 32000 to flag saturated stars and press CR
+    4. set ikgain and ikread to "" and "" to switch off gain and
+       readout noise keyword searching and press CR
+    5. set ireadnoise and igain to 75.0 and 11, the current best estimates
+       of the detector readout noise and gain, and press CR
+    6. check that exptime, airmass, filters, and ut are being correctly
+       read from the image header
+    7. press the Apply button
+    8. press the Dismiss button
+.fi
+
+Next check the centering algorithm parameters:
+
+.nf
+    1. go the Phot menu
+    2. select the "Cenpars pset" item
+    3. check that calgorithm is "centroid1d" 
+    4. check that the centering box is reasonable, around
+       2-3 * fwhmpsf, but never less than 2.5 pixels
+    5. press the Apply button
+    6. press the Dismiss button
+.fi
+
+Next check the sky fitting parameters:
+
+.nf
+    1. go the Phot menu
+    2. select the "Skypars pset" item
+    3. check that smode is "concentric"
+    4. check that sgeometry is "circle"
+    5. set srannulus to 15 and press CR
+    5. set swannulus to 5 and press CR
+    6. check that salgorithm is "hcentroid"
+    7. press the Apply button
+    8. press the Dismiss button
+.fi
+
+Finally check the photometry parameters:
+
+.nf
+    1. go the Phot menu
+    2. select the "Photpars pset" item
+    3. check that pgeometry is "circle"
+    4. set papertures to 10.0 and press CR
+    5. press the Apply button
+    6. press the Dismiss button
+.fi
+
+Make a trial measurement using the default coordinates files
+as a finding chart:
+
+.nf
+    1. go to the results Menu button
+    2. select the "Photometry plots ..." item
+
+    then either
+
+    3. select the "Omarkpars pset ..." item from the Lists menu
+    4. click on the onumber entry box
+    5. press the Apply followed by the Dismiss button
+    6. select the "Mark list ..." item from the Lists menu
+
+    or
+
+    3. move to the image display window
+    4. type the colon command :onumber yes 
+    5. move to the image display window
+    6. type m to mark the standard stars
+
+    then either
+
+    6. move to a bright isolated standard star
+    7. press the left mouse button
+    8. select the "Point and measure" item
+
+    or
+
+    6. move to a bright isolated standard star and type Spacebar
+.fi
+
+Examine the plots. Do the sky and object apertures look good ? If so proceed
+to the next step otherwise go back and adjust them, and make a new test
+measurement.
+
+Now you are ready to make measurements. If you want to look at plots of
+the objects as you go along leave the plotting panel up otherwise dismiss
+it. If you want to look at all the measurements together in a table
+activate the photometry table by typing the t keystroke command in the
+image display window, or selecting the "Photometry table ..." item from
+the Results menu.
+
+Now go to the Files menu, select the "Enable logging" item to turn on
+results logging, and then
+
+.nf
+    1. move to the image display window
+    2. type i to redisplay the first image
+    3. type m to mark and number the standards
+    4. measure the standards in order by moving to each numbered
+       star in turn and typing Spacebar
+    5. type n to move to the next image
+    6. repeat steps 3-5 for the remaining images 
+    7. go to the Files menu
+    8. select the "Disable logging" item
+.fi
+
+Quit the tutorial by hitting the Quit button.
+
+.endhelp

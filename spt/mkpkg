@@ -1,0 +1,70 @@
+# SPECTOOL
+
+$call	relink
+$exit
+
+update:
+	$call	relink
+	$call	install
+	;
+
+relink:
+	$set	LIBS = "-lsmw -lasttools -lxtools -lcurfit -liminterp -lllsq"
+	$update	libpkg.a
+	$omake	x_spectool.x
+	$link	x_spectool.o libpkg.a $(LIBS) -o xx_spectool.e
+	;
+
+install:
+	$move xx_spectool.e guibin$x_spectool.e
+	;
+
+libpkg.a:
+	@onedspec
+
+	sptarith.x	spectool.h <error.h> <evvexpr.h> <math/iminterp.h>\
+			<smw.h>
+	sptcenter1d.x	<math/iminterp.h>
+	sptcolon.x	lids.h spectool.h <ctype.h> <error.h> <gset.h>\
+			<imhdr.h> <pkg/gtools.h> <smw.h> <units.h>
+	sptcont.x	spectool.h <funits.h> <pkg/gtools.h> <smw.h>
+	sptcoord.x	lids.h spectool.h <error.h> <math/curfit.h>\
+			<pkg/gtools.h> <smw.h> <units.h>
+	sptctr.x	lids.h spectool.h <smw.h>
+	sptdeblend.x	lids.h spectool.h <error.h> <gset.h> <mach.h>\
+			<math/iminterp.h> <smw.h>
+	sptdered.x	spectool.h <smw.h>
+	sptedit.x	spectool.h <smw.h>
+	spteqwidth.x	lids.h spectool.h <smw.h>
+	spterrors.x	spectool.h
+	sptgimage.x	spectool.h <error.h> <funits.h> <imhdr.h> <mach.h>\
+			<smw.h> <units.h>
+	sptgp.x		spectool.h <gio.h>
+	sptgraph.x	spectool.h <pkg/gtools.h>
+	spthelp.x	spectool.h
+	spticfit.x	spectool.h <error.h> <pkg/gtools.h> <smw.h>
+	sptkey.x	lids.h spectool.h <error.h> <funits.h> <smw.h> <units.h>
+	sptlabels.x	labels.h spectool.h <ctype.h> <error.h> <gset.h>\
+			<mach.h> <pkg/gtools.h> <smw.h>
+	sptlids.x	lids.h rv.h spectool.h <ctype.h> <error.h> <gset.h>\
+			<mach.h> <pkg/gtools.h> <smw.h> <units.h>
+	sptlists.x	spectool.h <error.h> <imhdr.h> <smw.h>
+	sptll.x		lids.h rv.h spectool.h <error.h> <mach.h> <smw.h>\
+			<units.h>
+	sptlog.x	spectool.h <error.h> <smw.h>
+	sptmodel.x	lids.h spectool.h <error.h> <gset.h>
+	sptplot.x	rv.h spectool.h <gset.h> <imhdr.h> <mach.h>\
+			<pkg/gtools.h> <smw.h> <units.h>
+	sptreg.x	spectool.h <ctype.h> <error.h> <smw.h> <pkg/gtools.h>
+	sptrv.x		lids.h rv.h spectool.h <error.h> <smw.h> <time.h>
+	sptsigclip.x	spectool.h <mach.h> <smw.h>
+	sptsmooth.x	spectool.h <error.h> <smw.h>
+	sptstack.x	spectool.h <mach.h> <smw.h>
+	sptstat.x	spectool.h <funits.h> <smw.h>
+	sptunits.x	lids.h spectool.h <funits.h> <pkg/gtools.h> <smw.h>\
+			<units.h>
+	sptwrspect.x	spectool.h <error.h> <imhdr.h> <imio.h> <smw.h>\
+			<units.h>
+	t_spectool.x	spectool.h <gio.h> <smw.h>
+	x_spectool.x	
+	;

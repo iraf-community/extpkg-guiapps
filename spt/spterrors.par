@@ -1,0 +1,5 @@
+# FIT ERRORS
+errors,b,h,no,,,"Compute errors?"
+mcsample,i,h,50,,,"Number of Monte-Carlo samples for errors"
+mcsigma,r,h,68,,,"Percentage of samples for sigma estimate"
+mcseed,i,h,INDEF,,,"Random number seed"

@@ -1,0 +1,14 @@
+# ONEDSPEC routines.
+
+$checkout libpkg.a ../
+$update   libpkg.a
+$checkin  libpkg.a ../
+$exit
+
+libpkg.a:
+	deblend.x	<mach.h> <math.h>
+	fixx.x		<smw.h>
+	t_deredden.x	<error.h> <imhdr.h> <smw.h>
+	t_specshift.x	<error.h> <smw.h>
+	voigt.x	
+	;

@@ -1,0 +1,30 @@
+# XAPPHOT GUIPHOT task routines
+
+$checkout libpkg.a ".."
+$update libpkg.a
+$checkin libpkg.a ".."
+$exit
+
+libpkg.a:
+        t_xguiphot.x  <fset.h> <gset.h> <imhdr.h> ../lib/xphot.h            \
+                      ../lib/objects.h ../lib/center.h ../lib/fitsky.h      \
+                      ../lib/phot.h ../lib/impars.h ../lib/display.h        \
+                      uipars.h
+        uipars.x      <fset.h> <imhdr.h> ../lib/xphot.h ../lib/impars.h     \
+	              ../lib/display.h ../lib/find.h ../lib/objects.h       \
+		      ../lib/center.h ../lib/fitsky.h ../lib/phot.h         \
+		      ../lib/contour.h ../lib/surface.h uipars.h
+        xpgxpcolon.x  ../lib/display.h ../lib/impars.h ../lib/center.h      \
+                      ../lib/fitsky.h ../lib/phot.h ../lib/xphot.h          \
+                      ../lib/objects.h ../lib/contour.h ../lib/find.h       \
+                      uipars.h ../lib/surface.h
+        xpudmeasure.x ../lib/xphot.h ../lib/objects.h uipars.h
+        xpudoplots.x  <gset.h> uipars.h ../lib/display.h ../lib/fitsky.h  \
+                      ../lib/phot.h
+        xpuobjplots.x <gset.h> uipars.h ../lib/display.h ../lib/phot.h <gio.h>
+        xpupmeasure.x ../lib/xphot.h ../lib/objects.h ../lib/center.h       \
+                      ../lib/fitsky.h ../lib/phot.h ../lib/impars.h <gset.h>\
+                      uipars.h
+        xpuskyplots.x <gio.h> <gset.h> uipars.h ../lib/display.h          \
+                      ../lib/fitsky.h
+	;

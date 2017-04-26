@@ -1,0 +1,189 @@
+.help cenpars Jan99 xapphot
+.ih
+NAME
+cenpars -- Edit the centering algorithm parameters
+.ih
+USAGE
+cenpars
+.ih
+PARAMETERS
+.ls calgorithm = "centroid"
+The default centering algorithm. The centering algorithm options are:
+.ls none
+Set the object centers to the initial centers.
+.le
+.ls centroid1d
+Set the object centers to the the intensity weighted means
+of the marginal profiles in x and y.  This is the recommended algorithm
+for xguiphot users.
+.le
+.ls gauss1d
+Set the object centers by fitting a Gaussian of fixed hwhmpsf to
+the marginal profiles in x and y using non-linear least squares techniques.
+The hwhmpsf is set to the value of the \fIimpars.ihwhmpsf\fR parameter.
+.le
+.ls ofilter
+Set the object centers using optimal filtering techniques,
+a triangular weighting function of half width equal to hwhmpsf, and the
+marginal distributions in x and y.  The hwhmpsf is set to the value of
+the \fIimpars.ihwhmpsf\fR parameter.
+.le
+.le
+.ls cradius = 3.5  (iscale units)
+The radius of the image subraster used for object centering in units of the
+impars iscale parameter. Cradius should be big enough to include a reasonable
+fraction of the core of the object, but small enough to remain unbiased
+by noise.
+.le
+.ls cthreshold = INDEF (iskysigma units)
+Only points cthreshold * iskysigma above (emission features) or below
+(absorption features) the data minimum or maximum respectively are used
+by the centering algorithms. Xguiphot users should leave cthreshold set
+to INDEF which invokes the appropriate default thresholding technique
+appropriate for each centering algorithm.  Setting cthreshold to 0.0 turns off
+thresholding altogether for all the centering algorithms.
+.le
+.ls cminsnratio = 3.0
+The minimum signal to noise ratio for object centering. If the estimated
+signal to noise ratio is less than cminsnratio the computed center is
+returned with an error flag.
+.le
+.ls cmaxiter = 10
+The maximum number of centering algorithm iterations.
+.le
+.ls cxyshift = 5.0  (iscale units)
+The maximum permissible shift of the center with respect to the initial
+coordinates in units of the impars.iscale parameter.  If the shift computed
+by the centering algorithms is larger than cxyshift, the computed center
+is returned with an error flag.
+.le
+.ls ctrmark = no
+Mark the computed object centers on the image display ?
+.le
+.ls ccharmak = "plus"
+The character used to mark the object centers. The options are "point", "box",
+"cross", "plus", "circle", and diamond.
+.le
+.ls ccolormark = "red"
+The center mark color. The options are "red", "blue", "green" and "yellow".
+.le
+.ls csizemark = INDEF (iscale units)
+The size of the center mark in units of the impars iscale parameter.
+If csizemark is undefined the mark size defaults to 2.0 * cradius / iscale
+pixels.
+.le
+.ih
+DESCRIPTION
+
+The \fIcenpars\fR parameters control the action of the centering
+algorithms.  The default values should produce reasonable results in
+most cases.  Some of the centering parameters scale with the image data
+dependent parameters \fIimpars.iscale\fR and \fIimpars.iskysigma\fR.
+
+For each object to be measured xguiphot extracts a data subraster
+2.0 * \fIcradius\fR / impars.iscale pixels wide around the initial position.
+If impars.iscale is defined in terms of the half-width half-maximum
+of the psf, the same value of cradius will work well for  image
+data taken under a wide range of conditions.
+
+New centers are computed using the centering algorithm specified by
+\fIcalgorithm\fR, the extracted image data, and points that are some
+threshold above or below the local minimum or maximum data value if
+\fIimpars.iemission\fR is "yes" or "no" respectively. 
+Values for \fIcthreshold\fR of INDEF, a positive number, and 0.0,
+invoke the default thresholding algorithm, set the threshold to 
+impars.iskysigma * cthreshold, or set the threshold to 0.0
+respectively.
+
+After thresholding the signal to noise ratio (SNR) of the subraster is
+estimated using \fIcminsnratio\fR, the background noise estimate defined by
+impars.iskysigma, and the gain value defined by the \fIimpars.ikgain\fR
+or \fIigain\fR parameters. 
+If the SNR < cminsnratio, the new center is still computed but an error
+flag is associated with that object.
+
+The default algorithm is "centroid1d". This centering algorithm
+computes the x and y marginal distributions from the extracted subraster.
+The intensity weighted mean and mean error of the x and y marginal
+distributions are computed using only points in the marginal array
+above or below the threshold value which is either the mean,
+impars.iskysigma * cthreshold +/- the background,
+or the local background, depending on whether cthreshold is set to
+INDEF, a positive number, or 0.0 respectively. The centroiding algorithm
+iterates until the new x and y coordinates are both less than 1 pixel
+from the previous guess or until the number of iterations equals \fIcmaxiter\fR.
+Centroid1d is the only centering algorithm for which the choice of
+\fIimpars.ihwhmpsf\fR is not critical.
+
+The centering algorithm "gauss1d" computes the new
+centers by fitting a 1D Gaussian function to the marginal distributions
+in x and y using a fixed half-width half-maximum of impars.ihwhmpsf.
+Initial guesses for the fit parameters are made from the data
+values. The default thresholding algorithm for the "gauss1d" algorithm
+is no thresholding. The "gauss" fitting1d routines iterate until
+a best fit solution is achieved or the limit of cmaxiter is reached.
+
+The final choice "ofilter1d" employs a variation of the optimal filtering
+technique in which the profile is simulated by a triangle function of
+width \fIimpars.ihwhmpsf\fR.
+The default thresholding algorithm for the "ofilter1d" algorithm
+is no thresholding. The "gauss" fitting routines iterate until
+a best fit solution is achieved or
+the limit of cmaxiter is reached.
+
+If the computed shift
+in either coordinate > \fIcxyhift\fR / impars.iscale, the new center is
+returned but an error flag is set.
+
+If the \fIctrpmark\fR is "yes, then a mark of shape \fIcharmark\fR, color
+\fIccolormark\fR, and \fIcsizemark\fR is drawn at the position of the
+centered object.
+
+.ih
+EXAMPLES
+1. List the centering algorithm parameters.
+
+.nf
+	xa> lpar cenpars
+.fi
+
+2. Edit the centering algorithm parameters
+
+.nf
+	xa> cenpars
+.fi
+
+3. Edit the centering algorithm parameters and run xguiphot.
+
+.nf
+    xa> epar xguiphot
+
+	... edit a few xguiphot parameters
+
+	... move to the cenpars parameter and type :e
+
+	... edit the cenpars parameters and type :wq
+
+	... finish editing other pset and task parameters 
+
+	... type :go to run xguiphot
+.fi
+
+4. Save the current centering algorithm parameters set in the text
+file cennite1.par.
+
+.nf
+    xa> cenpars
+
+	... edit the parameters
+
+	... type ":w cennite1.par"  from within epar
+.fi
+
+.ih
+BUGS
+
+.ih
+SEE ALSO
+epar,lpar,xguiphot,impars,findpars,skypars,photpars
+.endhelp

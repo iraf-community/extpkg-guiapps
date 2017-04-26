@@ -1,0 +1,27 @@
+.help sptsigclip Aug99 spt
+.ih
+NAME
+sptsigclip -- Spectool parameter set for sigma clipping
+.ih
+PARAMETERS
+The following parameters define the default parameters for the sigma
+clipping option.  The parameters appear in the "Sigma Clipping" panel.  The
+values are read by SPECTOOL when it starts up and the last defined values
+are saved when it exits.
+
+.ls sigclip = INDEF
+Sigma for clipping.  If the value is INDEF it will be estimated from
+the spectrum data and the continuum.
+.le
+.ls lowclip = INDEF, highclip = 5.
+Low and high sigma clipping factors.  A value of INDEF disables low or
+high clipping.
+.le
+.ls radiusclip = 0.
+Sigma clipping radius (pixels).  Radius in pixels for additional values
+to be clipped around deviant pixels.
+.le
+.ih
+SEE ALSO
+spectool
+.endhelp

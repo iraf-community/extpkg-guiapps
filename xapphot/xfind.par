@@ -1,0 +1,17 @@
+# Parameters for XFIND development task
+
+images,s,a,"*",,,List of input images
+objects,s,h,"",,,List of input objects files
+results,s,h,"default",,,List of output objects files
+impars,pset,h,"",,,The image data parameters
+dispars,pset,h,"",,,The image display parameters
+findpars,pset,h,"",,,The object list detection parameters
+omarkpars,pset,h,"",,,The object list marking parameters
+cplotpars,pset,h,"",,,The object contour plotting parameters
+splotpars,pset,h,"",,,The object surface plotting parameters
+interactive,b,h,yes,,,Run task interactively ?
+logresults,b,h,no,,,Log results in interactive mode ?
+verbose,b,h,yes,,,Print messages in non-interactive mode ?
+update,b,h,no,,,Update the parameter sets at task termination ?
+graphics,s,h,"stdgraph",,,The default graphics device
+gcommands,*gcur,h,"",,,The default graphics cursor

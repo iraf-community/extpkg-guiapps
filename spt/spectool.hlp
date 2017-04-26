@@ -1,0 +1,71 @@
+.help spectool Aug99 spt
+.ih
+NAME
+spectool -- Spectral display and analysis tool
+.ih
+SYNOPSIS
+Spectool provides display and analysis for one dimensional spectra using
+a sophisticated graphical user interface.
+.ih
+USAGE
+spectool [spectrum] 
+.ih
+PARAMETERS
+dispaxis,i,h,1,1,3,"Default dispersion axis"
+nsum,s,h,"1",,,"Default summing for 2D/3D images"
+version,s,h,"SPT V1: May 1999"
+
+.ih
+DESCRIPTION
+
+Spectool is an interactive one-dimensional spectrum display and
+analysis tool.  It responds to user input through cursor keys, colon
+commands, mouse buttons, menus, push buttons, and other window-style
+graphical user interface controls.  Its major functions are to display
+spectra in a graphical format, to modify them, and to perform various
+analysis operations.  The display capabilities provide complete control
+over the graph format, convenient zoom and panning, graph and spectral
+line labeling, and overplotting and stacking of multiple spectra.  The
+editing functions include pixel editing, arithmetic operations, smoothing
+and fitting, and dispersion solutions.  Analysis functions include  spectral
+line measures, profile fitting, radial velocity measurements, and
+statistics.
+
+One feature of this task is complete run-time help.  The help contains
+descriptions of all functions of the task as well as links between sections.
+The help is obtain by clicking the '?' button in any panel or the
+'?' cursor key.  This will bring up the help window and display the
+section of the help appropriate for the context in which the help is
+requested.  
+
+
+This is the first release of a very complex program. It is not
+complete or mature.  Thus, you may find things which do not work, are not
+consistent, or not fully documented.  Report problems or send comments
+to iraf@noao.edu.
+
+.ih
+EXAMPLES
+
+1. To run a tutorial on this task enter the command "tutorial".  This
+will start Spectool with some tutorial data and with a tutorial window.
+Follow the step in the tutorial window.
+
+2. To start as a browser application enter the command "spectool".  This
+will bring up Spectool with the spectrum reading browser window displayed.
+Navigate through the browser and select the spectrum to be examined.
+
+3. To start with a specific spectrum enter the command "spectool <spectrum>"
+where spectrum is the name of an IRAF spectrum file.  This will bring up
+Spectool with the spectrum (or the first spectrum in a multispectrum
+file) displayed.
+
+.ih
+REVISIONS
+.ls SPECTOOL - V1.0 / IRAF V2.11.2 external package
+First release.
+.le
+.ih
+SEE ALSO
+splot, specplot
+.endhelp

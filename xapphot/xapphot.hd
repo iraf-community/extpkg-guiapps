@@ -1,0 +1,26 @@
+# Help directory for the XAPPHOT package.
+
+$doc		= "./doc/"
+$src		= "./"
+
+# Task documentation
+xguiphot	hlp=doc$xguiphot.hlp,		src=guiphot$t_xguiphot.x
+xgphot  	hlp=doc$xgphot.hlp,		src=src$xgphot.cl
+
+# Tutorial documentation
+xgex1		hlp=doc$xgex1.hlp
+xgex2		hlp=doc$xgex2.hlp
+xgex3		hlp=doc$xgex3.hlp
+xgex4		hlp=doc$xgex4.hlp
+xgex5		hlp=doc$xgex5.hlp
+
+# Pset documentation
+impars		hlp=doc$impars.hlp,		src=src$impars.par
+dispars		hlp=doc$dispars.hlp,		src=src$dispars.par
+findpars	hlp=doc$findpars.hlp,		src=src$findpars.par
+omarkpars	hlp=doc$omarkpars.hlp,		src=src$omarkpars.par
+cenpars		hlp=doc$cenpars.hlp,		src=src$cenpars.par
+skypars		hlp=doc$skypars.hlp,		src=src$skypars.par
+photpars	hlp=doc$photpars.hlp,		src=src$photpars.par
+eplotpars	hlp=doc$eplotpars.hlp,		src=src$eplotpars.par
+aplotpars	hlp=doc$aplotpars.hlp,		src=src$aplotpars.par

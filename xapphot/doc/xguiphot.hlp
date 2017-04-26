@@ -1,0 +1,922 @@
+.help xguiphot Feb99 xapphot
+.ih
+NAME
+xguiphot -- Do aperture photometry on a list of objects through
+circular, elliptical, rectangular, or polygonal apertures using a GUI
+.ih
+USAGE
+xguiphot 
+.ih
+PARAMETERS
+.ls images = "*"
+The list of images containing the objects to be measured.
+.le
+.ls objects = "default"
+The list of text files describing the objects to be measured. The
+number of objects files must be <= the number of input images. If
+the number of objects files is > 0 but < than the number of images, the last
+objects file is used for the remaining images. If objects is set
+to "default" or "dir$default", xguiphot searches for an input objects
+file which matches the pattern "image.obj.#" or "dir$image.obj.#".
+If objects is "", the objects files are undefined.
+The objects file format is described in detail below.
+.le
+.ls results = "default"
+The list of output results files. The
+number of results files must be <= the number of input images. If
+the number of results files is > 0 but < the number of images, the last
+results file is used for the remaining images. If results is set
+to "default" or "dir$default", xguiphot opens an output results
+file which matches the pattern "image.mag.#" or "dir$image.mag.#".
+If results = "", the output results files are undefined.
+The results file format is compatible with the output file formats
+used by the digiphot apphot and daophot packages.
+.le
+.ls robjects = ""
+The list of output objects files. This parameter is currently inactive.
+.le
+.ls logresults = no
+Log the output in interactive mode ? By default output results file
+logging is turned off in interactive mode to allow time for parameter
+setup and testing. Results logging is always turned on in non-interactive
+mode.
+.le
+.ls impars = ""
+The image data parameters set. Impars contains parameters for defining the
+image data characteristics such as the image scale, the psf half-width,
+the minimum and maximum good data limits, the detector noise model,
+and the observing conditions such as exposure time, airmass, filter,
+and time of observation.
+.le
+.ls dispars = ""
+The image display algorithm parameter set. Dispars parameters
+control the mapping of the image to the image display in both coordinate
+and intensity space.
+.le
+.ls findpars = ""
+The automatic object detection algorithm parameter set. Findpars
+parameters control the performance of the automatic object detection
+algorithms.
+.le
+.ls omarkpars
+The object list marking parameter set. Omarkpars parameters
+control the action of the object list overlay marking code.
+.le
+.ls cenpars = ""
+The centering algorithm parameter set. Cenpars parameters
+specify the centering algorithm and the centering aperture,  and
+control the performance of the centering algorithms and the center
+marking code.
+.le
+.ls skypars = ""
+The sky fitting algorithm parameter set. Skypars parameters
+specify the sky fitting algorithm and the sky aperture geometry, and
+control the performance of the sky fitting algorithms and the sky aperture 
+marking code.
+.le
+.ls photpars = ""
+The photometry algorithm parameter set. Photpars parameters
+specify the photometry algorithm and the photometry aperture geometry, and
+control the performance of the photometry algorithms and the photometry
+aperture marking code.
+.le
+.ls cplotpars = ""
+The object and sky subregion contour plotting parameters.
+.le
+.ls splotpars = ""
+The object and sky subregion surface plotting parameters.
+.le
+.ls update = no
+Update the parameters in the parameter sets at task termination ?
+.le
+.ls verbose = yes
+Print messages to the terminal in non-interactive mode ?
+.le
+.ls interactive = yes
+Run the task interactively ?
+.le
+.ls graphics = "stdgraph"
+The default graphics device.
+.le
+.ls gcommands = ""
+The default graphics cursor.
+.le
+.ls guifile = "xapphot$gui/xguiphot.gui"
+The file containing the default gui used in interactive mode. If guifile
+is "", xguiphot is run interactively from the xgterm window like any other
+IRAF task, but without many of the image and list display capabilities.
+.le
+
+.ih
+DESCRIPTION
+
+Xguiphot computes accurate center, sky values, shape statistics, fluxes,
+magnitudes, and magnitude errors for selected astronomical objects in
+the input images \fIimages\fR. The object coordinates
+and /or geometry are either: read from the \fIskypars\fR and \fIphotpars\fR
+parameter sets, specified interactively with the image cursor,
+or read from the input text files \fIobjects\fR. The results
+are logged in the output text files \fIresults\fR.
+In non-interactive mode all measurements are logged automatically. In
+interactive mode \fIlogresults\fR is normally disabled on task startup
+in order to give the user time to set the parameter values and make
+test measurements.
+
+Xguiphot supports multi-aperture circular, elliptical, rectangular, and
+polygonal object and sky apertures. The sky apertures may be concentric
+with or offset from the object apertures.
+
+The xguiphot algorithm parameters are grouped into parameter sets by function.
+The image data and image display parameters are defined in the \fIimpars\fR
+and \fIdispars\fR parameter sets respectively. The automatic object list
+generating and marking algorithms are controlled by the \fIfindpars\fR
+and \fIomarkpars\fR parameters respectively. The \fIcenpars\fR,
+\fIskypars\fR, and \fIphotpars\fR parameters control the centering, sky fitting,
+and photometry algorithms respectively. The contour and surface plotting
+algorithm parameter sets control the action of the results viewing code.
+If \fIupdate\fR is yes the algorithm parameter sets on disk will be
+updated to the latest values.
+
+Xguiphot can be run: interactively with the default gui (the default), 
+interactively without the gui, or non-interactively. All three modes are
+discussed briefly below. 
+
+.ih
+INTERACTIVE MODE WITH THE GUI
+
+If \fIinteractive\fR is "yes" and \fIguifile\fR is "xapphot$gui/xguiphot.gui",
+xguiphot activates the gui, initializes the parameters, displays the
+first images, and waits for user input.  The user interacts with xguiphot
+via the gui, issuing a series of mouse clicks, keystroke commands, and colon
+commands  to communicate with the program.
+
+.ih
+GUI KEYSTROKE ACCELERATORS
+
+The following keystroke accelerator commands can be executed from the gui
+image display window.
+
+.nf
+	           Xguiphot Keystroke Acclerators
+
+    ?  Toggle help window           
+    :  Colon command                CR  Erase status line	
+
+    $  Toggle files panel
+    n  Display next image           p  Display previous image
+    i  Redisplay current image      h  Toggle image header display panel
+    x  Fit model to object          y  Toggle model fitting window
+
+    ]  Read next objects file       [  Read previous objects file
+    r  Reread current objects file  l  Toggle object list panel
+    @  Autofind objects list      z,a  Graphically create objects list
+    m  Mark objects list            e  Erase objects list
+
+    ^  Rewind object list           ~  Move to nearest list object
+    f  Move to next list object     b  Move to previous list object
+    z  Delete entire objects list   d  Delete nearest list object
+    u  Undelete nearest list object a  Add object to list
+
+    v  Draw object and sky polygons
+   Sp  Measure nearest object       *  Find and measure objects
+
+    #  Measure entire object list
+    o  Measure next list object     -  Measure previous list object
+    +  Measure rest of object list  .  Measure nearest list object
+
+    ;  Show last result             g  Toggle photometry plots window
+    G  Replot last result           t  Toggle photometry table window
+.fi
+
+
+.ih
+GUI COLON COMMANDS
+
+The following colon commands can be executed from the gui image display window.
+
+
+.nf
+	   File Management Colon Commands
+
+    :startdir		    Show the starting directory
+    :chdir    [name]	    Show / Set the current directory
+    :setdir   [name]	    Set the working directory to the current directory
+    :images   [template]    Show / Set a new image template
+    :objects  [template]    Show / Set a new objects file template
+    :results  [template]    Show / Set a new results file template
+    :robjects [template]    Show / Set a new output objects file template
+
+    :imname   [name]        Show / Select the current image
+    :olname   [name]        Show / Select the current objects file
+    :rlname                 Show the current results file
+    :glname                 Show the current output objects file
+
+    :imnumber [number]      Show / Select the current image number
+    :olnumber [number]      Show / Select the current objects file number
+    :rlname                 Show the current results file number
+    :glname                 Show the current output objects file number
+
+    :logresults [yes/no]    Log the results to the results file ?
+
+
+           Object List Management Commands
+
+    :oselect   number      Select the current object
+    :odelete   number      Delete the current object
+    :oundelete number      Undelete the current object
+    :oadd      geometry    Add object to object list
+    :osave     file        Save current object list to objects file
+
+           Impars Parameter Colon Commands
+
+   :iscale      [value]    Show / Set the image scale
+   :ihwhmpsf    [value]    Show / Set the hwhm of the psf
+   :iemission   [yes/no]   Show / Set emission features switch
+   :iskysigma   [value]    Show / Set the sigma of the background
+   :imindata    [value]    Show / Set the minimum good data value
+   :imaxdata    [value]    Show / Set the maximum good data value
+
+   :inoisemodel [name]     Show / Set the noise model
+   :ikgain      [value]    Show / Set the CCD gain keyword
+   :ikreadnoise [value]    Show / Set the CCD readout noise keyword
+   :igain       [value]    Show / Set the CCD gain in e-/ADU
+   :ireadnoise  [value]    Show / Set the CCD readout noise in e-
+
+   :ikexptime   [value]    Show / Set the exposure time keyword
+   :ikairmass   [value]    Show / Set the airmass keyword
+   :ikfilter    [value]    Show / Set the ifilter id keyword
+   :ikobstime   [value]    Show / Set the time of observation keyword
+   :ietime      [value]    Show / Set the exposure time
+   :iairmass    [value]    Show / Set the airmass value
+   :ifilter     [value]    Show / Set the ifilter id
+   :iotime      [value]    Show / Set the time of observation
+
+   Permitted values of inoisemodel are: "poisson".
+
+
+           Dispars Parameter Colon Commands
+
+   :derase      [yes/no]   Show / Set the erase status
+   :dfill       [yes/no]   Show / Set the fill status
+   :dxviewport  [value]    Show / Set the x viewport
+   :dyviewport  [value]    Show / Set the y viewport
+   :dxmag       [value]    Show / Set the x magnification
+   :dymag       [value]    Show / Set the y magnification
+
+   :dztransform [name]     Show / Set the intensity transform
+   :dzlimits    [name]     Show / Set the intensity limits algorithm
+   :dzcontrast  [value]    Show / Set the intensity contrast
+   :dznsample   [value]    Show / Set the number of sample lines
+   :dz1         [value]    Show / Set the minimum intensity level
+   :dz2         [value]    Show / Set the maximum intensity level
+   :dlutfile    [value]    Show / Set the user lookup table file
+   :drepeat     [yes/no]   Show / Set repeat status
+
+   Permitted values of dztransform are: "linear", "log", and "none".
+   Permitted values of dzlimits are: "median", "image", and "user".
+
+
+           Findpars Parameter Colon commands
+
+   :fthreshold  [value]    Show / Set the detection threshold
+   :fradius     [value]    Show / Set the fitting radius
+   :fsepmin     [value]    Show / Set the minimum separation
+   :froundlo    [value]    Show / Set the lower ellipticity limit
+   :froundhi    [value]    Show / Set the upper ellipticity limit
+   :fsharplo    [value]    Show / Set the lower sharpness limit
+   :fsharphi    [value]    Show / Set the upper sharpness limit
+
+
+           Omarkpars Parameter Colon Commands
+
+   :objmark     [yes/no]   Show / Set the object marking switch
+   :otolerance  [value]    Show / Set the object matching tolerance
+   :ocharmark   [value]    Show / Set the object marking parameter
+   :onumber     [yes/no]   Show / Set the object numbering switch
+   :opcolormark [value]    Show / Set the object mark color
+   :oscolormark [value]    Show / Set the sky mark color
+   :osizemark   [value]    Show / Set the mark size
+
+   Permitted values of ocharmark are: "point", "box", "cross", "plus",
+   "circle", "diamond", and "shape". 
+   Permitted values of opcolormark and oscolormark are: "red", "blue",
+   "green", and "yellow".
+
+
+           Cenpars Parameter Colon Commands
+
+    :calgorithm [value]    Show / Set the centering algorithm
+    :cradius    [value]    Show / Set the centering radius
+    :cthreshold [value]    Show / Set the centering threshold
+    :cminsnrati [value]    Show / Set the minimum signal-to-noise ratio
+    :cmaxiter   [value]    Show / Set the maximum number of iterations
+    :cxyshift   [value]    Show / Set the maximum x or y coordinate shift
+
+    :ctrmark    [yes/no]   Show / Set the center marking switch
+    :ccharmark  [value]    Show / Set the center marking character
+    :ccolormark [value]    Show / Set the center mark color
+    :csizemark  [value]    Show / Set the center mark size
+
+    Permitted values of calgorithm are: "none", "centroid1d", "gauss1d",
+    and "ofilter1d".
+    Permitted values of ccharmark are: "point", "box", "cross", "plus",
+    "circle", and "diamond".
+    Permitted values of ccolormark are: "red", "blue", "green" and
+    "yellow".
+
+
+           Skypars Parameter Colon Commands
+
+    :smode      [value]    Show / Set the sky fitting mode
+    :sgeometry  [value]    Show / Set the sky fitting geometry
+    :srannulus  [value]    Show / Set the inner radius of sky annulus
+    :saxratio   [value]    Show / Set the sky annulus axis ratio
+    :sposangle  [value]    Show / Set the sky annulus p.a. in degrees
+
+    :salgorithm [value]    Show / Set the sky fitting algorithm
+    :sconstant  [value]    Show / Set the constant for constant sky fitting
+    :shwidth    [value]    Show / Set the half-width of histogram in sigma
+    :shbinsize  [value]    Show / Set the resolution of histogram in sigma
+    :shsmooth   [yes/no]   Show / Set the histogram smoothing switch
+    :smaxiter   [value]    Show / Set the max number of fitting iterations
+
+    :sloclip    [value]    Show / Set the lower clipping factor in %
+    :shiclip    [value]    Show / Set the upper clipping factor in %
+    :snreject   [value]    Show / Set the max number of rejection iterations
+    :sloreject  [value]    Show / Set the lower k-sigma rejection limit
+    :shireject  [value]    Show / Set the upper k-sigma rejection limit
+    :srgrow     [value]    Show / Set the region growing radius
+
+    :skymark    [yes/no]   Show / Set the sky marking switch
+    :scolormark [value]    Show / Set the sky aperture mark color
+
+    Permitted values of smode are: "concentric" and "offset".
+    Permitted values of sgeometry are: "circle", "ellipse", "rectangle",
+    and "polygon".
+    Permitted values of salgorithm are: "zero", "constant", "mean",
+    "median", "mode32", "hcentroid", "hgauss", "hofilter", "hcrosscor".
+    Permitted values of scolormark are: "read", "blue", "green", and
+    "yellow".
+
+
+          Photpars Parameter Colon Commands
+
+    :pgeometry  [value]    Show / Set the photometry aperture geometry
+    :papertures [value]    Show / Set the photometry apertures
+    :paxratio   [value]    Show / Set the photometry aperture axis ratio
+    :pposangle  [value]    Show / Set the aperture position angle in degrees
+    :pzmag      [value]    Show / Set the photometry zero point
+    :photmark   [yes/no]   Show / Set the photometry aperture marking switch
+    :pcolormark [value]    Show / Set the photometry aperture mark color
+
+    Permitted values of pgeometry are: "circle", "ellipse", "rectangle",
+    and "polygon".
+    Permitted values of pcolormark are: "red", "blue", "green", and
+    "yellow".
+
+         Eplotpars Parameter Colon Commands
+
+    :enx        [value]    Show / Set number of columns to be contoured
+    :eny        [value]    Show / Set number of lines to be contoured
+    :ez1        [value]    Show / Set minimum greylevel to be contoured
+    :ez2        [value]    Show / Set maximum greylevel to be contoured
+    :ez0        [value]    Show / Set the greylevel of the zero contour
+    :encontours [value]    Show / Set the number of contours to be plotted
+    :edz        [value]    Show / Set the contour greylevel interval
+    :ehilomark  [value]    Show / Set the high / low contour marking option
+    :edashpat   [value]    Show / Set the bit pattern for drawing lines
+    :elabel     [yes/no]   Show / Set the major contours labeling switch
+    :ebox       [yes/no]   Show / Set the box drawing switch
+    :eticklabel [yes/no]   Show / Set the tick mark labeling switch
+    :exmajor    [value]    Show / Set the number of major x axis divisions
+    :exminor    [value]    Show / Set the number of minor x axis divisions
+    :eymajor    [value]    Show / Set the number of major y axis divisions
+    :eyminor    [value]    Show / Set the numver of minor y axis divisions
+    :eround     [yes/no]   Show / Set the axis rounding switch
+    :efill      [yes/no]   Show / Set viewport filling switch
+
+    Permitted values of ehilomark: "none", "hilo", and "pixel".
+
+
+          Aplotpars Parameter Colon Commands
+
+    :anx        [value]    Show / Set number of columns to be plotted
+    :any        [value]    Show / Set number of lines to be plotted
+    :az1        [value]    Show / Set minimum greylevel to be plotted
+    :az2        [value]    Show / Set maximum greylevel to be plotted
+    :alabel     [yes/no]   Show / Set the axes drawing switch
+    :angv       [value]    Show / Set the vertical viewing angle
+    :angh       [value]    Show / Set the horizontal viewing angle
+.fi
+
+
+.ih
+INTERACTIVE MODE WITH XGTERM.
+
+If \fIinteractive\fR is "yes" and \fIguifile\fR is "",
+xguiphot activates the xgterm window, initializes the parameters, displays the
+first images, and waits for user input.  The user interacts with xguiphot
+via the xgterm graphics window, using a series of keystroke and colon
+commands, to communicate with the program. 
+
+The default gui in this case is the xgterm window. The xgterm window is used to
+display the current image, enter keystroke and colon commands, and display
+both printed and graphical results. Full IRAF cursor mode is supported
+so users can zoom, pan, etc the displayed image just as they can any
+other graph. However the usual image mouse button functions such as interactive
+image display contrast and brightness windowing are not available in this
+mode as they are with the default gui.
+
+Users can edit the algorithm parameters individually using colon commands
+or in groups using the epar mechanism. 
+
+By default results logging is disabled. Users should adjust the algorithm
+parameters by making trial measurements, and only turn results logging
+on when an optimal set has been chosen.
+
+See the help page for xgphot for more details and examples.
+
+.ih
+NON-INTERACTIVE MODE
+
+Xguiphot can be run non-interactively by setting the \fIinteractive\fR
+parameter to "no". In this mode xguiphot will either measure the objects
+specified in the input objects files \fIobjects\fR or create and measure an
+object list automatically using the current values of the \fIimpars\fR
+and \fIfindpars\fR  parameters. If default object and sky aperture
+geometry will be taken from the objects file; or if not defined there
+from the \fIskypars\fR and \fIphotpars\fR parameter sets.
+All the measurements are written to the \fIresults\fR files regardless of
+the value of \fIlogresults\fR. If \fIverbose\fR is "yes" a short 
+summary of each object measurement will also be printed on the standard 
+output.
+
+See the xgphot task help page for more details and examples examples.
+
+.ih
+DATA REQUIREMENTS
+
+.ls Image Formats
+Xguiphot transparently supports FITS format images (extension ".fits"), old
+IRAF format images (extension ".imh"), ST format images (extension ".hhh"),
+and position ordered event lists (extension ".qp"), although the event
+lists must be rasterized prior to running Xguiphot.
+.le
+
+.ls Pixel Types
+Xguiphot read short integer, unsigned short integer, integer,
+long integer, real, and double image pixel types. However
+the pixel values are read in as type real so the extra precision in
+double precisions images is lost.
+.le
+
+.ls Internal Precision
+Xguiphot performs most internal computations in real precision. However the
+zeroth, first, and second order aperture sums are accumulated in double
+precision.
+.le
+
+.ls Linearity
+Xguiphot assumes that the image data are intrinsically linear and that no
+non-linear operations have been performed on the data. Data which is non-linear
+over a large fraction of its dynamic range must be linearized before
+running Xguiphot.
+.le
+
+.ls Extreme Data Values
+Extreme valued pixels must be removed from the image data
+prior to running
+Xguiphot. Extreme valued pixels are those with values at or
+near the floating point limits of the host computer or
+host machine special numbers produced by illegal floating point
+operations. The latter category of values should not
+be produced by IRAF software but may be produced by user programs
+including IRAF imfort programs. Extreme valued pixels may cause
+floating point exception  errors, since for efficiency and portability
+reasons Xguiphot and most IRAF code does not check for them.
+.le
+
+.ls Bad Data Values
+Saturated pixels or pixels distinguishable from good data by intensity
+may be flagged by setting the impars \fIimindata\fR
+and \fIimaxdata\fR parameters.  The bad data values are
+still included in the photometry and shape analysis measurements, but
+the measurements
+are flagged, and the output magnitudes are set to INDEF. Bad data values
+are automatically excluded from the sky analysis.
+.le
+
+.ls CCD Reductions
+The instrumental signature must be removed from the input images prior
+to running Xguiphot. CCD images should be overscan corrected, bias
+corrected, dark current corrected, and flat-fielded. Careful flat-fielding
+is particularly crucial.
+.le
+
+.ls Cosmic Ray Removal
+Cosmic ray removal programs should be used with caution as they introduce
+artificial data into the image data. A poor choice of cosmic ray
+detection and removal parameters may result in the peaks of stellar objects
+being clipped and poor photometry.
+.le
+
+.ls Image Statistics
+Users should avoid image operations which degrade or alter the image statistics.
+CCD reductions should be performed in a way which adds as little noise as
+possible to the images and preserves precision of the data. Image
+combining operations may be performed as long as the gain and readout
+noise values are adjusted appropriately.
+.le
+
+.ls The Sky Background
+Xguiphot assumes that the local sky background is approximately flat in the
+vicinity of the object being measured, i.e. that it has a unique mode.
+Variations in the sky background over the region being measured will
+introduce errors into the photometry.
+.le
+
+.ls Sky Subtraction
+The sky background may be subtracted from the image before running Xguiphot
+as long as the local sky statistics, e.g. the standard deviations of the
+sky pixel regions are unaffected. However users should consider carefully
+before performing this operation, as other photometry packages do
+require the true pixel values to be preserved for optimum performance.
+.le
+
+.ls Variable Pixel Scale
+Xguiphot "assumes" that the pixel scale is uniform over the image. If it
+isn't which may be the case if the images exibit significant optical
+distortion, users will have to take this into account when they interpret
+their photometry. Traditional flat-fielding methods applied to such
+images will introduce a variable photometric zero point and errors
+in the resulting photometry. Users may choose to resample the images
+to a uniform grid or apply a known correction to the computed
+magnitudes. Which approach is best will depend of their goals and
+the reduction history of the image.
+.le
+
+.ls Small Apertures
+Xguiphot users should restrict themselves to
+apertures radii &gt;= 2 pixels to avoid scatter in the effective apertures
+due to pixelation affects. Future versions will offer more accurate
+integration or subsampling options.
+.le
+
+.ls The Image PSF
+The Xguiphot photometry algorithms make no assumptions about about the
+shape or size of the PSF. However other algorithms such as the automatic
+stellar object detection algorithm and some centering algorithms will
+function better if a reasonable value is supplied for the half-width of
+the PSF. The approximate width of the PSF can be entered by setting the
+impars parameter \fIihwhmpsf\fR. Stellar photometry
+through small apertures, i.e. those less that the size of the stars assumes
+that the PSF is uniform over the field.
+.le
+
+.ls Required Header Keywords
+Before running Xguiphot users should gather all the data required to
+determine the following quantities: the effective readout noise
+of the data in electrons, the effective gain of the data in electrons
+per ADU, the effective exposure in any time units as long as the
+units are consistent for any set of images being analyzed together,
+the filter id, the effective airmass of the observation at mid-exposure,
+and the time of the observation.
+Xguiphot requires this information to compute valid error estimates,
+to normalize the computed magnitudes, and to pass on any information that
+may be required in subsequent analysis. By editing the appropriate
+impars parameters users can instruct Xguiphot
+to either read this information
+from the image headers or use values supplied by the user.
+.le
+
+.ih
+THE INPUT OBJECTS FILE FORMAT
+
+The input objects file consists of a list of object descriptions. Each object
+description consists of an object region description and an optional
+sky region description. If the sky description is present it must
+be separated from the object description by the string " ; " as shown
+below.
+
+.nf
+
+Syntax
+
+object region definition [; [sky region definition]]
+
+Example
+
+256.23 258.31 circle 25.0
+256.23 258.31 circle 25.0 ;
+256.23 258.31 circle 25.0 ; circle 30.0 40.0
+.fi
+
+Object regions may be points, circles, ellipses, rectangles, polygons, or
+undefined.  Each geometry has its own syntax as shown below.
+
+.nf
+Syntax
+
+    point: x y
+   circle: x y circle radii
+  ellipse: x y ellipse radii [axratio [pa]]
+rectangle: x y rectangle radii [axratio [pa]]
+  polygon: x y polygon [[radii] {
+           xver1 yver1
+           xver2 yver2
+           ...   ...
+           xverN yverN
+           }]
+undefined: x y INDEF [INDEF [axratio [pa]]
+
+Example
+
+256.23 258.31
+256.23 258.31 circle 25.0
+256.23 258.31 ellipse 25.0 0.75 33.0
+256.23 258.31 rectangle 25.0 0.75 33.0
+256.23 258.31 polygon 5,10,15 {
+    100.0 100.0
+    200.0 100.0
+    200.0 200.0
+    100.0 200.0
+}
+356.23 358.31 polygon 5,10,15
+256.23 258.31 INDEF INDEF
+.fi
+
+The x and y coordinates are required in all cases. The radii field may
+define a single radius, e.g. "10.0", a list of radii, e.g. "3,6,9,12,15,18",
+or a range of radii, e.g. "1:20.0:2.0". If the polygon radii field is
+present it is treated as a width, and the polygonal object aperture is extended
+outward by the size of the radii. Objects with missing or INDEF valued required
+radii fields will automatically have their geometries set to INDEF. All
+radii measurements are assumed to be in units of the
+\fIimpars.iscale\fR parameter. Missing axis ratio
+and position angle fields default to the values of 1.0 and 0.0 respectively.
+If the vertices field of a polygonal object is ommitted, the vertices of
+the last defined object polygon are used. If no object polygon has been
+defined by the time the first polygonal object appears in the list,
+the object geometry is set to INDEF.
+
+Sky regions may be points, circles, ellipses, rectangles, polygons, objects,
+or undefined.  The object option means "use the same geometry as the object
+region". Each geometry has its own syntax as shown below.
+
+.nf
+Syntax
+
+    point: [x y INDEF]
+   circle: [x y] circle srin srout
+  ellipse: [x y] ellipse srin srout [axratio [pa]]
+rectangle: [x y] rectangle srin srout [axratio [pa]]
+  polygon: [x y] polygon [[srin srout] {
+           xver1 yver1
+           xver2 yver2
+           ...   ...
+           xverN yverN
+           }]
+   object: [x y] object srin srout
+undefined:
+
+Example
+
+256.23 258.31 ; 356.23 358.31
+256.23 258.31 ; circle 30. 40.
+256.23 258.31 ; 356.23 358.31 circle 30. 40.
+256.23 258.31 ; ellipse 30. 40.
+256.23 258.31 ; 356.23 358.31 ellipse 30. 40.
+256.23 258.31 ; 356.23 358.31 ellipse 30. 40. 0.75 48.2
+256.23 258.31 ; rectangle 30. 40.
+256.23 258.31 ; 356.23 358.31 rectangle 30. 40.
+256.23 258.31 ; 356.23 358.31 rectangle 30. 40. 0.75 48.2
+256.23 258.31 ; 356.23 358.31 object
+256.23 258.31 ; polygon 10 15 {
+    100.0 100.0
+    200.0 100.0
+    200.0 200.0
+    100.0 200.0
+}
+256.23 258.31 ; 356.23 358.31 polygon 10 15 {
+    100.0 100.0
+    200.0 100.0
+    200.0 200.0
+    100.0 200.0
+}
+.fi
+
+Sky regions may be concentric with the object region, i.e. no x and y
+sky region coordinates are defined, or offset, i.e. the x and y coordinates
+are defined. If the sky geometry is "object", then the sky region inherits
+the geometry, axis ratio, and position angle of the object region. The inner
+and out sky annulus radii must be defined for all geometries except polygonal.
+Missing or undefined axis ratio and position fields default to values
+of 1.0 and 0.0 respectively.
+
+.ih
+ALGORITHMS
+
+A brief description of the object finding algorithms, the
+centering algorithms, the
+sky fitting algorithms and the photometry algorithms can be found in the
+online help pages for the \fIfindpars\fR, \fIcenterpars\fR, \fRfitskypars\fR,
+and \fIphotpars\fR tasks.
+
+The image data dependent parameters, the image display parameters, and
+the object list marking parameters are described in the help for the
+\fIimpars\fR, \fIdispars\fR, and \fIomarkpars\fR parameter sets.
+The object and sky region contour and surface plotting parameters are
+described in the help for the \fIcplotpars\fR and \fIsplotpars\fR tasks.
+
+.ih
+THE RESULTS FILE FORMAT
+
+If \fIinteractive\fR = "no" and \fIverbose\fR = "yes", or \fIinteractive\fR =
+"yes" and \fIguifile\fR = "", then the following quantities are printed on
+the standard output as each object is measured.
+
+.nf
+image  xcenter  ycenter msky  hw[N] ax[N] pa[N]  flux[N] mag[N] merr[N]
+       pier[N] logresults
+.fi
+
+where N is the index of the largest aperture. Image, xcenter, ycenter, and
+sky are the image name, x and y coordinates of the object center, and the
+modal sky value respectively. Hw, ax, and pa are the half-width at half-max,
+axial ratio, and position angle of the object derived from a second order
+moment analysis through the largest aperture. Flux, mag, and magerr are the
+flux, magnitude, and magnitude error computed through the largest aperture.
+Pier is the photometry error code described below.  Logresults is log+ or log-
+depending on whether or not results logging is turned on or off.  If
+interactive = "yes" and the guifile is defined, then the above quantities
+minus the image name are written to the status line in the image display window.
+
+In interactive mode full output is written to the output text
+file \fIresults\fR if \fIlogresults\fR is "yes". In batch mode full output
+is always written to the results file if one is defined. At the beginning of
+each results file is a header listing the values of all the algorithm parameters
+at the time the first object record is written. From that point on a new
+parameter record is written to the results file every time the parameter
+value is altered.
+
+For each object measured the following quantities are written to the 
+results file.
+
+.nf
+       xinit       yinit    id     objects  lid
+       xcenter     ycenter  xshift  yshift  xerr  yerr          cier cerror
+       xsky        ysky     msky         stdev    nsky    nrej  sier serror
+       rapert    sum        area        flux      mag     merr  pier perror
+       hwidth    sharpness  axratio      ell      theta
+.fi
+Objects is the name of the input objects file.
+Id and lid are the object sequence numbers in the output results and input
+objects files respectively. Cier and cerror are the centering algorithm
+error code and associated
+error message respectively.  Xinit, yinit, xcenter, ycenter, xshift, yshift,
+xerr, and yerr are self explanatory and output in pixel units. The sense of
+the xshift and yshift definitions is as follows.
+
+.nf
+        xshift = xcenter - xinit
+        yshift = ycenter - yinit
+.fi
+
+Sier and serror are the sky fitting error code and associated error
+message respectively. Xsky and ysky define the center of the sky region.
+Xsky and ysky should be the same as xcenter and ycenter if the sky fitting
+mode is "concentric", otherwise they may be different.
+Msky and stdev are the estimate of the sky value per pixel and
+the standard deviation of the sample of sky pixels used to compute
+flux, mag, and merr.
+Nsky and nsrej are the number of
+sky pixels used to compute the sky value  and the number of sky pixels
+rejected from the sky fit respectively.
+
+Rapert, sum, area, and flux  are the radius of the photometry aperture
+in scale units, the total number of counts including sky in the aperture,
+the area of the aperture in square pixels, and the total number of counts
+excluding sky in the aperture. Mag and merr are the magnitude and
+error in the magnitude in the aperture as computed below.
+
+.nf
+        flux[N] = sum[N] - area[N] * msky
+         mag[N] = zmag - 2.5 * log10 (flux[N]) + 2.5 * log10 (itime)
+        merr[N] = 1.0857 * error[N] / flux[N]
+       error[N] = sqrt (flux[N] / epadu + area[N] * stdev**2 +
+                  area[N]**2 * stdev**2 / nsky)
+.fi
+
+Pier and perror are photometry error code and accompanying error message.
+
+Hwidth, sharpness, axratio, ell, and theta are the estimates of the half-width
+at half-maximum, the sharpness statistic, the axis ratio, the ellipticity, and
+the position angle of the object, derived from a second order moment
+analysis as shown below.
+
+.nf
+       dx = x - xcenter
+       dy = y - ycenter
+       di = i - msky
+
+       Mxx[N] = sum (di * dx * dx) / flux[N]
+       Mxy[N] = sum (di * dx * dy) / flux[N]
+       Myy[N] = sum (di * dy * dy) / flux[N]
+
+    hwidth[N] = sqrt (log (2) * (Mxx[N] + Myy[N]))
+ sharpness[N] = hwidth[N] / fwhmpsf
+       ell[N] = sqrt ((Mxx[N] - Myy[N]) ** 2 + 4 * Mxy[N] ** 2) /
+               (Mxx[N] + Myy[N])
+   axratio[N] = 1.0 - ell[N]
+     theta[N] = 0.5 * atan (2 * Mxy[N] / (Mxx[N] - Myy[N]))
+.fi
+
+
+The exposure time, airmass, filter id, and time of observation
+are stored in the header keywords, ietime, iairmass, ifilter, 
+and iotime and updated to the appropriate values when the image being
+analyzed is changed.
+
+.ih
+THE RESULTS FILE ERROR CODES
+
+If the object centering was error free then the field cier will be zero.
+Non-zero values of cier flag the following error conditions.
+
+.nf
+        0        # No error
+        301      # The input image is undefined
+        302      # The centering aperture is off the image
+        303      # The centering aperture is partially off the image
+        304      # The centering aperture is too small
+        305      # There is bad data in the centering aperture
+        306      # The S/N ratio in the centering aperture is too low
+        307      # The x or y center fit is singular
+        308      # The x or y center fit did not converge
+        309      # The x or y center shift is greater than maxshift
+.fi
+
+If all goes well during the sky fitting process then the error code sier
+will be 0. Non-zero values of sier flag the following error conditions.
+
+.nf
+        0         # No error
+        401       # The input image is undefined
+        402       # The sky aperture is undefined
+        403       # The sky aperture is partially off the image (not used)
+        404       # The sky pixel histogram is undefined
+        405       # The sky pixel histogram is flat or concave
+        406       # There are too few points for a good sky fit
+        407       # The sky fit is singular
+        408       # The sky fit did not converge
+        409       # The graphics stream is undefined (not used)
+        410       # The file of sky values is undefined (not used)
+        411       # The sky file is at EOF (not used)
+        412       # Cannot read the sky file values correctly (not used)
+        413       # The best fit parameters are non-physical
+.fi
+
+If no error occursor during the measurement of the magnitudes then pier is
+0. Non-zero values of pier flag the following error conditions.
+
+.nf
+        0         # No error
+        501       # The photometry aperture is off the image
+        502       # The photometry aperture is partially off the image
+        503       # The sky value is undefined
+        504       # The object is too faint
+        505       # There is bad data in the photometry aperture
+.fi
+
+
+.ih
+EXAMPLES
+
+1. Interactively examine and measure objects in the xapphot test images
+using xguiphot with the default gui.
+
+.nf
+xa> cd <mydir>
+
+    ... move a working directory where you have write permission
+
+xa> help xgtutor1 | lprint
+xa> help xgtutor2 | lprint
+
+    ... print copies of the 2 xguiphot tutorials
+
+xa> xguiphot xapphot$data/*.fits xapphot$data/*.coo.*  default
+
+    ... when GUI activates press the Help Button to get interactive help
+	followed by the Tutorial button for a quick less in using the GUI
+.fi
+
+
+.ih
+TIME REQUIREMENTS
+.ih
+BUGS
+.ih
+SEE ALSO
+xgphot,impars,dispars,findpars,omarkpars,cenpars,skypars,photpars,phot,qphot
+.endhelp

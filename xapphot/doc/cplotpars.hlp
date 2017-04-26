@@ -1,0 +1,127 @@
+.help cplotpars Jan99 xapphot
+.ih
+NAME
+cplotpars -- Edit the contour drawing parameters
+.ih
+USAGE
+cplotpars
+.ih
+PARAMETERS
+.ls enx = 31 (pixels), eny = 31 (pixels)
+The default width of the region to be contoured in pixels. These parameters are
+only used if xguiphot cannot determine the size of the object or sky apertures.
+.le
+.ls ez1 = INDEF (ADU)
+The minimum value to be contoured.  If \fBez1 = INDEF\fR, the data minimum is
+used.
+.le
+.ls ez2 = INDEF (ADU)
+The maximum value to be contoured.  If \fBez2 = INDEF\fR, the data maximum
+is used.
+.le
+.ls ez0 = INDEF (ADU)
+The intensity value of the zero contour, i.e., the value of a zero point shift
+to be applied to the image data before plotting.  The value of ez0 does not
+affect the values of the ez1 and ez2 parameters. The default value of ez0 is
+0.0.
+.le
+.ls encontours = 5
+The number of contours to be drawn. If the encontours is INDEF
+then the value of edz determines the number of contours.
+.le
+.ls edz = INDEF (ADU)
+The contour interval used if encontours is INDEF. If encontours and edz
+are both undefined then between 20 and 30 contours spanning the data
+range are drawn.
+.le
+.ls ehilomark = "none"
+The high / low contour marking options. The choices are:
+.ls "none"
+The highs and lows are not marked.
+.le
+.ls "hilo"
+The highs and lows are marked on the plot.
+.le
+.ls "pixel"
+The intensity of each pixel is marked on the plot.
+.le
+.le
+.ls edashpat = 528
+The dash pattern for negative contours.
+.le
+.ls elabel = no
+Label the major contours in the contour plot ?
+.le
+.ls ebox = no
+Draw a box around the plot ?
+.le
+.ls eticklabel = no
+Label the tick marks ?
+.le
+.ls exmajor = 5, exminor = 0
+The number of major and minor axis divisions along the x axis. 
+.le
+.ls eymajor = 5, eyminor = 0
+The number of major and minor axis divisions along the y axis. 
+.le
+.ls eround = no
+Round the axes limits to nice values ?
+.le
+.ls efill = no
+Fill the output viewport or enforce unity aspect ratio ?
+.le
+
+.ih
+DESCRIPTION
+The \fIcplotpars\fR parameter set controls the contouring algorithms used by
+the xguiphot results viewing routines.
+
+.ih
+EXAMPLES
+
+1. List the cplotpars parameters.
+
+.nf
+    xa> lpar cplotpars
+.fi
+
+2. Edit the cplotpars parameters.
+
+.nf
+    xa> cplotpars
+.fi
+
+3. Edit the cplotpars parameters and run xguiphot.
+
+.nf
+    da> epar xguiphot
+
+        ... edit a few xguiphot parameters
+
+        ... move to the cplotpars parameter and type :e
+
+        ... edit the cplotpars parameters and type :q
+
+        ... finish editing the reamining pset and task parameters
+
+        ... type :go to run xguiphot
+.fi
+
+4. Save the current cplotpars parameter set in a text file cplotnite1.par.
+
+.nf
+    da> cplotpars
+
+        ... edit some parameters
+
+        ... type ":w cplotnite1.par" from within epar
+.fi
+
+.ih
+TIME REQUIREMENTS
+.ih
+BUGS
+.ih
+SEE ALSO
+lpar,epar,xguiphot
+.endhelp

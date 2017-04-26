@@ -1,0 +1,13 @@
+$nargs = 0
+xhelp.topic = ""
+xhelp.search = no
+xhelp.helpdb = "helpdb"
+xhelp.home = ""
+xhelp.option = "help"
+xhelp.quickref = "uparm$quick.ref"
+xhelp.showtype = no
+xhelp.printer = "printer"
+xhelp.uifname = "xhelp$xhelp.gui"
+xhelp.coords = ""
+xhelp.mode = "ql"
+# EOF

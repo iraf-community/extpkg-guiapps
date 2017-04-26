@@ -1,0 +1,88 @@
+.help sptlines Aug99 spt
+.ih
+NAME
+spterrors -- Spectool parameter for spectral lines
+.ih
+PARAMETERS
+The following parameters define the default parameters for options dealing
+with spectral lines.  These includes marking, labeling, and identifying.
+The values are read by SPECTOOL when it starts up and the last defined
+values are saved when it exits.
+
+
+The following parameters appear in the "Line Labels" panel.
+.ls lidshow = yes
+Show line labels if defined?
+.le
+.ls lidpos = 0.1
+Default label position.  This is a position relative to the nearest point
+on the spectrum given as a fraction of window size.  This also determines
+how long ticks will be.
+.le
+.ls lidformat = "Vertical"
+Default line label format.  The values are "Horizontal", "Vertical", or a
+format given as described in the IRAF help for "cursors".
+.le
+.ls lidcolor = "foreground"
+Default line lable color.  The colors are one of background, foreground,
+red, green, blue, cyan, yellow, magenta, purple, or gray.
+.le
+
+.ls lidtick = yes
+Draw ticks?  These are vertical lines extending from near a point on
+the spectrum and the label.
+.le
+.ls lidarrow = yes
+Draw arrowheads?  These are points near the spectrum.  If ticks are also
+drawn this has the effect of producing arrow pointers.
+.le
+.ls lidband = yes
+Draw bandpass?  These are region markers at the end of any tick near
+the label showing the limits of the bandpass for the line.
+.le
+.ls lidmeasured = no
+Label with measured coordinate?  This will produce a label that includes
+the measured coordinate for the line.
+.le
+.ls lidreference = no
+Label with reference coordinate?  This will produce a label that includes
+the reference coordinate for the line.
+.le
+.ls lidlabel = no
+Label with ID?  This will produce a label that includes the line
+identification string.
+.le
+
+
+The following parameters appear in the "Reference List" panel.
+.ls linelist = ""
+Reference line list filename.
+.le
+.ls linematch = 2.
+Line list matching distance (pixels).  This is the maximum distance
+between the measured coordinate of a defined line and the coordinate
+in the line list where the defined line will be identified with the
+reference line.
+.le
+.ls linesep = 2.
+Maxium line separation (pixels).
+.le
+
+
+The following parameters appear in the "Centering Parameters" panel.
+.ls ctype = "center1d"
+Centering type.  The values are center1d, gaussian, peak, or none.
+.le
+.ls cprofile = "either"
+Profile type which is one of either, emission, or absorption.
+.le
+.ls cwidth = 5.
+Centering width (pixels).
+.le
+.ls cradius = 5.
+Centering search or error radius (pixels).
+.le
+.ih
+SEE ALSO
+spectool
+.endhelp

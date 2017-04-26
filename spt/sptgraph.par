@@ -1,0 +1,50 @@
+ptype,s,h,"line1",,,Spectrum plot type
+etype,s,h,"vebar",,,Spectrum error plot type
+pcolor,s,h,"foreground","background|foreground|red|green|blue|cyan|yellow|magenta|purple|gray",,Spectrum plot color
+xmarksize,r,h,2.,,,Spectrum x mark size
+ymarksize,r,h,2.,,,"Spectrum y mark size
+
+#Graph Labels"
+sysid,b,h,yes,,,System ID banner?
+title,s,h,"default",,,Title
+subtitle,s,h,"",,,Subtitle
+titlecolor,s,h,"green","background|foreground|red|green|blue|cyan|yellow|magenta|purple|gray",,Title color
+xlabel,s,h,"default",,,X axis label
+ylabel,s,h,"default",,,Y axis label
+dunits,s,h,"default",,,Dispersion units to display
+funits,s,h,"default",,,Flux units to display
+xaxlabcolor,s,h,"green","background|foreground|red|green|blue|cyan|yellow|magenta|purple|gray",,X axis label color
+yaxlabcolor,s,h,"green","background|foreground|red|green|blue|cyan|yellow|magenta|purple|gray",,"Y axis label color
+
+# Graph Axes"
+xviewmin,r,h,0.15,0.,1.,X viewport miniumum
+xviewmax,r,h,0.95,0.,1.,X viewport maximum
+yviewmin,r,h,0.15,0.,1.,Y viewport miniumum
+yviewmax,r,h,0.90,0.,1.,Y viewport maximum
+xdrawaxis,s,h,"both","both|bottom|top|none",,X draw axis?
+ydrawaxis,s,h,"both","both|left|right|none",,Y draw axis?
+xaxwidth,r,h,2.,,,X axis width
+yaxwidth,r,h,2.,,,Y axis width
+xaxtype,s,h,"linear","linear|logarithmic",,X axis type
+yaxtype,s,h,"linear","linear|logarithmic",,Y axis type
+xaxcolor,s,h,"cyan","background|foreground|red|green|blue|cyan|yellow|magenta|purple|gray",,X axis color
+yaxcolor,s,h,"cyan","background|foreground|red|green|blue|cyan|yellow|magenta|purple|gray",,Y axis color
+xdrawgrid,b,h,no,,,X draw grid?
+ydrawgrid,b,h,no,,,Y draw grid?
+xgridcolor,s,h,"foreground","background|foreground|red|green|blue|cyan|yellow|magenta|purple|gray",,X grid color
+ygridcolor,s,h,"foreground","background|foreground|red|green|blue|cyan|yellow|magenta|purple|gray",,Y grid color
+framecolor,s,h,"background","background|foreground|red|green|blue|cyan|yellow|magenta|purple|gray",,"Frame color
+
+# Graph Ticks"
+xdrawticks,b,h,yes,,,X draw ticks?
+ydrawticks,b,h,yes,,,Y draw ticks?
+xnmajor,i,h,6,0,,Number of X major ticks
+ynmajor,i,h,6,0,,Number of Y major ticks
+xnminor,i,h,0,0,,Number of X minor ticks
+ynminor,i,h,0,0,,Number of Y minor ticks
+xlabticks,b,h,yes,,,X label ticks?
+ylabticks,b,h,yes,,,Y label ticks?
+xtickformat,s,h,"",,,X tick format
+ytickformat,s,h,"",,,Y tick format
+xticklabcolor,s,h,"yellow","background|foreground|red|green|blue|cyan|yellow|magenta|purple|gray",,X tick label color
+yticklabcolor,s,h,"yellow","background|foreground|red|green|blue|cyan|yellow|magenta|purple|gray",,Y tick label color

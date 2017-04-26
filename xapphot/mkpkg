@@ -1,0 +1,30 @@
+# Make the XAPPHOT package.
+
+$call	relink
+$exit
+
+update:
+	$call	relink
+	$call	install
+	;
+
+relink:
+	$set	LIBS = "-lnlfit -lncar -lgks"
+	$update	libpkg.a
+	$omake	x_xapphot.x
+	$link	x_xapphot.o libpkg.a $(LIBS) -o xx_xapphot.e
+	;
+
+install:
+	$move	xx_xapphot.e guibin$x_xapphot.e
+	;
+
+libpkg.a:
+	@xptools
+	@center
+	@find
+	@fitsky
+	@phot
+	@guiphot
+	@xputil
+	;

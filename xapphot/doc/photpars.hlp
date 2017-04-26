@@ -1,0 +1,133 @@
+.help photpars Jan99 xapphot
+.ih
+NAME
+photpars -- Edit the photometry parameters
+.ih
+USAGE
+photpars
+.ih
+PARAMETERS
+.ls pgeometry = "circle"
+The default geometry of the object region. The options are "circle", "ellipse",
+"rectangle", or "polygon".
+.le
+.ls papertures = "10" (iscale units)
+The semi-major axes of the photometry apertures in units of the
+\fIimpars.iscale\fR parameter, or the file name containing the
+semi-major axes. Individual aperture axes may be listed separated by
+whitespace or commas, e.g "3,5,10".  A ranges syntax of the form
+ap1:apN:apstep, e.g. "1:10:0.5" is also supported. The maximum number
+of photometry apertures is 100. 
+.le
+.ls paxratio = 1.0
+The default ratio of minor to major axes of the object region.  This
+parameter does not apply to circles or polygons.
+.le
+.ls pposangle = 0.0 (degrees)
+The default position angle of the object region in degrees counter-clockwise
+from the positive x axis. This parameter does not apply to circles or polygons.
+.le
+.ls pzmag = 25.00 (magnitudes)
+The zero point offset of the magnitude scale.
+.le
+.ls photmark = yes
+Mark the photometry apertures on the displayed image ?
+.le
+.ls pcolormark = "red"
+The color of the marked apertures. The options are "red", "blue", "green",
+and "yellow".
+.le
+
+.ih
+DESCRIPTION
+
+The \fIphotpars\fR parameters control the action of the photometry
+algorithms.  The default values have been chosen for efficiency and to
+give reasonable results in most cases.  The photometry
+apertures scale with the image scale defined by the
+\fIimpars.iscale\fR parameter.
+
+Xguiphot extracts object pixels from a region of the image described
+by the \fIpgeometry\fR, \fIpapertures\fR, \fIpaxratio\fR,
+and \fIpposangle\fR parameters. If pgeometry is "polygon" the user must have
+defined the polygon interactively using the image display and image
+cursor before making the object measurement.
+
+If pgeometry is "circle", "ellipse", "or "rectangle", and the
+\fIimpars.iscale\fR parameter is defined in terms of the half-width
+at half-maximum of the psf, then a single value of papertures
+will work well for maximizing the signal-to-noise for
+stellar objects in images with different seeing and detector characteristics.
+
+The total  flux within the apertures specified by the object geometry
+is computed by estimating the fraction of each pixel lying within the
+the aperture and summing all the approximations.
+
+If the object data contains values outside the good data range specified
+by \fIimpars.imindata\fR and \fIimpars.imaxdata\fR then the flux
+measurements are tagged with an error code and the magnitudes are set
+to INDEF.
+
+The zero point of the magnitude scale is determined by the \fIzmag\fR
+parameter and the magnitudes are normalized to 1 timeunit using the
+exposure times determined by the \fIimpars.ikexptime\fR or 
+\fIietime\fR parameters.
+
+Magnitude errors are estimated using the computed aperture sums, the area of the
+photometry apertures, the computed standard deviation of the sky pixels,
+the number of sky pixels, and the gain determined by the 
+\fIimpars.ikgain\fR or \fIimpars.igain\fR parameters.
+
+If \fIphotmark\fR is "yes", the object region is marked on the image display
+using the color defined by \fIpcolormark\fR.
+
+
+.ih
+EXAMPLES
+
+1. List the photpars parameters.
+
+.nf
+xa> lpar photpars
+.fi
+
+2. Edit the photpars parameters.
+
+.nf
+xa> photpars
+.fi
+
+3. Edit the photpars parameters and run xguiphot.
+
+.nf
+da> epar xguiphot
+
+... edit a few xguiphot parameters
+
+... move to the photpars parameter and type :e
+
+... edit the photpars parameters and type :q
+
+... finish editing the other pset and task parameters
+	
+... type :go to run xguiphot
+.fi
+
+4. Save the current photpars parameter set in a text file photnite1.par.
+
+.nf
+da> photpars
+
+... edit some parameters
+
+... type ":w photnite1.par"  from within epar
+.fi
+
+.ih
+TIME REQUIREMENTS
+.ih
+BUGS
+.ih
+SEE ALSO
+lpar,epar,xguiphot,impars,findpars,cenpars,skypars
+.endhelp

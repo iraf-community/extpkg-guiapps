@@ -1,0 +1,411 @@
+extern int dofit_(integer *fit, real *x, real *y, real *s, integer *npts, real *dx, integer *nsub, real *y1, real *dy, real *xp, real *yp, real *gp, real *lp, integer *tp, integer *np, real *chisq);
+extern int doreft_(integer *fit, real *x, real *y, real *s, integer *npts, real *dx, integer *nsub, real *y1, real *dy, real *xp, real *yp, real *gp, real *lp, integer *tp, integer *np, real *chisq);
+extern E_f model_(real *x, real *dx, integer *nsub, real *xp, real *yp, real *gp, real *lp, integer *tp, integer *np);
+extern int derivs_(real *x, real *a, real *y, real *dyda, integer *na);
+extern int dofit1_(integer *fit, real *x, real *y, real *s, integer *npts, real *a, integer *nlines, real *chisq);
+extern int mrsole_(real *x, real *y, real *s, integer *npts, real *params, integer *flags, integer *np, integer *nfit, real *mr, real *chisq);
+extern int mreval_(real *x, real *y, real *s, integer *npts, real *params, integer *flags, integer *np, real *a, real *delta, integer *nfit, real *chisq);
+extern int mrinvt_(real *a, real *b, integer *n);
+extern int fixx_(integer *sh, real *x1, real *x2, real *y1, real *y2, integer *i1, integer *i2);
+extern int sptarh_(integer *spt, integer *reg, shortint *cmd);
+extern int sptarp_(integer *spt, shortint *regstr, integer *o);
+extern int sptren_(integer *sh, integer *shref, integer *type, integer *spec);
+extern E_f sptced_(real *x, real *data, integer *npts, shortint *ctype, shortint *ptype, real *width, real *radius, real *thresd);
+extern E_f sptc1r_(real *x, real *data, integer *npts, real *width);
+extern E_f sptgcr_(real *xc, real *data, integer *npts);
+extern E_f sptpcr_(real *xc, real *data, integer *npts);
+extern int sptcon_(integer *spt, integer *reg, real *wx, real *wy, shortint *cmd);
+extern int sptcot_(integer *spt, integer *reg1, integer *stype1, integer *reg2, integer *stype2, shortint *cmd);
+extern E_f sptern_(real *x);
+extern int sptcod_(integer *spt, integer *reg, shortint *cmd);
+extern int sptfit_(integer *spt, integer *reg, integer *dtype, doublereal *w0, doublereal *dw, integer *nw, doublereal *z, integer *coeff);
+extern int sptctr_(integer *spt, integer *reg, doublereal *wx, doublereal *wy, shortint *cmd);
+extern int sptded_(integer *spt, integer *reg, integer *models, integer *ng, integer *option);
+extern int sptsud_(integer *spt, integer *reg, integer *lid, integer *flag_);
+extern int sptpld_(integer *spt, integer *reg, integer *lid);
+extern E_f gasdev_(integer *seed);
+extern int sptden_(integer *spt, integer *reg, shortint *cmd);
+extern int sptedt_(integer *spt, integer *reg, integer *stype, integer *gp, real *wx, real *wy, integer *wcs, integer *key, shortint *cmd);
+extern int spteqh_(integer *spt, integer *reg, real *wx, real *wy, shortint *cmd);
+extern int eqwmee_(integer *spt, integer *reg, integer *lid);
+extern int eqwlog_(integer *spt, integer *reg, integer *lid);
+extern int eqwsux_(integer *sh, real *x, real *y, real *c, integer *e, integer *n, doublereal *bp, doublereal *center, doublereal *flux, doublereal *cont, doublereal *eqw);
+extern int eqwvas_(integer *spt, integer *reg, integer *lid);
+extern int spters_(integer *spt, shortint *cmd);
+extern logical sptgie_(integer *spt, shortint *image, integer *regid, integer *reg);
+extern int sptgda_(integer *spt, integer *im, integer *mw, integer *ap, integer *band, integer *daxis, integer *nsum, integer *sh);
+extern int sptcut_(integer *spt, integer *reg);
+extern int sptclp_(real *y, integer *n, real *y1, real *y2, real *lclip, real *hclip);
+extern int sptsce_(integer *spt, integer *reg);
+extern int sptsc1_(integer *spt, integer *reg, real *x1, real *x2, real *y1, real *y2, real *z1, real *z2, integer *nx, integer *ny);
+extern int sptsc2_(real *data, integer *i, integer *j, real *y1, real *y2, real *z1, real *z2, integer *nx, integer *ny);
+extern int sptshy_(integer *sh1, integer *sh2, integer *wcs);
+extern integer sptgp_(integer *spt, integer *wcs);
+extern int sptgrh_(integer *spt, shortint *cmd);
+extern int sptdic_(shortint *dic, integer *index, shortint *str, integer *maxchr);
+extern int spthep_(integer *spt, shortint *cmd);
+extern int spthen_(integer *spt, shortint *helpfe);
+extern int sptict_(integer *spt, integer *inreg, integer *instye, integer *outreg, integer *outste, shortint *cmd);
+extern int sptic1_(integer *type, integer *gp, integer *gt, real *x, real *y, real *w, real *fit, integer *n);
+extern int spticm_(real *x, real *y, real *fit, integer *n);
+extern int sptkey_(integer *spt, integer *reg, integer *gp, real *wx, real *wy, integer *wcs, integer *key, shortint *cmd);
+extern int labcon_(integer *spt, integer *reg, doublereal *wx, doublereal *wy, shortint *cmd);
+extern int labalc_(integer *spt, integer *reg, integer *lab);
+extern int labfre_(integer *spt, integer *reg);
+extern int labdee_(integer *spt, integer *reg, integer *item);
+extern int labplt_(integer *spt, integer *reg);
+extern int labpl1_(integer *spt, integer *reg, integer *lab);
+extern int labere_(integer *spt, integer *reg, integer *lab);
+extern int labset_(integer *spt, integer *reg, integer *lab, doublereal *x, doublereal *y, integer *itype, shortint *label, integer *ptype, shortint *format, integer *color);
+extern int labitm_(integer *spt, integer *reg, integer *item, integer *lab);
+extern int labtye_(integer *spt, integer *reg, integer *lab, integer *type, doublereal *x, doublereal *y);
+extern int labcoy_(integer *spt, integer *reg1, integer *reg2);
+extern int lablit_(integer *spt, integer *reg, integer *lab);
+extern int lidcon_(integer *spt, integer *reg, doublereal *wx, doublereal *wy, shortint *cmd);
+extern int lidnet_(integer *spt, integer *reg, doublereal *wx, doublereal *wy, integer *lid);
+extern int liddee_(integer *spt, integer *reg, integer *item);
+extern int lidfre_(integer *spt, integer *reg);
+extern int lidmak_(integer *spt, integer *reg);
+extern int lidma1_(integer *spt, integer *reg, integer *lid);
+extern int lidere_(integer *spt, integer *reg, integer *lid);
+extern int lidpos_(integer *spt, integer *reg, integer *lid, logical *above, logical *tick, real *x, real *y, real *ticks);
+extern int lidalc_(integer *spt, integer *reg, integer *lid, integer *match, doublereal *x, doublereal *low, doublereal *up, shortint *prof, doublereal *ref, doublereal *y, shortint *label, integer *flags, shortint *format, integer *color);
+extern int lidadd_(integer *spt, integer *reg, integer *lid, integer *replae, integer *match, doublereal *x, doublereal *low, doublereal *up, shortint *prof, doublereal *ref, doublereal *y, shortint *id);
+extern int lidy_(integer *spt, integer *reg, doublereal *wx, doublereal *wy, doublereal *ydef, doublereal *y);
+extern int lidner_(integer *spt, integer *reg, doublereal *wx, doublereal *wy, integer *lid);
+extern int liditm_(integer *spt, integer *reg, integer *item, integer *lid);
+extern int lidcoy_(integer *spt, integer *reg1, integer *reg2);
+extern int lidlit_(integer *spt, integer *reg, integer *lid);
+extern int sptflt_(integer *spt, shortint *direcy, shortint *temple);
+extern int sptimt_(integer *spt, shortint *direcy, shortint *temple);
+extern int sptrgt_(integer *spt, integer *reg);
+extern int sptspt_(integer *spt, shortint *image, integer *im, integer *mw, integer *sh);
+extern logical sptgem_(shortint *list, integer *itemno, shortint *item, integer *maxchr);
+extern logical sptgeo_(shortint *list, shortint *temple, integer *itemno, shortint *item, integer *maxchr);
+extern int sptgis_(integer *spt, integer *reg, integer *rgitem, integer *spitem, integer *imitem);
+extern int llcoln_(integer *spt, integer *reg, doublereal *wx, doublereal *wy, shortint *cmd);
+extern int lidmal_(integer *spt, shortint *list, integer *ll);
+extern int lidunl_(integer *spt);
+extern int lidlll_(shortint *str, integer *label);
+extern integer lidmah_(integer *spt, integer *reg, integer *redsht, doublereal *in, doublereal *out, shortint *label, integer *maxchs);
+extern int lidfid_(integer *spt, integer *reg, integer *lid);
+extern int lidfi1_(integer *spt, integer *reg, integer *lid, doublereal *coord, integer *label, integer *un2);
+extern int lllist_(integer *spt);
+extern int llsort_(integer *ll);
+extern integer llcome_(integer *arg, integer *x1, integer *x2);
+extern int sptlog_(integer *spt, integer *reg, shortint *cmd, shortint *data);
+extern int sptlon_(integer *spt, shortint *path, shortint *fname, shortint *logfie, integer *maxchr, integer *logfd);
+extern int sptloe_(integer *spt, shortint *logfie, integer *logfd);
+extern int sptlod_(integer *spt, shortint *path, shortint *fname, shortint *logfie, integer *maxchr);
+extern int modcon_(integer *spt, integer *reg, doublereal *wx, doublereal *wy, shortint *cmd);
+extern int modplt_(integer *spt, integer *reg);
+extern int modpl1_(integer *spt, integer *reg, integer *lid);
+extern int moder1_(integer *spt, integer *reg, integer *lid);
+extern int modvas_(integer *spt, integer *reg, integer *lid);
+extern int sptpln_(integer *spt, integer *reg, shortint *cmd);
+extern int sptret_(integer *spt);
+extern int sptplt_(integer *spt, integer *type);
+extern int sptplg_(integer *spt, integer *reg);
+extern int sptpl1_(integer *spt, integer *reg, integer *x1, integer *x2, integer *specte, integer *erase);
+extern int spttie_(integer *spt, integer *reg, integer *type);
+extern int spttye_(integer *spt, integer *reg, integer *specte);
+extern int sptreg_(integer *spt, integer *reg, shortint *cmd);
+extern int reglod_(integer *spt, integer *reg, shortint *image, integer *ap1, integer *band1, integer *daxis, integer *nsum);
+extern int regalc_(integer *spt, integer *regid, integer *reg);
+extern int regcoy_(integer *spt, integer *reg1, integer *reg2);
+extern int regfre_(integer *spt, integer *reg);
+extern int regcle_(integer *spt, integer *reg);
+extern int sptgrg_(integer *spt, shortint *image, integer *ap, integer *band, integer *reg);
+extern int sptgrd_(integer *spt, integer *regid, integer *reg);
+extern int sptgrr_(integer *spt, integer *defreg, shortint *regstr, integer *reg, integer *sh, integer *sy, integer *stype, integer *regid, integer *regtye);
+extern int sptree_(integer *spt, integer *reg, integer *stype, shortint *regnae, integer *newreg, integer *newste);
+extern int sptrv_(integer *spt, integer *reg, shortint *cmd);
+extern int sptvey_(integer *spt, integer *reg, integer *lids, integer *rv);
+extern int sptvho_(integer *spt, integer *reg, integer *rv);
+extern int sptrvg_(integer *spt, integer *reg, integer *lids, integer *rv);
+extern int sptsbs_(integer *spt, integer *reg, shortint *cmd);
+extern int sigclp_(integer *spt, integer *reg, shortint *cmd);
+extern int sptsmh_(integer *spt, integer *inreg, integer *instye, integer *outreg, integer *outste, shortint *cmd);
+extern int sptsm1_(integer *type, real *size, real *y1, real *y2, integer *n);
+extern E_f sptcov_(real *filter, integer *nfiltr, real *data, integer *ndata, integer *start);
+extern int sptstk_(integer *spt, shortint *cmd);
+extern int sptstt_(integer *spt, integer *reg, shortint *cmd, real *wx1, real *wy1, real *wx2, real *wy2);
+extern int statlg_(integer *spt, integer *reg, doublereal *statvl);
+extern int sptuns_(integer *spt, integer *reg, shortint *units);
+extern int sptfus_(integer *spt, integer *reg, shortint *funits);
+extern int sptrus_(integer *spt, integer *reg, integer *type, integer *doref);
+extern int sptwrt_(integer *spt, integer *reg, shortint *cmd);
+extern int wrspea_(integer *sh1, shortint *output, integer *outtye, logical *overwe);
+extern int wrspeb_(integer *sh1, integer *sh2, integer *types);
+extern int wrtyps_(integer *sh, integer *types, integer *ntypes);
+extern int deredn_(real *x, real *y, real *z, integer *n, real *av, real *rv, real *avold, real *rvold);
+extern int dered1_(real *x, real *y, real *z, integer *n, real *av, real *rv, real *avold, real *rvold);
+extern E_f ccm_(real *wavelh, real *rv);
+extern int tsshit_(void);
+extern int sshift_(integer *im, integer *mw, shortint *image, integer *aps, doublereal *shift, logical *verboe);
+extern int sshif1_(doublereal *shift, integer *coeff);
+extern int tspecl_(void);
+extern integer sptopn_(integer *spt);
+extern int sptcle_(integer *spt);
+extern int voigt_(real *xarg, real *yarg, real *wr, real *wi);
+extern integer sysruk_(shortint *task, shortint *cmd, integer *rukarf, integer *rukint);
+/* comlen mem_ 8 */
+/* comlen xercom_ 4 */
+/* comlen arith_ 8 */
+/* comlen spectl_ 4 */
+/*:ref: smark_ 10 1 3 */
+/*:ref: salloc_ 10 3 3 3 3 */
+/*:ref: sfree_ 10 1 3 */
+/*:ref: xmfree_ 10 2 3 3 */
+/*:ref: xmallc_ 10 3 3 3 3 */
+/*:ref: amovr_ 10 3 4 4 3 */
+/*:ref: hfti_ 10 13 4 3 3 3 4 3 3 4 3 4 4 4 3 */
+/*:ref: shdrwl_ 5 2 3 5 */
+/*:ref: shdrlw_ 5 2 3 5 */
+/*:ref: sscan_ 10 1 2 */
+/*:ref: gargwd_ 10 2 2 3 */
+/*:ref: strdic_ 3 4 2 2 3 2 */
+/*:ref: xstrcy_ 10 3 2 2 3 */
+/*:ref: sprinf_ 10 3 2 3 2 */
+/*:ref: pargsr_ 10 1 2 */
+/*:ref: gmsg_ 10 3 3 2 2 */
+/*:ref: pargi_ 10 1 3 */
+/*:ref: xerpsh_ 10 0 */
+/*:ref: nscan_ 3 0 */
+/*:ref: xerror_ 10 2 3 2 */
+/*:ref: gargsr_ 10 2 2 3 */
+/*:ref: evvexr_ 3 6 2 3 3 3 3 3 */
+/*:ref: locpr_ 3 1 200 */
+/*:ref: amovkr_ 10 3 4 4 3 */
+/*:ref: aclrr_ 10 2 4 3 */
+/*:ref: achtsr_ 10 3 2 4 3 */
+/*:ref: achtir_ 10 3 3 4 3 */
+/*:ref: achtlr_ 10 3 3 4 3 */
+/*:ref: achtdr_ 10 3 5 4 3 */
+/*:ref: pargr_ 10 1 4 */
+/*:ref: xerpop_ 8 0 */
+/*:ref: erract_ 10 1 3 */
+/*:ref: gargi_ 10 1 3 */
+/*:ref: xcallc_ 10 3 3 3 3 */
+/*:ref: fpequr_ 8 2 4 4 */
+/*:ref: asiint_ 10 2 3 3 */
+/*:ref: clgwrd_ 3 4 2 2 3 2 */
+/*:ref: asifit_ 10 3 3 4 3 */
+/*:ref: asievl_ 4 2 3 4 */
+/*:ref: asigrl_ 4 3 3 4 4 */
+/*:ref: asifre_ 10 1 3 */
+/*:ref: alimr_ 10 4 4 3 4 4 */
+/*:ref: asubkr_ 10 4 4 4 4 3 */
+/*:ref: amaxkr_ 10 4 4 4 4 3 */
+/*:ref: anegr_ 10 3 4 4 3 */
+/*:ref: eprinf_ 10 1 2 */
+/*:ref: adivkr_ 10 4 4 4 4 3 */
+/*:ref: gtcoln_ 10 4 2 3 3 3 */
+/*:ref: shdrce_ 10 1 3 */
+/*:ref: smwcle_ 10 1 3 */
+/*:ref: imunmp_ 10 1 3 */
+/*:ref: gargb_ 10 1 8 */
+/*:ref: btoi_ 3 1 8 */
+/*:ref: gargr_ 10 1 4 */
+/*:ref: gtgetr_ 4 2 3 3 */
+/*:ref: gtsetr_ 10 3 3 3 4 */
+/*:ref: xprinf_ 10 1 2 */
+/*:ref: greset_ 10 2 3 3 */
+/*:ref: gtiret_ 10 2 3 3 */
+/*:ref: gtseti_ 10 3 3 3 3 */
+/*:ref: clgetb_ 8 1 2 */
+/*:ref: clgstr_ 10 3 2 2 3 */
+/*:ref: gtsets_ 10 3 3 3 2 */
+/*:ref: gtuivs_ 10 2 3 3 */
+/*:ref: gargd_ 10 1 5 */
+/*:ref: pargd_ 10 1 5 */
+/*:ref: advzr_ 10 5 4 4 4 3 204 */
+/*:ref: funcle_ 10 1 3 */
+/*:ref: funopn_ 3 1 2 */
+/*:ref: funcoy_ 10 2 3 3 */
+/*:ref: asubr_ 10 4 4 4 4 3 */
+/*:ref: smwgws_ 10 13 3 3 3 3 3 3 5 5 3 5 4 4 3 */
+/*:ref: clgetd_ 5 1 2 */
+/*:ref: unctrd_ 10 5 3 3 5 5 3 */
+/*:ref: uncloe_ 10 1 3 */
+/*:ref: unopen_ 3 1 2 */
+/*:ref: undece_ 10 2 3 2 */
+/*:ref: mwswas_ 10 4 3 3 2 2 */
+/*:ref: smwsws_ 10 13 3 3 3 3 3 3 5 5 3 5 4 4 2 */
+/*:ref: shdrsm_ 10 2 3 2 */
+/*:ref: xtsord_ 10 4 5 5 5 3 */
+/*:ref: icopen_ 10 1 3 */
+/*:ref: icpstr_ 10 3 3 2 2 */
+/*:ref: icputi_ 10 3 3 2 3 */
+/*:ref: icputr_ 10 3 3 2 4 */
+/*:ref: icpkey_ 10 4 3 3 3 3 */
+/*:ref: gtini1_ 3 1 3 */
+/*:ref: icgfid_ 10 9 3 3 2 3 3 5 5 5 3 */
+/*:ref: dcvevl_ 5 2 3 5 */
+/*:ref: dcvsti_ 3 2 3 3 */
+/*:ref: dcvsae_ 10 2 3 5 */
+/*:ref: xrealc_ 10 3 3 3 3 */
+/*:ref: stropn_ 3 3 2 3 3 */
+/*:ref: fprinf_ 10 2 3 2 */
+/*:ref: xfcloe_ 10 1 3 */
+/*:ref: dcvfre_ 10 1 3 */
+/*:ref: icclod_ 10 1 3 */
+/*:ref: gtfree_ 10 1 3 */
+/*:ref: clgetr_ 4 1 2 */
+/*:ref: clpstr_ 10 2 2 2 */
+/*:ref: clputr_ 10 2 2 4 */
+/*:ref: asumr_ 4 2 4 3 */
+/*:ref: amulkr_ 10 4 4 4 4 3 */
+/*:ref: clktie_ 3 1 3 */
+/*:ref: asrtr_ 10 3 4 4 3 */
+/*:ref: gflush_ 10 1 3 */
+/*:ref: gstati_ 3 2 3 3 */
+/*:ref: gseti_ 10 3 3 3 3 */
+/*:ref: gline_ 10 5 3 4 4 4 4 */
+/*:ref: urand_ 4 1 3 */
+/*:ref: unchar_ 10 5 3 2 4 3 3 */
+/*:ref: strncp_ 3 3 2 2 3 */
+/*:ref: ctor_ 3 3 2 3 4 */
+/*:ref: cnvdae_ 10 3 3 2 3 */
+/*:ref: clgcur_ 3 7 2 4 4 3 3 2 3 */
+/*:ref: streq_ 8 2 2 2 */
+/*:ref: clgeti_ 3 1 2 */
+/*:ref: clputb_ 10 2 2 8 */
+/*:ref: clputi_ 10 2 2 3 */
+/*:ref: smwdas_ 10 5 3 3 3 3 3 */
+/*:ref: smwsas_ 10 3 3 3 3 */
+/*:ref: shdron_ 10 7 3 3 3 3 3 3 3 */
+/*:ref: shdrcy_ 10 3 3 3 3 */
+/*:ref: amovi_ 10 3 3 3 3 */
+/*:ref: gplcae_ 10 1 3 */
+/*:ref: gtinit_ 3 0 */
+/*:ref: gsetr_ 10 3 3 3 4 */
+/*:ref: gtrest_ 10 2 3 3 */
+/*:ref: gtgets_ 10 4 3 3 2 3 */
+/*:ref: gtgeti_ 3 2 3 3 */
+/*:ref: gstatr_ 4 2 3 3 */
+/*:ref: strne_ 8 2 2 2 */
+/*:ref: gpagee_ 10 3 3 2 2 */
+/*:ref: xfopen_ 3 3 2 3 3 */
+/*:ref: getlie_ 3 2 3 2 */
+/*:ref: gtcopy_ 10 2 3 3 */
+/*:ref: icgfit_ 10 9 3 3 2 3 3 4 4 4 3 */
+/*:ref: cveval_ 4 2 3 4 */
+/*:ref: icclen_ 10 6 3 3 4 4 4 3 */
+/*:ref: icgstr_ 10 4 3 2 2 3 */
+/*:ref: icgeti_ 3 2 3 2 */
+/*:ref: icgetr_ 4 2 3 2 */
+/*:ref: cvfree_ 10 1 3 */
+/*:ref: icclor_ 10 1 3 */
+/*:ref: icfit_ 10 10 3 3 4 4 4 3 3 3 3 3 */
+/*:ref: ctowrd_ 3 4 2 3 2 3 */
+/*:ref: ctoi_ 3 3 2 3 3 */
+/*:ref: gctran_ 10 7 3 4 4 4 4 3 3 */
+/*:ref: xfscan_ 3 1 3 */
+/*:ref: funchd_ 10 7 3 2 3 5 5 3 3 */
+/*:ref: gtext_ 10 5 3 4 4 2 2 */
+/*:ref: ggwind_ 10 5 3 4 4 4 4 */
+/*:ref: aaddkr_ 10 4 4 4 4 3 */
+/*:ref: clputd_ 10 2 2 5 */
+/*:ref: xstrct_ 10 3 2 2 3 */
+/*:ref: gumark_ 10 9 3 4 4 3 4 4 4 4 3 */
+/*:ref: fnldir_ 3 3 2 2 3 */
+/*:ref: nowhie_ 3 3 2 2 3 */
+/*:ref: fpathe_ 10 3 2 2 3 */
+/*:ref: xfchdr_ 10 1 2 */
+/*:ref: fntclb_ 10 1 3 */
+/*:ref: fntopb_ 3 2 2 3 */
+/*:ref: fntgfb_ 3 3 3 2 3 */
+/*:ref: finfo_ 3 2 2 3 */
+/*:ref: xstrln_ 3 1 2 */
+/*:ref: imtcle_ 10 1 3 */
+/*:ref: imtopn_ 3 1 2 */
+/*:ref: stopen_ 3 4 2 3 3 3 */
+/*:ref: imtgem_ 3 3 3 2 3 */
+/*:ref: imaccs_ 3 2 2 3 */
+/*:ref: stfind_ 3 2 3 2 */
+/*:ref: stentr_ 3 3 3 2 3 */
+/*:ref: immap_ 3 3 2 3 3 */
+/*:ref: stpstr_ 3 3 3 2 3 */
+/*:ref: streff_ 3 2 3 3 */
+/*:ref: imtrew_ 10 1 3 */
+/*:ref: xtimrt_ 10 3 2 2 3 */
+/*:ref: smwopm_ 3 1 3 */
+/*:ref: resetn_ 10 0 */
+/*:ref: aclri_ 10 2 3 3 */
+/*:ref: gqsort_ 10 4 3 3 203 3 */
+/*:ref: xfdele_ 10 1 2 */
+/*:ref: sysid_ 10 2 2 3 */
+/*:ref: putlie_ 10 2 3 2 */
+/*:ref: xffluh_ 10 1 3 */
+/*:ref: xfaccs_ 3 3 2 3 3 */
+/*:ref: xfputc_ 10 2 3 2 */
+/*:ref: gclear_ 10 1 3 */
+/*:ref: gswind_ 10 5 3 4 4 4 4 */
+/*:ref: gtswid_ 10 2 3 3 */
+/*:ref: gtlabx_ 10 2 3 3 */
+/*:ref: unctrr_ 10 5 3 3 4 4 3 */
+/*:ref: glabax_ 10 4 3 2 2 2 */
+/*:ref: ggview_ 10 5 3 4 4 4 4 */
+/*:ref: pargb_ 10 1 8 */
+/*:ref: gsview_ 10 5 3 4 4 4 4 */
+/*:ref: gtplot_ 10 5 3 3 4 4 3 */
+/*:ref: gmark_ 10 6 3 4 4 3 4 4 */
+/*:ref: aaddr_ 10 4 4 4 4 3 */
+/*:ref: shdrus_ 10 2 3 2 */
+/*:ref: funchr_ 10 7 3 2 3 4 4 3 3 */
+/*:ref: strids_ 3 2 2 2 */
+/*:ref: obsimn_ 10 6 3 3 2 3 8 8 */
+/*:ref: obsged_ 5 2 3 2 */
+/*:ref: imgstr_ 10 4 3 2 2 3 */
+/*:ref: dtmdee_ 3 6 2 3 3 3 5 3 */
+/*:ref: imgetd_ 5 2 3 2 */
+/*:ref: astdah_ 10 5 3 3 3 5 5 */
+/*:ref: astprs_ 10 6 5 5 5 5 5 5 */
+/*:ref: astvot_ 10 4 5 5 5 5 */
+/*:ref: astvby_ 10 4 5 5 5 5 */
+/*:ref: astvre_ 10 7 5 5 5 5 5 5 5 */
+/*:ref: asthjd_ 10 5 5 5 5 5 5 */
+/*:ref: obslog_ 10 4 3 2 2 3 */
+/*:ref: obscle_ 10 1 3 */
+/*:ref: sbbans_ 10 4 3 3 3 3 */
+/*:ref: sbhear_ 10 8 3 8 8 4 2 3 3 3 */
+/*:ref: sbproc_ 10 7 3 3 3 3 8 8 4 */
+/*:ref: sbfree_ 10 2 3 3 */
+/*:ref: amedr_ 4 2 4 3 */
+/*:ref: amovkd_ 10 3 5 5 3 */
+/*:ref: aclrd_ 10 2 5 3 */
+/*:ref: adivkd_ 10 4 5 5 5 3 */
+/*:ref: envpus_ 3 2 2 2 */
+/*:ref: xtimnq_ 8 2 2 2 */
+/*:ref: xmktep_ 10 3 2 2 3 */
+/*:ref: imdele_ 10 1 2 */
+/*:ref: fpequd_ 8 2 5 5 */
+/*:ref: imaddi_ 10 3 3 2 3 */
+/*:ref: imgl3r_ 3 3 3 3 3 */
+/*:ref: impl3r_ 3 3 3 3 3 */
+/*:ref: smwsam_ 10 2 3 3 */
+/*:ref: imaccf_ 3 2 3 2 */
+/*:ref: imdelf_ 10 2 3 2 */
+/*:ref: imastr_ 10 3 3 2 2 */
+/*:ref: imps3r_ 3 7 3 3 3 3 3 3 3 */
+/*:ref: imrene_ 10 2 2 2 */
+/*:ref: mwgltd_ 10 4 3 5 5 3 */
+/*:ref: smwscn_ 3 4 3 2 2 3 */
+/*:ref: smwsad_ 10 4 3 3 3 2 */
+/*:ref: imtopp_ 3 1 2 */
+/*:ref: rngopn_ 3 4 2 4 4 4 */
+/*:ref: rngcle_ 10 1 3 */
+/*:ref: rngeli_ 8 2 3 3 */
+/*:ref: ctod_ 3 3 2 3 5 */
+/*:ref: aclrc_ 10 2 2 3 */
+/*:ref: strcle_ 10 1 3 */
+/*:ref: errget_ 3 2 2 3 */
+/*:ref: gopeni_ 3 4 2 3 2 3 */
+/*:ref: gclose_ 10 1 3 */
+/*:ref: envgei_ 3 1 2 */
+/*:ref: strtbl_ 10 8 3 2 3 3 3 3 3 3 */
+/*:ref: envlit_ 10 3 3 2 3 */
+/*:ref: envscn_ 3 1 2 */
+/*:ref: syspac_ 10 2 3 2 */
+/* Rerunning f2c -P may change prototypes or declarations. */

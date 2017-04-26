@@ -1,0 +1,14 @@
+x_stat,b,h,yes,,,Measure mean dispersion coordinate of region
+n_stat,b,h,yes,,,Measure number of pixels in region
+S,b,h,yes,,,Measure mean of spectrum in region
+N1,b,h,no,,,Measure standard deviation about mean
+N2,b,h,no,,,Measure standard deviation about linear fit
+N3,b,h,yes,,,Measure standard deviation about continuum
+N4,b,h,no,,,Measure noise from Poisson statistics
+N5,b,h,no,,,Measure noise from sigma spectrum
+SN1,b,h,no,,,Measure S/N from S and N1
+SN2,b,h,no,,,Measure S/N from S and N1
+SN3,b,h,yes,,,Measure S/N from S and N3
+SN4,b,h,no,,,Measure S/N from S and N4
+SN5,b,h,no,,,Measure S/N from S and N5
+SN,b,h,no,,,Measure mean S/N from data and sigma spectrum

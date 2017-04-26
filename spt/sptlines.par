@@ -1,0 +1,25 @@
+lidversion,s,h,"V1.0",,,"
+
+# LINE LABELING"
+lidshow,b,h,yes,,,Show line labels?
+lidpos,r,h,0.1,,,Default label position
+lidformat,s,h,"Vertical",,,Default line label format
+lidcolor,s,h,"foreground","background|foreground|red|green|blue|cyan|yellow|magenta|purple|gray",,Default line label color
+
+lidtick,b,h,yes,,,Draw ticks?
+lidarrow,b,h,yes,,,Draw arrowheads?
+lidband,b,h,yes,,,Draw bandpass?
+lidmeasured,b,h,no,,,Label with measured coordinate?
+lidreference,b,h,no,,,Label with reference coordinate?
+lidlabel,b,h,no,,,"Label with ID?
+
+# LINE IDENTIFICATIONS"
+linelist,s,h,"",,,Line list
+linematch,r,h,2.,,,Line list matching distance (pixels)
+linesep,r,h,2.,,,"Minimum line separation (pixels)
+
+# LINE CENTERING"
+ctype,s,h,"center1d",center1d|gaussian|peak|none,,"Centering type"
+cprofile,s,h,"either",either|emission|absorption,,"Profile type"
+cwidth,r,h,5.,1.,,"Centering profile width (pixels)"
+cradius,r,h,5.,0.,,Centering search radius (pixels)

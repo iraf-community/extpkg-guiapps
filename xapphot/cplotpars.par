@@ -1,0 +1,21 @@
+# The parameter file for the CPLOTPARS pset
+
+enx,i,h,31,3,,Default number of columns to be contoured
+eny,i,h,31,3,,Default number of lines to be contoured
+ez1,r,h,INDEF,,,The minimum greylevel to be contoured
+ez2,r,h,INDEF,,,The maximum greylevel to be contoured
+ez0,r,h,INDEF,,,The greyscale value of the zero contour
+encontours,i,h,5,,,The number of contours to be drawn
+edz,r,h,INDEF,,,The contour greylevel interval
+ehilomark,s,h,none,,,"The high / low marking option (none|hilo|pixel)"
+edashpat,i,h,528,,,The bit pattern for generating dashed lines
+elabel,b,h,no,,,Label major contours with their values ?
+ebox,b,h,no,,,Draw box around edge of window ?
+eticklabel,b,h,no,,,Label tick marks ?
+exmajor,i,h,5,,,The number of major divisions along x axis
+exminor,i,h,0,,,The number of minor divisions along x axis
+eymajor,i,h,5,,,The number of major divisions along y axis
+eyminor,i,h,0,,,The number of minor divisions along y axis
+eround,b,h,no,,,Round axes to nice values ?
+efill,b,h,no,,,Fill viewport vs enforce unity aspect ratio ?
+mode,s,h,'ql'
